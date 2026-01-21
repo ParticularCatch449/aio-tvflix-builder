@@ -187,7 +187,7 @@
                     </div>
                 </div>
 
-                <!-- Step: Content Preferences -->
+                <!-- Step: Content Preferences (RESTORED) -->
                 <div class="step" id="step-prefs">
                     <h2 class="text-2xl font-bold mb-6 text-white tracking-tight">3. Content Preferences</h2>
                     
@@ -455,9 +455,9 @@
             document.getElementById('page-hub').classList.remove('active');
             document.getElementById('page-wizard').classList.add('active');
             
-            if (m === 'streams') wizardFlow = ['step-debrid', 'step-speed', 'step-keys'];
-            else if (m === 'meta') wizardFlow = ['step-keys', 'step-posters'];
-            else wizardFlow = ['step-debrid', 'step-speed', 'step-keys', 'step-posters'];
+            if (m === 'streams') wizardFlow = ['step-debrid', 'step-speed', 'step-prefs', 'step-keys'];
+            else if (m === 'meta') wizardFlow = ['step-prefs', 'step-keys', 'step-posters'];
+            else wizardFlow = ['step-debrid', 'step-speed', 'step-prefs', 'step-keys', 'step-posters'];
 
             renderStep(0);
         }
@@ -580,7 +580,7 @@
             const fa = document.getElementById('fanart-key').value;
             const tr = document.getElementById('trakt-key').value;
             const gemini = document.getElementById('gemini-key').value;
-            // Note: Debrid checks are handled dynamically below
+            const isDebrid = document.getElementById('use-debrid').checked;
             
             // Preferences
             const resLimit = parseInt(document.getElementById('res-limit').value) || 3;
