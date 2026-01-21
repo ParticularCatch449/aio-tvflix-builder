@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIO.TVFLIX Builder</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .page { display: none; }
+        .page.active { display: block; }
+        .step { display: none; }
+        .step.active { display: block; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 font-sans min-h-screen p-4 md:p-10">
+
+    <div class="max-w-3xl mx-auto bg-slate-800 p-6 md:p-10 rounded-2xl shadow-2xl border border-slate-700">
+        
+        <!-- HUB PAGE -->
+        <div id="page-hub" class="page active">
+            <header class="mb-10 text-center">
+                <h1 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400 italic tracking-tighter">AIO.TVFLIX</h1>
+                <p class="text-slate-400 mt-2">Personalized Master Template Builder</p>
+                <div class="text-slate-500 mt-4 text-sm max-w-lg mx-auto space-y-2">
+                    <p>Welcome to the AIO.TVFLIX Stremio setup tool! This builder helps you create a comprehensive and personalized configuration for your Stremio experience.</p>
+                    <p><strong>AIOStreams:</strong> Manages your streaming sources, debrid services (like Real-Debrid), and quality filters to ensure you get the best links.</p>
+                    <p><strong>AIOMetadata:</strong> Enhances your Stremio interface with rich posters, ratings, and organized catalogs from services like TMDb and TVDB.</p>
+                    <p>Select an option below to get started. If you are new, we recommend the <strong>Full Setup</strong>.</p>
+                </div>
+            </header>
+            <div class="grid grid-cols-1 gap-6">
+                <button type="button" onclick="startSetup('full')" class="bg-slate-700 p-6 rounded-xl border border-indigo-500/30 hover:border-indigo-400 text-left transition-all">
+                    <h3 class="text-xl font-bold text-indigo-300">Full Setup</h3>
+                    <p class="text-sm text-slate-400 mt-1">Generate both AIOStreams and Metadata files.</p>
+                </button>
+                <button type="button" onclick="startSetup('streams')" class="bg-slate-700 p-6 rounded-xl border border-slate-600 hover:border-indigo-400 text-left transition-all">
+                    <h3 class="text-xl font-bold text-slate-200">AIOStreams Only</h3>
+                    <p class="text-sm text-slate-400 mt-1">Configure scrapers, debrid, and speed limits.</p>
+                </button>
+                <button type="button" onclick="startSetup('meta')" class="bg-slate-700 p-6 rounded-xl border border-slate-600 hover:border-indigo-400 text-left transition-all">
+                    <h3 class="text-xl font-bold text-slate-200">AIOMetadata Only</h3>
+                    <p class="text-sm text-slate-400 mt-1">Configure posters, ratings, and catalog keys.</p>
+                </button>
+            </div>
+        </div>
+
+        <!-- WIZARD PAGE -->
+        <div id="page-wizard" class="page">
+            <div id="setup-steps">
+                <!-- Step: Debrid -->
+                <div class="step" id="step-debrid">
+                    <h2 class="text-2xl font-bold mb-6 text-white tracking-tight">1. Debrid Integration</h2>
+                    <p class="text-sm text-slate-400 mb-4">Select the debrid services you use. You can select multiple.</p>
+                    
+                    <div id="debrid-list" class="space-y-4">
+                        <!-- Real-Debrid -->
+                        <div class="bg-slate-900/50 p-4 rounded-lg border border-slate-700">
+                            <label class="flex items-center space-x-3 cursor-pointer mb-3">
+                                <input type="checkbox" id="use-rd" class="debrid-check w-5 h-5 rounded border-slate-600 text-indigo-600 bg-slate-800" onchange="toggleDebridInput('rd-input', this.checked)">
+                                <span class="font-bold text-white">Real-Debrid</span>
+                            </label>
+                            <div id="rd-input" class="hidden pl-8">
+                                <input type="text" id="key-realdebrid" placeholder="Real-Debrid API Key" class="w-full bg-slate-800 border border-slate-700 p-2 rounded text-sm text-white outline-none">
+                                <a href="https://real-debrid.com/apitoken" target="_blank" class="text-[10px] text-indigo-400 mt-1 block hover:underline">Get Key →</a>
+                            </div>
+                        </div>
+
+                        <!-- TorBox -->
+                        <div class="bg-slate-900/50 p-4 rounded-lg border border-slate-700">
+                            <label class="flex items-center space-x-3 cursor-pointer mb-3">
+                                <input type="checkbox" id="use-tb" class="debrid-check w-5 h-5 rounded border-slate-600 text-indigo-600 bg-slate-800" onchange="toggleDebridInput('tb-input', this.checked)">
+                                <span class="font-bold text-white">TorBox</span>
+                            </label>
+                            <div id="tb-input" class="hidden pl-8">
+                                <input type="text" id="key-torbox" placeholder="TorBox API Key" class="w-full bg-slate-800 border border-slate-700 p-2 rounded text-sm text-white outline-none">
+                                <a href="https://torbox.app/settings" target="_blank" class="text-[10px] text-indigo-400 mt-1 block hover:underline">Get Key →</a>
+                            </div>
+                        </div>
+
+                        <!-- AllDebrid -->
+                        <div class="bg-slate-900/50 p-4 rounded-lg border border-slate-700">
+                            <label class="flex items-center space-x-3 cursor-pointer mb-3">
+                                <input type="checkbox" id="use-ad" class="debrid-check w-5 h-5 rounded border-slate-600 text-indigo-600 bg-slate-800" onchange="toggleDebridInput('ad-input', this.checked)">
+                                <span class="font-bold text-white">AllDebrid</span>
+                            </label>
+                            <div id="ad-input" class="hidden pl-8">
+                                <input type="text" id="key-alldebrid" placeholder="AllDebrid API Key" class="w-full bg-slate-800 border border-slate-700 p-2 rounded text-sm text-white outline-none">
+                                <a href="https://alldebrid.com/apikeys/" target="_blank" class="text-[10px] text-indigo-400 mt-1 block hover:underline">Get Key →</a>
+                            </div>
+                        </div>
+
+                        <!-- Premiumize -->
+                        <div class="bg-slate-900/50 p-4 rounded-lg border border-slate-700">
+                            <label class="flex items-center space-x-3 cursor-pointer mb-3">
+                                <input type="checkbox" id="use-pm" class="debrid-check w-5 h-5 rounded border-slate-600 text-indigo-600 bg-slate-800" onchange="toggleDebridInput('pm-input', this.checked)">
+                                <span class="font-bold text-white">Premiumize</span>
+                            </label>
+                            <div id="pm-input" class="hidden pl-8">
+                                <input type="text" id="key-premiumize" placeholder="Premiumize API Key" class="w-full bg-slate-800 border border-slate-700 p-2 rounded text-sm text-white outline-none">
+                                <a href="https://www.premiumize.me/account" target="_blank" class="text-[10px] text-indigo-400 mt-1 block hover:underline">Get Key →</a>
+                            </div>
+                        </div>
+
+                        <!-- DebridLink -->
+                        <div class="bg-slate-900/50 p-4 rounded-lg border border-slate-700">
+                            <label class="flex items-center space-x-3 cursor-pointer mb-3">
+                                <input type="checkbox" id="use-dl" class="debrid-check w-5 h-5 rounded border-slate-600 text-indigo-600 bg-slate-800" onchange="toggleDebridInput('dl-input', this.checked)">
+                                <span class="font-bold text-white">DebridLink</span>
+                            </label>
+                            <div id="dl-input" class="hidden pl-8">
+                                <input type="text" id="key-debridlink" placeholder="DebridLink API Key" class="w-full bg-slate-800 border border-slate-700 p-2 rounded text-sm text-white outline-none">
+                                <a href="https://debrid-link.com/webapp/apikey" target="_blank" class="text-[10px] text-indigo-400 mt-1 block hover:underline">Get Key →</a>
+                            </div>
+                        </div>
+
+                        <!-- Offcloud -->
+                        <div class="bg-slate-900/50 p-4 rounded-lg border border-slate-700">
+                            <label class="flex items-center space-x-3 cursor-pointer mb-3">
+                                <input type="checkbox" id="use-oc" class="debrid-check w-5 h-5 rounded border-slate-600 text-indigo-600 bg-slate-800" onchange="toggleDebridInput('oc-input', this.checked)">
+                                <span class="font-bold text-white">Offcloud</span>
+                            </label>
+                            <div id="oc-input" class="hidden pl-8">
+                                <input type="text" id="key-offcloud" placeholder="Offcloud API Key" class="w-full bg-slate-800 border border-slate-700 p-2 rounded text-sm text-white outline-none">
+                                <a href="https://offcloud.com/#/account" target="_blank" class="text-[10px] text-indigo-400 mt-1 block hover:underline">Get Key →</a>
+                            </div>
+                        </div>
+
+                        <!-- Put.io -->
+                        <div class="bg-slate-900/50 p-4 rounded-lg border border-slate-700">
+                            <label class="flex items-center space-x-3 cursor-pointer mb-3">
+                                <input type="checkbox" id="use-put" class="debrid-check w-5 h-5 rounded border-slate-600 text-indigo-600 bg-slate-800" onchange="toggleDebridInput('put-input', this.checked)">
+                                <span class="font-bold text-white">Put.io</span>
+                            </label>
+                            <div id="put-input" class="hidden pl-8">
+                                <input type="text" id="key-putio" placeholder="Put.io API Key" class="w-full bg-slate-800 border border-slate-700 p-2 rounded text-sm text-white outline-none">
+                                <a href="https://app.put.io/settings/account/oauth/apps" target="_blank" class="text-[10px] text-indigo-400 mt-1 block hover:underline">Get Key →</a>
+                            </div>
+                        </div>
+
+                        <!-- EasyNews -->
+                        <div class="bg-slate-900/50 p-4 rounded-lg border border-slate-700">
+                            <label class="flex items-center space-x-3 cursor-pointer mb-3">
+                                <input type="checkbox" id="use-en" class="debrid-check w-5 h-5 rounded border-slate-600 text-indigo-600 bg-slate-800" onchange="toggleDebridInput('en-input', this.checked)">
+                                <span class="font-bold text-white">EasyNews</span>
+                            </label>
+                            <div id="en-input" class="hidden pl-8">
+                                <input type="text" id="key-easynews" placeholder="EasyNews API Key" class="w-full bg-slate-800 border border-slate-700 p-2 rounded text-sm text-white outline-none">
+                            </div>
+                        </div>
+
+                        <!-- EasyDebrid -->
+                        <div class="bg-slate-900/50 p-4 rounded-lg border border-slate-700">
+                            <label class="flex items-center space-x-3 cursor-pointer mb-3">
+                                <input type="checkbox" id="use-ed" class="debrid-check w-5 h-5 rounded border-slate-600 text-indigo-600 bg-slate-800" onchange="toggleDebridInput('ed-input', this.checked)">
+                                <span class="font-bold text-white">EasyDebrid</span>
+                            </label>
+                            <div id="ed-input" class="hidden pl-8">
+                                <input type="text" id="key-easydebrid" placeholder="EasyDebrid API Key" class="w-full bg-slate-800 border border-slate-700 p-2 rounded text-sm text-white outline-none">
+                                <a href="https://easydebrid.com/api" target="_blank" class="text-[10px] text-indigo-400 mt-1 block hover:underline">Get Key →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step: Speed -->
+                <div class="step" id="step-speed">
+                    <h2 class="text-2xl font-bold mb-6 text-white tracking-tight">2. Performance Settings</h2>
+                    <label class="flex items-center space-x-4 bg-slate-700/50 p-5 rounded-xl cursor-pointer mb-6 border border-transparent hover:border-indigo-500/50 transition-all">
+                        <input type="checkbox" id="do-limit" class="w-6 h-6 rounded border-slate-600 text-indigo-600 bg-slate-800">
+                        <p class="font-bold text-lg text-white">Limit file sizes based on speed?</p>
+                    </label>
+                    <div id="speed-options" class="hidden bg-slate-700/30 p-6 rounded-xl border border-slate-600 mb-6">
+                        <label class="block mb-3 text-sm text-slate-400">Select speed bracket:</label>
+                        <select id="speed-val" class="w-full bg-slate-900 border border-slate-700 p-4 rounded-xl text-white outline-none">
+                            <option value="low">0-25 Mbps (Max 10GB Movies)</option>
+                            <option value="mid">25-50 Mbps (Max 25GB Movies)</option>
+                            <option value="high">50-100 Mbps (Max 50GB Movies)</option>
+                            <option value="none">100+ Mbps (Unlimited)</option>
+                        </select>
+                    </div>
+                    <div class="bg-slate-700/30 p-6 rounded-xl border border-slate-600">
+                        <label class="block font-bold mb-3">Priority Preference</label>
+                        <select id="sort-pref" class="w-full bg-slate-900 border border-slate-700 p-4 rounded-xl text-white outline-none">
+                            <option value="quality">Quality First (Template Default)</option>
+                            <option value="speed">Loading Speed First (Smallest Files)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Step: Content Preferences -->
+                <div class="step" id="step-prefs">
+                    <h2 class="text-2xl font-bold mb-6 text-white tracking-tight">3. Content Preferences</h2>
+                    
+                    <div class="space-y-6">
+                        <div id="prefs-res-limit" class="bg-slate-700/30 p-6 rounded-xl border border-slate-600">
+                            <label class="block font-bold mb-2">Max Results per Resolution</label>
+                            <p class="text-xs text-slate-400 mb-3">How many links to show for each quality (e.g. 3x 4K, 3x 1080p).</p>
+                            <input type="number" id="res-limit" value="3" min="1" max="20" class="w-full bg-slate-900 border border-slate-700 p-4 rounded-xl text-white outline-none focus:ring-1 focus:ring-indigo-500">
+                        </div>
+
+                        <div id="prefs-language" class="bg-slate-700/30 p-6 rounded-xl border border-slate-600">
+                            <label class="block font-bold mb-3">Preferred Language</label>
+                            <select id="lang-select" class="w-full bg-slate-900 border border-slate-700 p-4 rounded-xl text-white outline-none">
+                                <option value="English" selected>English</option>
+                                <option value="Spanish">Spanish</option>
+                                <option value="French">French</option>
+                                <option value="German">German</option>
+                                <option value="Italian">Italian</option>
+                                <option value="Portuguese">Portuguese</option>
+                                <option value="Russian">Russian</option>
+                                <option value="Hindi">Hindi</option>
+                                <option value="Japanese">Japanese</option>
+                                <option value="Korean">Korean</option>
+                                <option value="Chinese">Chinese</option>
+                                <option value="Arabic">Arabic</option>
+                            </select>
+                        </div>
+
+                        <label id="prefs-cams" class="flex items-center space-x-4 bg-slate-700/50 p-5 rounded-xl cursor-pointer border border-transparent hover:border-indigo-500/50 transition-all">
+                            <input type="checkbox" id="include-cams" class="w-6 h-6 rounded border-slate-600 text-indigo-600 bg-slate-800">
+                            <div>
+                                <p class="font-bold text-lg text-white">Include CAMs / Screeners?</p>
+                                <p class="text-xs text-slate-400">Enable this to see lower quality streams filmed on devices.</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Step: Master Keys -->
+                <div class="step" id="step-keys">
+                    <h2 class="text-2xl font-bold mb-6 text-white tracking-tight">4. API Credentials</h2>
+                    
+                    <!-- Anime Toggle -->
+                    <label class="flex items-center space-x-4 bg-slate-700/50 p-4 rounded-xl cursor-pointer mb-6">
+                        <input type="checkbox" id="include-anime" checked class="w-6 h-6 rounded border-slate-600 text-indigo-600 bg-slate-800">
+                        <span class="font-bold text-white">Include Animé catalogs?</span>
+                    </label>
+
+                    <div class="bg-slate-900/80 p-5 rounded-xl border border-indigo-500/20 grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-4">
+                            <p class="text-xs text-indigo-400 font-bold uppercase tracking-widest">TMDb Config <span class="text-red-500">*</span></p>
+                            <input type="text" id="tmdb-key" placeholder="API Key (v3)" class="w-full bg-slate-800 border border-slate-700 p-2 rounded text-sm text-white outline-none">
+                            <a href="https://www.themoviedb.org/settings/api" target="_blank" class="text-[10px] text-slate-500 hover:text-indigo-400 block underline">TMDb API Settings</a>
+                            <div id="streams-token-field">
+                                <textarea id="tmdb-token" rows="3" placeholder="Read Access Token (v4)" class="w-full bg-slate-800 border border-slate-700 p-2 rounded text-xs text-white outline-none mt-2"></textarea>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <p class="text-xs text-indigo-400 font-bold uppercase tracking-widest">Additional Providers</p>
+                            <div id="tvdb-field">
+                                <input type="text" id="tvdb-key" placeholder="TVDB API Key (Required for Meta)" class="w-full bg-slate-800 border border-slate-700 p-2 rounded text-sm text-white outline-none">
+                                <a href="https://thetvdb.com/dashboard/account/apikey" target="_blank" class="text-[10px] text-slate-500 hover:text-indigo-400 block underline mt-1">TVDB API Settings</a>
+                            </div>
+                            
+                            <div id="fanart-field" class="mt-2">
+                                <input type="text" id="fanart-key" placeholder="Fanart API Key (Required for Meta)" class="w-full bg-slate-800 border border-slate-700 p-2 rounded text-sm text-white outline-none">
+                                <a href="https://fanart.tv/get-an-api-key/" target="_blank" class="text-[10px] text-slate-500 hover:text-indigo-400 block underline mt-1">Fanart API Settings</a>
+                            </div>
+
+                            <div id="trakt-field" class="mt-2">
+                                <input type="text" id="trakt-key" placeholder="Trakt API Key (Optional)" class="w-full bg-slate-800 border border-slate-700 p-2 rounded text-sm text-white outline-none">
+                                <a href="https://trakt.tv/oauth/applications" target="_blank" class="text-[10px] text-slate-500 hover:text-indigo-400 block underline mt-1">Trakt API Settings</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gemini AI Toggle -->
+                    <div id="gemini-section" class="mt-6 hidden">
+                        <div class="bg-amber-900/20 border border-amber-600/30 p-4 rounded-xl mb-4">
+                            <label class="flex items-center space-x-4 cursor-pointer">
+                                <input type="checkbox" id="enable-gemini" class="w-6 h-6 rounded border-slate-600 text-indigo-600 bg-slate-800">
+                                <div>
+                                    <p class="font-bold text-white">Enable Gemini AI Search?</p>
+                                    <p class="text-xs text-amber-400">Note: This is a paid service from Google.</p>
+                                </div>
+                            </label>
+                        </div>
+                        <div id="gemini-input" class="hidden pl-4">
+                            <input type="text" id="gemini-key" placeholder="Paste Gemini API Key" class="w-full bg-slate-800 border border-slate-700 p-3 rounded-lg text-white outline-none">
+                            <a href="https://aistudio.google.com/app/apikey" target="_blank" class="text-[10px] text-indigo-400 mt-1 block hover:underline">Get Gemini API Key →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step: Posters -->
+                <div class="step" id="step-posters">
+                    <h2 class="text-2xl font-bold mb-6 text-white tracking-tight">5. Poster Ratings</h2>
+                    <label class="flex items-center space-x-4 bg-slate-700/50 p-5 rounded-xl cursor-pointer mb-6 border border-transparent hover:border-indigo-500/50 transition-all">
+                        <input type="checkbox" id="do-posters" class="w-6 h-6 rounded border-slate-600 text-indigo-600 bg-slate-800">
+                        <p class="font-bold text-lg leading-tight text-white">Enable rated posters? (Free & Paid Options)</p>
+                    </label>
+                    <div id="poster-options" class="hidden space-y-4">
+                        <select id="poster-provider" class="w-full bg-slate-900 border border-slate-700 p-4 rounded-xl text-white outline-none">
+                            <option value="top">TOP Posters API (Free Tier Available)</option>
+                            <option value="rpdb">RPDB (RatingPosterDB)</option>
+                        </select>
+                        <input type="text" id="poster-key" placeholder="Paste API Key (Required if enabled)" class="w-full bg-slate-900 border border-indigo-500/50 p-4 rounded-xl text-white outline-none">
+                        <div class="flex space-x-6 text-[10px] text-indigo-400 uppercase font-bold tracking-widest underline">
+                            <a href="https://api.top-streaming.stream/" target="_blank">TOP Link</a>
+                            <a href="https://ratingposterdb.com/" target="_blank">RPDB Link</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Navigation -->
+            <div class="mt-12 flex justify-between">
+                <button type="button" id="prev-btn" onclick="goBack()" class="bg-slate-700 px-8 py-3 rounded-xl font-bold hover:bg-slate-600 transition-all border border-slate-600">Back</button>
+                <button type="button" id="next-btn" onclick="validateAndGoNext()" class="bg-indigo-600 px-10 py-3 rounded-xl font-bold hover:bg-indigo-500 transition-all shadow-lg ml-auto">Next Step</button>
+                <button type="button" id="finish-btn" class="hidden bg-green-600 px-10 py-3 rounded-xl font-bold hover:bg-green-500 transition-all shadow-lg ml-auto" onclick="validateAndFinalize()">Generate Files</button>
+            </div>
+        </div>
+
+        <!-- DOWNLOAD PAGE -->
+        <div id="page-downloads" class="page text-center">
+            <h2 class="text-3xl font-bold mb-4 text-indigo-400 tracking-tighter italic">BUILD COMPLETE</h2>
+            <p class="text-slate-400 mb-6">Download your config files below.</p>
+            
+            <div id="dl-container" class="flex flex-col gap-4 max-w-sm mx-auto mb-10"></div>
+            
+            <!-- Dynamic Instructions Container -->
+            <div id="instructions-area" class="text-left max-w-2xl mx-auto space-y-8 hidden">
+                
+                <!-- Meta Instructions -->
+                <div id="instr-meta" class="bg-slate-700/30 p-6 rounded-xl border border-indigo-500/30 hidden">
+                    <h3 class="text-xl font-bold text-indigo-300 mb-3">Configure Metadata</h3>
+                    <p class="mb-2">Go to <a href="https://aiometadatafortheweak.nhyira.dev/configure/" target="_blank" class="text-indigo-400 underline hover:text-indigo-300">AIO Metadata Config</a></p>
+                    <ul class="list-disc pl-5 space-y-2 text-slate-300 text-sm">
+                        <li><strong>To Import:</strong> Go to the <strong>Configuration</strong> tab and click <strong>Import</strong> to load your .json file.</li>
+                        <li><strong>To get the URL:</strong> On the same <strong>Configuration</strong> tab, click Save, create a password. The URL will appear under the save button.</li>
+                    </ul>
+                    <div class="mt-4 bg-amber-900/20 border border-amber-600/30 p-4 rounded-lg text-xs text-amber-200 leading-relaxed">
+                        <strong class="block mb-1 text-amber-400 uppercase tracking-wide">! Important !</strong> 
+                        Keep your AIO Key safe! Store it like a password. This is a live environment, meaning you can edit these settings in the future on the website and the updates will pull across to Stremio automatically. You won't ever have to reinstall the addon in Stremio again to update your settings.
+                    </div>
+                </div>
+
+                <!-- Streams Instructions -->
+                <div id="instr-streams" class="bg-slate-700/30 p-6 rounded-xl border border-indigo-500/30 hidden">
+                    <h3 class="text-xl font-bold text-indigo-300 mb-3">Configure Streams</h3>
+                    <p class="mb-2">Go to <a href="https://aiostreamsfortheweak.nhyira.dev/stremio/configure?menu=save-install" target="_blank" class="text-indigo-400 underline hover:text-indigo-300">AIO Streams Config</a></p>
+                    <ul class="list-disc pl-5 space-y-2 text-slate-300 text-sm">
+                        <li>Click the <strong>Save & Install</strong> tab.</li>
+                        <li><strong>To Import:</strong> Click <strong>Import</strong> then <strong>Import Config</strong> to load your .json file.</li>
+                        <li><strong>To get the URL:</strong> Click Save, create a password, click Install, then copy the URL.</li>
+                    </ul>
+                    <div class="mt-4 bg-amber-900/20 border border-amber-600/30 p-4 rounded-lg text-xs text-amber-200 leading-relaxed">
+                        <strong class="block mb-1 text-amber-400 uppercase tracking-wide">! Important !</strong> 
+                        Keep your AIO Key safe! Store it like a password. This is a live environment, meaning you can edit these settings in the future on the website and the updates will pull across to Stremio automatically. You won't ever have to reinstall the addon in Stremio again to update your settings.
+                    </div>
+                </div>
+
+                <!-- Install Instructions -->
+                <div id="instr-final" class="bg-slate-800 p-6 rounded-xl border border-slate-600">
+                    <h3 class="text-xl font-bold text-white mb-4">Step 3: Install onto Stremio</h3>
+                    
+                    <!-- CineBye Section -->
+                    <div id="cinebye-section" class="mb-6 bg-slate-900/50 p-4 rounded-lg border border-slate-700/50">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="bg-indigo-600 text-xs font-bold px-2 py-1 rounded text-white">A</span>
+                            <a href="https://cinebye.elfhosted.com/" target="_blank" class="text-indigo-400 font-bold hover:underline text-lg">Open CineBye Manager</a>
+                        </div>
+                        <p class="text-sm text-slate-400 mb-3">Log in and <strong>tick these options</strong>:</p>
+                        <ul class="list-disc pl-5 space-y-2 text-slate-300 text-sm mb-4">
+                            <li>
+                                <span class="text-white font-bold">Remove Cinemeta Search</span>
+                                <br><span class="text-slate-500 text-xs">Stops Cinemeta results from appearing when you search.</span>
+                            </li>
+                            <li>
+                                <span class="text-white font-bold">Remove Cinemeta Catalogs</span>
+                                <br><span class="text-slate-500 text-xs">Removes Popular, New, and Featured catalogs from your home screen.</span>
+                            </li>
+                            <li>
+                                <span class="text-white font-bold">Remove Cinemeta Metadata</span>
+                                <br><span class="text-slate-500 text-xs">Stops Cinemeta from providing metadata for your movies and series.</span>
+                            </li>
+                        </ul>
+                        <div class="bg-slate-800 p-2 rounded text-center border border-slate-600">
+                            <span class="text-green-400 font-bold text-xs uppercase">Click "Sync to Stremio"</span>
+                        </div>
+                    </div>
+
+                    <!-- Addon Manager Section -->
+                    <div class="bg-slate-900/50 p-4 rounded-lg border border-slate-700/50">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="bg-indigo-600 text-xs font-bold px-2 py-1 rounded text-white">B</span>
+                            <a href="https://stremio-addon-manager.pages.dev/" target="_blank" class="text-indigo-400 font-bold hover:underline text-lg">Open Addon Manager</a>
+                        </div>
+                        
+                        <ol class="list-decimal pl-5 space-y-3 text-slate-300 text-sm">
+                            <li>Log in and click the <strong>bin icon</strong> on ALL addons <strong>apart from Cinemeta and your subtitles</strong>.</li>
+                            <li>Click <strong>Sync to Stremio</strong>.</li>
+                            
+                            <li id="step-add-meta" class="hidden">
+                                Click <strong>Add Addon</strong> and paste your <span class="text-indigo-300">AIOMETADATA URL</span>.
+                            </li>
+                            <li id="step-add-stream" class="hidden">
+                                Click <strong>Add Addon</strong> and paste your <span class="text-indigo-300">AIOSTREAMS URL</span>.
+                            </li>
+                            
+                            <li>
+                                Reorder your addons so the top 3 are in this order:
+                                <div id="order-list-visual" class="bg-slate-800 p-3 rounded border border-slate-600 mt-2 font-mono text-xs font-bold text-center space-y-1 w-fit mx-auto min-w-[200px]">
+                                    <!-- Populated by JS -->
+                                </div>
+                                <p class="text-xs text-slate-500 mt-1 text-center">Your other addons (subtitles etc) can be below that.</p>
+                            </li>
+                            
+                            <li>Click <strong>Sync to Stremio</strong> and it will be done.</li>
+                        </ol>
+
+                        <div class="mt-4 text-center bg-indigo-900/20 p-3 rounded-lg border border-indigo-500/20">
+                            <p class="text-indigo-200 text-sm font-bold">🎉 Force close and reopen Stremio and enjoy the nice clean setup!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="location.reload()" class="mt-12 text-slate-500 hover:text-white uppercase text-xs font-bold tracking-widest transition-all">Start New Setup</button>
+        </div>
+    </div>
+
+    <script>
+        let currentMode = '';
+        let wizardFlow = [];
+        let currentStepIdx = 0;
+        const GB_BYTES = 1073741824;
+
+        const langMap = {
+            "English": "en-US",
+            "Spanish": "es-ES",
+            "French": "fr-FR",
+            "German": "de-DE",
+            "Italian": "it-IT",
+            "Portuguese": "pt-PT",
+            "Russian": "ru-RU",
+            "Hindi": "hi-IN",
+            "Japanese": "ja-JP",
+            "Korean": "ko-KR",
+            "Chinese": "zh-CN",
+            "Arabic": "ar-SA"
+        };
+
+        // UI Toggles
+        function toggleDebridInput(id, checked) {
+            document.getElementById(id).classList.toggle('hidden', !checked);
+        }
+        
+        document.getElementById('do-limit').addEventListener('change', e => document.getElementById('speed-options').classList.toggle('hidden', !e.target.checked));
+        document.getElementById('do-posters').addEventListener('change', e => document.getElementById('poster-options').classList.toggle('hidden', !e.target.checked));
+        document.getElementById('enable-gemini').addEventListener('change', e => document.getElementById('gemini-input').classList.toggle('hidden', !e.target.checked));
+
+        function startSetup(m) {
+            currentMode = m;
+            document.getElementById('page-hub').classList.remove('active');
+            document.getElementById('page-wizard').classList.add('active');
+            
+            if (m === 'streams') wizardFlow = ['step-debrid', 'step-speed', 'step-keys'];
+            else if (m === 'meta') wizardFlow = ['step-keys', 'step-posters'];
+            else wizardFlow = ['step-debrid', 'step-speed', 'step-keys', 'step-posters'];
+
+            renderStep(0);
+        }
+
+        function renderStep(idx) {
+            wizardFlow.forEach(id => document.getElementById(id).classList.remove('active'));
+            document.getElementById(wizardFlow[idx]).classList.add('active');
+            currentStepIdx = idx;
+            
+            // Visibility Logic
+            const isMeta = currentMode === 'meta' || currentMode === 'full';
+            const isStreams = currentMode === 'streams' || currentMode === 'full';
+            const showStreamPrefs = currentMode !== 'meta';
+
+            document.getElementById('streams-token-field').style.display = isMeta && !isStreams ? 'none' : 'block';
+            
+            // Fanart only for Meta or Full (Hidden for Streams Only)
+            document.getElementById('fanart-field').style.display = isStreams && !isMeta ? 'none' : 'block';
+            
+            // TVDB: Show always to avoid "missing from streams" complaint. 
+            // Previous logic hid it for streams, user says it's missing.
+            document.getElementById('tvdb-field').style.display = 'block'; 
+            
+            document.getElementById('trakt-field').style.display = isStreams && !isMeta ? 'none' : 'block';
+            document.getElementById('gemini-section').style.display = isStreams && !isMeta ? 'none' : 'block';
+
+            // Prefs Page Visibility
+            document.getElementById('prefs-res-limit').style.display = showStreamPrefs ? 'block' : 'none';
+            document.getElementById('prefs-cams').style.display = showStreamPrefs ? 'flex' : 'none';
+
+            document.getElementById('next-btn').style.display = (idx === wizardFlow.length - 1) ? 'none' : 'block';
+            document.getElementById('finish-btn').classList.toggle('hidden', idx !== wizardFlow.length - 1);
+        }
+
+        function goNext() { if (currentStepIdx < wizardFlow.length - 1) renderStep(currentStepIdx + 1); }
+        function goBack() {
+            if (currentStepIdx === 0) {
+                document.getElementById('page-wizard').classList.remove('active');
+                document.getElementById('page-hub').classList.add('active');
+            } else renderStep(currentStepIdx - 1);
+        }
+
+        // VALIDATION FUNCTION
+        function validateStep() {
+            const currentStepId = wizardFlow[currentStepIdx];
+            
+            // Step: Debrid
+            if (currentStepId === 'step-debrid') {
+                const checks = document.querySelectorAll('.debrid-check');
+                let hasChecked = false;
+                for (let c of checks) {
+                    if (c.checked) {
+                        hasChecked = true;
+                        // Find related input
+                        const inputId = 'key-' + c.id.replace('use-', '').replace('rd', 'realdebrid').replace('tb', 'torbox').replace('ad', 'alldebrid').replace('pm', 'premiumize').replace('dl', 'debridlink').replace('oc', 'offcloud').replace('put', 'putio').replace('en', 'easynews').replace('ed', 'easydebrid');
+                        const val = document.getElementById(inputId).value.trim();
+                        if (!val) {
+                            alert(`Please enter an API key for ${c.nextElementSibling.innerText}`);
+                            return false;
+                        }
+                    }
+                }
+            }
+
+            // Step: Keys
+            if (currentStepId === 'step-keys') {
+                const tmdb = document.getElementById('tmdb-key').value.trim();
+                const tvdb = document.getElementById('tvdb-key').value.trim();
+                const fanart = document.getElementById('fanart-key').value.trim();
+                const geminiCheck = document.getElementById('enable-gemini').checked;
+                const geminiKey = document.getElementById('gemini-key').value.trim();
+
+                // TMDb is required for all modes
+                if (!tmdb) { alert("TMDb API Key is required."); return false; }
+                
+                // TVDB: Required for Meta/Full. For Streams, user says it's "missing" from display,
+                // so we show it, but we can keep it strictly required only for Meta/Full if we want to be safe,
+                // OR make it strictly required everywhere if user implied it's "missing" meant "broken".
+                // Given "missing from streams" likely implies they want to USE it in streams, making it optional there avoids blocking.
+                // However, logic below ensures validation logic matches "Meta needs it".
+                if (currentMode !== 'streams') {
+                    if (!tvdb) { alert("TVDB API Key is required for Metadata."); return false; }
+                    if (!fanart) { alert("Fanart API Key is required for Metadata."); return false; }
+                } else {
+                    // For streams only mode, TVDB is visible (per renderStep fix) but we make it optional here
+                    // unless you want to force it. Leaving optional avoids breaking simple setups.
+                }
+
+                if (geminiCheck && !geminiKey) { alert("Gemini API Key is required since you enabled it."); return false; }
+            }
+
+            // Step: Posters
+            if (currentStepId === 'step-posters') {
+                const postersCheck = document.getElementById('do-posters').checked;
+                const posterKey = document.getElementById('poster-key').value.trim();
+                if (postersCheck && !posterKey) { alert("Poster API Key is required."); return false; }
+            }
+
+            return true;
+        }
+
+        function validateAndGoNext() {
+            if (validateStep()) goNext();
+        }
+
+        function validateAndFinalize() {
+            if (validateStep()) finalizeBuild();
+        }
+
+        async function finalizeBuild() {
+            document.getElementById('page-wizard').classList.remove('active');
+            document.getElementById('page-downloads').classList.add('active');
+            const con = document.getElementById('dl-container');
+            con.innerHTML = 'Generating...';
+
+            // Gather inputs
+            const t3 = document.getElementById('tmdb-key').value;
+            const t4 = document.getElementById('tmdb-token').value;
+            const tv = document.getElementById('tvdb-key').value;
+            const fa = document.getElementById('fanart-key').value;
+            const tr = document.getElementById('trakt-key').value;
+            const gemini = document.getElementById('gemini-key').value;
+            // Note: Debrid checks are handled dynamically below
+            
+            // Preferences
+            const resLimit = parseInt(document.getElementById('res-limit').value) || 3;
+            const prefLang = document.getElementById('lang-select').value;
+            const includeCams = document.getElementById('include-cams').checked;
+            const doLimit = document.getElementById('do-limit').checked;
+            const speedVal = document.getElementById('speed-val').value;
+            const sortPref = document.getElementById('sort-pref').value;
+            const includeAnime = document.getElementById('include-anime').checked;
+            const doPosters = document.getElementById('do-posters').checked;
+            const posterProv = document.getElementById('poster-provider').value;
+            const posterKey = document.getElementById('poster-key').value;
+
+            con.innerHTML = ''; 
+            const bust = '?t=' + new Date().getTime();
+
+            // Prepare Instructions UI
+            const instrArea = document.getElementById('instructions-area');
+            const instrMeta = document.getElementById('instr-meta');
+            const instrStreams = document.getElementById('instr-streams');
+            const stepAddMeta = document.getElementById('step-add-meta');
+            const stepAddStream = document.getElementById('step-add-stream');
+            const orderBox = document.getElementById('order-list-visual');
+            const cineByeSection = document.getElementById('cinebye-section'); // New
+            
+            instrArea.classList.remove('hidden');
+            stepAddMeta.classList.add('hidden');
+            stepAddStream.classList.add('hidden');
+
+            // Hide CineBye if streams only
+            if (currentMode === 'streams') {
+                cineByeSection.classList.add('hidden');
+            } else {
+                cineByeSection.classList.remove('hidden');
+            }
+            
+            // Build the visual order list base
+            orderBox.innerHTML = '<div class="text-slate-400">1. Cinemeta</div>';
+
+            let metaGenerated = false;
+            let streamGenerated = false;
+
+            // GENERATE META FIRST (if applicable) so button is on top
+            if (currentMode !== 'streams') {
+                metaGenerated = true;
+                try {
+                    const req = await fetch('master-metadata.json' + bust);
+                    const mBase = await req.json();
+                    
+                    if (mBase.config) {
+                        if (mBase.config.apiKeys) {
+                            mBase.config.apiKeys.tmdb = t3;
+                            mBase.config.apiKeys.tvdb = tv;
+                            mBase.config.apiKeys.fanart = fa;
+                            mBase.config.apiKeys.trakt = tr;
+                            
+                            if (document.getElementById('enable-gemini').checked && gemini) {
+                                mBase.config.apiKeys.gemini = gemini;
+                                if (mBase.config.search) {
+                                    mBase.config.search.ai_enabled = true;
+                                    if (mBase.config.search.engineEnabled) mBase.config.search.engineEnabled["gemini.search"] = true;
+                                    if (mBase.config.search.engineRatingPosters) mBase.config.search.engineRatingPosters["gemini.search"] = true;
+                                }
+                            } else {
+                                mBase.config.apiKeys.gemini = "";
+                                if (mBase.config.search) {
+                                    mBase.config.search.ai_enabled = false;
+                                    if (mBase.config.search.engineEnabled) mBase.config.search.engineEnabled["gemini.search"] = false;
+                                    if (mBase.config.search.engineRatingPosters) mBase.config.search.engineRatingPosters["gemini.search"] = false;
+                                }
+                            }
+                        }
+                        
+                        // Set Language from Mapping
+                        mBase.config.language = langMap[prefLang] || "en-US";
+                        
+                        if (doPosters) {
+                            mBase.config.posterRatingProvider = posterProv;
+                            mBase.config.apiKeys[posterProv === 'top' ? 'topPoster' : 'rpdb'] = posterKey;
+                        } else {
+                            mBase.config.posterRatingProvider = "none";
+                        }
+                        
+                        if (!includeAnime) {
+                            mBase.config.catalogs = mBase.config.catalogs.filter(x => x.type !== 'anime');
+                        }
+                    }
+
+                    if (mBase.metadata) {
+                        mBase.metadata.apiKeysExcluded = false;
+                    }
+
+                    spawnDownloadBtn('💾 Download AIOMetadata JSON', mBase, 'aiometadata-config.json');
+                    
+                    // Show Meta Instructions
+                    instrMeta.classList.remove('hidden');
+                    stepAddMeta.classList.remove('hidden');
+                    orderBox.innerHTML += '<div class="text-indigo-400">2. AIOMETA</div>';
+
+                } catch(e) { console.error("Error loading metadata template", e); }
+            }
+
+            // GENERATE STREAMS SECOND
+            if (currentMode !== 'meta') {
+                streamGenerated = true;
+                // Determine if ANY debrid service is used to pick base template
+                const hasDebrid = document.querySelectorAll('.debrid-check:checked').length > 0;
+                const url = hasDebrid ? 'master-with-debrid.json' : 'master-without-debrid.json';
+                
+                try {
+                    const req = await fetch(url + bust);
+                    const base = await req.json();
+                    
+                    base.tmdbApiKey = t3;
+                    base.tmdbAccessToken = t4;
+                    base.tvdbApiKey = tv;
+                    base.enableSeadex = includeAnime;
+
+                    if (!base.resultLimits) base.resultLimits = {};
+                    base.resultLimits.resolution = resLimit;
+                    base.preferredLanguages = [prefLang];
+
+                    if (includeCams) {
+                        const cams = ["CAM", "SCR", "TS", "TC"];
+                        if (base.excludedQualities) {
+                            base.excludedQualities = base.excludedQualities.filter(q => !cams.includes(q));
+                        }
+                    }
+
+                    // --- Dynamic Debrid Configuration ---
+                    const debridMap = {
+                        'use-rd': { id: 'realdebrid', keyId: 'key-realdebrid' },
+                        'use-tb': { id: 'torbox', keyId: 'key-torbox' },
+                        'use-ad': { id: 'alldebrid', keyId: 'key-alldebrid' },
+                        'use-pm': { id: 'premiumize', keyId: 'key-premiumize' },
+                        'use-dl': { id: 'debridlink', keyId: 'key-debridlink' },
+                        'use-oc': { id: 'offcloud', keyId: 'key-offcloud' },
+                        'use-put': { id: 'putio', keyId: 'key-putio' },
+                        'use-en': { id: 'easynews', keyId: 'key-easynews' },
+                        'use-ed': { id: 'easydebrid', keyId: 'key-easydebrid' }
+                    };
+
+                    for (const [chkId, config] of Object.entries(debridMap)) {
+                        const service = base.services.find(x => x.id === config.id);
+                        if (service) {
+                            if (document.getElementById(chkId).checked) {
+                                service.enabled = true;
+                                service.credentials.apiKey = document.getElementById(config.keyId).value.trim();
+                            } else {
+                                // Explicitly disable if not checked
+                                service.enabled = false;
+                            }
+                        }
+                    }
+                    // ------------------------------------
+
+                    if (doLimit) {
+                        if (speedVal === 'low') { base.size.global.movies[1] = 10 * GB_BYTES; base.size.global.series[1] = 3 * GB_BYTES; }
+                        else if (speedVal === 'mid') { base.size.global.movies[1] = 25 * GB_BYTES; base.size.global.series[1] = 8 * GB_BYTES; }
+                        else if (speedVal === 'high') { base.size.global.movies[1] = 50 * GB_BYTES; base.size.global.series[1] = 15 * GB_BYTES; }
+                    }
+
+                    // -- Updated Sorting Logic --
+                    // Find the existing 'size' criteria in the list
+                    const sizeSort = base.sortCriteria.global.find(x => x.key === 'size');
+                    
+                    if (sizeSort) {
+                        if (sortPref === 'speed') {
+                            sizeSort.direction = "asc";
+                        } else {
+                            sizeSort.direction = "desc"; 
+                        }
+                        
+                        // Move to 4th position (index 3)
+                        // 1. Remove it from current position
+                        base.sortCriteria.global = base.sortCriteria.global.filter(x => x.key !== 'size');
+                        // 2. Insert at index 3
+                        base.sortCriteria.global.splice(3, 0, sizeSort);
+                    }
+
+                    // Force lower timeouts to speed up loading
+                    if (base.presets) {
+                        base.presets.forEach(p => {
+                            if (p.options && p.options.timeout) {
+                                p.options.timeout = 4000;
+                            }
+                        });
+                    }
+
+                    spawnDownloadBtn('💾 Download AIOStreams JSON', base, 'aiostreams-config.json');
+                    
+                    // Show Streams Instructions
+                    instrStreams.classList.remove('hidden');
+                    stepAddStream.classList.remove('hidden');
+                    
+                    // Calculate correct number for streams in the list
+                    const streamNum = metaGenerated ? 3 : 2;
+                    orderBox.innerHTML += `<div class="text-emerald-400">${streamNum}. AIOSTREAM</div>`;
+
+                } catch(e) { console.error("Error loading streams template", e); }
+            }
+        }
+
+        function spawnDownloadBtn(label, obj, filename) {
+            const b = document.createElement('button');
+            b.className = 'bg-slate-700 p-5 rounded-xl font-bold border-2 border-indigo-600 hover:bg-indigo-600 transition-all text-white w-full';
+            b.innerText = label;
+            b.onclick = () => {
+                const blob = new Blob([JSON.stringify(obj, null, 2)], { type: 'application/json' });
+                const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = filename; a.click();
+            };
+            document.getElementById('dl-container').appendChild(b);
+        }
+    </script>
+</body>
+</html>
