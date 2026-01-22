@@ -1,1186 +1,669 @@
 {
-  "version": "1.23.5",
-  "exportedAt": "2026-01-20T18:15:14.679Z",
-  "config": {
-    "language": "en-GB",
-    "includeAdult": false,
-    "blurThumbs": false,
-    "showPrefix": false,
-    "showMetaProviderAttribution": false,
-    "castCount": 10,
-    "displayAgeRating": true,
-    "showDisabledCatalogs": false,
-    "sfw": true,
-    "hideUnreleasedDigital": true,
-    "providers": {
-      "movie": "tmdb",
-      "series": "tvdb",
-      "anime": "tvdb",
-      "anime_id_provider": "kitsu",
-      "forceAnimeForDetectedImdb": true
+  "services": [
+    {
+      "id": "realdebrid",
+      "enabled": false,
+      "credentials": {}
     },
-    "artProviders": {
-      "movie": {
-        "poster": "imdb",
-        "background": "imdb",
-        "logo": "imdb"
-      },
-      "series": {
-        "poster": "tvdb",
-        "background": "tvdb",
-        "logo": "tvdb"
-      },
-      "anime": {
-        "poster": "fanart",
-        "background": "fanart",
-        "logo": "fanart"
-      },
-      "englishArtOnly": true
+    {
+      "id": "alldebrid",
+      "enabled": false,
+      "credentials": {}
     },
-    "tvdbSeasonType": "default",
-    "mal": {
-      "skipFiller": false,
-      "skipRecap": false,
-      "allowEpisodeMarking": false,
-      "useImdbIdForCatalogAndSearch": true
+    {
+      "id": "premiumize",
+      "enabled": false,
+      "credentials": {}
     },
-    "tmdb": {
-      "scrapeImdb": true,
-      "forceLatinCastNames": false
+    {
+      "id": "debridlink",
+      "enabled": false,
+      "credentials": {}
     },
-    "apiKeys": {
-      "gemini": "",
-      "tmdb": "",
-      "tvdb": "",
-      "fanart": "",
-      "rpdb": "",
-      "topPoster": "",
-      "mdblist": "",
-      "trakt": "",
-      "addonVersion": "1.14.2",
-      "hasBuiltInTvdb": false,
-      "hasBuiltInTmdb": false,
-      "catalogTTL": 86400
-    },
-    "posterRatingProvider": "top",
-    "mdblistWatchTracking": false,
-    "anilistWatchTracking": false,
-    "enableRatingPostersForLibrary": true,
-    "ageRating": "None",
-    "searchEnabled": true,
-    "sessionId": "a8806ac44afee0c23b0ab210f7daa3bf7a0cfecc",
-    "timezone": "Europe/London",
-    "catalogs": [
-      {
-        "id": "tmdb.top",
-        "name": "Popular",
-        "type": "movie",
-        "source": "tmdb",
-        "enabled": true,
-        "showInHome": true,
-        "enableRatingPosters": true,
-        "randomizePerPage": false,
-        "displayType": "movie"
-      },
-      {
-        "id": "tmdb.top",
-        "name": "Popular",
-        "type": "series",
-        "source": "tmdb",
-        "enabled": true,
-        "showInHome": true,
-        "enableRatingPosters": true,
-        "randomizePerPage": false,
-        "displayType": "series"
-      },
-      {
-        "id": "mal.top_movies",
-        "name": "Top Movies",
-        "type": "anime",
-        "source": "mal",
-        "enabled": true,
-        "showInHome": true,
-        "enableRatingPosters": true,
-        "randomizePerPage": false,
-        "displayType": "anime"
-      },
-      {
-        "id": "mal.top_series",
-        "name": "Top Series",
-        "type": "anime",
-        "source": "mal",
-        "enabled": true,
-        "showInHome": true,
-        "enableRatingPosters": true,
-        "randomizePerPage": false,
-        "displayType": "anime"
-      },
-      {
-        "id": "tmdb.trending",
-        "name": "Trending",
-        "type": "movie",
-        "source": "tmdb",
-        "enabled": true,
-        "showInHome": true,
-        "enableRatingPosters": true,
-        "randomizePerPage": false,
-        "displayType": "movie"
-      },
-      {
-        "id": "tmdb.trending",
-        "name": "Trending",
-        "type": "series",
-        "source": "tmdb",
-        "enabled": true,
-        "showInHome": true,
-        "enableRatingPosters": true,
-        "randomizePerPage": false,
-        "displayType": "series"
-      },
-      {
-        "id": "tmdb.top_rated",
-        "name": "Top Rated",
-        "type": "movie",
-        "source": "tmdb",
-        "enabled": true,
-        "showInHome": true,
-        "enableRatingPosters": true,
-        "randomizePerPage": false,
-        "displayType": "movie"
-      },
-      {
-        "id": "tmdb.top_rated",
-        "name": "Top Rated",
-        "type": "series",
-        "source": "tmdb",
-        "enabled": true,
-        "showInHome": true,
-        "enableRatingPosters": true,
-        "randomizePerPage": false,
-        "displayType": "series"
-      },
-      {
-        "id": "mal.most_popular",
-        "name": "Most Popular",
-        "type": "anime",
-        "source": "mal",
-        "enabled": true,
-        "showInHome": true,
-        "enableRatingPosters": true,
-        "randomizePerPage": false,
-        "displayType": "anime"
-      },
-      {
-        "id": "mal.top_anime",
-        "name": "Top Anime",
-        "type": "anime",
-        "source": "mal",
-        "enabled": true,
-        "showInHome": true,
-        "enableRatingPosters": true,
-        "randomizePerPage": false,
-        "displayType": "anime"
-      },
-      {
-        "id": "tmdb.airing_today",
-        "name": "Airing Today",
-        "type": "series",
-        "source": "tmdb",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false,
-        "displayType": "series"
-      },
-      {
-        "id": "tmdb.year",
-        "name": "By Year",
-        "type": "movie",
-        "source": "tmdb",
-        "enabled": true,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false,
-        "displayType": "movie"
-      },
-      {
-        "id": "tmdb.year",
-        "name": "By Year",
-        "type": "series",
-        "source": "tmdb",
-        "enabled": true,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false,
-        "displayType": "series"
-      },
-      {
-        "id": "tmdb.language",
-        "name": "By Language",
-        "type": "movie",
-        "source": "tmdb",
-        "enabled": true,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false,
-        "displayType": "movie"
-      },
-      {
-        "id": "tmdb.language",
-        "name": "By Language",
-        "type": "series",
-        "source": "tmdb",
-        "enabled": true,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false,
-        "displayType": "series"
-      },
-      {
-        "id": "tvdb.trending",
-        "name": "Trending",
-        "type": "movie",
-        "source": "tvdb",
-        "enabled": true,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false,
-        "displayType": "movie"
-      },
-      {
-        "id": "tvdb.trending",
-        "name": "Trending",
-        "type": "series",
-        "source": "tvdb",
-        "enabled": true,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false,
-        "displayType": "series"
-      },
-      {
-        "id": "tvdb.genres",
-        "name": "Genres",
-        "type": "movie",
-        "source": "tvdb",
-        "enabled": true,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false,
-        "displayType": "movie"
-      },
-      {
-        "id": "tvdb.genres",
-        "name": "Genres",
-        "type": "series",
-        "source": "tvdb",
-        "enabled": true,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false,
-        "displayType": "series"
-      },
-      {
-        "id": "tvdb.collections",
-        "name": "Collections",
-        "type": "movie",
-        "source": "tvdb",
-        "enabled": true,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false,
-        "displayType": "movie"
-      },
-      {
-        "id": "tvmaze.schedule",
-        "name": "TVmaze Daily Schedule",
-        "type": "series",
-        "source": "tvmaze",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "mal.airing",
-        "name": "Airing Now",
-        "type": "anime",
-        "source": "mal",
-        "enabled": true,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false,
-        "displayType": "anime"
-      },
-      {
-        "id": "mal.upcoming",
-        "name": "Upcoming Season",
-        "type": "anime",
-        "source": "mal",
-        "enabled": true,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false,
-        "displayType": "anime"
-      },
-      {
-        "id": "mal.schedule",
-        "name": "Airing Schedule",
-        "type": "anime",
-        "source": "mal",
-        "enabled": true,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false,
-        "displayType": "anime"
-      },
-      {
-        "id": "mal.seasons",
-        "name": "Seasons",
-        "type": "anime",
-        "source": "mal",
-        "enabled": true,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false,
-        "displayType": "anime"
-      },
-      {
-        "id": "mal.80sDecade",
-        "name": "Best of 80s",
-        "type": "anime",
-        "source": "mal",
-        "enabled": true,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false,
-        "displayType": "anime"
-      },
-      {
-        "id": "mal.90sDecade",
-        "name": "Best of 90s",
-        "type": "anime",
-        "source": "mal",
-        "enabled": true,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false,
-        "displayType": "anime"
-      },
-      {
-        "id": "mal.00sDecade",
-        "name": "Best of 2000s",
-        "type": "anime",
-        "source": "mal",
-        "enabled": true,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false,
-        "displayType": "anime"
-      },
-      {
-        "id": "mal.10sDecade",
-        "name": "Best of 2010s",
-        "type": "anime",
-        "source": "mal",
-        "enabled": true,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false,
-        "displayType": "anime"
-      },
-      {
-        "id": "mal.20sDecade",
-        "name": "Best of 2020s",
-        "type": "anime",
-        "source": "mal",
-        "enabled": true,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false,
-        "displayType": "anime"
-      },
-      {
-        "id": "mal.genres",
-        "name": "Genres",
-        "type": "anime",
-        "source": "mal",
-        "enabled": true,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false,
-        "displayType": "anime"
-      },
-      {
-        "id": "mal.studios",
-        "name": "By Studio",
-        "type": "anime",
-        "source": "mal",
-        "enabled": true,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false,
-        "displayType": "anime"
-      },
-      {
-        "id": "mal.most_favorites",
-        "name": "Most Favorites",
-        "type": "anime",
-        "source": "mal",
-        "enabled": true,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false,
-        "displayType": "anime"
-      },
-      {
-        "id": "tmdb.favorites",
-        "name": "TMDB Favorites (Movies)",
-        "type": "movie",
-        "source": "tmdb",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "tmdb.favorites",
-        "name": "TMDB Favorites (Series)",
-        "type": "series",
-        "source": "tmdb",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "tmdb.watchlist",
-        "name": "TMDB Watchlist (Movies)",
-        "type": "movie",
-        "source": "tmdb",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "tmdb.watchlist",
-        "name": "TMDB Watchlist (Series)",
-        "type": "series",
-        "source": "tmdb",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.nfx",
-        "name": "Netflix (Movies)",
-        "type": "movie",
-        "source": "streaming",
-        "enabled": true,
-        "showInHome": true,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.nfx",
-        "name": "Netflix (Series)",
-        "type": "series",
-        "source": "streaming",
-        "enabled": true,
-        "showInHome": true,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.nfk",
-        "name": "Netflix Kids (Movies)",
-        "type": "movie",
-        "source": "streaming",
-        "enabled": true,
-        "showInHome": true,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.nfk",
-        "name": "Netflix Kids (Series)",
-        "type": "series",
-        "source": "streaming",
-        "enabled": true,
-        "showInHome": true,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.hbm",
-        "name": "HBO Max (Movies)",
-        "type": "movie",
-        "source": "streaming",
-        "enabled": true,
-        "showInHome": true,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.hbm",
-        "name": "HBO Max (Series)",
-        "type": "series",
-        "source": "streaming",
-        "enabled": true,
-        "showInHome": true,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.dnp",
-        "name": "Disney+ (Movies)",
-        "type": "movie",
-        "source": "streaming",
-        "enabled": true,
-        "showInHome": true,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.dnp",
-        "name": "Disney+ (Series)",
-        "type": "series",
-        "source": "streaming",
-        "enabled": true,
-        "showInHome": true,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.amp",
-        "name": "Prime Video (Movies)",
-        "type": "movie",
-        "source": "streaming",
-        "enabled": true,
-        "showInHome": true,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.amp",
-        "name": "Prime Video (Series)",
-        "type": "series",
-        "source": "streaming",
-        "enabled": true,
-        "showInHome": true,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.atp",
-        "name": "Apple TV+ (Movies)",
-        "type": "movie",
-        "source": "streaming",
-        "enabled": true,
-        "showInHome": true,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.atp",
-        "name": "Apple TV+ (Series)",
-        "type": "series",
-        "source": "streaming",
-        "enabled": true,
-        "showInHome": true,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.pmp",
-        "name": "Paramount+ (Movies)",
-        "type": "movie",
-        "source": "streaming",
-        "enabled": true,
-        "showInHome": true,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.pmp",
-        "name": "Paramount+ (Series)",
-        "type": "series",
-        "source": "streaming",
-        "enabled": true,
-        "showInHome": true,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.pcp",
-        "name": "Peacock Premium (Movies)",
-        "type": "movie",
-        "source": "streaming",
-        "enabled": true,
-        "showInHome": true,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.pcp",
-        "name": "Peacock Premium (Series)",
-        "type": "series",
-        "source": "streaming",
-        "enabled": true,
-        "showInHome": true,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.hlu",
-        "name": "Hulu (Movies)",
-        "type": "movie",
-        "source": "streaming",
-        "enabled": true,
-        "showInHome": true,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.hlu",
-        "name": "Hulu (Series)",
-        "type": "series",
-        "source": "streaming",
-        "enabled": true,
-        "showInHome": true,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.cts",
-        "name": "Curiosity Stream (Movies)",
-        "type": "movie",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.cts",
-        "name": "Curiosity Stream (Series)",
-        "type": "series",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.mgl",
-        "name": "MagellanTV (Movies)",
-        "type": "movie",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.mgl",
-        "name": "MagellanTV (Series)",
-        "type": "series",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.cru",
-        "name": "Crunchyroll (Movies)",
-        "type": "movie",
-        "source": "streaming",
-        "enabled": true,
-        "showInHome": true,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.cru",
-        "name": "Crunchyroll (Series)",
-        "type": "series",
-        "source": "streaming",
-        "enabled": true,
-        "showInHome": true,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.hay",
-        "name": "Hayu (Movies)",
-        "type": "movie",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.hay",
-        "name": "Hayu (Series)",
-        "type": "series",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.clv",
-        "name": "Clarovideo (Movies)",
-        "type": "movie",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.clv",
-        "name": "Clarovideo (Series)",
-        "type": "series",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.gop",
-        "name": "Globoplay (Movies)",
-        "type": "movie",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.gop",
-        "name": "Globoplay (Series)",
-        "type": "series",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.hst",
-        "name": "JioHotstar (Movies)",
-        "type": "movie",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.hst",
-        "name": "JioHotstar (Series)",
-        "type": "series",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.slv",
-        "name": "Sony Liv (Movies)",
-        "type": "movie",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.slv",
-        "name": "Sony Liv (Series)",
-        "type": "series",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.zee",
-        "name": "Zee5 (Movies)",
-        "type": "movie",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.zee",
-        "name": "Zee5 (Series)",
-        "type": "series",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.nlz",
-        "name": "NLZIET (Movies)",
-        "type": "movie",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.nlz",
-        "name": "NLZIET (Series)",
-        "type": "series",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.vil",
-        "name": "Videoland (Movies)",
-        "type": "movie",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.vil",
-        "name": "Videoland (Series)",
-        "type": "series",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.sst",
-        "name": "SkyShowtime (Movies)",
-        "type": "movie",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.sst",
-        "name": "SkyShowtime (Series)",
-        "type": "series",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.sky",
-        "name": "Sky Go (Movies)",
-        "type": "movie",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.sky",
-        "name": "Sky Go (Series)",
-        "type": "series",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.wow",
-        "name": "WOW (Movies)",
-        "type": "movie",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.wow",
-        "name": "WOW (Series)",
-        "type": "series",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.blv",
-        "name": "BluTV (Movies)",
-        "type": "movie",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.blv",
-        "name": "BluTV (Series)",
-        "type": "series",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.cpd",
-        "name": "Canal+ (Movies)",
-        "type": "movie",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.cpd",
-        "name": "Canal+ (Series)",
-        "type": "series",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.crv",
-        "name": "Crave (Movies)",
-        "type": "movie",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.crv",
-        "name": "Crave (Series)",
-        "type": "series",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.dpe",
-        "name": "Discovery+ (Movies)",
-        "type": "movie",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.dpe",
-        "name": "Discovery+ (Series)",
-        "type": "series",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.bet",
-        "name": "Bet+ (Movies)",
-        "type": "movie",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.bet",
-        "name": "Bet+ (Series)",
-        "type": "series",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.mub",
-        "name": "MUBI (Movies)",
-        "type": "movie",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.mub",
-        "name": "MUBI (Series)",
-        "type": "series",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.sta",
-        "name": "Starz (Movies)",
-        "type": "movie",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.sta",
-        "name": "Starz (Series)",
-        "type": "series",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.crc",
-        "name": "Criterion Channel (Movies)",
-        "type": "movie",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.crc",
-        "name": "Criterion Channel (Series)",
-        "type": "series",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.hid",
-        "name": "HIDIVE (Movies)",
-        "type": "movie",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      },
-      {
-        "id": "streaming.hid",
-        "name": "HIDIVE (Series)",
-        "type": "series",
-        "source": "streaming",
-        "enabled": false,
-        "showInHome": false,
-        "enableRatingPosters": true,
-        "randomizePerPage": false
-      }
-    ],
-    "search": {
+    {
+      "id": "torbox",
       "enabled": true,
-      "ai_enabled": true,
-      "providers": {
-        "movie": "tmdb.search",
-        "series": "tvdb.search",
-        "anime_movie": "kitsu.search.movie",
-        "anime_series": "kitsu.search.series"
-      },
-      "engineEnabled": {
-        "tmdb.search": true,
-        "tvdb.search": true,
-        "tvdb.collections.search": true,
-        "tvmaze.search": true,
-        "mal.search.movie": true,
-        "mal.search.series": true,
-        "gemini.search": true
-      },
-      "providerNames": {
-        "tmdb.search": ".",
-        "tvdb.search": ".",
-        "mal.search.series": ".",
-        "mal.search.movie": "."
-      },
-      "searchOrder": [
-        "movie",
-        "series",
-        "tvdb.collections.search",
-        "anime_series",
-        "anime_movie"
-      ],
-      "engineRatingPosters": {
-        "gemini.search": true
-      },
-      "searchNames": {
-        "tvdb.collections.search": "Collections"
+      "credentials": {}
+    },
+    {
+      "id": "offcloud",
+      "enabled": false,
+      "credentials": {}
+    },
+    {
+      "id": "putio",
+      "enabled": false,
+      "credentials": {}
+    },
+    {
+      "id": "easynews",
+      "enabled": false,
+      "credentials": {}
+    },
+    {
+      "id": "easydebrid",
+      "enabled": false,
+      "credentials": {}
+    },
+    {
+      "id": "debrider",
+      "enabled": false,
+      "credentials": {}
+    },
+    {
+      "id": "pikpak",
+      "enabled": false,
+      "credentials": {}
+    },
+    {
+      "id": "seedr",
+      "enabled": false,
+      "credentials": {}
+    },
+    {
+      "id": "stremio_nntp",
+      "enabled": false,
+      "credentials": {}
+    },
+    {
+      "id": "nzbdav",
+      "enabled": false,
+      "credentials": {}
+    },
+    {
+      "id": "altmount",
+      "enabled": false,
+      "credentials": {}
+    }
+  ],
+  "presets": [
+    {
+      "type": "mediafusion",
+      "instanceId": "bcd",
+      "enabled": true,
+      "options": {
+        "name": "MediaFusion",
+        "timeout": 6000,
+        "resources": [
+          "stream",
+          "catalog",
+          "meta"
+        ],
+        "useCachedResultsOnly": false,
+        "enableWatchlistCatalogs": false,
+        "downloadViaBrowser": false,
+        "contributorStreams": false,
+        "certificationLevelsFilter": [],
+        "nudityFilter": [],
+        "mediaTypes": []
       }
     },
-    "streaming": [
-      "nfx",
-      "nfk",
-      "hbm",
-      "dnp",
-      "amp",
-      "atp",
-      "pmp",
-      "pcp",
-      "hlu",
-      "mgl",
-      "cru",
-      "dpe",
-      "bet",
-      "mub",
-      "sta",
-      "crc",
-      "sky",
-      "wow",
-      "sst",
-      "hay"
-    ],
-    "lastModified": 1768905952986,
-    "configVersion": 1768905952987,
-    "displayTypeOverrides": {}
+    {
+      "type": "comet",
+      "instanceId": "1c5",
+      "enabled": true,
+      "options": {
+        "name": "Comet",
+        "timeout": 6000,
+        "resources": [
+          "stream"
+        ],
+        "includeP2P": false,
+        "removeTrash": true,
+        "mediaTypes": []
+      }
+    },
+    {
+      "type": "stremthruTorz",
+      "instanceId": "e7b",
+      "enabled": true,
+      "options": {
+        "name": "StremThru Torz",
+        "timeout": 8000,
+        "resources": [
+          "stream"
+        ],
+        "mediaTypes": [],
+        "includeP2P": false,
+        "useMultipleInstances": false
+      }
+    },
+    {
+      "type": "torrentio",
+      "instanceId": "23a",
+      "enabled": true,
+      "options": {
+        "name": "Torrentio",
+        "timeout": 6000,
+        "resources": [
+          "stream",
+          "catalog",
+          "meta"
+        ],
+        "useMultipleInstances": false,
+        "providers": []
+      }
+    },
+    {
+      "type": "jackettio",
+      "instanceId": "da0",
+      "enabled": true,
+      "options": {
+        "name": "Jackettio",
+        "timeout": 10000,
+        "resources": [
+          "stream"
+        ],
+        "mediaTypes": []
+      }
+    },
+    {
+      "type": "torrent-galaxy",
+      "instanceId": "92e",
+      "enabled": true,
+      "options": {
+        "name": "TorrentGalaxy",
+        "timeout": 10000,
+        "mediaTypes": [],
+        "useMultipleInstances": false
+      }
+    },
+    {
+      "type": "knaben",
+      "instanceId": "705",
+      "enabled": true,
+      "options": {
+        "name": "Knaben",
+        "timeout": 10000,
+        "mediaTypes": [],
+        "useMultipleInstances": false
+      }
+    },
+    {
+      "type": "bitmagnet",
+      "instanceId": "9a3",
+      "enabled": true,
+      "options": {
+        "name": "Bitmagnet",
+        "timeout": 10000,
+        "mediaTypes": [],
+        "useMultipleInstances": false,
+        "paginate": false
+      }
+    },
+    {
+      "type": "seadex",
+      "instanceId": "1bd",
+      "enabled": true,
+      "options": {
+        "name": "SeaDex",
+        "timeout": 10000,
+        "mediaTypes": [
+          "anime"
+        ]
+      }
+    },
+    {
+      "type": "animetosho",
+      "instanceId": "f89",
+      "enabled": true,
+      "options": {
+        "name": "AnimeTosho",
+        "timeout": 10000,
+        "mediaTypes": [],
+        "useMultipleInstances": false
+      }
+    }
+  ],
+  "formatter": {
+    "id": "custom",
+    "definition": {
+      "name": "{stream.resolution::exists[\"{stream.resolution::replace('2160p','4K')::replace('1080p','HD')::replace('720p','SD')}\"||\"\"]} {stream.quality::exists[\"{stream.quality::replace('REMUX','+')::replace('BluRay','⭐⭐⭐⭐⭐')::replace('WEB-DL','⭐⭐⭐⭐')::replace('WEBRip','⭐⭐⭐⭐')}\"||\"\"]} {service.cached::istrue[\"⚡\"||\"⏳\"]}",
+      "description": "{stream.type::=usenet[\"📦 USN \"||\"\"]}{stream.title::exists[\"🎬 {stream.title}\"||\"\"]}{stream.seasonEpisode::exists[\" - {stream.seasonEpisode::join(' ')}\"||\"\"]}{stream.year::exists[\" ({stream.year})\"||\"\"]}\n{service.cached::istrue[\"🟢 INSTANT PLAY\"||\"🔴 NEEDS TO DOWNLOAD\"]}\n─────────────\n{stream.languageEmojis::exists[\"Languages: {stream.languageEmojis}\"||\"\"]}\n{stream.quality::exists[\"✨ {stream.quality::replace('REMUX','+')::replace('BluRay','Premium Quality')::replace('WEB-DL','Streaming Quality')::replace('WEBRip','Streaming Quality')}\"||\"\"]}{stream.visualTags::~HDR::istrue[\" | 🌈 HDR\"||\"\"]}{stream.visualTags::~DV::istrue[\" | 🎥 Dolby Vision\"||\"\"]}{stream.audioTags::exists[\" | 🔊 {stream.audioTags::join(', ')}\"||\"\"]}\n─────────────\n📂 {stream.size::>0[\"{stream.size::bytes}\"||\"\"]}{service.name::exists[\" | ☁️ {service.name}\"||\"\"]}{service.cached::isfalse[\" | 👥 {stream.seeders}\"||\"\"]}{addon.name::exists[\" | 🛰️ {addon.name}\"||\"\"]}"
+    }
   },
-  "metadata": {
-    "apiKeysExcluded": true,
-    "totalCatalogs": 57,
-    "enabledCatalogs": 51
-  }
+  "preferredQualities": [
+    "BluRay REMUX",
+    "BluRay",
+    "WEB-DL",
+    "WEBRip",
+    "HDRip",
+    "HC HD-Rip",
+    "DVDRip",
+    "HDTV",
+    "CAM",
+    "TS",
+    "TC",
+    "SCR",
+    "Unknown"
+  ],
+  "preferredResolutions": [
+    "2160p",
+    "1440p",
+    "1080p",
+    "720p"
+  ],
+  "excludedQualities": [
+    "CAM",
+    "SCR",
+    "TS",
+    "TC"
+  ],
+  "excludedVisualTags": [
+    "3D"
+  ],
+  "sortCriteria": {
+    "global": [
+      {
+        "key": "cached",
+        "direction": "desc"
+      },
+      {
+        "key": "resolution",
+        "direction": "desc"
+      },
+      {
+        "key": "quality",
+        "direction": "desc"
+      },
+      {
+        "key": "visualTag",
+        "direction": "desc"
+      },
+      {
+        "key": "audioTag",
+        "direction": "desc"
+      },
+      {
+        "key": "size",
+        "direction": "asc"
+      },
+      {
+        "key": "library",
+        "direction": "desc"
+      }
+    ],
+    "cached": [
+      {
+        "key": "cached",
+        "direction": "desc"
+      },
+      {
+        "key": "resolution",
+        "direction": "desc"
+      },
+      {
+        "key": "quality",
+        "direction": "desc"
+      },
+      {
+        "key": "addon",
+        "direction": "desc"
+      },
+      {
+        "key": "size",
+        "direction": "asc"
+      },
+      {
+        "key": "streamType",
+        "direction": "desc"
+      }
+    ],
+    "uncached": [
+      {
+        "key": "streamType",
+        "direction": "desc"
+      },
+      {
+        "key": "resolution",
+        "direction": "desc"
+      },
+      {
+        "key": "quality",
+        "direction": "desc"
+      },
+      {
+        "key": "size",
+        "direction": "asc"
+      },
+      {
+        "key": "seeders",
+        "direction": "desc"
+      }
+    ]
+  },
+  "posterService": "rpdb",
+  "deduplicator": {
+    "enabled": true,
+    "excludeAddons": [],
+    "multiGroupBehaviour": "aggressive",
+    "keys": [
+      "filename",
+      "infoHash"
+    ],
+    "cached": "per_addon",
+    "uncached": "per_service",
+    "p2p": "single_result"
+  },
+  "trusted": false,
+  "addonName": "Duck Streams (Turbo)",
+  "addonLogo": "https://gitlab.com/DuckKota/guides/-/raw/main/pages/static/images/duck.png?ref_type=heads",
+  "addonDescription": "Optimized for Speed and Reliability. Hybrid RD+TorBox.",
+  "excludedResolutions": [
+    "144p",
+    "240p",
+    "360p",
+    "480p",
+    "576p"
+  ],
+  "includedResolutions": [],
+  "requiredResolutions": [],
+  "includedQualities": [],
+  "requiredQualities": [],
+  "excludedLanguages": [],
+  "includedLanguages": [],
+  "requiredLanguages": [],
+  "preferredLanguages": [
+    "English"
+  ],
+  "includedVisualTags": [],
+  "requiredVisualTags": [],
+  "preferredVisualTags": [
+    "HDR+DV",
+    "DV Only",
+    "HDR Only",
+    "HDR10+",
+    "HDR10",
+    "DV",
+    "HDR"
+  ],
+  "excludedAudioTags": [],
+  "includedAudioTags": [],
+  "requiredAudioTags": [],
+  "preferredAudioTags": [
+    "Atmos",
+    "DD+",
+    "DD",
+    "DTS-HD MA",
+    "DTS-HD",
+    "DTS-ES",
+    "DTS",
+    "TrueHD",
+    "OPUS",
+    "FLAC",
+    "AAC"
+  ],
+  "excludedAudioChannels": [],
+  "includedAudioChannels": [],
+  "requiredAudioChannels": [],
+  "preferredAudioChannels": [],
+  "excludedStreamTypes": [],
+  "includedStreamTypes": [],
+  "requiredStreamTypes": [],
+  "preferredStreamTypes": [
+    "usenet"
+  ],
+  "excludedEncodes": [],
+  "includedEncodes": [],
+  "requiredEncodes": [],
+  "preferredEncodes": [],
+  "preferredRegexPatterns": [
+    {
+      "name": "Remux T1",
+      "pattern": "/\\bRemux\\b.*\\b(3L|BiZKiT|BLURANiUM|CiNEPHiLES|FraMeSToR|PiRAMiDHEAD|PmP|ZQ)\\b|-BMF|-WiLDCAT/i"
+    },
+    {
+      "name": "Bluray T1",
+      "pattern": "/^(?=.*\\bBlu[-_]?Ray\\b)(?!.*\\bRemux\\b)(?!.*\\bWEB[-_.]?(?:DL|Rip)\\b)(?=.*(?:\\b(?:BBQ|c0kE|Chotab|CRiSC|CtrlHD|D-Z0N3|Dariush|decibeL|EbP|EDPH|LolHD|MainFrame|NCmt|NTb|PTer|TayTO|TDD|TnP|VietHD|W4NK3R|ZQ|ZoroSenpai)\\b|-BMF)).*/i"
+    },
+    {
+      "name": "Bluray T1",
+      "pattern": "/^(?=.*\\bBlu[-_]?Ray\\b)(?!.*\\bRemux\\b)(?!.*\\bWEB[-_.]?(?:DL|Rip)\\b)(?=.*(?:\\b(?:DON|Geek)\\b)).*/"
+    },
+    {
+      "name": "Web T1",
+      "pattern": "/^(?=.*\\bWEB[-_.]?(?:DL|RIP)\\b)(?=.*\\b(?:ABBiE|AJP69|BLUTONiUM|BYNDR|CasStudio|CMRG|CRFW|CRUD|CtrlHD|GNOME|HONE|Kitsune|monkee|NOSiViD|NTb|NTG|PAXA|PEXA|QOQ|RAWR|RTN|SiC|T6D|TEPES|TheFarm|ViSUM|XEPA|ZoroSenpai)\\b).*/i"
+    },
+    {
+      "name": "Web T1",
+      "pattern": "/^(?=.*\\bWEB[-_.]?(?:DL|RIP)\\b)(?=.*\\b(?:APEX|FLUX|KiNGS|TOMMY)\\b).*/"
+    },
+    {
+      "name": "Remux T2",
+      "pattern": "/\\bRemux\\b.*\\b(ATELiER|NCmt|playBD|SiCFoI|SURFINBIRD|TEPES)\\b/i"
+    },
+    {
+      "name": "Bluray T2",
+      "pattern": "/^(?=.*\\bBlu[-_]?Ray\\b)(?!.*\\bRemux\\b)(?!.*\\bWEB[-_.]?(?:DL|Rip)\\b)(?=.*\\b(?:ATELiER|EA|HiDt|HiSD|HQMUX|iFT|QOQ|SA89|sbR)\\b).*/i"
+    },
+    {
+      "name": "Web T2",
+      "pattern": "/^(?=.*\\bWEB[-_.]?(?:DL|RIP)\\b)(?=.*\\b(?:3cTWeB|4KBEC|BTW|CEBEX|Chotab|Cinefeel|CiT|Coo7|dB|FC|iJP|iKA|iT00NZ|JETIX|KHN|MiU|MZABI|NPMS|NYH|orbitron|playWEB|PSiG|ROCCaT|RTFM|SA89|SbR|SDCC|TVSmash|WELP|XEBEC)\\b).*/i"
+    },
+    {
+      "name": "Web T2",
+      "pattern": "/^(?=.*\\bWEB[-_.]?(?:DL|RIP)\\b)(?=.*\\b(?:DEEP|END|ETHiCS|Flights|KiMCHI|LAZY|PHOENiX|SIGMA|SiGMA|SMURF|SPiRiT)\\b).*/"
+    },
+    {
+      "name": "Remux T3",
+      "pattern": "/\\bRemux\\b.*\\b(12GaugeShotgun|decibeL|EPSiLON|HiFi|iFT|KRaLiMaRKo|NTb|PTer|PTP|SumVision|TOA|TRiToN)\\b/i"
+    },
+    {
+      "name": "Bluray T3",
+      "pattern": "/^(?=.*\\bBlu[-_]?Ray\\b)(?!.*\\bRemux\\b)(?!.*\\bWEB[-_.]?(?:DL|Rip)\\b)(?=.*\\b(?:BHDStudio|hallowed|HiFi|HONE|playHD|SPHD|WEBDV)\\b).*/i"
+    },
+    {
+      "name": "Bluray T3",
+      "pattern": "/^(?=.*\\bBlu[-_]?Ray\\b)(?!.*\\bRemux\\b)(?!.*\\bWEB[-_.]?(?:DL|Rip)\\b)(?=.*\\b(?:LoRD)\\b).*/"
+    },
+    {
+      "name": "Web T3",
+      "pattern": "/^(?=.*\\bWEB[-_.]?(?:DL|RIP)\\b)(?=.*\\b(?:Dooky|GNOMiSSiON|HHWEB|NINJACENTRAL|SLiGNOME|SwAgLaNdEr|T4H)\\b).*/i"
+    },
+    {
+      "name": "Web T3",
+      "pattern": "/^(?=.*\\bWEB[-_.]?(?:DL|RIP)\\b)(?=.*\\b(?:DRACULA|ViSiON)\\b).*/"
+    }
+  ],
+  "excludedKeywords": [],
+  "includeSeederRange": [
+    0,
+    1000
+  ],
+  "requiredSeederRange": [
+    10,
+    1000
+  ],
+  "seederRangeTypes": [
+    "p2p"
+  ],
+  "ageRangeTypes": [
+    "usenet"
+  ],
+  "digitalReleaseFilter": {
+    "enabled": false,
+    "tolerance": 1,
+    "requestTypes": [
+      "movie",
+      "series",
+      "anime"
+    ],
+    "addons": []
+  },
+  "enableSeadex": true,
+  "excludeCachedFromAddons": [],
+  "excludeCachedFromServices": [],
+  "excludeCachedFromStreamTypes": [],
+  "excludeUncached": false,
+  "excludeUncachedFromAddons": [],
+  "excludeUncachedFromServices": [],
+  "excludeUncachedFromStreamTypes": [],
+  "excludedStreamExpressions": [
+    "merge(count(resolution(cached(streams), '2160p')) > 0 ? resolution(uncached(streams), '2160p') : [], count(resolution(cached(streams), '1080p')) > 0 ? resolution(uncached(streams), '1080p') : [], count(resolution(cached(streams), '720p')) > 0 ? resolution(uncached(streams), '720p') : [])"
+  ],
+  "preferredStreamExpressions": [
+    "resolution(quality(regexMatched(streams), 'Bluray REMUX'), '2160p')",
+    "count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'2160p'),'90GB','100GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'2160p'),'100GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'2160p'),'80GB','90GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'2160p'),'90GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'2160p'),'70GB','80GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'2160p'),'80GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'2160p'),'60GB','70GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'2160p'),'70GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'2160p'),'50GB','60GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'2160p'),'60GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'2160p'),'45GB','50GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'2160p'),'50GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'2160p'),'40GB','45GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'2160p'),'45GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'2160p'),'35GB','40GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'2160p'),'40GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'2160p'),'30GB','35GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'2160p'),'35GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'2160p'),'25GB','30GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'2160p'),'30GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'2160p'),'20GB','25GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'2160p'),'25GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'2160p'),'15GB','20GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'2160p'),'20GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'2160p'),'10GB','15GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'2160p'),'15GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'2160p'),'8GB','10GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'2160p'),'10GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'2160p'),'6GB','8GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'2160p'),'8GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'2160p'),'4GB','6GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'2160p'),'6GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'2160p'),'2GB','4GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'2160p'),'4GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'2160p'),'0GB','2GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'2160p'),'2GB'):[]",
+    "resolution(quality(regexMatched(streams), 'Bluray'), '2160p')",
+    "count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEB-DL'),quality(resolution(streams,'1080p'),'Bluray'))),'70GB','80GB'))>0?size(resolution(quality(streams,'Bluray'),'2160p'),'80GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEB-DL'),quality(resolution(streams,'1080p'),'Bluray'))),'60GB','70GB'))>0?size(resolution(quality(streams,'Bluray'),'2160p'),'70GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEB-DL'),quality(resolution(streams,'1080p'),'Bluray'))),'50GB','60GB'))>0?size(resolution(quality(streams,'Bluray'),'2160p'),'60GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEB-DL'),quality(resolution(streams,'1080p'),'Bluray'))),'45GB','50GB'))>0?size(resolution(quality(streams,'Bluray'),'2160p'),'50GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEB-DL'),quality(resolution(streams,'1080p'),'Bluray'))),'40GB','45GB'))>0?size(resolution(quality(streams,'Bluray'),'2160p'),'45GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEB-DL'),quality(resolution(streams,'1080p'),'Bluray'))),'35GB','40GB'))>0?size(resolution(quality(streams,'Bluray'),'2160p'),'40GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEB-DL'),quality(resolution(streams,'1080p'),'Bluray'))),'30GB','35GB'))>0?size(resolution(quality(streams,'Bluray'),'2160p'),'35GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEB-DL'),quality(resolution(streams,'1080p'),'Bluray'))),'25GB','30GB'))>0?size(resolution(quality(streams,'Bluray'),'2160p'),'30GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEB-DL'),quality(resolution(streams,'1080p'),'Bluray'))),'20GB','25GB'))>0?size(resolution(quality(streams,'Bluray'),'2160p'),'25GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEB-DL'),quality(resolution(streams,'1080p'),'Bluray'))),'15GB','20GB'))>0?size(resolution(quality(streams,'Bluray'),'2160p'),'20GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEB-DL'),quality(resolution(streams,'1080p'),'Bluray'))),'10GB','15GB'))>0?size(resolution(quality(streams,'Bluray'),'2160p'),'15GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEB-DL'),quality(resolution(streams,'1080p'),'Bluray'))),'6GB','10GB'))>0?size(resolution(quality(streams,'Bluray'),'2160p'),'10GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEB-DL'),quality(resolution(streams,'1080p'),'Bluray'))),'3GB','6GB'))>0?size(resolution(quality(streams,'Bluray'),'2160p'),'6GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEB-DL'),quality(resolution(streams,'1080p'),'Bluray'))),'0GB','3GB'))>0?size(resolution(quality(streams,'Bluray'),'2160p'),'3GB'):[]",
+    "resolution(quality(regexMatched(streams), 'WEB-DL'), '2160p')",
+    "count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEBRip'),quality(resolution(streams,'1080p'),'WEB-DL'))),'40GB','50GB'))>0?size(resolution(quality(streams,'WEB-DL'),'2160p'),'50GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEBRip'),quality(resolution(streams,'1080p'),'WEB-DL'))),'35GB','40GB'))>0?size(resolution(quality(streams,'WEB-DL'),'2160p'),'40GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEBRip'),quality(resolution(streams,'1080p'),'WEB-DL'))),'30GB','35GB'))>0?size(resolution(quality(streams,'WEB-DL'),'2160p'),'35GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEBRip'),quality(resolution(streams,'1080p'),'WEB-DL'))),'25GB','30GB'))>0?size(resolution(quality(streams,'WEB-DL'),'2160p'),'30GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEBRip'),quality(resolution(streams,'1080p'),'WEB-DL'))),'20GB','25GB'))>0?size(resolution(quality(streams,'WEB-DL'),'2160p'),'25GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEBRip'),quality(resolution(streams,'1080p'),'WEB-DL'))),'15GB','20GB'))>0?size(resolution(quality(streams,'WEB-DL'),'2160p'),'20GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEBRip'),quality(resolution(streams,'1080p'),'WEB-DL'))),'10GB','15GB'))>0?size(resolution(quality(streams,'WEB-DL'),'2160p'),'15GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEBRip'),quality(resolution(streams,'1080p'),'WEB-DL'))),'8GB','10GB'))>0?size(resolution(quality(streams,'WEB-DL'),'2160p'),'10GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEBRip'),quality(resolution(streams,'1080p'),'WEB-DL'))),'6GB','8GB'))>0?size(resolution(quality(streams,'WEB-DL'),'2160p'),'8GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEBRip'),quality(resolution(streams,'1080p'),'WEB-DL'))),'4GB','6GB'))>0?size(resolution(quality(streams,'WEB-DL'),'2160p'),'6GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEBRip'),quality(resolution(streams,'1080p'),'WEB-DL'))),'2GB','4GB'))>0?size(resolution(quality(streams,'WEB-DL'),'2160p'),'4GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEBRip'),quality(resolution(streams,'1080p'),'WEB-DL'))),'1GB','2GB'))>0?size(resolution(quality(streams,'WEB-DL'),'2160p'),'2GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEBRip'),quality(resolution(streams,'1080p'),'WEB-DL'))),'0GB','1GB'))>0?size(resolution(quality(streams,'WEB-DL'),'2160p'),'1GB'): []",
+    "resolution(quality(regexMatched(streams), 'Bluray REMUX'), '1080p')",
+    "count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'1080p'),'80GB','90GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'1080p'),'90GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'1080p'),'70GB','80GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'1080p'),'80GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'1080p'),'60GB','70GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'1080p'),'70GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'1080p'),'50GB','60GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'1080p'),'60GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'1080p'),'45GB','50GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'1080p'),'50GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'1080p'),'40GB','45GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'1080p'),'45GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'1080p'),'35GB','40GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'1080p'),'40GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'1080p'),'30GB','35GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'1080p'),'35GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'1080p'),'25GB','30GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'1080p'),'30GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'1080p'),'20GB','25GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'1080p'),'25GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'1080p'),'15GB','20GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'1080p'),'20GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'1080p'),'12.5GB','15GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'1080p'),'15GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'1080p'),'10GB','12.5GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'1080p'),'12.5GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'1080p'),'8GB','10GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'1080p'),'10GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'1080p'),'6GB','8GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'1080p'),'8GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'1080p'),'4GB','6GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'1080p'),'6GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'1080p'),'2GB','4GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'1080p'),'4GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'1080p'),'0GB','2GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'1080p'),'2GB'):[]",
+    "resolution(quality(regexMatched(streams), 'Bluray'), '1080p')",
+    "count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'1080p'),'50GB','60GB'))>0?size(resolution(quality(streams,'Bluray'),'1080p'),'60GB'): count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'1080p'),'45GB','50GB'))>0?size(resolution(quality(streams,'Bluray'),'1080p'),'50GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'1080p'),'40GB','45GB'))>0?size(resolution(quality(streams,'Bluray'),'1080p'),'45GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'1080p'),'35GB','40GB'))>0?size(resolution(quality(streams,'Bluray'),'1080p'),'40GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'1080p'),'30GB','35GB'))>0?size(resolution(quality(streams,'Bluray'),'1080p'),'35GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'1080p'),'25GB','30GB'))>0?size(resolution(quality(streams,'Bluray'),'1080p'),'30GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'1080p'),'22.5GB','25GB'))>0?size(resolution(quality(streams,'Bluray'),'1080p'),'25GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'1080p'),'20GB','22.5GB'))>0?size(resolution(quality(streams,'Bluray'),'1080p'),'22.5GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'1080p'),'17.5GB','20GB'))>0?size(resolution(quality(streams,'Bluray'),'1080p'),'20GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'1080p'),'15GB','17.5GB'))>0?size(resolution(quality(streams,'Bluray'),'1080p'),'17.5GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'1080p'),'12.5GB','15GB'))>0?size(resolution(quality(streams,'Bluray'),'1080p'),'15GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'1080p'),'10GB','12.5GB'))>0?size(resolution(quality(streams,'Bluray'),'1080p'),'12.5GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'1080p'),'8GB','10GB'))>0?size(resolution(quality(streams,'Bluray'),'1080p'),'10GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'1080p'),'6GB','8GB'))>0?size(resolution(quality(streams,'Bluray'),'1080p'),'8GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'1080p'),'4GB','6GB'))>0?size(resolution(quality(streams,'Bluray'),'1080p'),'6GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'1080p'),'3GB','4GB'))>0?size(resolution(quality(streams,'Bluray'),'1080p'),'4GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'1080p'),'2GB','3GB'))>0?size(resolution(quality(streams,'Bluray'),'1080p'),'3GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'1080p'),'1GB','2GB'))>0?size(resolution(quality(streams,'Bluray'),'1080p'),'2GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'1080p'),'500MB','1GB'))>0?size(resolution(quality(streams,'Bluray'),'1080p'),'1GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'1080p'),'0MB','500MB'))>0?size(resolution(quality(streams,'Bluray'),'1080p'),'500MB'):[]",
+    "resolution(quality(regexMatched(streams), 'WEBRip'), '2160p')",
+    "count(size(resolution(quality(regexMatched(streams),'WEB-DL','WEBRip'),'1080p'),'35GB','40GB'))>0?size(resolution(quality(streams,'WEBRip'),'2160p'),'40GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL','WEBRip'),'1080p'),'30GB','35GB'))>0?size(resolution(quality(streams,'WEBRip'),'2160p'),'35GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL','WEBRip'),'1080p'),'27.5GB','30GB'))>0?size(resolution(quality(streams,'WEBRip'),'2160p'),'30GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL','WEBRip'),'1080p'),'25GB','27.5GB'))>0?size(resolution(quality(streams,'WEBRip'),'2160p'),'27.5GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL','WEBRip'),'1080p'),'22.5GB','25GB'))>0?size(resolution(quality(streams,'WEBRip'),'2160p'),'25GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL','WEBRip'),'1080p'),'20GB','22.5GB'))>0?size(resolution(quality(streams,'WEBRip'),'2160p'),'22.5GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL','WEBRip'),'1080p'),'17.5GB','20GB'))>0?size(resolution(quality(streams,'WEBRip'),'2160p'),'20GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL','WEBRip'),'1080p'),'15GB','17.5GB'))>0?size(resolution(quality(streams,'WEBRip'),'2160p'),'17.5GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL','WEBRip'),'1080p'),'12.5GB','15GB'))>0?size(resolution(quality(streams,'WEBRip'),'2160p'),'15GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL','WEBRip'),'1080p'),'10GB','12.5GB'))>0?size(resolution(quality(streams,'WEBRip'),'2160p'),'12.5GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL','WEBRip'),'1080p'),'8GB','10GB'))>0?size(resolution(quality(streams,'WEBRip'),'2160p'),'10GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL','WEBRip'),'1080p'),'6GB','8GB'))>0?size(resolution(quality(streams,'WEBRip'),'2160p'),'8GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL','WEBRip'),'1080p'),'4GB','6GB'))>0?size(resolution(quality(streams,'WEBRip'),'2160p'),'6GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL','WEBRip'),'1080p'),'3GB','4GB'))>0?size(resolution(quality(streams,'WEBRip'),'2160p'),'4GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL','WEBRip'),'1080p'),'2GB','3GB'))>0?size(resolution(quality(streams,'WEBRip'),'2160p'),'3GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL','WEBRip'),'1080p'),'1GB','2GB'))>0?size(resolution(quality(streams,'WEBRip'),'2160p'),'2GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL','WEBRip'),'1080p'),'500MB','1GB'))>0?size(resolution(quality(streams,'WEBRip'),'2160p'),'1GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL','WEBRip'),'1080p'),'250MB','500MB'))>0?size(resolution(quality(streams,'WEBRip'),'2160p'),'500MB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL','WEBRip'),'1080p'),'0MB','250MB'))>0?size(resolution(quality(streams,'WEBRip'),'2160p'),'250MB'):[]",
+    "resolution(quality(regexMatched(streams), 'WEB-DL'), '1080p')",
+    "count(size(resolution(quality(regexMatched(streams),'WEBRip'),'1080p'),'35GB','40GB'))>0?size(resolution(quality(streams,'WEB-DL'),'1080p'),'40GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'1080p'),'30GB','35GB'))>0?size(resolution(quality(streams,'WEB-DL'),'1080p'),'35GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'1080p'),'27.5GB','30GB'))>0?size(resolution(quality(streams,'WEB-DL'),'1080p'),'30GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'1080p'),'25GB','27.5GB'))>0?size(resolution(quality(streams,'WEB-DL'),'1080p'),'27.5GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'1080p'),'22.5GB','25GB'))>0?size(resolution(quality(streams,'WEB-DL'),'1080p'),'25GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'1080p'),'20GB','22.5GB'))>0?size(resolution(quality(streams,'WEB-DL'),'1080p'),'22.5GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'1080p'),'17.5GB','20GB'))>0?size(resolution(quality(streams,'WEB-DL'),'1080p'),'20GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'1080p'),'15GB','17.5GB'))>0?size(resolution(quality(streams,'WEB-DL'),'1080p'),'17.5GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'1080p'),'12.5GB','15GB'))>0?size(resolution(quality(streams,'WEB-DL'),'1080p'),'15GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'1080p'),'10GB','12.5GB'))>0?size(resolution(quality(streams,'WEB-DL'),'1080p'),'12.5GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'1080p'),'8GB','10GB'))>0?size(resolution(quality(streams,'WEB-DL'),'1080p'),'10GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'1080p'),'6GB','8GB'))>0?size(resolution(quality(streams,'WEB-DL'),'1080p'),'8GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'1080p'),'5GB','6GB'))>0?size(resolution(quality(streams,'WEB-DL'),'1080p'),'6GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'1080p'),'4GB','5GB'))>0?size(resolution(quality(streams,'WEB-DL'),'1080p'),'5GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'1080p'),'3GB','4GB'))>0?size(resolution(quality(streams,'WEB-DL'),'1080p'),'4GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'1080p'),'2GB','3GB'))>0?size(resolution(quality(streams,'WEB-DL'),'1080p'),'3GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'1080p'),'1GB','2GB'))>0?size(resolution(quality(streams,'WEB-DL'),'1080p'),'2GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'1080p'),'500MB','1GB'))>0?size(resolution(quality(streams,'WEB-DL'),'1080p'),'1GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'1080p'),'250MB','500MB'))>0?size(resolution(quality(streams,'WEB-DL'),'1080p'),'500MB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'1080p'),'0MB','250MB'))>0?size(resolution(quality(streams,'WEB-DL'),'1080p'),'250MB'):[]",
+    "resolution(quality(regexMatched(streams), 'WEBRip'), '1080p')",
+    "count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'30GB','35GB'))>0?size(resolution(quality(streams,'WEBRip'),'1080p'),'35GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'27.5GB','30GB'))>0?size(resolution(quality(streams,'WEBRip'),'1080p'),'30GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'25GB','27.5GB'))>0?size(resolution(quality(streams,'WEBRip'),'1080p'),'27.5GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'22.5GB','25GB'))>0?size(resolution(quality(streams,'WEBRip'),'1080p'),'25GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'20GB','22.5GB'))>0?size(resolution(quality(streams,'WEBRip'),'1080p'),'22.5GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'17.5GB','20GB'))>0?size(resolution(quality(streams,'WEBRip'),'1080p'),'20GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'15GB','17.5GB'))>0?size(resolution(quality(streams,'WEBRip'),'1080p'),'17.5GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'12.5GB','15GB'))>0?size(resolution(quality(streams,'WEBRip'),'1080p'),'15GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'10GB','12.5GB'))>0?size(resolution(quality(streams,'WEBRip'),'1080p'),'12.5GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'8GB','10GB'))>0?size(resolution(quality(streams,'WEBRip'),'1080p'),'10GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'6GB','8GB'))>0?size(resolution(quality(streams,'WEBRip'),'1080p'),'8GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'5GB','6GB'))>0?size(resolution(quality(streams,'WEBRip'),'1080p'),'6GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'4GB','5GB'))>0?size(resolution(quality(streams,'WEBRip'),'1080p'),'5GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'3GB','4GB'))>0?size(resolution(quality(streams,'WEBRip'),'1080p'),'4GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'2GB','3GB'))>0?size(resolution(quality(streams,'WEBRip'),'1080p'),'3GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'1GB','2GB'))>0?size(resolution(quality(streams,'WEBRip'),'1080p'),'2GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'750MB','1GB'))>0?size(resolution(quality(streams,'WEBRip'),'1080p'),'1GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'500MB','750MB'))>0?size(resolution(quality(streams,'WEBRip'),'1080p'),'750MB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'250MB','500MB'))>0?size(resolution(quality(streams,'WEBRip'),'1080p'),'500MB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'0MB','250MB'))>0?size(resolution(quality(streams,'WEBRip'),'1080p'),'250MB'):[]",
+    "resolution(quality(regexMatched(streams), 'Bluray REMUX'), '720p')",
+    "count(size(resolution(quality(regexMatched(streams),'Bluray'),'720p'),'27.5GB','30GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'720p'),'30GB'):count(size(resolution(quality(regexMatched(streams),'Bluray'),'720p'),'25GB','27.5GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'720p'),'27.5GB'):count(size(resolution(quality(regexMatched(streams),'Bluray'),'720p'),'22.5GB','25GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'720p'),'25GB'):count(size(resolution(quality(regexMatched(streams),'Bluray'),'720p'),'20GB','22.5GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'720p'),'22.5GB'):count(size(resolution(quality(regexMatched(streams),'Bluray'),'720p'),'17.5GB','20GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'720p'),'20GB'):count(size(resolution(quality(regexMatched(streams),'Bluray'),'720p'),'15GB','17.5GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'720p'),'17.5GB'):count(size(resolution(quality(regexMatched(streams),'Bluray'),'720p'),'12.5GB','15GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'720p'),'15GB'):count(size(resolution(quality(regexMatched(streams),'Bluray'),'720p'),'10GB','12.5GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'720p'),'12.5GB'):count(size(resolution(quality(regexMatched(streams),'Bluray'),'720p'),'8GB','10GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'720p'),'10GB'):count(size(resolution(quality(regexMatched(streams),'Bluray'),'720p'),'6GB','8GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'720p'),'8GB'):count(size(resolution(quality(regexMatched(streams),'Bluray'),'720p'),'5GB','6GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'720p'),'6GB'):count(size(resolution(quality(regexMatched(streams),'Bluray'),'720p'),'4GB','5GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'720p'),'5GB'):count(size(resolution(quality(regexMatched(streams),'Bluray'),'720p'),'3GB','4GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'720p'),'4GB'):count(size(resolution(quality(regexMatched(streams),'Bluray'),'720p'),'2GB','3GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'720p'),'3GB'):count(size(resolution(quality(regexMatched(streams),'Bluray'),'720p'),'1GB','2GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'720p'),'2GB'):count(size(resolution(quality(regexMatched(streams),'Bluray'),'720p'),'750MB','1GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'720p'),'1GB'):count(size(resolution(quality(regexMatched(streams),'Bluray'),'720p'),'500MB','750MB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'720p'),'750MB'):count(size(resolution(quality(regexMatched(streams),'Bluray'),'720p'),'250MB','500MB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'720p'),'500MB'):count(size(resolution(quality(regexMatched(streams),'Bluray'),'720p'),'0MB','250MB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'720p'),'250MB'):[]",
+    "resolution(quality(regexMatched(streams), 'Bluray'), '720p')",
+    "count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'720p'),'27.5GB','30GB'))>0?size(resolution(quality(streams,'Bluray'),'720p'),'30GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'720p'),'25GB','27.5GB'))>0?size(resolution(quality(streams,'Bluray'),'720p'),'27.5GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'720p'),'22.5GB','25GB'))>0?size(resolution(quality(streams,'Bluray'),'720p'),'25GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'720p'),'20GB','22.5GB'))>0?size(resolution(quality(streams,'Bluray'),'720p'),'22.5GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'720p'),'17.5GB','20GB'))>0?size(resolution(quality(streams,'Bluray'),'720p'),'20GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'720p'),'15GB','17.5GB'))>0?size(resolution(quality(streams,'Bluray'),'720p'),'17.5GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'720p'),'12.5GB','15GB'))>0?size(resolution(quality(streams,'Bluray'),'720p'),'15GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'720p'),'10GB','12.5GB'))>0?size(resolution(quality(streams,'Bluray'),'720p'),'12.5GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'720p'),'8GB','10GB'))>0?size(resolution(quality(streams,'Bluray'),'720p'),'10GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'720p'),'6GB','8GB'))>0?size(resolution(quality(streams,'Bluray'),'720p'),'8GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'720p'),'5GB','6GB'))>0?size(resolution(quality(streams,'Bluray'),'720p'),'6GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'720p'),'4GB','5GB'))>0?size(resolution(quality(streams,'Bluray'),'720p'),'5GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'720p'),'3GB','4GB'))>0?size(resolution(quality(streams,'Bluray'),'720p'),'4GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'720p'),'2GB','3GB'))>0?size(resolution(quality(streams,'Bluray'),'720p'),'3GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'720p'),'1GB','2GB'))>0?size(resolution(quality(streams,'Bluray'),'720p'),'2GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'720p'),'750MB','1GB'))>0?size(resolution(quality(streams,'Bluray'),'720p'),'1GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'720p'),'500MB','750MB'))>0?size(resolution(quality(streams,'Bluray'),'720p'),'750MB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'720p'),'250MB','500MB'))>0?size(resolution(quality(streams,'Bluray'),'720p'),'500MB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'720p'),'0MB','250MB'))>0?size(resolution(quality(streams,'Bluray'),'720p'),'250MB'):[]",
+    "resolution(quality(regexMatched(streams), 'WEB-DL'), '720p')",
+    "count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'27.5GB','30GB'))>0?size(resolution(quality(streams,'WEB-DL'),'720p'),'30GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'25GB','27.5GB'))>0?size(resolution(quality(streams,'WEB-DL'),'720p'),'27.5GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'22.5GB','25GB'))>0?size(resolution(quality(streams,'WEB-DL'),'720p'),'25GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'20GB','22.5GB'))>0?size(resolution(quality(streams,'WEB-DL'),'720p'),'22.5GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'17.5GB','20GB'))>0?size(resolution(quality(streams,'WEB-DL'),'720p'),'20GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'15GB','17.5GB'))>0?size(resolution(quality(streams,'WEB-DL'),'720p'),'17.5GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'12.5GB','15GB'))>0?size(resolution(quality(streams,'WEB-DL'),'720p'),'15GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'10GB','12.5GB'))>0?size(resolution(quality(streams,'WEB-DL'),'720p'),'12.5GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'8GB','10GB'))>0?size(resolution(quality(streams,'WEB-DL'),'720p'),'10GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'6GB','8GB'))>0?size(resolution(quality(streams,'WEB-DL'),'720p'),'8GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'5GB','6GB'))>0?size(resolution(quality(streams,'WEB-DL'),'720p'),'6GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'4GB','5GB'))>0?size(resolution(quality(streams,'WEB-DL'),'720p'),'5GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'3GB','4GB'))>0?size(resolution(quality(streams,'WEB-DL'),'720p'),'4GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'2GB','3GB'))>0?size(resolution(quality(streams,'WEB-DL'),'720p'),'3GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'1GB','2GB'))>0?size(resolution(quality(streams,'WEB-DL'),'720p'),'2GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'750MB','1GB'))>0?size(resolution(quality(streams,'WEB-DL'),'720p'),'1GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'500MB','750MB'))>0?size(resolution(quality(streams,'WEB-DL'),'720p'),'750MB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'250MB','500MB'))>0?size(resolution(quality(streams,'WEB-DL'),'720p'),'500MB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'0MB','250MB'))>0?size(resolution(quality(streams,'WEB-DL'),'720p'),'250MB'):[]",
+    "resolution(quality(regexMatched(streams), 'WEBRip'), '720p')",
+    "count(size(resolution(quality(regexMatched(streams),'WEBRip'),'480p'),'27.5GB','30GB'))>0?size(resolution(quality(streams,'WEBRip'),'720p'),'30GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'480p'),'25GB','27.5GB'))>0?size(resolution(quality(streams,'WEBRip'),'720p'),'27.5GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'480p'),'22.5GB','25GB'))>0?size(resolution(quality(streams,'WEBRip'),'720p'),'25GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'480p'),'20GB','22.5GB'))>0?size(resolution(quality(streams,'WEBRip'),'720p'),'22.5GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'480p'),'17.5GB','20GB'))>0?size(resolution(quality(streams,'WEBRip'),'720p'),'20GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'480p'),'15GB','17.5GB'))>0?size(resolution(quality(streams,'WEBRip'),'720p'),'17.5GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'480p'),'12.5GB','15GB'))>0?size(resolution(quality(streams,'WEBRip'),'720p'),'15GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'480p'),'10GB','12.5GB'))>0?size(resolution(quality(streams,'WEBRip'),'720p'),'12.5GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'480p'),'8GB','10GB'))>0?size(resolution(quality(streams,'WEBRip'),'720p'),'10GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'480p'),'6GB','8GB'))>0?size(resolution(quality(streams,'WEBRip'),'720p'),'8GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'480p'),'5GB','6GB'))>0?size(resolution(quality(streams,'WEBRip'),'720p'),'6GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'480p'),'4GB','5GB'))>0?size(resolution(quality(streams,'WEBRip'),'720p'),'5GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'480p'),'3GB','4GB'))>0?size(resolution(quality(streams,'WEBRip'),'720p'),'4GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'480p'),'2GB','3GB'))>0?size(resolution(quality(streams,'WEBRip'),'720p'),'3GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'480p'),'1GB','2GB'))>0?size(resolution(quality(streams,'WEBRip'),'720p'),'2GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'480p'),'750MB','1GB'))>0?size(resolution(quality(streams,'WEBRip'),'720p'),'1GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'480p'),'500MB','750MB'))>0?size(resolution(quality(streams,'WEBRip'),'720p'),'750MB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'480p'),'250MB','500MB'))>0?size(resolution(quality(streams,'WEBRip'),'720p'),'500MB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'480p'),'0MB','250MB'))>0?size(resolution(quality(streams,'WEBRip'),'720p'),'250MB'):[]",
+    "resolution(quality(regexMatched(streams), 'WEB-DL'), '576p')",
+    "resolution(quality(regexMatched(streams), 'WEBRip'), '576p')",
+    "resolution(quality(regexMatched(streams), 'DVDRip'), '576p')",
+    "resolution(quality(regexMatched(streams), 'WEB-DL'), '480p')",
+    "resolution(quality(regexMatched(streams), 'WEBRip'), '480p')",
+    "resolution(quality(regexMatched(streams), 'DVDRip'), '480p')"
+  ],
+  "dynamicAddonFetching": {
+    "enabled": false,
+    "condition": "count(cached(totalStreams)) >= 5 or totalTimeTaken >= 3000."
+  },
+  "groups": {
+    "enabled": true,
+    "groupings": [
+      {
+        "addons": [
+          "23a",
+          "1c5",
+          "bcd"
+        ],
+        "condition": "true"
+      },
+      {
+        "addons": [
+          "e7b",
+          "da0",
+          "1bd"
+        ],
+        "condition": "(count(resolution(cached(totalStreams), '2160p')) < 5 and count(resolution(cached(totalStreams), '1080p')) < 5) or totalTimeTaken > 4000"
+      },
+      {
+        "addons": [
+          "92e",
+          "705",
+          "9a3",
+          "f89"
+        ],
+        "condition": "(count(cached(totalStreams)) == 0) or totalTimeTaken > 8000"
+      }
+    ],
+    "behaviour": "sequential"
+  },
+  "proxy": {
+    "enabled": false,
+    "id": "builtin",
+    "proxiedAddons": [],
+    "proxiedServices": []
+  },
+  "resultLimits": {
+    "resolution": 5
+  },
+  "size": {
+    "global": {
+      "movies": [
+        0,
+        100000000000
+      ],
+      "series": [
+        0,
+        100000000000
+      ]
+    }
+  },
+  "hideErrors": true,
+  "hideErrorsForResources": [],
+  "statistics": {
+    "statsToShow": [
+      "addon",
+      "filter"
+    ]
+  },
+  "yearMatching": {
+    "enabled": true,
+    "requestTypes": [],
+    "addons": []
+  },
+  "titleMatching": {
+    "mode": "contains",
+    "enabled": true,
+    "requestTypes": [],
+    "addons": []
+  },
+  "seasonEpisodeMatching": {
+    "enabled": true,
+    "requestTypes": [],
+    "addons": []
+  },
+  "autoPlay": {
+    "method": "matchingFile",
+    "attributes": [
+      "service"
+    ]
+  },
+  "areYouStillThere": {
+    "enabled": true,
+    "episodesBeforeCheck": 4
+  },
+  "precacheNextEpisode": true,
+  "alwaysPrecache": true,
+  "catalogModifications": [
+    {
+      "id": "23a791b.torrentio-torbox-torrents",
+      "type": "other",
+      "name": "TorBox Torrents",
+      "shuffle": false,
+      "enabled": false,
+      "usePosterService": false,
+      "hideable": true,
+      "searchable": false,
+      "addonName": "Torrentio"
+    },
+    {
+      "id": "23a791b.torrentio-torbox-usenet",
+      "type": "other",
+      "name": "TorBox Usenet",
+      "shuffle": false,
+      "enabled": false,
+      "usePosterService": false,
+      "hideable": true,
+      "searchable": false,
+      "addonName": "Torrentio"
+    },
+    {
+      "id": "23a791b.torrentio-torbox-webdl",
+      "type": "other",
+      "name": "TorBox WebDL",
+      "shuffle": false,
+      "enabled": false,
+      "usePosterService": false,
+      "hideable": true,
+      "searchable": false,
+      "addonName": "Torrentio"
+    }
+  ],
+  "cacheAndPlay": {
+    "streamTypes": [
+      "usenet"
+    ]
+  },
+  "autoRemoveDownloads": true
 }
