@@ -2,7 +2,7 @@
   "services": [
     {
       "id": "realdebrid",
-      "enabled": false,
+      "enabled": true,
       "credentials": {}
     },
     {
@@ -83,7 +83,7 @@
       "enabled": true,
       "options": {
         "name": "MediaFusion",
-        "timeout": 10000,
+        "timeout": 6000,
         "resources": [
           "stream",
           "catalog",
@@ -104,7 +104,7 @@
       "enabled": true,
       "options": {
         "name": "Comet",
-        "timeout": 10000,
+        "timeout": 6000,
         "resources": [
           "stream"
         ],
@@ -115,11 +115,11 @@
     },
     {
       "type": "stremthruTorz",
-      "instanceId": "be5",
+      "instanceId": "e7b",
       "enabled": true,
       "options": {
         "name": "StremThru Torz",
-        "timeout": 10000,
+        "timeout": 8000,
         "resources": [
           "stream"
         ],
@@ -134,7 +134,7 @@
       "enabled": true,
       "options": {
         "name": "Torrentio",
-        "timeout": 10000,
+        "timeout": 6000,
         "resources": [
           "stream",
           "catalog",
@@ -192,6 +192,18 @@
       }
     },
     {
+      "type": "seadex",
+      "instanceId": "1bd",
+      "enabled": true,
+      "options": {
+        "name": "SeaDex",
+        "timeout": 10000,
+        "mediaTypes": [
+          "anime"
+        ]
+      }
+    },
+    {
       "type": "animetosho",
       "instanceId": "f89",
       "enabled": true,
@@ -200,18 +212,6 @@
         "timeout": 10000,
         "mediaTypes": [],
         "useMultipleInstances": false
-      }
-    },
-    {
-      "type": "seadex",
-      "instanceId": "a9a",
-      "enabled": true,
-      "options": {
-        "name": "SeaDex",
-        "timeout": 10000,
-        "mediaTypes": [
-          "anime"
-        ]
       }
     }
   ],
@@ -346,6 +346,9 @@
     "p2p": "single_result"
   },
   "trusted": false,
+  "addonName": "Duck Streams (Turbo)",
+  "addonLogo": "https://gitlab.com/DuckKota/guides/-/raw/main/pages/static/images/duck.png?ref_type=heads",
+  "addonDescription": "Optimized for Speed and Reliability. Hybrid RD+TorBox.",
   "excludedResolutions": [
     "144p",
     "240p",
@@ -404,6 +407,64 @@
   "includedEncodes": [],
   "requiredEncodes": [],
   "preferredEncodes": [],
+  "preferredRegexPatterns": [
+    {
+      "name": "Remux T1",
+      "pattern": "/\\bRemux\\b.*\\b(3L|BiZKiT|BLURANiUM|CiNEPHiLES|FraMeSToR|PiRAMiDHEAD|PmP|ZQ)\\b|-BMF|-WiLDCAT/i"
+    },
+    {
+      "name": "Bluray T1",
+      "pattern": "/^(?=.*\\bBlu[-_]?Ray\\b)(?!.*\\bRemux\\b)(?!.*\\bWEB[-_.]?(?:DL|Rip)\\b)(?=.*(?:\\b(?:BBQ|c0kE|Chotab|CRiSC|CtrlHD|D-Z0N3|Dariush|decibeL|EbP|EDPH|LolHD|MainFrame|NCmt|NTb|PTer|TayTO|TDD|TnP|VietHD|W4NK3R|ZQ|ZoroSenpai)\\b|-BMF)).*/i"
+    },
+    {
+      "name": "Bluray T1",
+      "pattern": "/^(?=.*\\bBlu[-_]?Ray\\b)(?!.*\\bRemux\\b)(?!.*\\bWEB[-_.]?(?:DL|Rip)\\b)(?=.*(?:\\b(?:DON|Geek)\\b)).*/"
+    },
+    {
+      "name": "Web T1",
+      "pattern": "/^(?=.*\\bWEB[-_.]?(?:DL|RIP)\\b)(?=.*\\b(?:ABBiE|AJP69|BLUTONiUM|BYNDR|CasStudio|CMRG|CRFW|CRUD|CtrlHD|GNOME|HONE|Kitsune|monkee|NOSiViD|NTb|NTG|PAXA|PEXA|QOQ|RAWR|RTN|SiC|T6D|TEPES|TheFarm|ViSUM|XEPA|ZoroSenpai)\\b).*/i"
+    },
+    {
+      "name": "Web T1",
+      "pattern": "/^(?=.*\\bWEB[-_.]?(?:DL|RIP)\\b)(?=.*\\b(?:APEX|FLUX|KiNGS|TOMMY)\\b).*/"
+    },
+    {
+      "name": "Remux T2",
+      "pattern": "/\\bRemux\\b.*\\b(ATELiER|NCmt|playBD|SiCFoI|SURFINBIRD|TEPES)\\b/i"
+    },
+    {
+      "name": "Bluray T2",
+      "pattern": "/^(?=.*\\bBlu[-_]?Ray\\b)(?!.*\\bRemux\\b)(?!.*\\bWEB[-_.]?(?:DL|Rip)\\b)(?=.*\\b(?:ATELiER|EA|HiDt|HiSD|HQMUX|iFT|QOQ|SA89|sbR)\\b).*/i"
+    },
+    {
+      "name": "Web T2",
+      "pattern": "/^(?=.*\\bWEB[-_.]?(?:DL|RIP)\\b)(?=.*\\b(?:3cTWeB|4KBEC|BTW|CEBEX|Chotab|Cinefeel|CiT|Coo7|dB|FC|iJP|iKA|iT00NZ|JETIX|KHN|MiU|MZABI|NPMS|NYH|orbitron|playWEB|PSiG|ROCCaT|RTFM|SA89|SbR|SDCC|TVSmash|WELP|XEBEC)\\b).*/i"
+    },
+    {
+      "name": "Web T2",
+      "pattern": "/^(?=.*\\bWEB[-_.]?(?:DL|RIP)\\b)(?=.*\\b(?:DEEP|END|ETHiCS|Flights|KiMCHI|LAZY|PHOENiX|SIGMA|SiGMA|SMURF|SPiRiT)\\b).*/"
+    },
+    {
+      "name": "Remux T3",
+      "pattern": "/\\bRemux\\b.*\\b(12GaugeShotgun|decibeL|EPSiLON|HiFi|iFT|KRaLiMaRKo|NTb|PTer|PTP|SumVision|TOA|TRiToN)\\b/i"
+    },
+    {
+      "name": "Bluray T3",
+      "pattern": "/^(?=.*\\bBlu[-_]?Ray\\b)(?!.*\\bRemux\\b)(?!.*\\bWEB[-_.]?(?:DL|Rip)\\b)(?=.*\\b(?:BHDStudio|hallowed|HiFi|HONE|playHD|SPHD|WEBDV)\\b).*/i"
+    },
+    {
+      "name": "Bluray T3",
+      "pattern": "/^(?=.*\\bBlu[-_]?Ray\\b)(?!.*\\bRemux\\b)(?!.*\\bWEB[-_.]?(?:DL|Rip)\\b)(?=.*\\b(?:LoRD)\\b).*/"
+    },
+    {
+      "name": "Web T3",
+      "pattern": "/^(?=.*\\bWEB[-_.]?(?:DL|RIP)\\b)(?=.*\\b(?:Dooky|GNOMiSSiON|HHWEB|NINJACENTRAL|SLiGNOME|SwAgLaNdEr|T4H)\\b).*/i"
+    },
+    {
+      "name": "Web T3",
+      "pattern": "/^(?=.*\\bWEB[-_.]?(?:DL|RIP)\\b)(?=.*\\b(?:DRACULA|ViSiON)\\b).*/"
+    }
+  ],
   "excludedKeywords": [],
   "includeSeederRange": [
     0,
@@ -414,7 +475,7 @@
     1000
   ],
   "seederRangeTypes": [
-    "p2p"
+    "uncached"
   ],
   "ageRangeTypes": [
     "usenet"
@@ -440,6 +501,38 @@
   "excludedStreamExpressions": [
     "merge(count(resolution(cached(streams), '2160p')) > 0 ? resolution(uncached(streams), '2160p') : [], count(resolution(cached(streams), '1080p')) > 0 ? resolution(uncached(streams), '1080p') : [], count(resolution(cached(streams), '720p')) > 0 ? resolution(uncached(streams), '720p') : [])"
   ],
+  "preferredStreamExpressions": [
+    "resolution(quality(regexMatched(streams), 'Bluray REMUX'), '2160p')",
+    "count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'2160p'),'90GB','100GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'2160p'),'100GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'2160p'),'80GB','90GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'2160p'),'90GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'2160p'),'70GB','80GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'2160p'),'80GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'2160p'),'60GB','70GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'2160p'),'70GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'2160p'),'50GB','60GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'2160p'),'60GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'2160p'),'45GB','50GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'2160p'),'50GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'2160p'),'40GB','45GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'2160p'),'45GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'2160p'),'35GB','40GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'2160p'),'40GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'2160p'),'30GB','35GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'2160p'),'35GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'2160p'),'25GB','30GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'2160p'),'30GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'2160p'),'20GB','25GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'2160p'),'25GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'2160p'),'15GB','20GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'2160p'),'20GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'2160p'),'10GB','15GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'2160p'),'15GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'2160p'),'8GB','10GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'2160p'),'10GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'2160p'),'6GB','8GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'2160p'),'8GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'2160p'),'4GB','6GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'2160p'),'6GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'2160p'),'2GB','4GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'2160p'),'4GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'2160p'),'0GB','2GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'2160p'),'2GB'):[]",
+    "resolution(quality(regexMatched(streams), 'Bluray'), '2160p')",
+    "count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEB-DL'),quality(resolution(streams,'1080p'),'Bluray'))),'70GB','80GB'))>0?size(resolution(quality(streams,'Bluray'),'2160p'),'80GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEB-DL'),quality(resolution(streams,'1080p'),'Bluray'))),'60GB','70GB'))>0?size(resolution(quality(streams,'Bluray'),'2160p'),'70GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEB-DL'),quality(resolution(streams,'1080p'),'Bluray'))),'50GB','60GB'))>0?size(resolution(quality(streams,'Bluray'),'2160p'),'60GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEB-DL'),quality(resolution(streams,'1080p'),'Bluray'))),'45GB','50GB'))>0?size(resolution(quality(streams,'Bluray'),'2160p'),'50GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEB-DL'),quality(resolution(streams,'1080p'),'Bluray'))),'40GB','45GB'))>0?size(resolution(quality(streams,'Bluray'),'2160p'),'45GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEB-DL'),quality(resolution(streams,'1080p'),'Bluray'))),'35GB','40GB'))>0?size(resolution(quality(streams,'Bluray'),'2160p'),'40GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEB-DL'),quality(resolution(streams,'1080p'),'Bluray'))),'30GB','35GB'))>0?size(resolution(quality(streams,'Bluray'),'2160p'),'35GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEB-DL'),quality(resolution(streams,'1080p'),'Bluray'))),'25GB','30GB'))>0?size(resolution(quality(streams,'Bluray'),'2160p'),'30GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEB-DL'),quality(resolution(streams,'1080p'),'Bluray'))),'20GB','25GB'))>0?size(resolution(quality(streams,'Bluray'),'2160p'),'25GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEB-DL'),quality(resolution(streams,'1080p'),'Bluray'))),'15GB','20GB'))>0?size(resolution(quality(streams,'Bluray'),'2160p'),'20GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEB-DL'),quality(resolution(streams,'1080p'),'Bluray'))),'10GB','15GB'))>0?size(resolution(quality(streams,'Bluray'),'2160p'),'15GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEB-DL'),quality(resolution(streams,'1080p'),'Bluray'))),'6GB','10GB'))>0?size(resolution(quality(streams,'Bluray'),'2160p'),'10GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEB-DL'),quality(resolution(streams,'1080p'),'Bluray'))),'3GB','6GB'))>0?size(resolution(quality(streams,'Bluray'),'2160p'),'6GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEB-DL'),quality(resolution(streams,'1080p'),'Bluray'))),'0GB','3GB'))>0?size(resolution(quality(streams,'Bluray'),'2160p'),'3GB'):[]",
+    "resolution(quality(regexMatched(streams), 'WEB-DL'), '2160p')",
+    "count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEBRip'),quality(resolution(streams,'1080p'),'WEB-DL'))),'40GB','50GB'))>0?size(resolution(quality(streams,'WEB-DL'),'2160p'),'50GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEBRip'),quality(resolution(streams,'1080p'),'WEB-DL'))),'35GB','40GB'))>0?size(resolution(quality(streams,'WEB-DL'),'2160p'),'40GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEBRip'),quality(resolution(streams,'1080p'),'WEB-DL'))),'30GB','35GB'))>0?size(resolution(quality(streams,'WEB-DL'),'2160p'),'35GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEBRip'),quality(resolution(streams,'1080p'),'WEB-DL'))),'25GB','30GB'))>0?size(resolution(quality(streams,'WEB-DL'),'2160p'),'30GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEBRip'),quality(resolution(streams,'1080p'),'WEB-DL'))),'20GB','25GB'))>0?size(resolution(quality(streams,'WEB-DL'),'2160p'),'25GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEBRip'),quality(resolution(streams,'1080p'),'WEB-DL'))),'15GB','20GB'))>0?size(resolution(quality(streams,'WEB-DL'),'2160p'),'20GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEBRip'),quality(resolution(streams,'1080p'),'WEB-DL'))),'10GB','15GB'))>0?size(resolution(quality(streams,'WEB-DL'),'2160p'),'15GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEBRip'),quality(resolution(streams,'1080p'),'WEB-DL'))),'8GB','10GB'))>0?size(resolution(quality(streams,'WEB-DL'),'2160p'),'10GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEBRip'),quality(resolution(streams,'1080p'),'WEB-DL'))),'6GB','8GB'))>0?size(resolution(quality(streams,'WEB-DL'),'2160p'),'8GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEBRip'),quality(resolution(streams,'1080p'),'WEB-DL'))),'4GB','6GB'))>0?size(resolution(quality(streams,'WEB-DL'),'2160p'),'6GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEBRip'),quality(resolution(streams,'1080p'),'WEB-DL'))),'2GB','4GB'))>0?size(resolution(quality(streams,'WEB-DL'),'2160p'),'4GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEBRip'),quality(resolution(streams,'1080p'),'WEB-DL'))),'1GB','2GB'))>0?size(resolution(quality(streams,'WEB-DL'),'2160p'),'2GB'): count(size(regexMatched(merge(quality(resolution(streams,'2160p'),'WEBRip'),quality(resolution(streams,'1080p'),'WEB-DL'))),'0GB','1GB'))>0?size(resolution(quality(streams,'WEB-DL'),'2160p'),'1GB'): []",
+    "resolution(quality(regexMatched(streams), 'Bluray REMUX'), '1080p')",
+    "count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'1080p'),'80GB','90GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'1080p'),'90GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'1080p'),'70GB','80GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'1080p'),'80GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'1080p'),'60GB','70GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'1080p'),'70GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'1080p'),'50GB','60GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'1080p'),'60GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'1080p'),'45GB','50GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'1080p'),'50GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'1080p'),'40GB','45GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'1080p'),'45GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'1080p'),'35GB','40GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'1080p'),'40GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'1080p'),'30GB','35GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'1080p'),'35GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'1080p'),'25GB','30GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'1080p'),'30GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'1080p'),'20GB','25GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'1080p'),'25GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'1080p'),'15GB','20GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'1080p'),'20GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'1080p'),'12.5GB','15GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'1080p'),'15GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'1080p'),'10GB','12.5GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'1080p'),'12.5GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'1080p'),'8GB','10GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'1080p'),'10GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'1080p'),'6GB','8GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'1080p'),'8GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'1080p'),'4GB','6GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'1080p'),'6GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'1080p'),'2GB','4GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'1080p'),'4GB'):count(size(resolution(quality(regexMatched(streams),'Bluray','WEB-DL'),'1080p'),'0GB','2GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'1080p'),'2GB'):[]",
+    "resolution(quality(regexMatched(streams), 'Bluray'), '1080p')",
+    "count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'1080p'),'50GB','60GB'))>0?size(resolution(quality(streams,'Bluray'),'1080p'),'60GB'): count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'1080p'),'45GB','50GB'))>0?size(resolution(quality(streams,'Bluray'),'1080p'),'50GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'1080p'),'40GB','45GB'))>0?size(resolution(quality(streams,'Bluray'),'1080p'),'45GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'1080p'),'35GB','40GB'))>0?size(resolution(quality(streams,'Bluray'),'1080p'),'40GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'1080p'),'30GB','35GB'))>0?size(resolution(quality(streams,'Bluray'),'1080p'),'35GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'1080p'),'25GB','30GB'))>0?size(resolution(quality(streams,'Bluray'),'1080p'),'30GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'1080p'),'22.5GB','25GB'))>0?size(resolution(quality(streams,'Bluray'),'1080p'),'25GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'1080p'),'20GB','22.5GB'))>0?size(resolution(quality(streams,'Bluray'),'1080p'),'22.5GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'1080p'),'17.5GB','20GB'))>0?size(resolution(quality(streams,'Bluray'),'1080p'),'20GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'1080p'),'15GB','17.5GB'))>0?size(resolution(quality(streams,'Bluray'),'1080p'),'17.5GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'1080p'),'12.5GB','15GB'))>0?size(resolution(quality(streams,'Bluray'),'1080p'),'15GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'1080p'),'10GB','12.5GB'))>0?size(resolution(quality(streams,'Bluray'),'1080p'),'12.5GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'1080p'),'8GB','10GB'))>0?size(resolution(quality(streams,'Bluray'),'1080p'),'10GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'1080p'),'6GB','8GB'))>0?size(resolution(quality(streams,'Bluray'),'1080p'),'8GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'1080p'),'4GB','6GB'))>0?size(resolution(quality(streams,'Bluray'),'1080p'),'6GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'1080p'),'3GB','4GB'))>0?size(resolution(quality(streams,'Bluray'),'1080p'),'4GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'1080p'),'2GB','3GB'))>0?size(resolution(quality(streams,'Bluray'),'1080p'),'3GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'1080p'),'1GB','2GB'))>0?size(resolution(quality(streams,'Bluray'),'1080p'),'2GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'1080p'),'500MB','1GB'))>0?size(resolution(quality(streams,'Bluray'),'1080p'),'1GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'1080p'),'0MB','500MB'))>0?size(resolution(quality(streams,'Bluray'),'1080p'),'500MB'):[]",
+    "resolution(quality(regexMatched(streams), 'WEBRip'), '2160p')",
+    "count(size(resolution(quality(regexMatched(streams),'WEB-DL','WEBRip'),'1080p'),'35GB','40GB'))>0?size(resolution(quality(streams,'WEBRip'),'2160p'),'40GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL','WEBRip'),'1080p'),'30GB','35GB'))>0?size(resolution(quality(streams,'WEBRip'),'2160p'),'35GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL','WEBRip'),'1080p'),'27.5GB','30GB'))>0?size(resolution(quality(streams,'WEBRip'),'2160p'),'30GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL','WEBRip'),'1080p'),'25GB','27.5GB'))>0?size(resolution(quality(streams,'WEBRip'),'2160p'),'27.5GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL','WEBRip'),'1080p'),'22.5GB','25GB'))>0?size(resolution(quality(streams,'WEBRip'),'2160p'),'25GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL','WEBRip'),'1080p'),'20GB','22.5GB'))>0?size(resolution(quality(streams,'WEBRip'),'2160p'),'22.5GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL','WEBRip'),'1080p'),'17.5GB','20GB'))>0?size(resolution(quality(streams,'WEBRip'),'2160p'),'20GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL','WEBRip'),'1080p'),'15GB','17.5GB'))>0?size(resolution(quality(streams,'WEBRip'),'2160p'),'17.5GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL','WEBRip'),'1080p'),'12.5GB','15GB'))>0?size(resolution(quality(streams,'WEBRip'),'2160p'),'15GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL','WEBRip'),'1080p'),'10GB','12.5GB'))>0?size(resolution(quality(streams,'WEBRip'),'2160p'),'12.5GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL','WEBRip'),'1080p'),'8GB','10GB'))>0?size(resolution(quality(streams,'WEBRip'),'2160p'),'10GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL','WEBRip'),'1080p'),'6GB','8GB'))>0?size(resolution(quality(streams,'WEBRip'),'2160p'),'8GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL','WEBRip'),'1080p'),'4GB','6GB'))>0?size(resolution(quality(streams,'WEBRip'),'2160p'),'6GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL','WEBRip'),'1080p'),'3GB','4GB'))>0?size(resolution(quality(streams,'WEBRip'),'2160p'),'4GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL','WEBRip'),'1080p'),'2GB','3GB'))>0?size(resolution(quality(streams,'WEBRip'),'2160p'),'3GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL','WEBRip'),'1080p'),'1GB','2GB'))>0?size(resolution(quality(streams,'WEBRip'),'2160p'),'2GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL','WEBRip'),'1080p'),'500MB','1GB'))>0?size(resolution(quality(streams,'WEBRip'),'2160p'),'1GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL','WEBRip'),'1080p'),'250MB','500MB'))>0?size(resolution(quality(streams,'WEBRip'),'2160p'),'500MB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL','WEBRip'),'1080p'),'0MB','250MB'))>0?size(resolution(quality(streams,'WEBRip'),'2160p'),'250MB'):[]",
+    "resolution(quality(regexMatched(streams), 'WEB-DL'), '1080p')",
+    "count(size(resolution(quality(regexMatched(streams),'WEBRip'),'1080p'),'35GB','40GB'))>0?size(resolution(quality(streams,'WEB-DL'),'1080p'),'40GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'1080p'),'30GB','35GB'))>0?size(resolution(quality(streams,'WEB-DL'),'1080p'),'35GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'1080p'),'27.5GB','30GB'))>0?size(resolution(quality(streams,'WEB-DL'),'1080p'),'30GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'1080p'),'25GB','27.5GB'))>0?size(resolution(quality(streams,'WEB-DL'),'1080p'),'27.5GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'1080p'),'22.5GB','25GB'))>0?size(resolution(quality(streams,'WEB-DL'),'1080p'),'25GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'1080p'),'20GB','22.5GB'))>0?size(resolution(quality(streams,'WEB-DL'),'1080p'),'22.5GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'1080p'),'17.5GB','20GB'))>0?size(resolution(quality(streams,'WEB-DL'),'1080p'),'20GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'1080p'),'15GB','17.5GB'))>0?size(resolution(quality(streams,'WEB-DL'),'1080p'),'17.5GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'1080p'),'12.5GB','15GB'))>0?size(resolution(quality(streams,'WEB-DL'),'1080p'),'15GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'1080p'),'10GB','12.5GB'))>0?size(resolution(quality(streams,'WEB-DL'),'1080p'),'12.5GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'1080p'),'8GB','10GB'))>0?size(resolution(quality(streams,'WEB-DL'),'1080p'),'10GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'1080p'),'6GB','8GB'))>0?size(resolution(quality(streams,'WEB-DL'),'1080p'),'8GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'1080p'),'5GB','6GB'))>0?size(resolution(quality(streams,'WEB-DL'),'1080p'),'6GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'1080p'),'4GB','5GB'))>0?size(resolution(quality(streams,'WEB-DL'),'1080p'),'5GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'1080p'),'3GB','4GB'))>0?size(resolution(quality(streams,'WEB-DL'),'1080p'),'4GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'1080p'),'2GB','3GB'))>0?size(resolution(quality(streams,'WEB-DL'),'1080p'),'3GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'1080p'),'1GB','2GB'))>0?size(resolution(quality(streams,'WEB-DL'),'1080p'),'2GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'1080p'),'500MB','1GB'))>0?size(resolution(quality(streams,'WEB-DL'),'1080p'),'1GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'1080p'),'250MB','500MB'))>0?size(resolution(quality(streams,'WEB-DL'),'1080p'),'500MB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'1080p'),'0MB','250MB'))>0?size(resolution(quality(streams,'WEB-DL'),'1080p'),'250MB'):[]",
+    "resolution(quality(regexMatched(streams), 'WEBRip'), '1080p')",
+    "count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'30GB','35GB'))>0?size(resolution(quality(streams,'WEBRip'),'1080p'),'35GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'27.5GB','30GB'))>0?size(resolution(quality(streams,'WEBRip'),'1080p'),'30GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'25GB','27.5GB'))>0?size(resolution(quality(streams,'WEBRip'),'1080p'),'27.5GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'22.5GB','25GB'))>0?size(resolution(quality(streams,'WEBRip'),'1080p'),'25GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'20GB','22.5GB'))>0?size(resolution(quality(streams,'WEBRip'),'1080p'),'22.5GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'17.5GB','20GB'))>0?size(resolution(quality(streams,'WEBRip'),'1080p'),'20GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'15GB','17.5GB'))>0?size(resolution(quality(streams,'WEBRip'),'1080p'),'17.5GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'12.5GB','15GB'))>0?size(resolution(quality(streams,'WEBRip'),'1080p'),'15GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'10GB','12.5GB'))>0?size(resolution(quality(streams,'WEBRip'),'1080p'),'12.5GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'8GB','10GB'))>0?size(resolution(quality(streams,'WEBRip'),'1080p'),'10GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'6GB','8GB'))>0?size(resolution(quality(streams,'WEBRip'),'1080p'),'8GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'5GB','6GB'))>0?size(resolution(quality(streams,'WEBRip'),'1080p'),'6GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'4GB','5GB'))>0?size(resolution(quality(streams,'WEBRip'),'1080p'),'5GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'3GB','4GB'))>0?size(resolution(quality(streams,'WEBRip'),'1080p'),'4GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'2GB','3GB'))>0?size(resolution(quality(streams,'WEBRip'),'1080p'),'3GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'1GB','2GB'))>0?size(resolution(quality(streams,'WEBRip'),'1080p'),'2GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'750MB','1GB'))>0?size(resolution(quality(streams,'WEBRip'),'1080p'),'1GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'500MB','750MB'))>0?size(resolution(quality(streams,'WEBRip'),'1080p'),'750MB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'250MB','500MB'))>0?size(resolution(quality(streams,'WEBRip'),'1080p'),'500MB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'0MB','250MB'))>0?size(resolution(quality(streams,'WEBRip'),'1080p'),'250MB'):[]",
+    "resolution(quality(regexMatched(streams), 'Bluray REMUX'), '720p')",
+    "count(size(resolution(quality(regexMatched(streams),'Bluray'),'720p'),'27.5GB','30GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'720p'),'30GB'):count(size(resolution(quality(regexMatched(streams),'Bluray'),'720p'),'25GB','27.5GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'720p'),'27.5GB'):count(size(resolution(quality(regexMatched(streams),'Bluray'),'720p'),'22.5GB','25GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'720p'),'25GB'):count(size(resolution(quality(regexMatched(streams),'Bluray'),'720p'),'20GB','22.5GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'720p'),'22.5GB'):count(size(resolution(quality(regexMatched(streams),'Bluray'),'720p'),'17.5GB','20GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'720p'),'20GB'):count(size(resolution(quality(regexMatched(streams),'Bluray'),'720p'),'15GB','17.5GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'720p'),'17.5GB'):count(size(resolution(quality(regexMatched(streams),'Bluray'),'720p'),'12.5GB','15GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'720p'),'15GB'):count(size(resolution(quality(regexMatched(streams),'Bluray'),'720p'),'10GB','12.5GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'720p'),'12.5GB'):count(size(resolution(quality(regexMatched(streams),'Bluray'),'720p'),'8GB','10GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'720p'),'10GB'):count(size(resolution(quality(regexMatched(streams),'Bluray'),'720p'),'6GB','8GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'720p'),'8GB'):count(size(resolution(quality(regexMatched(streams),'Bluray'),'720p'),'5GB','6GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'720p'),'6GB'):count(size(resolution(quality(regexMatched(streams),'Bluray'),'720p'),'4GB','5GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'720p'),'5GB'):count(size(resolution(quality(regexMatched(streams),'Bluray'),'720p'),'3GB','4GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'720p'),'4GB'):count(size(resolution(quality(regexMatched(streams),'Bluray'),'720p'),'2GB','3GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'720p'),'3GB'):count(size(resolution(quality(regexMatched(streams),'Bluray'),'720p'),'1GB','2GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'720p'),'2GB'):count(size(resolution(quality(regexMatched(streams),'Bluray'),'720p'),'750MB','1GB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'720p'),'1GB'):count(size(resolution(quality(regexMatched(streams),'Bluray'),'720p'),'500MB','750MB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'720p'),'750MB'):count(size(resolution(quality(regexMatched(streams),'Bluray'),'720p'),'250MB','500MB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'720p'),'500MB'):count(size(resolution(quality(regexMatched(streams),'Bluray'),'720p'),'0MB','250MB'))>0?size(resolution(quality(streams,'Bluray REMUX'),'720p'),'250MB'):[]",
+    "resolution(quality(regexMatched(streams), 'Bluray'), '720p')",
+    "count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'720p'),'27.5GB','30GB'))>0?size(resolution(quality(streams,'Bluray'),'720p'),'30GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'720p'),'25GB','27.5GB'))>0?size(resolution(quality(streams,'Bluray'),'720p'),'27.5GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'720p'),'22.5GB','25GB'))>0?size(resolution(quality(streams,'Bluray'),'720p'),'25GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'720p'),'20GB','22.5GB'))>0?size(resolution(quality(streams,'Bluray'),'720p'),'22.5GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'720p'),'17.5GB','20GB'))>0?size(resolution(quality(streams,'Bluray'),'720p'),'20GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'720p'),'15GB','17.5GB'))>0?size(resolution(quality(streams,'Bluray'),'720p'),'17.5GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'720p'),'12.5GB','15GB'))>0?size(resolution(quality(streams,'Bluray'),'720p'),'15GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'720p'),'10GB','12.5GB'))>0?size(resolution(quality(streams,'Bluray'),'720p'),'12.5GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'720p'),'8GB','10GB'))>0?size(resolution(quality(streams,'Bluray'),'720p'),'10GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'720p'),'6GB','8GB'))>0?size(resolution(quality(streams,'Bluray'),'720p'),'8GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'720p'),'5GB','6GB'))>0?size(resolution(quality(streams,'Bluray'),'720p'),'6GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'720p'),'4GB','5GB'))>0?size(resolution(quality(streams,'Bluray'),'720p'),'5GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'720p'),'3GB','4GB'))>0?size(resolution(quality(streams,'Bluray'),'720p'),'4GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'720p'),'2GB','3GB'))>0?size(resolution(quality(streams,'Bluray'),'720p'),'3GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'720p'),'1GB','2GB'))>0?size(resolution(quality(streams,'Bluray'),'720p'),'2GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'720p'),'750MB','1GB'))>0?size(resolution(quality(streams,'Bluray'),'720p'),'1GB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'720p'),'500MB','750MB'))>0?size(resolution(quality(streams,'Bluray'),'720p'),'750MB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'720p'),'250MB','500MB'))>0?size(resolution(quality(streams,'Bluray'),'720p'),'500MB'):count(size(resolution(quality(regexMatched(streams),'WEB-DL'),'720p'),'0MB','250MB'))>0?size(resolution(quality(streams,'Bluray'),'720p'),'250MB'):[]",
+    "resolution(quality(regexMatched(streams), 'WEB-DL'), '720p')",
+    "count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'27.5GB','30GB'))>0?size(resolution(quality(streams,'WEB-DL'),'720p'),'30GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'25GB','27.5GB'))>0?size(resolution(quality(streams,'WEB-DL'),'720p'),'27.5GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'22.5GB','25GB'))>0?size(resolution(quality(streams,'WEB-DL'),'720p'),'25GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'20GB','22.5GB'))>0?size(resolution(quality(streams,'WEB-DL'),'720p'),'22.5GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'17.5GB','20GB'))>0?size(resolution(quality(streams,'WEB-DL'),'720p'),'20GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'15GB','17.5GB'))>0?size(resolution(quality(streams,'WEB-DL'),'720p'),'17.5GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'12.5GB','15GB'))>0?size(resolution(quality(streams,'WEB-DL'),'720p'),'15GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'10GB','12.5GB'))>0?size(resolution(quality(streams,'WEB-DL'),'720p'),'12.5GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'8GB','10GB'))>0?size(resolution(quality(streams,'WEB-DL'),'720p'),'10GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'6GB','8GB'))>0?size(resolution(quality(streams,'WEB-DL'),'720p'),'8GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'5GB','6GB'))>0?size(resolution(quality(streams,'WEB-DL'),'720p'),'6GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'4GB','5GB'))>0?size(resolution(quality(streams,'WEB-DL'),'720p'),'5GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'3GB','4GB'))>0?size(resolution(quality(streams,'WEB-DL'),'720p'),'4GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'2GB','3GB'))>0?size(resolution(quality(streams,'WEB-DL'),'720p'),'3GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'1GB','2GB'))>0?size(resolution(quality(streams,'WEB-DL'),'720p'),'2GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'750MB','1GB'))>0?size(resolution(quality(streams,'WEB-DL'),'720p'),'1GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'500MB','750MB'))>0?size(resolution(quality(streams,'WEB-DL'),'720p'),'750MB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'250MB','500MB'))>0?size(resolution(quality(streams,'WEB-DL'),'720p'),'500MB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'720p'),'0MB','250MB'))>0?size(resolution(quality(streams,'WEB-DL'),'720p'),'250MB'):[]",
+    "resolution(quality(regexMatched(streams), 'WEBRip'), '720p')",
+    "count(size(resolution(quality(regexMatched(streams),'WEBRip'),'480p'),'27.5GB','30GB'))>0?size(resolution(quality(streams,'WEBRip'),'720p'),'30GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'480p'),'25GB','27.5GB'))>0?size(resolution(quality(streams,'WEBRip'),'720p'),'27.5GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'480p'),'22.5GB','25GB'))>0?size(resolution(quality(streams,'WEBRip'),'720p'),'25GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'480p'),'20GB','22.5GB'))>0?size(resolution(quality(streams,'WEBRip'),'720p'),'22.5GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'480p'),'17.5GB','20GB'))>0?size(resolution(quality(streams,'WEBRip'),'720p'),'20GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'480p'),'15GB','17.5GB'))>0?size(resolution(quality(streams,'WEBRip'),'720p'),'17.5GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'480p'),'12.5GB','15GB'))>0?size(resolution(quality(streams,'WEBRip'),'720p'),'15GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'480p'),'10GB','12.5GB'))>0?size(resolution(quality(streams,'WEBRip'),'720p'),'12.5GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'480p'),'8GB','10GB'))>0?size(resolution(quality(streams,'WEBRip'),'720p'),'10GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'480p'),'6GB','8GB'))>0?size(resolution(quality(streams,'WEBRip'),'720p'),'8GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'480p'),'5GB','6GB'))>0?size(resolution(quality(streams,'WEBRip'),'720p'),'6GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'480p'),'4GB','5GB'))>0?size(resolution(quality(streams,'WEBRip'),'720p'),'5GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'480p'),'3GB','4GB'))>0?size(resolution(quality(streams,'WEBRip'),'720p'),'4GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'480p'),'2GB','3GB'))>0?size(resolution(quality(streams,'WEBRip'),'720p'),'3GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'480p'),'1GB','2GB'))>0?size(resolution(quality(streams,'WEBRip'),'720p'),'2GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'480p'),'750MB','1GB'))>0?size(resolution(quality(streams,'WEBRip'),'720p'),'1GB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'480p'),'500MB','750MB'))>0?size(resolution(quality(streams,'WEBRip'),'720p'),'750MB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'480p'),'250MB','500MB'))>0?size(resolution(quality(streams,'WEBRip'),'720p'),'500MB'):count(size(resolution(quality(regexMatched(streams),'WEBRip'),'480p'),'0MB','250MB'))>0?size(resolution(quality(streams,'WEBRip'),'720p'),'250MB'):[]",
+    "resolution(quality(regexMatched(streams), 'WEB-DL'), '576p')",
+    "resolution(quality(regexMatched(streams), 'WEBRip'), '576p')",
+    "resolution(quality(regexMatched(streams), 'DVDRip'), '576p')",
+    "resolution(quality(regexMatched(streams), 'WEB-DL'), '480p')",
+    "resolution(quality(regexMatched(streams), 'WEBRip'), '480p')",
+    "resolution(quality(regexMatched(streams), 'DVDRip'), '480p')"
+  ],
   "dynamicAddonFetching": {
     "enabled": false,
     "condition": "count(cached(totalStreams)) >= 5 or totalTimeTaken >= 3000."
@@ -449,19 +542,19 @@
     "groupings": [
       {
         "addons": [
+          "23a",
           "1c5",
-          "bcd",
-          "be5"
+          "bcd"
         ],
         "condition": "true"
       },
       {
         "addons": [
-          "23a",
-          "b9f",
-          "da0"
+          "e7b",
+          "da0",
+          "1bd"
         ],
-        "condition": "(count(resolution(cached(totalStreams), '2160p')) >= 3 and count(resolution(cached(totalStreams), '1080p')) >= 3 and count(resolution(cached(totalStreams), '720p')) >= 3) or totalTimeTaken > 10000"
+        "condition": "(count(resolution(cached(totalStreams), '2160p')) < 5 and count(resolution(cached(totalStreams), '1080p')) < 5) or totalTimeTaken > 4000"
       },
       {
         "addons": [
@@ -470,18 +563,19 @@
           "9a3",
           "f89"
         ],
-        "condition": "(count(resolution(cached(totalStreams), '2160p')) >= 3 and count(resolution(cached(totalStreams), '1080p')) >= 3 and count(resolution(cached(totalStreams), '720p')) >= 3) or totalTimeTaken > 10000"
+        "condition": "(count(cached(totalStreams)) == 0) or totalTimeTaken > 8000"
       }
     ],
     "behaviour": "sequential"
   },
   "proxy": {
+    "enabled": false,
     "id": "builtin",
     "proxiedAddons": [],
     "proxiedServices": []
   },
   "resultLimits": {
-    "resolution": 3
+    "resolution": 5
   },
   "size": {
     "global": {
@@ -520,9 +614,8 @@
     "addons": []
   },
   "autoPlay": {
+    "method": "matchingFile",
     "attributes": [
-      "quality",
-      "resolution",
       "service"
     ]
   },
@@ -535,10 +628,10 @@
   "catalogModifications": [
     {
       "id": "23a791b.torrentio-torbox-torrents",
-      "name": "TorBox Torrents",
       "type": "other",
-      "enabled": false,
+      "name": "TorBox Torrents",
       "shuffle": false,
+      "enabled": false,
       "usePosterService": false,
       "hideable": true,
       "searchable": false,
@@ -546,10 +639,10 @@
     },
     {
       "id": "23a791b.torrentio-torbox-usenet",
-      "name": "TorBox Usenet",
       "type": "other",
-      "enabled": false,
+      "name": "TorBox Usenet",
       "shuffle": false,
+      "enabled": false,
       "usePosterService": false,
       "hideable": true,
       "searchable": false,
@@ -557,10 +650,10 @@
     },
     {
       "id": "23a791b.torrentio-torbox-webdl",
-      "name": "TorBox WebDL",
       "type": "other",
-      "enabled": false,
+      "name": "TorBox WebDL",
       "shuffle": false,
+      "enabled": false,
       "usePosterService": false,
       "hideable": true,
       "searchable": false,
