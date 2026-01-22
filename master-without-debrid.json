@@ -83,7 +83,7 @@
       "enabled": true,
       "options": {
         "name": "MediaFusion",
-        "timeout": 10000,
+        "timeout": 8000,
         "resources": [
           "stream",
           "catalog",
@@ -104,13 +104,28 @@
       "enabled": true,
       "options": {
         "name": "Comet",
+        "timeout": 8000,
+        "resources": [
+          "stream"
+        ],
+        "includeP2P": true,
+        "removeTrash": true,
+        "mediaTypes": []
+      }
+    },
+    {
+      "type": "stremthruTorz",
+      "instanceId": "e7b",
+      "enabled": true,
+      "options": {
+        "name": "StremThru Torz",
         "timeout": 10000,
         "resources": [
           "stream"
         ],
-        "includeP2P": false,
-        "removeTrash": true,
-        "mediaTypes": []
+        "mediaTypes": [],
+        "includeP2P": true,
+        "useMultipleInstances": false
       }
     },
     {
@@ -119,7 +134,7 @@
       "enabled": true,
       "options": {
         "name": "Torrentio",
-        "timeout": 10000,
+        "timeout": 8000,
         "resources": [
           "stream",
           "catalog",
@@ -146,15 +161,10 @@
     "HC HD-Rip",
     "DVDRip",
     "HDTV",
-    "CAM",
-    "TS",
-    "TC",
-    "SCR",
     "Unknown"
   ],
   "preferredResolutions": [
     "2160p",
-    "1440p",
     "1080p",
     "720p"
   ],
@@ -170,7 +180,7 @@
   "sortCriteria": {
     "global": [
       {
-        "key": "cached",
+        "key": "seeders",
         "direction": "desc"
       },
       {
@@ -178,55 +188,13 @@
         "direction": "desc"
       },
       {
-        "key": "quality",
-        "direction": "desc"
-      },
-      {
-        "key": "visualTag",
-        "direction": "desc"
-      },
-      {
-        "key": "audioTag",
-        "direction": "desc"
-      },
-      {
         "key": "size",
-        "direction": "asc"
-      },
-      {
-        "key": "library",
-        "direction": "desc"
-      }
-    ],
-    "cached": [
-      {
-        "key": "cached",
-        "direction": "desc"
-      },
-      {
-        "key": "resolution",
-        "direction": "desc"
-      },
-      {
-        "key": "quality",
-        "direction": "desc"
-      },
-      {
-        "key": "addon",
-        "direction": "desc"
-      },
-      {
-        "key": "size",
-        "direction": "asc"
-      },
-      {
-        "key": "streamType",
         "direction": "desc"
       }
     ],
     "uncached": [
       {
-        "key": "streamType",
+        "key": "seeders",
         "direction": "desc"
       },
       {
@@ -234,15 +202,7 @@
         "direction": "desc"
       },
       {
-        "key": "quality",
-        "direction": "desc"
-      },
-      {
         "key": "size",
-        "direction": "asc"
-      },
-      {
-        "key": "seeders",
         "direction": "desc"
       }
     ]
@@ -268,37 +228,23 @@
     "480p",
     "576p"
   ],
+  "includedResolutions": [],
+  "requiredResolutions": [],
+  "includedQualities": [],
+  "requiredQualities": [],
   "excludedLanguages": [],
+  "includedLanguages": [],
+  "requiredLanguages": [],
   "preferredLanguages": [
     "English"
   ],
   "includedVisualTags": [],
   "requiredVisualTags": [],
-  "preferredVisualTags": [
-    "HDR+DV",
-    "DV Only",
-    "HDR Only",
-    "HDR10+",
-    "HDR10",
-    "DV",
-    "HDR"
-  ],
+  "preferredVisualTags": [],
   "excludedAudioTags": [],
   "includedAudioTags": [],
   "requiredAudioTags": [],
-  "preferredAudioTags": [
-    "Atmos",
-    "DD+",
-    "DD",
-    "DTS-HD MA",
-    "DTS-HD",
-    "DTS-ES",
-    "DTS",
-    "TrueHD",
-    "OPUS",
-    "FLAC",
-    "AAC"
-  ],
+  "preferredAudioTags": [],
   "excludedAudioChannels": [],
   "includedAudioChannels": [],
   "requiredAudioChannels": [],
@@ -307,12 +253,20 @@
   "includedStreamTypes": [],
   "requiredStreamTypes": [],
   "preferredStreamTypes": [
-    "usenet"
+    "p2p"
   ],
+  "excludedEncodes": [],
+  "includedEncodes": [],
+  "requiredEncodes": [],
   "preferredEncodes": [],
+  "excludedKeywords": [],
+  "includeSeederRange": [
+    10,
+    100000
+  ],
   "requiredSeederRange": [
     10,
-    1000
+    100000
   ],
   "seederRangeTypes": [
     "p2p"
@@ -330,6 +284,7 @@
     ],
     "addons": []
   },
+  "enableSeadex": true,
   "excludeCachedFromAddons": [],
   "excludeCachedFromServices": [],
   "excludeCachedFromStreamTypes": [],
@@ -337,51 +292,48 @@
   "excludeUncachedFromAddons": [],
   "excludeUncachedFromServices": [],
   "excludeUncachedFromStreamTypes": [],
+  "excludedStreamExpressions": [],
   "dynamicAddonFetching": {
     "enabled": false,
-    "condition": "count(cached(totalStreams)) >= 5 or totalTimeTaken >= 3000."
+    "condition": "count(totalStreams) >= 15 or totalTimeTaken >= 10000"
   },
   "groups": {
     "enabled": true,
     "groupings": [
       {
         "addons": [
+          "23a",
           "1c5",
-          "bcd"
+          "bcd",
+          "e7b"
         ],
         "condition": "true"
-      },
-      {
-        "addons": [
-          "23a",
-          "b9f",
-          "da0"
-        ],
-        "condition": "(count(resolution(cached(totalStreams), '2160p')) >= 3 and count(resolution(cached(totalStreams), '1080p')) >= 3 and count(resolution(cached(totalStreams), '720p')) >= 3) or totalTimeTaken > 10000"
       }
     ],
     "behaviour": "sequential"
   },
   "proxy": {
+    "enabled": false,
     "id": "builtin",
     "proxiedAddons": [],
     "proxiedServices": []
   },
   "resultLimits": {
-    "resolution": 3
+    "resolution": 5
   },
   "size": {
     "global": {
       "movies": [
         0,
-        41800000000
+        100000000000
       ],
       "series": [
         0,
-        12100000000
+        100000000000
       ]
     }
   },
+  "hideErrors": true,
   "hideErrorsForResources": [],
   "statistics": {
     "statsToShow": [
@@ -406,74 +358,25 @@
     "addons": []
   },
   "autoPlay": {
+    "method": "matchingFile",
     "attributes": [
-      "quality",
-      "resolution",
       "service"
     ]
   },
-  "precacheNextEpisode": true,
-  "alwaysPrecache": true,
-  "catalogModifications": [
-    {
-      "id": "23a791b.torrentio-torbox-torrents",
-      "type": "other",
-      "name": "TorBox Torrents",
-      "shuffle": false,
-      "enabled": false,
-      "usePosterService": false,
-      "hideable": true,
-      "searchable": false,
-      "addonName": "Torrentio"
-    },
-    {
-      "id": "23a791b.torrentio-torbox-usenet",
-      "type": "other",
-      "name": "TorBox Usenet",
-      "shuffle": false,
-      "enabled": false,
-      "usePosterService": false,
-      "hideable": true,
-      "searchable": false,
-      "addonName": "Torrentio"
-    },
-    {
-      "id": "23a791b.torrentio-torbox-webdl",
-      "type": "other",
-      "name": "TorBox WebDL",
-      "shuffle": false,
-      "enabled": false,
-      "usePosterService": false,
-      "hideable": true,
-      "searchable": false,
-      "addonName": "Torrentio"
-    }
-  ],
-  "cacheAndPlay": {
-    "streamTypes": [
-      "usenet"
-    ]
-  },
-  "includedResolutions": [],
-  "requiredResolutions": [],
-  "includedQualities": [],
-  "requiredQualities": [],
-  "excludedEncodes": [],
-  "includedEncodes": [],
-  "requiredEncodes": [],
-  "excludedKeywords": [],
-  "includeSeederRange": [
-    0,
-    1000
-  ],
-  "enableSeadex": true,
-  "hideErrors": true,
   "areYouStillThere": {
     "enabled": true,
     "episodesBeforeCheck": 4
   },
+  "precacheNextEpisode": false,
+  "alwaysPrecache": false,
+  "catalogModifications": [],
+  "cacheAndPlay": {
+    "streamTypes": []
+  },
   "autoRemoveDownloads": true,
-  "excludedStreamExpressions": [
-    "merge(count(resolution(cached(streams), '2160p')) > 0 ? resolution(uncached(streams), '2160p') : [], count(resolution(cached(streams), '1080p')) > 0 ? resolution(uncached(streams), '1080p') : [], count(resolution(cached(streams), '720p')) > 0 ? resolution(uncached(streams), '720p') : [])"
-  ]
+  "addonName": "Duck Streams (P2P Groups)",
+  "addonLogo": "https://gitlab.com/DuckKota/guides/-/raw/main/pages/static/images/duck.png?ref_type=heads",
+  "addonDescription": "Direct P2P Streaming. Sequential fetching logic.",
+  "preferredRegexPatterns": [],
+  "preferredStreamExpressions": []
 }
