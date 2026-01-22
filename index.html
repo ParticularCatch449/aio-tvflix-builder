@@ -3,57 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIO.TVFLIX Builder</title>
+    <title>AIO.TVFLIX Builder v3.13</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .page { display: none; }
         .page.active { display: block; }
         .step { display: none; }
         .step.active { display: block; }
+        .custom-scroll::-webkit-scrollbar { width: 8px; }
+        .custom-scroll::-webkit-scrollbar-track { background: #1e293b; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: #475569; border-radius: 4px; }
+        .custom-scroll::-webkit-scrollbar-thumb:hover { background: #64748b; }
     </style>
 </head>
-<body class="bg-slate-900 text-slate-100 font-sans min-h-screen p-4 md:p-10">
+<body class="bg-slate-900 text-slate-100 font-sans min-h-screen p-2 md:p-8">
 
-    <div class="max-w-3xl mx-auto bg-slate-800 p-6 md:p-10 rounded-2xl shadow-2xl border border-slate-700">
+    <div class="fixed bottom-8 right-8 z-50 flex flex-col items-end gap-3 group">
+        <div class="bg-slate-800 text-slate-200 text-xs font-bold py-2 px-4 rounded-xl border border-slate-600 shadow-2xl">
+            Many hours went into this! ☕
+        </div>
         
-        <!-- HUB PAGE -->
+        <a href="https://buymeacoffee.com/particular_catch_449" target="_blank" class="flex items-center gap-3 bg-yellow-400 text-slate-900 px-6 py-4 rounded-full shadow-2xl hover:bg-yellow-300 hover:scale-105 transition-all font-bold text-base border-4 border-slate-900">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                <path d="M12.75 4.75a.75.75 0 00-1.5 0v.678c0 .285.03.567.088.843l.036.173a.75.75 0 001.464-.306l-.022-.108a4.773 4.773 0 01-.066-.602V4.75zM8.75 4.75a.75.75 0 00-1.5 0v.678c0 .285.03.567.088.843l.036.173a.75.75 0 001.464-.306l-.022-.108a4.773 4.773 0 01-.066-.602V4.75zM16.75 4.75a.75.75 0 00-1.5 0v.678c0 .285.03.567.088.843l.036.173a.75.75 0 001.464-.306l-.022-.108a4.773 4.773 0 01-.066-.602V4.75z" />
+                <path fill-rule="evenodd" d="M3.5 9A1.5 1.5 0 005 10.5h14a1.5 1.5 0 001.5-1.5V8.5a.5.5 0 00-.5-.5H4a.5.5 0 00-.5.5v.5zm1.5 3a3 3 0 002.95 2.443l.79.098c.189.023.38.046.572.067a62.985 62.985 0 004.376 0c.192-.02.383-.044.572-.067l.79-.098A3 3 0 0020.5 12h-14zm14-4.5H22v1.5a3 3 0 01-3 3h-1.39a4.49 4.49 0 01-1.31 1.77 4.512 4.512 0 01-2.91.86c-1.42 0-2.812-.06-4.178-.18-1.332-.116-2.617-.375-3.842-.767a4.5 4.5 0 01-3.15-5.683H2V8.5a1 1 0 011-1h1.5z" clip-rule="evenodd" />
+            </svg>
+            <span>Leave a Tip (Optional)</span>
+        </a>
+    </div>
+
+    <div class="max-w-4xl mx-auto bg-slate-800 p-4 md:p-10 rounded-2xl shadow-2xl border border-slate-700">
+        
         <div id="page-hub" class="page active">
             <header class="mb-10 text-center">
-                <h1 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400 italic tracking-tighter">AIO.TVFLIX</h1>
-                <p class="text-slate-400 mt-2">Personalized Master Template Builder</p>
-                <div class="text-slate-500 mt-4 text-sm max-w-lg mx-auto space-y-2">
-                    <p>Welcome to the AIO.TVFLIX Stremio setup tool! This builder helps you create a comprehensive and personalized configuration for your Stremio experience.</p>
-                    <p><strong>AIOStreams:</strong> Manages your streaming sources, debrid services (like Real-Debrid), and quality filters to ensure you get the best links.</p>
-                    <p><strong>AIOMetadata:</strong> Enhances your Stremio interface with rich posters, ratings, and organized catalogs from services like TMDb and TVDB.</p>
-                    <p>Select an option below to get started. If you are new, we recommend the <strong>Full Setup</strong>.</p>
+                <h1 class="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400 italic tracking-tighter mb-4">AIO.TVFLIX v2</h1>
+                <p class="text-slate-400 text-lg">Personalized Master Template Builder</p>
+                
+                <div class="mt-8 max-w-2xl mx-auto bg-slate-900/50 p-6 rounded-xl border border-slate-700 text-left space-y-4">
+                    <h3 class="text-white font-bold text-lg">What does this setup do for Stremio?</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-slate-400">
+                        <div>
+                            <strong class="text-indigo-400 block mb-1">Better Stream Sorting</strong>
+                            <p>Intelligently sorts streams by language, quality, and resolution, prioritizing your specific choices.</p>
+                        </div>
+                        <div>
+                            <strong class="text-indigo-400 block mb-1">Cleaner Catalogs</strong>
+                            <p>Replaces cluttered lists with unified catalogs for streaming providers (Netflix, Disney+, etc.) directly from the source.</p>
+                        </div>
+                        <div>
+                            <strong class="text-indigo-400 block mb-1">Optimized Metadata</strong>
+                            <p>Provides consistent posters and ratings while removing duplicate entries to keep your library smooth and fast.</p>
+                        </div>
+                    </div>
                 </div>
             </header>
-            <div class="grid grid-cols-1 gap-6">
-                <button type="button" onclick="startSetup('full')" class="bg-slate-700 p-6 rounded-xl border border-indigo-500/30 hover:border-indigo-400 text-left transition-all">
+            <div class="grid grid-cols-1 gap-6 mt-8">
+                <button type="button" onclick="startSetup('full')" class="bg-slate-700 p-6 rounded-xl border border-indigo-500/30 hover:border-indigo-400 text-left transition-all hover:shadow-lg hover:shadow-indigo-500/10">
                     <h3 class="text-xl font-bold text-indigo-300">Full Setup</h3>
                     <p class="text-sm text-slate-400 mt-1">Generate both AIOStreams and Metadata files.</p>
                 </button>
                 <button type="button" onclick="startSetup('streams')" class="bg-slate-700 p-6 rounded-xl border border-slate-600 hover:border-indigo-400 text-left transition-all">
                     <h3 class="text-xl font-bold text-slate-200">AIOStreams Only</h3>
-                    <p class="text-sm text-slate-400 mt-1">Configure scrapers, debrid, and speed limits.</p>
+                    <p class="text-sm text-slate-400 mt-1">Configure scrapers, debrid, and languages.</p>
                 </button>
                 <button type="button" onclick="startSetup('meta')" class="bg-slate-700 p-6 rounded-xl border border-slate-600 hover:border-indigo-400 text-left transition-all">
                     <h3 class="text-xl font-bold text-slate-200">AIOMetadata Only</h3>
-                    <p class="text-sm text-slate-400 mt-1">Configure posters, ratings, and catalog keys.</p>
+                    <p class="text-sm text-slate-400 mt-1">Configure catalogs, posters, and ratings.</p>
                 </button>
+                
+                <a href="https://cinebye.elfhosted.com/" target="_blank" class="block bg-slate-800 p-4 rounded-xl border border-slate-600 hover:border-indigo-400 text-center transition-all mt-4 group">
+                    <span class="text-slate-400 text-sm group-hover:text-white">Looking for <strong>CineBye</strong>? Click here to open the manager.</span>
+                </a>
             </div>
         </div>
 
-        <!-- WIZARD PAGE -->
         <div id="page-wizard" class="page">
             <div id="setup-steps">
-                <!-- Step: Debrid -->
+                
                 <div class="step" id="step-debrid">
                     <h2 class="text-2xl font-bold mb-6 text-white tracking-tight">1. Debrid Integration</h2>
                     <p class="text-sm text-slate-400 mb-4">Select the debrid services you use. You can select multiple.</p>
-                    
                     <div id="debrid-list" class="space-y-4">
-                        <!-- Real-Debrid -->
+                        
+                        <div class="bg-slate-900/50 p-4 rounded-lg border border-slate-700">
+                            <div class="flex items-center justify-between mb-3">
+                                <label class="flex items-center space-x-3 cursor-pointer">
+                                    <input type="checkbox" id="use-tb" class="debrid-check w-5 h-5 rounded border-slate-600 text-indigo-600 bg-slate-800" onchange="toggleDebridInput('tb-input', this.checked)">
+                                    <span class="font-bold text-white">TorBox</span>
+                                </label>
+                                <a href="https://torbox.app/subscription?referral=1469bf2b-09fb-4c7e-a29f-6925fda84668" target="_blank" class="bg-indigo-600 text-[10px] font-bold px-3 py-1.5 rounded text-white hover:bg-indigo-500 uppercase tracking-wide">Sign Up</a>
+                            </div>
+                            <div id="tb-input" class="hidden pl-8">
+                                <input type="text" id="key-torbox" placeholder="TorBox API Key" class="w-full bg-slate-800 border border-slate-700 p-2 rounded text-sm text-white outline-none">
+                                <a href="https://torbox.app/settings" target="_blank" class="text-[10px] text-indigo-400 mt-1 block hover:underline">Get Key →</a>
+                            </div>
+                        </div>
+
                         <div class="bg-slate-900/50 p-4 rounded-lg border border-slate-700">
                             <label class="flex items-center space-x-3 cursor-pointer mb-3">
                                 <input type="checkbox" id="use-rd" class="debrid-check w-5 h-5 rounded border-slate-600 text-indigo-600 bg-slate-800" onchange="toggleDebridInput('rd-input', this.checked)">
@@ -65,19 +110,6 @@
                             </div>
                         </div>
 
-                        <!-- TorBox -->
-                        <div class="bg-slate-900/50 p-4 rounded-lg border border-slate-700">
-                            <label class="flex items-center space-x-3 cursor-pointer mb-3">
-                                <input type="checkbox" id="use-tb" class="debrid-check w-5 h-5 rounded border-slate-600 text-indigo-600 bg-slate-800" onchange="toggleDebridInput('tb-input', this.checked)">
-                                <span class="font-bold text-white">TorBox</span>
-                            </label>
-                            <div id="tb-input" class="hidden pl-8">
-                                <input type="text" id="key-torbox" placeholder="TorBox API Key" class="w-full bg-slate-800 border border-slate-700 p-2 rounded text-sm text-white outline-none">
-                                <a href="https://torbox.app/settings" target="_blank" class="text-[10px] text-indigo-400 mt-1 block hover:underline">Get Key →</a>
-                            </div>
-                        </div>
-
-                        <!-- AllDebrid -->
                         <div class="bg-slate-900/50 p-4 rounded-lg border border-slate-700">
                             <label class="flex items-center space-x-3 cursor-pointer mb-3">
                                 <input type="checkbox" id="use-ad" class="debrid-check w-5 h-5 rounded border-slate-600 text-indigo-600 bg-slate-800" onchange="toggleDebridInput('ad-input', this.checked)">
@@ -88,8 +120,6 @@
                                 <a href="https://alldebrid.com/apikeys/" target="_blank" class="text-[10px] text-indigo-400 mt-1 block hover:underline">Get Key →</a>
                             </div>
                         </div>
-
-                        <!-- Premiumize -->
                         <div class="bg-slate-900/50 p-4 rounded-lg border border-slate-700">
                             <label class="flex items-center space-x-3 cursor-pointer mb-3">
                                 <input type="checkbox" id="use-pm" class="debrid-check w-5 h-5 rounded border-slate-600 text-indigo-600 bg-slate-800" onchange="toggleDebridInput('pm-input', this.checked)">
@@ -100,8 +130,6 @@
                                 <a href="https://www.premiumize.me/account" target="_blank" class="text-[10px] text-indigo-400 mt-1 block hover:underline">Get Key →</a>
                             </div>
                         </div>
-
-                        <!-- DebridLink -->
                         <div class="bg-slate-900/50 p-4 rounded-lg border border-slate-700">
                             <label class="flex items-center space-x-3 cursor-pointer mb-3">
                                 <input type="checkbox" id="use-dl" class="debrid-check w-5 h-5 rounded border-slate-600 text-indigo-600 bg-slate-800" onchange="toggleDebridInput('dl-input', this.checked)">
@@ -112,57 +140,9 @@
                                 <a href="https://debrid-link.com/webapp/apikey" target="_blank" class="text-[10px] text-indigo-400 mt-1 block hover:underline">Get Key →</a>
                             </div>
                         </div>
-
-                        <!-- Offcloud -->
-                        <div class="bg-slate-900/50 p-4 rounded-lg border border-slate-700">
-                            <label class="flex items-center space-x-3 cursor-pointer mb-3">
-                                <input type="checkbox" id="use-oc" class="debrid-check w-5 h-5 rounded border-slate-600 text-indigo-600 bg-slate-800" onchange="toggleDebridInput('oc-input', this.checked)">
-                                <span class="font-bold text-white">Offcloud</span>
-                            </label>
-                            <div id="oc-input" class="hidden pl-8">
-                                <input type="text" id="key-offcloud" placeholder="Offcloud API Key" class="w-full bg-slate-800 border border-slate-700 p-2 rounded text-sm text-white outline-none">
-                                <a href="https://offcloud.com/#/account" target="_blank" class="text-[10px] text-indigo-400 mt-1 block hover:underline">Get Key →</a>
-                            </div>
-                        </div>
-
-                        <!-- Put.io -->
-                        <div class="bg-slate-900/50 p-4 rounded-lg border border-slate-700">
-                            <label class="flex items-center space-x-3 cursor-pointer mb-3">
-                                <input type="checkbox" id="use-put" class="debrid-check w-5 h-5 rounded border-slate-600 text-indigo-600 bg-slate-800" onchange="toggleDebridInput('put-input', this.checked)">
-                                <span class="font-bold text-white">Put.io</span>
-                            </label>
-                            <div id="put-input" class="hidden pl-8">
-                                <input type="text" id="key-putio" placeholder="Put.io API Key" class="w-full bg-slate-800 border border-slate-700 p-2 rounded text-sm text-white outline-none">
-                                <a href="https://app.put.io/settings/account/oauth/apps" target="_blank" class="text-[10px] text-indigo-400 mt-1 block hover:underline">Get Key →</a>
-                            </div>
-                        </div>
-
-                        <!-- EasyNews -->
-                        <div class="bg-slate-900/50 p-4 rounded-lg border border-slate-700">
-                            <label class="flex items-center space-x-3 cursor-pointer mb-3">
-                                <input type="checkbox" id="use-en" class="debrid-check w-5 h-5 rounded border-slate-600 text-indigo-600 bg-slate-800" onchange="toggleDebridInput('en-input', this.checked)">
-                                <span class="font-bold text-white">EasyNews</span>
-                            </label>
-                            <div id="en-input" class="hidden pl-8">
-                                <input type="text" id="key-easynews" placeholder="EasyNews API Key" class="w-full bg-slate-800 border border-slate-700 p-2 rounded text-sm text-white outline-none">
-                            </div>
-                        </div>
-
-                        <!-- EasyDebrid -->
-                        <div class="bg-slate-900/50 p-4 rounded-lg border border-slate-700">
-                            <label class="flex items-center space-x-3 cursor-pointer mb-3">
-                                <input type="checkbox" id="use-ed" class="debrid-check w-5 h-5 rounded border-slate-600 text-indigo-600 bg-slate-800" onchange="toggleDebridInput('ed-input', this.checked)">
-                                <span class="font-bold text-white">EasyDebrid</span>
-                            </label>
-                            <div id="ed-input" class="hidden pl-8">
-                                <input type="text" id="key-easydebrid" placeholder="EasyDebrid API Key" class="w-full bg-slate-800 border border-slate-700 p-2 rounded text-sm text-white outline-none">
-                                <a href="https://easydebrid.com/api" target="_blank" class="text-[10px] text-indigo-400 mt-1 block hover:underline">Get Key →</a>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
-                <!-- Step: Speed -->
                 <div class="step" id="step-speed">
                     <h2 class="text-2xl font-bold mb-6 text-white tracking-tight">2. Performance Settings</h2>
                     <label class="flex items-center space-x-4 bg-slate-700/50 p-5 rounded-xl cursor-pointer mb-6 border border-transparent hover:border-indigo-500/50 transition-all">
@@ -187,55 +167,98 @@
                     </div>
                 </div>
 
-                <!-- Step: Content Preferences (RESTORED) -->
                 <div class="step" id="step-prefs">
-                    <h2 class="text-2xl font-bold mb-6 text-white tracking-tight">3. Content Preferences</h2>
+                    <h2 class="text-2xl font-bold mb-4 text-white tracking-tight">3. Content Preferences</h2>
+                    <div class="mb-6 bg-slate-700/30 p-6 rounded-xl border border-slate-600" id="section-interface-lang">
+                        <label class="block font-bold mb-2">Interface Language (Metadata)</label>
+                        <p class="text-xs text-slate-400 mb-3">Controls the language of titles and descriptions.</p>
+                        <select id="interface-lang" class="w-full bg-slate-900 border border-slate-700 p-3 rounded-lg text-white outline-none">
+                            <option value="en-US">English</option>
+                            <option value="es-ES">Spanish</option>
+                            <option value="fr-FR">French</option>
+                            <option value="de-DE">German</option>
+                            <option value="it-IT">Italian</option>
+                            <option value="pt-PT">Portuguese</option>
+                            <option value="ru-RU">Russian</option>
+                            <option value="hi-IN">Hindi</option>
+                            <option value="ja-JP">Japanese</option>
+                            <option value="ko-KR">Korean</option>
+                            <option value="zh-CN">Chinese</option>
+                            <option value="ar-SA">Arabic</option>
+                        </select>
+                    </div>
                     
-                    <div class="space-y-6">
+                    <div class="mb-6 bg-slate-700/30 p-6 rounded-xl border border-slate-600" id="section-autoplay">
+                        <label class="block font-bold mb-2">AutoPlay Method (Streams)</label>
+                        <p class="text-xs text-slate-400 mb-3">Decides how the next episode matches.</p>
+                        <select id="autoplay-method" class="w-full bg-slate-900 border border-slate-700 p-3 rounded-lg text-white outline-none">
+                            <option value="matchingFile">Matching File (Best for Season Packs)</option>
+                            <option value="matchingIndex">Matching Index (Fallback for weird packs)</option>
+                            <option value="firstFile">First File (Simplest)</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-8" id="section-languages">
+                        <div class="bg-slate-700/30 p-6 rounded-xl border border-slate-600">
+                            <label class="block font-bold mb-2">Audio Languages (Streams)</label>
+                            <p class="text-xs text-slate-400 mb-4">Select languages for streaming sources. Used to sort and filter streams. Selecting a foreign language here removes English from priority.</p>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="lang-grid"></div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                         <div id="prefs-res-limit" class="bg-slate-700/30 p-6 rounded-xl border border-slate-600">
                             <label class="block font-bold mb-2">Max Results per Resolution</label>
-                            <p class="text-xs text-slate-400 mb-3">How many links to show for each quality (e.g. 3x 4K, 3x 1080p).</p>
-                            <input type="number" id="res-limit" value="3" min="1" max="20" class="w-full bg-slate-900 border border-slate-700 p-4 rounded-xl text-white outline-none focus:ring-1 focus:ring-indigo-500">
+                            <p class="text-xs text-slate-400 mb-3">Changes strictness of group fetching.</p>
+                            <input type="number" id="res-limit" value="5" min="1" max="20" class="w-full bg-slate-900 border border-slate-700 p-4 rounded-xl text-white outline-none focus:ring-1 focus:ring-indigo-500">
                         </div>
-
-                        <div id="prefs-language" class="bg-slate-700/30 p-6 rounded-xl border border-slate-600">
-                            <label class="block font-bold mb-3">Preferred Language</label>
-                            <select id="lang-select" class="w-full bg-slate-900 border border-slate-700 p-4 rounded-xl text-white outline-none">
-                                <option value="English" selected>English</option>
-                                <option value="Spanish">Spanish</option>
-                                <option value="French">French</option>
-                                <option value="German">German</option>
-                                <option value="Italian">Italian</option>
-                                <option value="Portuguese">Portuguese</option>
-                                <option value="Russian">Russian</option>
-                                <option value="Hindi">Hindi</option>
-                                <option value="Japanese">Japanese</option>
-                                <option value="Korean">Korean</option>
-                                <option value="Chinese">Chinese</option>
-                                <option value="Arabic">Arabic</option>
-                            </select>
+                        <div id="cam-box" class="bg-slate-700/30 p-6 rounded-xl border border-slate-600 flex items-center">
+                            <label class="flex items-center space-x-4 cursor-pointer w-full">
+                                <input type="checkbox" id="include-cams" class="w-6 h-6 rounded border-slate-600 text-indigo-600 bg-slate-800">
+                                <div>
+                                    <p class="font-bold text-white">Include CAMs?</p>
+                                    <p class="text-xs text-slate-400">Low quality screeners.</p>
+                                </div>
+                            </label>
                         </div>
-
-                        <label id="prefs-cams" class="flex items-center space-x-4 bg-slate-700/50 p-5 rounded-xl cursor-pointer border border-transparent hover:border-indigo-500/50 transition-all">
-                            <input type="checkbox" id="include-cams" class="w-6 h-6 rounded border-slate-600 text-indigo-600 bg-slate-800">
-                            <div>
-                                <p class="font-bold text-lg text-white">Include CAMs / Screeners?</p>
-                                <p class="text-xs text-slate-400">Enable this to see lower quality streams filmed on devices.</p>
-                            </div>
-                        </label>
                     </div>
                 </div>
 
-                <!-- Step: Master Keys -->
-                <div class="step" id="step-keys">
-                    <h2 class="text-2xl font-bold mb-6 text-white tracking-tight">4. API Credentials</h2>
-                    
-                    <!-- Anime Toggle -->
-                    <label class="flex items-center space-x-4 bg-slate-700/50 p-4 rounded-xl cursor-pointer mb-6">
-                        <input type="checkbox" id="include-anime" checked class="w-6 h-6 rounded border-slate-600 text-indigo-600 bg-slate-800">
-                        <span class="font-bold text-white">Include Animé catalogs?</span>
-                    </label>
+                <div class="step" id="step-catalogs">
+                    <h2 class="text-2xl font-bold mb-4 text-white tracking-tight">4. Catalog Manager</h2>
+                    <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-700">
+                        <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+                            <h3 class="text-lg font-bold text-indigo-300">Catalog Order & Visibility</h3>
+                            <div class="flex gap-2">
+                                <button type="button" onclick="moveStreamingToTop()" class="bg-indigo-600 hover:bg-indigo-500 text-white px-3 py-1 rounded text-xs font-bold transition-all">Prioritize Streaming Services</button>
+                                <label class="flex items-center space-x-2 cursor-pointer bg-slate-800 px-3 py-1 rounded-lg border border-slate-600">
+                                    <input type="checkbox" id="include-anime" checked class="w-4 h-4 text-indigo-600 rounded" onchange="renderCatalogs()">
+                                    <span class="text-xs font-bold uppercase tracking-wider">Include Anime</span>
+                                </label>
+                            </div>
+                        </div>
+                        <p class="text-xs text-slate-400 mb-4">Reorder using Up/Down. Toggle <span class="text-white">Home</span> (Dashboard) or <span class="text-white">Discovery</span> (Enabled) for each provider.</p>
+                        
+                        <div class="bg-slate-800/80 p-3 rounded-t border-b border-slate-700 flex justify-between items-center mb-1">
+                            <span class="text-xs font-bold text-slate-400 uppercase">Global Controls</span>
+                            <div class="flex gap-4">
+                                <label class="flex items-center space-x-2 cursor-pointer">
+                                    <input type="checkbox" id="select-all-home" onchange="toggleAllCatalogs('home', this.checked)" class="rounded bg-slate-700 border-slate-600 text-indigo-500 w-4 h-4">
+                                    <span class="text-xs text-slate-300 font-bold">All Home</span>
+                                </label>
+                                <label class="flex items-center space-x-2 cursor-pointer">
+                                    <input type="checkbox" id="select-all-discovery" onchange="toggleAllCatalogs('discovery', this.checked)" class="rounded bg-slate-700 border-slate-600 text-indigo-500 w-4 h-4">
+                                    <span class="text-xs text-slate-300 font-bold">All Disc.</span>
+                                </label>
+                            </div>
+                        </div>
 
+                        <div class="max-h-[500px] overflow-y-auto pr-2 space-y-2 custom-scroll" id="catalog-container">
+                            </div>
+                    </div>
+                </div>
+
+                <div class="step" id="step-keys">
+                    <h2 class="text-2xl font-bold mb-6 text-white tracking-tight">5. API Credentials</h2>
                     <div class="bg-slate-900/80 p-5 rounded-xl border border-indigo-500/20 grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="space-y-4">
                             <p class="text-xs text-indigo-400 font-bold uppercase tracking-widest">TMDb Config <span class="text-red-500">*</span></p>
@@ -248,24 +271,21 @@
                         <div class="space-y-4">
                             <p class="text-xs text-indigo-400 font-bold uppercase tracking-widest">Additional Providers</p>
                             <div id="tvdb-field">
-                                <input type="text" id="tvdb-key" placeholder="TVDB API Key (Required for Meta)" class="w-full bg-slate-800 border border-slate-700 p-2 rounded text-sm text-white outline-none">
+                                <input type="text" id="tvdb-key" placeholder="TVDB API Key" class="w-full bg-slate-800 border border-slate-700 p-2 rounded text-sm text-white outline-none">
                                 <a href="https://thetvdb.com/dashboard/account/apikey" target="_blank" class="text-[10px] text-slate-500 hover:text-indigo-400 block underline mt-1">TVDB API Settings</a>
                             </div>
-                            
                             <div id="fanart-field" class="mt-2">
-                                <input type="text" id="fanart-key" placeholder="Fanart API Key (Required for Meta)" class="w-full bg-slate-800 border border-slate-700 p-2 rounded text-sm text-white outline-none">
+                                <input type="text" id="fanart-key" placeholder="Fanart API Key" class="w-full bg-slate-800 border border-slate-700 p-2 rounded text-sm text-white outline-none">
                                 <a href="https://fanart.tv/get-an-api-key/" target="_blank" class="text-[10px] text-slate-500 hover:text-indigo-400 block underline mt-1">Fanart API Settings</a>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Gemini AI Toggle -->
-                    <div id="gemini-section" class="mt-6 hidden">
+                    <div id="gemini-section" class="mt-6">
                         <div class="bg-amber-900/20 border border-amber-600/30 p-4 rounded-xl mb-4">
                             <label class="flex items-center space-x-4 cursor-pointer">
-                                <input type="checkbox" id="enable-gemini" class="w-6 h-6 rounded border-slate-600 text-indigo-600 bg-slate-800">
+                                <input type="checkbox" id="enable-gemini" class="w-6 h-6 rounded border-slate-600 text-indigo-600 bg-slate-800" onchange="toggleGemini(this.checked)">
                                 <div>
-                                    <p class="font-bold text-white">Enable Gemini AI Search?</p>
+                                    <p class="font-bold text-white">Enable Gemini AI Search? (Optional)</p>
                                     <p class="text-xs text-amber-400">Note: This is a paid service from Google.</p>
                                 </div>
                             </label>
@@ -277,9 +297,8 @@
                     </div>
                 </div>
 
-                <!-- Step: Posters -->
                 <div class="step" id="step-posters">
-                    <h2 class="text-2xl font-bold mb-6 text-white tracking-tight">5. Poster Ratings</h2>
+                    <h2 class="text-2xl font-bold mb-6 text-white tracking-tight">6. Poster Ratings</h2>
                     <label class="flex items-center space-x-4 bg-slate-700/50 p-5 rounded-xl cursor-pointer mb-6 border border-transparent hover:border-indigo-500/50 transition-all">
                         <input type="checkbox" id="do-posters" class="w-6 h-6 rounded border-slate-600 text-indigo-600 bg-slate-800">
                         <p class="font-bold text-lg leading-tight text-white">Enable rated posters? (Free & Paid Options)</p>
@@ -298,128 +317,116 @@
                 </div>
             </div>
 
-            <!-- Footer Navigation -->
-            <div class="mt-12 flex justify-between">
+            <div class="mt-12 flex justify-between pt-6 border-t border-slate-700">
                 <button type="button" id="prev-btn" onclick="goBack()" class="bg-slate-700 px-8 py-3 rounded-xl font-bold hover:bg-slate-600 transition-all border border-slate-600">Back</button>
                 <button type="button" id="next-btn" onclick="validateAndGoNext()" class="bg-indigo-600 px-10 py-3 rounded-xl font-bold hover:bg-indigo-500 transition-all shadow-lg ml-auto">Next Step</button>
                 <button type="button" id="finish-btn" class="hidden bg-green-600 px-10 py-3 rounded-xl font-bold hover:bg-green-500 transition-all shadow-lg ml-auto" onclick="validateAndFinalize()">Generate Files</button>
             </div>
         </div>
 
-        <!-- DOWNLOAD PAGE -->
         <div id="page-downloads" class="page text-center">
             <h2 class="text-3xl font-bold mb-4 text-indigo-400 tracking-tighter italic">BUILD COMPLETE</h2>
             <p class="text-slate-400 mb-6">Download your config files below.</p>
             
             <div id="dl-container" class="flex flex-col gap-4 max-w-sm mx-auto mb-10"></div>
             
-            <!-- Dynamic Instructions Container -->
             <div id="instructions-area" class="text-left max-w-2xl mx-auto space-y-8 hidden">
                 
-                <!-- Meta Instructions -->
-                <div id="instr-meta" class="bg-slate-700/30 p-6 rounded-xl border border-indigo-500/30 hidden">
-                    <h3 class="text-xl font-bold text-indigo-300 mb-3">Configure Metadata</h3>
-                    <p class="mb-2">Go to <a href="https://aiometadatafortheweak.nhyira.dev/configure/" target="_blank" class="text-indigo-400 underline hover:text-indigo-300">AIO Metadata Config</a></p>
-                    <ul class="list-disc pl-5 space-y-2 text-slate-300 text-sm">
-                        <li><strong>To Import:</strong> Go to the <strong>Configuration</strong> tab and click <strong>Import</strong> to load your .json file.</li>
-                        <li><strong>To get the URL:</strong> On the same <strong>Configuration</strong> tab, click Save, create a password. The URL will appear under the save button.</li>
-                    </ul>
-                    <div class="mt-4 bg-amber-900/20 border border-amber-600/30 p-4 rounded-lg text-xs text-amber-200 leading-relaxed">
-                        <strong class="block mb-1 text-amber-400 uppercase tracking-wide">! Important !</strong> 
-                        Keep your AIO Key safe! Store it like a password. This is a live environment, meaning you can edit these settings in the future on the website and the updates will pull across to Stremio automatically. You won't ever have to reinstall the addon in Stremio again to update your settings.
+                <div class="space-y-6">
+                    <div id="instr-meta" class="bg-slate-800 p-5 rounded-xl border border-indigo-500/30 hidden">
+                        <h3 class="text-lg font-bold text-indigo-300 mb-2">1. Install AIO Metadata</h3>
+                        <p class="text-sm text-slate-400 mb-3">Go to <a href="https://aiometadatafortheweak.nhyira.dev/configure/" target="_blank" class="text-indigo-400 underline">AIO Metadata Config</a></p>
+                        <div class="text-slate-300 text-xs space-y-2">
+                            <p><strong>To Import:</strong> Go to the <strong>Configuration</strong> tab and click <strong>Import</strong> to load your <code>aiometadata-config.json</code> file.</p>
+                            <p><strong>To get the URL:</strong> On the same <strong>Configuration</strong> tab, click Save, create a password. The URL will appear under the save button.</p>
+                            <div class="bg-slate-700/50 p-2 rounded border-l-4 border-green-500">
+                                <strong class="text-green-400">INSTALL:</strong> Click the <strong>Install</strong> button next to the URL to open Stremio directly.
+                            </div>
+                        </div>
+                        <div class="mt-4 bg-amber-900/20 border border-amber-600/30 p-4 rounded-lg text-xs text-amber-200 leading-relaxed">
+                            <strong class="block mb-1 text-amber-400 uppercase tracking-wide">! IMPORTANT !</strong> 
+                            Keep your AIO Key safe! Store it like a password. This is a live environment, meaning you can edit these settings in the future on the website and the updates will pull across to Stremio automatically. You won't ever have to reinstall the addon in Stremio again to update your settings.
+                        </div>
+                    </div>
+
+                    <div id="instr-streams" class="bg-slate-800 p-5 rounded-xl border border-indigo-500/30 hidden">
+                        <h3 class="text-lg font-bold text-emerald-300 mb-2">2. Install AIO Streams</h3>
+                        <p class="text-sm text-slate-400 mb-3">Go to <a href="https://aiostreamsfortheweak.nhyira.dev/stremio/configure?menu=save-install" target="_blank" class="text-emerald-400 underline">AIO Streams Config</a></p>
+                        <div class="text-slate-300 text-xs space-y-2">
+                            <p>Click the <strong>Save & Install</strong> tab.</p>
+                            <p><strong>To Import:</strong> Click <strong>Import</strong> then <strong>Import Config</strong> to load your <code>aiostreams-config.json</code> file.</p>
+                            <p><strong>To get the URL:</strong> Click Save, create a password.</p>
+                            <div class="bg-slate-700/50 p-2 rounded border-l-4 border-green-500">
+                                <strong class="text-green-400">INSTALL:</strong> Click the <strong>Install</strong> button to open Stremio directly.
+                            </div>
+                            <p class="text-[10px] text-slate-500 italic">(Only copy the URL if the button doesn't work).</p>
+                        </div>
+                        <div class="bg-slate-900/50 p-2 rounded text-[10px] text-amber-400 border border-amber-500/20 my-2">
+                            <strong>Note:</strong> If streams don't load, try the <a href="https://aiostreamsfortheweebs.midnightignite.me/stremio/configure" target="_blank" class="underline text-amber-200">Alternative Link</a>.
+                        </div>
+                        <div class="mt-4 bg-amber-900/20 border border-amber-600/30 p-4 rounded-lg text-xs text-amber-200 leading-relaxed">
+                            <strong class="block mb-1 text-amber-400 uppercase tracking-wide">! IMPORTANT !</strong> 
+                            Keep your AIO Key safe! Store it like a password. This is a live environment, meaning you can edit these settings in the future on the website and the updates will pull across to Stremio automatically. You won't ever have to reinstall the addon in Stremio again to update your settings.
+                        </div>
                     </div>
                 </div>
 
-                <!-- Streams Instructions -->
-                <div id="instr-streams" class="bg-slate-700/30 p-6 rounded-xl border border-indigo-500/30 hidden">
-                    <h3 class="text-xl font-bold text-indigo-300 mb-3">Configure Streams</h3>
-                    <p class="mb-2">Go to <a href="https://aiostreamsfortheweak.nhyira.dev/stremio/configure?menu=save-install" target="_blank" class="text-indigo-400 underline hover:text-indigo-300">AIO Streams Config</a></p>
-                    <ul class="list-disc pl-5 space-y-2 text-slate-300 text-sm">
-                        <li>Click the <strong>Save & Install</strong> tab.</li>
-                        <li><strong>To Import:</strong> Click <strong>Import</strong> then <strong>Import Config</strong> to load your .json file.</li>
-                        <li><strong>To get the URL:</strong> Click Save, create a password, click Install, then copy the URL.</li>
-                    </ul>
-                    <div class="mt-4 bg-amber-900/20 border border-amber-600/30 p-4 rounded-lg text-xs text-amber-200 leading-relaxed">
-                        <strong class="block mb-1 text-amber-400 uppercase tracking-wide">! Important !</strong> 
-                        Keep your AIO Key safe! Store it like a password. This is a live environment, meaning you can edit these settings in the future on the website and the updates will pull across to Stremio automatically. You won't ever have to reinstall the addon in Stremio again to update your settings.
-                    </div>
-                </div>
-
-                <!-- Install Instructions -->
                 <div id="instr-final" class="bg-slate-800 p-6 rounded-xl border border-slate-600">
-                    <h3 class="text-xl font-bold text-white mb-4">Step 3: Install onto Stremio</h3>
+                    <h3 class="text-xl font-bold text-white mb-4">3. Final Polish with CineBye</h3>
                     
-                    <!-- CineBye Section -->
-                    <div id="cinebye-section" class="mb-6 bg-slate-900/50 p-4 rounded-lg border border-slate-700/50">
-                        <div class="flex items-center gap-2 mb-2">
-                            <span class="bg-indigo-600 text-xs font-bold px-2 py-1 rounded text-white">A</span>
-                            <a href="https://cinebye.elfhosted.com/" target="_blank" class="text-indigo-400 font-bold hover:underline text-lg">Open CineBye Manager</a>
-                        </div>
-                        <p class="text-sm text-slate-400 mb-3">Log in and <strong>tick these options</strong>:</p>
-                        <ul class="list-disc pl-5 space-y-2 text-slate-300 text-sm mb-4">
-                            <li>
-                                <span class="text-white font-bold">Remove Cinemeta Search</span>
-                                <br><span class="text-slate-500 text-xs">Stops Cinemeta results from appearing when you search.</span>
-                            </li>
-                            <li>
-                                <span class="text-white font-bold">Remove Cinemeta Catalogs</span>
-                                <br><span class="text-slate-500 text-xs">Removes Popular, New, and Featured catalogs from your home screen.</span>
-                            </li>
-                            <li>
-                                <span class="text-white font-bold">Remove Cinemeta Metadata</span>
-                                <br><span class="text-slate-500 text-xs">Stops Cinemeta from providing metadata for your movies and series.</span>
-                            </li>
-                        </ul>
-                        <div class="bg-slate-800 p-2 rounded text-center border border-slate-600">
-                            <span class="text-green-400 font-bold text-xs uppercase">Click "Sync to Stremio"</span>
-                        </div>
-                    </div>
-
-                    <!-- Addon Manager Section -->
-                    <div class="bg-slate-900/50 p-4 rounded-lg border border-slate-700/50">
-                        <div class="flex items-center gap-2 mb-2">
-                            <span class="bg-indigo-600 text-xs font-bold px-2 py-1 rounded text-white">B</span>
-                            <a href="https://stremio-addon-manager.pages.dev/" target="_blank" class="text-indigo-400 font-bold hover:underline text-lg">Open Addon Manager</a>
-                        </div>
-                        
-                        <ol class="list-decimal pl-5 space-y-3 text-slate-300 text-sm">
-                            <li>Log in and click the <strong>bin icon</strong> on ALL addons <strong>apart from Cinemeta and your subtitles</strong>.</li>
-                            <li>Click <strong>Sync to Stremio</strong>.</li>
-                            
-                            <li id="step-add-meta" class="hidden">
-                                Click <strong>Add Addon</strong> and paste your <span class="text-indigo-300">AIOMETADATA URL</span>.
-                            </li>
-                            <li id="step-add-stream" class="hidden">
-                                Click <strong>Add Addon</strong> and paste your <span class="text-indigo-300">AIOSTREAMS URL</span>.
-                            </li>
-                            
-                            <li>
-                                Reorder your addons so the top 3 are in this order:
-                                <div id="order-list-visual" class="bg-slate-800 p-3 rounded border border-slate-600 mt-2 font-mono text-xs font-bold text-center space-y-1 w-fit mx-auto min-w-[200px]">
-                                    <!-- Populated by JS -->
+                    <ol class="list-decimal pl-5 space-y-6 text-slate-300 text-sm">
+                        <li>
+                            <div class="mb-2"><strong>Open CineBye Manager</strong></div>
+                            <p class="text-xs text-slate-400 mb-2">This tool allows you to clean up your Stremio interface.</p>
+                            <a href="https://cinebye.elfhosted.com/" target="_blank" class="inline-block bg-slate-700 px-4 py-2 rounded text-white text-xs font-bold hover:bg-slate-600 border border-slate-500">Open CineBye</a>
+                            <div class="mt-2 text-xs text-slate-400 space-y-2">
+                                <p>1. Log in.</p>
+                                <p>2. Tick <strong>Remove Cinemeta Catalogs</strong> and <strong>Remove Cinemeta Search</strong>.</p>
+                                <p>3. <strong>Cleanup & Reorder:</strong> You can also reorder your addons here. To delete old addons, simply click the <span class="text-red-400 font-bold">Red X</span> next to them.</p>
+                                <p>4. <strong>Recommended Order:</strong></p>
+                                <div class="pl-4 font-mono text-xs text-indigo-300">
+                                    1. Cinemeta (Required Base)<br>
+                                    2. AIO Metadata<br>
+                                    3. AIO Streams
                                 </div>
-                                <p class="text-xs text-slate-500 mt-1 text-center">Your other addons (subtitles etc) can be below that.</p>
-                            </li>
-                            
-                            <li>Click <strong>Sync to Stremio</strong> and it will be done.</li>
-                        </ol>
+                                <p>5. Click <strong>Sync to Stremio</strong>.</p>
+                            </div>
+                        </li>
+                    </ol>
 
-                        <div class="mt-4 text-center bg-indigo-900/20 p-3 rounded-lg border border-indigo-500/20">
-                            <p class="text-indigo-200 text-sm font-bold">🎉 Force close and reopen Stremio and enjoy the nice clean setup!</p>
-                        </div>
+                    <div class="mt-8 pt-6 border-t border-slate-700">
+                        <details class="group">
+                            <summary class="flex items-center cursor-pointer text-xs font-bold text-amber-500 uppercase tracking-widest hover:text-amber-400">
+                                <span class="mr-2">⚠️ Can't install to Stremio on this device?</span>
+                                <span class="group-open:rotate-180 transition-transform">▼</span>
+                            </summary>
+                            <div class="mt-4 bg-slate-900 p-4 rounded-lg border border-slate-700 text-xs text-slate-400 leading-relaxed">
+                                <p class="mb-2">If the "Install" buttons above don't open Stremio app:</p>
+                                <ol class="list-decimal pl-4 space-y-2">
+                                    <li>Complete the Save step on the config websites to generate your <strong>Install URL</strong>.</li>
+                                    <li>Copy that long URL (it starts with <code>https://...</code>).</li>
+                                    <li>Open <a href="https://stremio-addon-manager.pages.dev/" target="_blank" class="text-indigo-400 underline">Addon Manager</a>.</li>
+                                    <li>Click <strong>Add Addon</strong> and paste the URL manually.</li>
+                                    <li>Click <strong>Sync to Stremio</strong>.</li>
+                                    <li>Go back and do the CineBye step afterwards.</li>
+                                </ol>
+                            </div>
+                        </details>
                     </div>
                 </div>
             </div>
 
-            <button onclick="location.reload()" class="mt-12 text-slate-500 hover:text-white uppercase text-xs font-bold tracking-widest transition-all">Start New Setup</button>
+            <div class="mt-12 flex justify-center gap-4">
+                <button onclick="goBackToWizard()" class="text-slate-400 hover:text-white uppercase text-xs font-bold tracking-widest transition-all px-6 py-3 border border-slate-600 rounded-lg">Back to Editor</button>
+                <button onclick="location.reload()" class="text-slate-400 hover:text-white uppercase text-xs font-bold tracking-widest transition-all px-6 py-3 border border-slate-600 rounded-lg">Start New Setup</button>
+            </div>
         </div>
     </div>
 
     <script>
-        // --- EMBEDDED JSON DATA START ---
+        // --- EMBEDDED JSON DATA START (Sanitized & Pruned) ---
         const MASTER_METADATA = {
             "version": "1.23.5",
-            "exportedAt": "2026-01-20T18:15:14.679Z",
             "config": {
                 "language": "en-GB",
                 "includeAdult": false,
@@ -443,31 +450,29 @@
                 "enableRatingPostersForLibrary": true,
                 "ageRating": "None",
                 "searchEnabled": true,
-                "sessionId": "a8806ac44afee0c23b0ab210f7daa3bf7a0cfecc",
                 "timezone": "Europe/London",
                 "catalogs": [
-                    { "id": "tmdb.top", "name": "Popular", "type": "movie", "source": "tmdb", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false, "displayType": "movie" },
-                    { "id": "tmdb.top", "name": "Popular", "type": "series", "source": "tmdb", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false, "displayType": "series" },
-                    { "id": "mal.top_movies", "name": "Top Movies", "type": "anime", "source": "mal", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false, "displayType": "anime" },
-                    { "id": "mal.top_series", "name": "Top Series", "type": "anime", "source": "mal", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false, "displayType": "anime" },
                     { "id": "tmdb.trending", "name": "Trending", "type": "movie", "source": "tmdb", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false, "displayType": "movie" },
                     { "id": "tmdb.trending", "name": "Trending", "type": "series", "source": "tmdb", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false, "displayType": "series" },
-                    { "id": "tmdb.top_rated", "name": "Top Rated", "type": "movie", "source": "tmdb", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false, "displayType": "movie" },
-                    { "id": "tmdb.top_rated", "name": "Top Rated", "type": "series", "source": "tmdb", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false, "displayType": "series" },
+                    { "id": "streaming.nfx", "name": "Netflix (Movies)", "type": "movie", "source": "streaming", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false },
+                    { "id": "streaming.nfx", "name": "Netflix (Series)", "type": "series", "source": "streaming", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false },
                     { "id": "mal.most_popular", "name": "Most Popular", "type": "anime", "source": "mal", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false, "displayType": "anime" },
-                    { "id": "mal.top_anime", "name": "Top Anime", "type": "anime", "source": "mal", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false, "displayType": "anime" },
-                    { "id": "tmdb.airing_today", "name": "Airing Today", "type": "series", "source": "tmdb", "enabled": false, "showInHome": false, "enableRatingPosters": true, "randomizePerPage": false, "displayType": "series" },
-                    { "id": "tmdb.year", "name": "By Year", "type": "movie", "source": "tmdb", "enabled": true, "showInHome": false, "enableRatingPosters": true, "randomizePerPage": false, "displayType": "movie" },
-                    { "id": "tmdb.year", "name": "By Year", "type": "series", "source": "tmdb", "enabled": true, "showInHome": false, "enableRatingPosters": true, "randomizePerPage": false, "displayType": "series" },
-                    { "id": "tmdb.language", "name": "By Language", "type": "movie", "source": "tmdb", "enabled": true, "showInHome": false, "enableRatingPosters": true, "randomizePerPage": false, "displayType": "movie" },
-                    { "id": "tmdb.language", "name": "By Language", "type": "series", "source": "tmdb", "enabled": true, "showInHome": false, "enableRatingPosters": true, "randomizePerPage": false, "displayType": "series" },
-                    { "id": "tvdb.trending", "name": "Trending", "type": "movie", "source": "tvdb", "enabled": true, "showInHome": false, "enableRatingPosters": true, "randomizePerPage": false, "displayType": "movie" },
-                    { "id": "tvdb.trending", "name": "Trending", "type": "series", "source": "tvdb", "enabled": true, "showInHome": false, "enableRatingPosters": true, "randomizePerPage": false, "displayType": "series" },
-                    { "id": "tvdb.genres", "name": "Genres", "type": "movie", "source": "tvdb", "enabled": true, "showInHome": false, "enableRatingPosters": true, "randomizePerPage": false, "displayType": "movie" },
-                    { "id": "tvdb.genres", "name": "Genres", "type": "series", "source": "tvdb", "enabled": true, "showInHome": false, "enableRatingPosters": true, "randomizePerPage": false, "displayType": "series" },
-                    { "id": "tvdb.collections", "name": "Collections", "type": "movie", "source": "tvdb", "enabled": true, "showInHome": false, "enableRatingPosters": true, "randomizePerPage": false, "displayType": "movie" },
-                    { "id": "tvmaze.schedule", "name": "TVmaze Daily Schedule", "type": "series", "source": "tvmaze", "enabled": false, "showInHome": false, "enableRatingPosters": true, "randomizePerPage": false },
+                    { "id": "streaming.dnp", "name": "Disney+ (Movies)", "type": "movie", "source": "streaming", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false },
+                    { "id": "streaming.dnp", "name": "Disney+ (Series)", "type": "series", "source": "streaming", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false },
+                    { "id": "streaming.amp", "name": "Prime Video (Movies)", "type": "movie", "source": "streaming", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false },
+                    { "id": "streaming.amp", "name": "Prime Video (Series)", "type": "series", "source": "streaming", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false },
                     { "id": "mal.airing", "name": "Airing Now", "type": "anime", "source": "mal", "enabled": true, "showInHome": false, "enableRatingPosters": true, "randomizePerPage": false, "displayType": "anime" },
+                    { "id": "streaming.hbm", "name": "HBO Max (Movies)", "type": "movie", "source": "streaming", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false },
+                    { "id": "streaming.hbm", "name": "HBO Max (Series)", "type": "series", "source": "streaming", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false },
+                    { "id": "streaming.atp", "name": "Apple TV+ (Movies)", "type": "movie", "source": "streaming", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false },
+                    { "id": "streaming.atp", "name": "Apple TV+ (Series)", "type": "series", "source": "streaming", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false },
+                    { "id": "mal.top_anime", "name": "Top Anime", "type": "anime", "source": "mal", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false, "displayType": "anime" },
+                    { "id": "streaming.hlu", "name": "Hulu (Movies)", "type": "movie", "source": "streaming", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false },
+                    { "id": "streaming.hlu", "name": "Hulu (Series)", "type": "series", "source": "streaming", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false },
+                    { "id": "streaming.pcp", "name": "Peacock Premium (Movies)", "type": "movie", "source": "streaming", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false },
+                    { "id": "streaming.pcp", "name": "Peacock Premium (Series)", "type": "series", "source": "streaming", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false },
+                    { "id": "mal.top_movies", "name": "Top Movies", "type": "anime", "source": "mal", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false, "displayType": "anime" },
+                    { "id": "mal.top_series", "name": "Top Series", "type": "anime", "source": "mal", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false, "displayType": "anime" },
                     { "id": "mal.upcoming", "name": "Upcoming Season", "type": "anime", "source": "mal", "enabled": true, "showInHome": false, "enableRatingPosters": true, "randomizePerPage": false, "displayType": "anime" },
                     { "id": "mal.schedule", "name": "Airing Schedule", "type": "anime", "source": "mal", "enabled": true, "showInHome": false, "enableRatingPosters": true, "randomizePerPage": false, "displayType": "anime" },
                     { "id": "mal.seasons", "name": "Seasons", "type": "anime", "source": "mal", "enabled": true, "showInHome": false, "enableRatingPosters": true, "randomizePerPage": false, "displayType": "anime" },
@@ -479,28 +484,10 @@
                     { "id": "mal.genres", "name": "Genres", "type": "anime", "source": "mal", "enabled": true, "showInHome": false, "enableRatingPosters": true, "randomizePerPage": false, "displayType": "anime" },
                     { "id": "mal.studios", "name": "By Studio", "type": "anime", "source": "mal", "enabled": true, "showInHome": false, "enableRatingPosters": true, "randomizePerPage": false, "displayType": "anime" },
                     { "id": "mal.most_favorites", "name": "Most Favorites", "type": "anime", "source": "mal", "enabled": true, "showInHome": false, "enableRatingPosters": true, "randomizePerPage": false, "displayType": "anime" },
-                    { "id": "tmdb.favorites", "name": "TMDB Favorites (Movies)", "type": "movie", "source": "tmdb", "enabled": false, "showInHome": false, "enableRatingPosters": true, "randomizePerPage": false },
-                    { "id": "tmdb.favorites", "name": "TMDB Favorites (Series)", "type": "series", "source": "tmdb", "enabled": false, "showInHome": false, "enableRatingPosters": true, "randomizePerPage": false },
-                    { "id": "tmdb.watchlist", "name": "TMDB Watchlist (Movies)", "type": "movie", "source": "tmdb", "enabled": false, "showInHome": false, "enableRatingPosters": true, "randomizePerPage": false },
-                    { "id": "tmdb.watchlist", "name": "TMDB Watchlist (Series)", "type": "series", "source": "tmdb", "enabled": false, "showInHome": false, "enableRatingPosters": true, "randomizePerPage": false },
-                    { "id": "streaming.nfx", "name": "Netflix (Movies)", "type": "movie", "source": "streaming", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false },
-                    { "id": "streaming.nfx", "name": "Netflix (Series)", "type": "series", "source": "streaming", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false },
                     { "id": "streaming.nfk", "name": "Netflix Kids (Movies)", "type": "movie", "source": "streaming", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false },
                     { "id": "streaming.nfk", "name": "Netflix Kids (Series)", "type": "series", "source": "streaming", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false },
-                    { "id": "streaming.hbm", "name": "HBO Max (Movies)", "type": "movie", "source": "streaming", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false },
-                    { "id": "streaming.hbm", "name": "HBO Max (Series)", "type": "series", "source": "streaming", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false },
-                    { "id": "streaming.dnp", "name": "Disney+ (Movies)", "type": "movie", "source": "streaming", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false },
-                    { "id": "streaming.dnp", "name": "Disney+ (Series)", "type": "series", "source": "streaming", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false },
-                    { "id": "streaming.amp", "name": "Prime Video (Movies)", "type": "movie", "source": "streaming", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false },
-                    { "id": "streaming.amp", "name": "Prime Video (Series)", "type": "series", "source": "streaming", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false },
-                    { "id": "streaming.atp", "name": "Apple TV+ (Movies)", "type": "movie", "source": "streaming", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false },
-                    { "id": "streaming.atp", "name": "Apple TV+ (Series)", "type": "series", "source": "streaming", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false },
                     { "id": "streaming.pmp", "name": "Paramount+ (Movies)", "type": "movie", "source": "streaming", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false },
                     { "id": "streaming.pmp", "name": "Paramount+ (Series)", "type": "series", "source": "streaming", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false },
-                    { "id": "streaming.pcp", "name": "Peacock Premium (Movies)", "type": "movie", "source": "streaming", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false },
-                    { "id": "streaming.pcp", "name": "Peacock Premium (Series)", "type": "series", "source": "streaming", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false },
-                    { "id": "streaming.hlu", "name": "Hulu (Movies)", "type": "movie", "source": "streaming", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false },
-                    { "id": "streaming.hlu", "name": "Hulu (Series)", "type": "series", "source": "streaming", "enabled": true, "showInHome": true, "enableRatingPosters": true, "randomizePerPage": false },
                     { "id": "streaming.cts", "name": "Curiosity Stream (Movies)", "type": "movie", "source": "streaming", "enabled": false, "showInHome": false, "enableRatingPosters": true, "randomizePerPage": false },
                     { "id": "streaming.cts", "name": "Curiosity Stream (Series)", "type": "series", "source": "streaming", "enabled": false, "showInHome": false, "enableRatingPosters": true, "randomizePerPage": false },
                     { "id": "streaming.mgl", "name": "MagellanTV (Movies)", "type": "movie", "source": "streaming", "enabled": false, "showInHome": false, "enableRatingPosters": true, "randomizePerPage": false },
@@ -559,8 +546,6 @@
                     "searchNames": { "tvdb.collections.search": "Collections" }
                 },
                 "streaming": [ "nfx", "nfk", "hbm", "dnp", "amp", "atp", "pmp", "pcp", "hlu", "mgl", "cru", "dpe", "bet", "mub", "sta", "crc", "sky", "wow", "sst", "hay" ],
-                "lastModified": 1768905952986,
-                "configVersion": 1768905952987,
                 "displayTypeOverrides": {}
             },
             "metadata": {
@@ -586,8 +571,8 @@
             "formatter": {
                 "id": "custom",
                 "definition": {
-                    "name": "{stream.resolution::exists[\"{stream.resolution::replace('2160p','4K')::replace('1080p','HD')::replace('720p','SD')}\"||\"\"]} {stream.quality::exists[\"{stream.quality::replace('REMUX','+')::replace('BluRay','⭐⭐⭐⭐⭐')::replace('WEB-DL','⭐⭐⭐⭐')::replace('WEBRip','⭐⭐⭐⭐')}\"||\"\"]}",
-                    "description": "{stream.title::exists[\"🎬 {stream.title}\"||\"\"]}{stream.seasonEpisode::exists[\" - {stream.seasonEpisode::join(' ')}\"||\"\"]}{stream.year::exists[\" ({stream.year})\"||\"\"]}\n───────────────────\n{stream.languageEmojis::exists[\"Languages: {stream.languageEmojis}\"||\"\"]}\n{stream.quality::exists[\"✨ {stream.quality::replace('REMUX','+')::replace('BluRay','Premium Quality')::replace('WEB-DL','Streaming Quality')::replace('WEBRip','Streaming Quality')}\"||\"\"]}{stream.visualTags::~HDR::istrue[\" | 🌈 HDR\"||\"\"]}{stream.visualTags::~DV::istrue[\" | 🎥 Dolby Vision\"||\"\"]}{stream.audioTags::exists[\" | 🔊 {stream.audioTags::join(', ')}\"||\"\"]}\n───────────────────\n📂 {stream.size::>0[\"{stream.size::bytes}\"||\"\"]}{stream.seeders::>0[\" | 👥 {stream.seeders}\"||\"\"]}{addon.name::exists[\" | 🛰️ {addon.name}\"||\"\"]}"
+                    "name": "{stream.resolution::exists[\"{stream.resolution::replace('2160p','4K')::replace('1080p','HD')::replace('720p','SD')}\"||\"\"]} {stream.quality::exists[\"{stream.quality::replace('REMUX','+')::replace('BluRay','⭐⭐⭐⭐⭐')::replace('WEB-DL','⭐⭐⭐⭐')::replace('WEBRip','⭐⭐⭐⭐')}\"||\"\"]} {service.cached::istrue[\"⚡\"||\"⏳\"]}",
+                    "description": "{stream.type::=usenet[\"📦 USN \"||\"\"]}{stream.title::exists[\"🎬 {stream.title}\"||\"\"]}{stream.seasonEpisode::exists[\" - {stream.seasonEpisode::join(' ')}\"||\"\"]}{stream.year::exists[\" ({stream.year})\"||\"\"]}\n{service.cached::istrue[\"🟢 INSTANT PLAY\"||\"🔴 NEEDS TO DOWNLOAD\"]}\n─────────────\n{stream.languageEmojis::exists[\"Languages: {stream.languageEmojis}\"||\"\"]}\n{stream.quality::exists[\"✨ {stream.quality::replace('REMUX','+')::replace('BluRay','Premium Quality')::replace('WEB-DL','Streaming Quality')::replace('WEBRip','Streaming Quality')}\"||\"\"]}{stream.visualTags::~HDR::istrue[\" | 🌈 HDR\"||\"\"]}{stream.visualTags::~DV::istrue[\" | 🎥 Dolby Vision\"||\"\"]}{stream.audioTags::exists[\" | 🔊 {stream.audioTags::join(', ')}\"||\"\"]}\n─────────────\n📂 {stream.size::>0[\"{stream.size::bytes}\"||\"\"]}{service.name::exists[\" | ☁️ {service.name}\"||\"\"]}{service.cached::isfalse[\" | 👥 {stream.seeders}\"||\"\"]}{addon.name::exists[\" | 🛰️ {addon.name}\"||\"\"]}"
                 }
             },
             "preferredQualities": ["BluRay REMUX", "BluRay", "WEB-DL", "WEBRip", "HDRip", "HC HD-Rip", "DVDRip", "HDTV", "CAM", "TS", "TC", "SCR", "Unknown"],
@@ -611,7 +596,13 @@
             "deduplicator": { "enabled": true, "excludeAddons": [], "multiGroupBehaviour": "aggressive", "keys": ["filename", "infoHash"], "cached": "per_addon", "uncached": "per_service", "p2p": "single_result" },
             "trusted": false,
             "excludedResolutions": ["144p", "240p", "360p", "480p", "576p"],
+            "includedResolutions": [],
+            "requiredResolutions": [],
+            "includedQualities": [],
+            "requiredQualities": [],
             "excludedLanguages": [],
+            "includedLanguages": [],
+            "requiredLanguages": [],
             "preferredLanguages": ["English"],
             "includedVisualTags": [],
             "requiredVisualTags": [],
@@ -628,7 +619,12 @@
             "includedStreamTypes": [],
             "requiredStreamTypes": [],
             "preferredStreamTypes": ["usenet"],
+            "excludedEncodes": [],
+            "includedEncodes": [],
+            "requiredEncodes": [],
             "preferredEncodes": [],
+            "excludedKeywords": [],
+            "includeSeederRange": [0, 1000],
             "requiredSeederRange": [10, 1000],
             "seederRangeTypes": ["p2p"],
             "ageRangeTypes": ["usenet"],
@@ -644,42 +640,32 @@
             "groups": {
                 "enabled": true,
                 "groupings": [
-                    { "addons": ["1c5", "bcd"], "condition": "true" },
-                    { "addons": ["23a", "b9f", "da0"], "condition": "(count(resolution(cached(totalStreams), '2160p')) >= 3 and count(resolution(cached(totalStreams), '1080p')) >= 3 and count(resolution(cached(totalStreams), '720p')) >= 3) or totalTimeTaken > 10000" }
+                    { "addons": ["1c5", "bcd", "be5"], "condition": "true" },
+                    { "addons": ["23a", "b9f", "da0"], "condition": "(count(resolution(cached(totalStreams)) >= 3 and count(resolution(cached(totalStreams), '1080p')) >= 3 and count(resolution(cached(totalStreams), '720p')) >= 3) or totalTimeTaken > 10000" },
+                    { "addons": ["92e", "705", "9a3", "f89"], "condition": "(count(resolution(cached(totalStreams)) >= 3 and count(resolution(cached(totalStreams)) >= 3 and count(resolution(cached(totalStreams), '1080p')) >= 3 and count(resolution(cached(totalStreams), '720p')) >= 3) or totalTimeTaken > 10000" }
                 ],
                 "behaviour": "sequential"
             },
             "proxy": { "id": "builtin", "proxiedAddons": [], "proxiedServices": [] },
             "resultLimits": { "resolution": 3 },
-            "size": { "global": { "movies": [0, 41800000000], "series": [0, 12100000000] } },
+            "size": { "global": { "movies": [0, 100000000000], "series": [0, 100000000000] } },
+            "hideErrors": true,
             "hideErrorsForResources": [],
             "statistics": { "statsToShow": ["addon", "filter"] },
             "yearMatching": { "enabled": true, "requestTypes": [], "addons": [] },
             "titleMatching": { "mode": "contains", "enabled": true, "requestTypes": [], "addons": [] },
             "seasonEpisodeMatching": { "enabled": true, "requestTypes": [], "addons": [] },
             "autoPlay": { "attributes": ["quality", "resolution", "service"] },
+            "areYouStillThere": { "enabled": true, "episodesBeforeCheck": 4 },
             "precacheNextEpisode": true,
             "alwaysPrecache": true,
             "catalogModifications": [
-                { "id": "23a791b.torrentio-torbox-torrents", "type": "other", "name": "TorBox Torrents", "shuffle": false, "enabled": false, "usePosterService": false, "hideable": true, "searchable": false, "addonName": "Torrentio" },
-                { "id": "23a791b.torrentio-torbox-usenet", "type": "other", "name": "TorBox Usenet", "shuffle": false, "enabled": false, "usePosterService": false, "hideable": true, "searchable": false, "addonName": "Torrentio" },
-                { "id": "23a791b.torrentio-torbox-webdl", "type": "other", "name": "TorBox WebDL", "shuffle": false, "enabled": false, "usePosterService": false, "hideable": true, "searchable": false, "addonName": "Torrentio" }
+                { "id": "23a791b.torrentio-torbox-torrents", "name": "TorBox Torrents", "type": "other", "enabled": false, "shuffle": false, "usePosterService": false, "hideable": true, "searchable": false, "addonName": "Torrentio" },
+                { "id": "23a791b.torrentio-torbox-usenet", "name": "TorBox Usenet", "type": "other", "enabled": false, "shuffle": false, "usePosterService": false, "hideable": true, "searchable": false, "addonName": "Torrentio" },
+                { "id": "23a791b.torrentio-torbox-webdl", "name": "TorBox WebDL", "type": "other", "enabled": false, "shuffle": false, "usePosterService": false, "hideable": true, "searchable": false, "addonName": "Torrentio" }
             ],
             "cacheAndPlay": { "streamTypes": ["usenet"] },
-            "includedResolutions": [],
-            "requiredResolutions": [],
-            "includedQualities": [],
-            "requiredQualities": [],
-            "excludedEncodes": [],
-            "includedEncodes": [],
-            "requiredEncodes": [],
-            "excludedKeywords": [],
-            "includeSeederRange": [0, 1000],
-            "enableSeadex": true,
-            "hideErrors": true,
-            "areYouStillThere": { "enabled": true, "episodesBeforeCheck": 4 },
-            "autoRemoveDownloads": true,
-            "excludedStreamExpressions": ["merge(count(resolution(cached(streams), '2160p')) > 0 ? resolution(uncached(streams), '2160p') : [], count(resolution(cached(streams), '1080p')) > 0 ? resolution(uncached(streams), '1080p') : [], count(resolution(cached(streams), '720p')) > 0 ? resolution(uncached(streams), '720p') : [])"]
+            "autoRemoveDownloads": true
         };
 
         const MASTER_WITH_DEBRID = {
@@ -763,7 +749,6 @@
             "seederRangeTypes": ["p2p"],
             "ageRangeTypes": ["usenet"],
             "digitalReleaseFilter": { "enabled": false, "tolerance": 1, "requestTypes": ["movie", "series", "anime"], "addons": [] },
-            "enableSeadex": true,
             "excludeCachedFromAddons": [],
             "excludeCachedFromServices": [],
             "excludeCachedFromStreamTypes": [],
@@ -771,14 +756,13 @@
             "excludeUncachedFromAddons": [],
             "excludeUncachedFromServices": [],
             "excludeUncachedFromStreamTypes": [],
-            "excludedStreamExpressions": ["merge(count(resolution(cached(streams), '2160p')) > 0 ? resolution(uncached(streams), '2160p') : [], count(resolution(cached(streams), '1080p')) > 0 ? resolution(uncached(streams), '1080p') : [], count(resolution(cached(streams), '720p')) > 0 ? resolution(uncached(streams), '720p') : [])"],
             "dynamicAddonFetching": { "enabled": false, "condition": "count(cached(totalStreams)) >= 5 or totalTimeTaken >= 3000." },
             "groups": {
                 "enabled": true,
                 "groupings": [
                     { "addons": ["1c5", "bcd", "be5"], "condition": "true" },
-                    { "addons": ["23a", "b9f", "da0"], "condition": "(count(resolution(cached(totalStreams), '2160p')) >= 3 and count(resolution(cached(totalStreams), '1080p')) >= 3 and count(resolution(cached(totalStreams), '720p')) >= 3) or totalTimeTaken > 10000" },
-                    { "addons": ["92e", "705", "9a3", "f89"], "condition": "(count(resolution(cached(totalStreams), '2160p')) >= 3 and count(resolution(cached(totalStreams), '1080p')) >= 3 and count(resolution(cached(totalStreams), '720p')) >= 3) or totalTimeTaken > 10000" }
+                    { "addons": ["23a", "b9f", "da0"], "condition": "(count(resolution(cached(totalStreams)) >= 3 and count(resolution(cached(totalStreams), '1080p')) >= 3 and count(resolution(cached(totalStreams), '720p')) >= 3) or totalTimeTaken > 10000" },
+                    { "addons": ["92e", "705", "9a3", "f89"], "condition": "(count(resolution(cached(totalStreams)) >= 3 and count(resolution(cached(totalStreams)) >= 3 and count(resolution(cached(totalStreams), '1080p')) >= 3 and count(resolution(cached(totalStreams), '720p')) >= 3) or totalTimeTaken > 10000" }
                 ],
                 "behaviour": "sequential"
             },
@@ -805,34 +789,179 @@
         };
         // --- EMBEDDED JSON DATA END ---
 
+        // State
         let currentMode = '';
         let wizardFlow = [];
         let currentStepIdx = 0;
+        let catalogState = []; // Holds the unified catalog objects
         const GB_BYTES = 1073741824;
 
-        const langMap = {
-            "English": "en-US",
-            "Spanish": "es-ES",
-            "French": "fr-FR",
-            "German": "de-DE",
-            "Italian": "it-IT",
-            "Portuguese": "pt-PT",
-            "Russian": "ru-RU",
-            "Hindi": "hi-IN",
-            "Japanese": "ja-JP",
-            "Korean": "ko-KR",
-            "Chinese": "zh-CN",
-            "Arabic": "ar-SA"
-        };
+        // Language Config
+        const availableLanguages = [
+            { label: "English", code: "English" },
+            { label: "Spanish", code: "Spanish" },
+            { label: "French", code: "French" },
+            { label: "German", code: "German" },
+            { label: "Italian", code: "Italian" },
+            { label: "Portuguese", code: "Portuguese" },
+            { label: "Russian", code: "Russian" },
+            { label: "Hindi", code: "Hindi" },
+            { label: "Japanese", code: "Japanese" },
+            { label: "Korean", code: "Korean" },
+            { label: "Chinese", code: "Chinese" },
+            { label: "Arabic", code: "Arabic" }
+        ];
 
-        // UI Toggles
+        // --- INIT & UTILS ---
+
+        function initLanguages() {
+            const grid = document.getElementById('lang-grid');
+            grid.innerHTML = '';
+            availableLanguages.forEach(l => {
+                const checked = l.code === 'English' ? 'checked' : '';
+                grid.innerHTML += `
+                    <label class="flex items-center space-x-2 bg-slate-800 p-3 rounded-lg border border-slate-700 hover:border-indigo-500/50 cursor-pointer">
+                        <input type="checkbox" value="${l.code}" class="lang-check w-4 h-4 text-indigo-600 rounded bg-slate-700 border-slate-600 focus:ring-indigo-500" ${checked}>
+                        <span class="text-sm font-medium text-slate-200">${l.label}</span>
+                    </label>
+                `;
+            });
+        }
+
+        function initCatalogs() {
+            const raw = MASTER_METADATA.config.catalogs;
+            const grouped = {};
+
+            raw.forEach(c => {
+                // Group by ID to naturally separate Netflix (nfx) from Kids (nfk)
+                let key = c.id;
+                
+                // Clean Name for display (remove Movie/Series suffixes)
+                let cleanName = c.name.replace(' (Movies)', '').replace(' (Series)', '');
+                
+                if (!grouped[key]) {
+                    grouped[key] = {
+                        id: key,
+                        displayName: cleanName,
+                        type: c.type === 'anime' ? 'anime' : 'standard',
+                        items: [], 
+                        enabled: c.enabled, // Discovery Toggle
+                        showInHome: c.showInHome // Home Toggle
+                    };
+                }
+                grouped[key].items.push(c);
+            });
+
+            catalogState = Object.values(grouped);
+            renderCatalogs();
+        }
+
+        function toggleAllCatalogs(type, isChecked) {
+            const showAnime = document.getElementById('include-anime').checked;
+            
+            catalogState.forEach((cat, idx) => {
+                // Respect anime filter
+                if (cat.type === 'anime' && !showAnime) return;
+
+                if (type === 'home') updateCatalogState(idx, 'showInHome', isChecked);
+                if (type === 'discovery') updateCatalogState(idx, 'enabled', isChecked);
+            });
+            renderCatalogs();
+        }
+
+        function renderCatalogs() {
+            const container = document.getElementById('catalog-container');
+            container.innerHTML = '';
+            const showAnime = document.getElementById('include-anime').checked;
+
+            catalogState.forEach((cat, idx) => {
+                if (cat.type === 'anime' && !showAnime) return;
+
+                const div = document.createElement('div');
+                div.className = "bg-slate-800 p-3 rounded flex items-center justify-between group hover:bg-slate-700/80 transition-colors";
+                
+                div.innerHTML = `
+                    <div class="flex items-center gap-3 flex-1">
+                        <div class="flex flex-col gap-1">
+                            <button type="button" onclick="moveCatalog(${idx}, -1)" class="text-slate-500 hover:text-indigo-400 text-[10px] leading-none">▲</button>
+                            <button type="button" onclick="moveCatalog(${idx}, 1)" class="text-slate-500 hover:text-indigo-400 text-[10px] leading-none">▼</button>
+                        </div>
+                        <span class="font-bold text-sm text-slate-200">${cat.displayName}</span>
+                        ${cat.type === 'anime' ? '<span class="text-[10px] bg-purple-900/50 text-purple-300 px-1 rounded">ANIME</span>' : ''}
+                    </div>
+                    <div class="flex gap-4">
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="checkbox" ${cat.showInHome ? 'checked' : ''} onchange="updateCatalog(${idx}, 'showInHome', this.checked)" class="rounded bg-slate-700 border-slate-600 text-indigo-500 w-4 h-4">
+                            <span class="text-xs text-slate-400">Home</span>
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="checkbox" ${cat.enabled ? 'checked' : ''} onchange="updateCatalog(${idx}, 'enabled', this.checked)" class="rounded bg-slate-700 border-slate-600 text-indigo-500 w-4 h-4">
+                            <span class="text-xs text-slate-400">Discovery</span>
+                        </label>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function moveCatalog(index, direction) {
+            const newIndex = index + direction;
+            if (newIndex < 0 || newIndex >= catalogState.length) return;
+            // Swap
+            [catalogState[index], catalogState[newIndex]] = [catalogState[newIndex], catalogState[index]];
+            renderCatalogs();
+        }
+
+        // Logic enforcement separated from rendering for "Select All" efficiency
+        function updateCatalogState(index, field, value) {
+            const cat = catalogState[index];
+            cat[field] = value;
+
+            // Logic enforcement:
+            // 1. If Home is enabled, Discovery MUST be enabled (cannot have on Home if disabled globally)
+            if (field === 'showInHome' && value === true) {
+                cat.enabled = true;
+            }
+            // 2. If Discovery is disabled, Home MUST be disabled.
+            if (field === 'enabled' && value === false) {
+                cat.showInHome = false;
+            }
+        }
+
+        // Wrapper for single item change (state update + render)
+        function updateCatalog(index, field, value) {
+            updateCatalogState(index, field, value);
+            renderCatalogs();
+        }
+
+        function moveStreamingToTop() {
+            // Filter and sort
+            const streaming = [];
+            const others = [];
+            
+            catalogState.forEach(cat => {
+                if (cat.id.startsWith('streaming.')) {
+                    streaming.push(cat);
+                } else {
+                    others.push(cat);
+                }
+            });
+            
+            catalogState = [...streaming, ...others];
+            renderCatalogs();
+        }
+
+        // --- PAGE LOGIC ---
+
         function toggleDebridInput(id, checked) {
             document.getElementById(id).classList.toggle('hidden', !checked);
         }
-        
+        function toggleGemini(checked) {
+            document.getElementById('gemini-input').classList.toggle('hidden', !checked);
+        }
+
         document.getElementById('do-limit').addEventListener('change', e => document.getElementById('speed-options').classList.toggle('hidden', !e.target.checked));
         document.getElementById('do-posters').addEventListener('change', e => document.getElementById('poster-options').classList.toggle('hidden', !e.target.checked));
-        document.getElementById('enable-gemini').addEventListener('change', e => document.getElementById('gemini-input').classList.toggle('hidden', !e.target.checked));
 
         function startSetup(m) {
             currentMode = m;
@@ -840,8 +969,12 @@
             document.getElementById('page-wizard').classList.add('active');
             
             if (m === 'streams') wizardFlow = ['step-debrid', 'step-speed', 'step-prefs', 'step-keys'];
-            else if (m === 'meta') wizardFlow = ['step-prefs', 'step-keys', 'step-posters'];
-            else wizardFlow = ['step-debrid', 'step-speed', 'step-prefs', 'step-keys', 'step-posters'];
+            else if (m === 'meta') wizardFlow = ['step-prefs', 'step-catalogs', 'step-keys', 'step-posters'];
+            else wizardFlow = ['step-debrid', 'step-speed', 'step-prefs', 'step-catalogs', 'step-keys', 'step-posters'];
+
+            // Init dynamic UI
+            initLanguages();
+            if (m !== 'streams') initCatalogs();
 
             renderStep(0);
         }
@@ -851,26 +984,17 @@
             document.getElementById(wizardFlow[idx]).classList.add('active');
             currentStepIdx = idx;
             
-            // Visibility Logic
-            const isMeta = currentMode === 'meta' || currentMode === 'full';
-            const isStreams = currentMode === 'streams' || currentMode === 'full';
-            const showStreamPrefs = currentMode !== 'meta';
+            const isStreams = currentMode === 'streams';
+            const isMeta = currentMode === 'meta';
 
-            document.getElementById('streams-token-field').style.display = isMeta && !isStreams ? 'none' : 'block';
+            // UI Conditional Visibility
+            document.getElementById('streams-token-field').style.display = isMeta ? 'none' : 'block';
+            document.getElementById('section-languages').style.display = isMeta ? 'none' : 'block'; // Audio Languages (Streams only)
+            document.getElementById('section-interface-lang').style.display = isStreams ? 'none' : 'block'; // Interface Lang (Meta only)
+            document.getElementById('section-autoplay').style.display = isMeta ? 'none' : 'block'; // Hide AutoPlay for Meta
+            document.getElementById('prefs-res-limit').style.display = isMeta ? 'none' : 'block';
+            document.getElementById('cam-box').style.display = isMeta ? 'none' : 'flex';
             
-            // Fanart only for Meta or Full (Hidden for Streams Only)
-            document.getElementById('fanart-field').style.display = isStreams && !isMeta ? 'none' : 'block';
-            
-            // TVDB: Show always to avoid "missing from streams" complaint. 
-            // Previous logic hid it for streams, user says it's missing.
-            document.getElementById('tvdb-field').style.display = 'block'; 
-            
-            document.getElementById('gemini-section').style.display = isStreams && !isMeta ? 'none' : 'block';
-
-            // Prefs Page Visibility
-            document.getElementById('prefs-res-limit').style.display = showStreamPrefs ? 'block' : 'none';
-            document.getElementById('prefs-cams').style.display = showStreamPrefs ? 'flex' : 'none';
-
             document.getElementById('next-btn').style.display = (idx === wizardFlow.length - 1) ? 'none' : 'block';
             document.getElementById('finish-btn').classList.toggle('hidden', idx !== wizardFlow.length - 1);
         }
@@ -882,22 +1006,32 @@
                 document.getElementById('page-hub').classList.add('active');
             } else renderStep(currentStepIdx - 1);
         }
+        
+        function goBackToWizard() {
+            document.getElementById('page-downloads').classList.remove('active');
+            document.getElementById('page-wizard').classList.add('active');
+            // Don't change currentStepIdx, so they land on the last step (Review/Keys/Posters)
+        }
 
-        // VALIDATION FUNCTION
+        // --- VALIDATION & BUILD ---
+
         function validateStep() {
             const currentStepId = wizardFlow[currentStepIdx];
             
-            // Step: Debrid
             if (currentStepId === 'step-debrid') {
                 const checks = document.querySelectorAll('.debrid-check');
                 let hasChecked = false;
                 for (let c of checks) {
                     if (c.checked) {
                         hasChecked = true;
-                        // Find related input
-                        const inputId = 'key-' + c.id.replace('use-', '').replace('rd', 'realdebrid').replace('tb', 'torbox').replace('ad', 'alldebrid').replace('pm', 'premiumize').replace('dl', 'debridlink').replace('oc', 'offcloud').replace('put', 'putio').replace('en', 'easynews').replace('ed', 'easydebrid');
-                        const val = document.getElementById(inputId).value.trim();
-                        if (!val) {
+                        let actualInputId = '';
+                        if(c.id === 'use-rd') actualInputId = 'key-realdebrid';
+                        else if(c.id === 'use-tb') actualInputId = 'key-torbox';
+                        else if(c.id === 'use-ad') actualInputId = 'key-alldebrid';
+                        else if(c.id === 'use-pm') actualInputId = 'key-premiumize';
+                        else if(c.id === 'use-dl') actualInputId = 'key-debridlink';
+                        
+                        if (actualInputId && !document.getElementById(actualInputId).value.trim()) {
                             alert(`Please enter an API key for ${c.nextElementSibling.innerText}`);
                             return false;
                         }
@@ -905,271 +1039,253 @@
                 }
             }
 
-            // Step: Keys
             if (currentStepId === 'step-keys') {
                 const tmdb = document.getElementById('tmdb-key').value.trim();
-                const tvdb = document.getElementById('tvdb-key').value.trim();
-                const fanart = document.getElementById('fanart-key').value.trim();
-                const geminiCheck = document.getElementById('enable-gemini').checked;
-                const geminiKey = document.getElementById('gemini-key').value.trim();
-
-                // TMDb is required for all modes
                 if (!tmdb) { alert("TMDb API Key is required."); return false; }
                 
-                // TVDB: Required for Meta/Full. For Streams, user says it's "missing" from display,
-                // so we show it, but we can keep it strictly required only for Meta/Full if we want to be safe,
-                // OR make it strictly required everywhere if user implied it's "missing" meant "broken".
-                // Given "missing from streams" likely implies they want to USE it in streams, making it optional there avoids blocking.
-                // However, logic below ensures validation logic matches "Meta needs it".
                 if (currentMode !== 'streams') {
-                    if (!tvdb) { alert("TVDB API Key is required for Metadata."); return false; }
-                    if (!fanart) { alert("Fanart API Key is required for Metadata."); return false; }
-                } else {
-                    // For streams only mode, TVDB is visible (per renderStep fix) but we make it optional here
-                    // unless you want to force it. Leaving optional avoids breaking simple setups.
+                    // Meta validation
+                    if (!document.getElementById('tvdb-key').value.trim()) { alert("TVDB API Key is required for Metadata."); return false; }
+                    if (!document.getElementById('fanart-key').value.trim()) { alert("Fanart API Key is required for Metadata."); return false; }
                 }
 
-                if (geminiCheck && !geminiKey) { alert("Gemini API Key is required since you enabled it."); return false; }
+                // Gemini Validation (Only if checked)
+                if (document.getElementById('enable-gemini').checked) {
+                    if (!document.getElementById('gemini-key').value.trim()) {
+                        alert("Please enter a Gemini API Key or uncheck the box.");
+                        return false;
+                    }
+                }
             }
-
-            // Step: Posters
-            if (currentStepId === 'step-posters') {
-                const postersCheck = document.getElementById('do-posters').checked;
-                const posterKey = document.getElementById('poster-key').value.trim();
-                if (postersCheck && !posterKey) { alert("Poster API Key is required."); return false; }
-            }
-
             return true;
         }
 
-        function validateAndGoNext() {
-            if (validateStep()) goNext();
-        }
+        function validateAndGoNext() { if (validateStep()) goNext(); }
+        function validateAndFinalize() { if (validateStep()) finalizeBuild(); }
 
-        function validateAndFinalize() {
-            if (validateStep()) finalizeBuild();
-        }
-
-        async function finalizeBuild() {
-            document.getElementById('page-wizard').classList.remove('active');
-            document.getElementById('page-downloads').classList.add('active');
+        function finalizeBuild() {
+            // 1. Clear container BEFORE starting
             const con = document.getElementById('dl-container');
             con.innerHTML = 'Generating...';
 
-            // Gather inputs
+            document.getElementById('page-wizard').classList.remove('active');
+            document.getElementById('page-downloads').classList.add('active');
+
+            // Inputs
             const t3 = document.getElementById('tmdb-key').value;
             const t4 = document.getElementById('tmdb-token').value;
             const tv = document.getElementById('tvdb-key').value;
             const fa = document.getElementById('fanart-key').value;
-            const gemini = document.getElementById('gemini-key').value;
-            const isDebrid = document.getElementById('use-rd') && document.getElementById('use-rd').checked; // Simple check, refined later
-            
-            // Preferences
-            const resLimit = parseInt(document.getElementById('res-limit').value) || 3;
-            const prefLang = document.getElementById('lang-select').value;
-            const includeCams = document.getElementById('include-cams').checked;
-            const doLimit = document.getElementById('do-limit').checked;
-            const speedVal = document.getElementById('speed-val').value;
-            const sortPref = document.getElementById('sort-pref').value;
-            const includeAnime = document.getElementById('include-anime').checked;
-            const doPosters = document.getElementById('do-posters').checked;
-            const posterProv = document.getElementById('poster-provider').value;
-            const posterKey = document.getElementById('poster-key').value;
+            const geminiKey = document.getElementById('gemini-key').value;
+            const resLimit = document.getElementById('res-limit').value || 5;
+            const interfaceLang = document.getElementById('interface-lang').value;
+            const autoPlayMethod = document.getElementById('autoplay-method').value;
 
-            con.innerHTML = ''; 
-            
-            // Prepare Instructions UI
-            const instrArea = document.getElementById('instructions-area');
-            const instrMeta = document.getElementById('instr-meta');
-            const instrStreams = document.getElementById('instr-streams');
-            const stepAddMeta = document.getElementById('step-add-meta');
-            const stepAddStream = document.getElementById('step-add-stream');
-            const orderBox = document.getElementById('order-list-visual');
-            const cineByeSection = document.getElementById('cinebye-section');
-            
-            instrArea.classList.remove('hidden');
-            stepAddMeta.classList.add('hidden');
-            stepAddStream.classList.add('hidden');
+            // Clear loading text now that we are ready to append buttons
+            con.innerHTML = '';
 
-            // Hide CineBye if streams only
-            if (currentMode === 'streams') {
-                cineByeSection.classList.add('hidden');
-            } else {
-                cineByeSection.classList.remove('hidden');
-            }
-            
-            // Build the visual order list base
-            orderBox.innerHTML = '<div class="text-slate-400">1. Cinemeta</div>';
-
+            // --- BUILD METADATA ---
             let metaGenerated = false;
-            let streamGenerated = false;
-
-            // GENERATE META FIRST (if applicable) so button is on top
             if (currentMode !== 'streams') {
-                metaGenerated = true;
                 try {
-                    // Use embedded variable instead of fetch
                     const mBase = JSON.parse(JSON.stringify(MASTER_METADATA));
                     
-                    if (mBase.config) {
-                        if (mBase.config.apiKeys) {
-                            mBase.config.apiKeys.tmdb = t3;
-                            mBase.config.apiKeys.tvdb = tv;
-                            mBase.config.apiKeys.fanart = fa;
-                            // Trakt removed but kept as empty string
-                            mBase.config.apiKeys.trakt = "";
-                            
-                            if (document.getElementById('enable-gemini').checked && gemini) {
-                                mBase.config.apiKeys.gemini = gemini;
-                                if (mBase.config.search) {
-                                    mBase.config.search.ai_enabled = true;
-                                    if (mBase.config.search.engineEnabled) mBase.config.search.engineEnabled["gemini.search"] = true;
-                                    if (mBase.config.search.engineRatingPosters) mBase.config.search.engineRatingPosters["gemini.search"] = true;
-                                }
-                            } else {
-                                mBase.config.apiKeys.gemini = "";
-                                if (mBase.config.search) {
-                                    mBase.config.search.ai_enabled = false;
-                                    if (mBase.config.search.engineEnabled) mBase.config.search.engineEnabled["gemini.search"] = false;
-                                    if (mBase.config.search.engineRatingPosters) mBase.config.search.engineRatingPosters["gemini.search"] = false;
-                                }
-                            }
+                    // Assign keys explicitly (User Requested Fix)
+                    mBase.config.apiKeys.tmdb = t3;
+                    mBase.config.apiKeys.tvdb = tv;
+                    mBase.config.apiKeys.fanart = fa;
+                    
+                    // CRITICAL: Ensure we say "Keys are included" so the addon uses them
+                    if(mBase.metadata) mBase.metadata.apiKeysExcluded = false;
+
+                    // Assign Interface Language
+                    mBase.config.language = interfaceLang;
+
+                    // Gemini Logic
+                    if (document.getElementById('enable-gemini').checked) {
+                        mBase.config.apiKeys.gemini = geminiKey;
+                        if (mBase.config.search) {
+                            mBase.config.search.ai_enabled = true;
+                            if(mBase.config.search.engineEnabled) mBase.config.search.engineEnabled["gemini.search"] = true;
+                            if(mBase.config.search.engineRatingPosters) mBase.config.search.engineRatingPosters["gemini.search"] = true;
                         }
+                    } else {
+                        // Explicitly disable if unchecked
+                        mBase.config.apiKeys.gemini = "";
+                        if (mBase.config.search) {
+                            mBase.config.search.ai_enabled = false;
+                            if(mBase.config.search.engineEnabled) mBase.config.search.engineEnabled["gemini.search"] = false;
+                            if(mBase.config.search.engineRatingPosters) mBase.config.search.engineRatingPosters["gemini.search"] = false;
+                        }
+                    }
+                    
+                    // RPDB Logic
+                    if (document.getElementById('do-posters').checked) {
+                        const prov = document.getElementById('poster-provider').value;
+                        const pKey = document.getElementById('poster-key').value;
+                        mBase.config.posterRatingProvider = prov;
                         
-                        // Set Language from Mapping
-                        mBase.config.language = langMap[prefLang] || "en-US";
-                        
-                        if (doPosters) {
-                            mBase.config.posterRatingProvider = posterProv;
-                            mBase.config.apiKeys[posterProv === 'top' ? 'topPoster' : 'rpdb'] = posterKey;
+                        if (prov === 'rpdb') {
+                            mBase.config.apiKeys.rpdb = pKey;
+                            // Ensure topPoster doesn't inherit it
+                            mBase.config.apiKeys.topPoster = ""; 
                         } else {
-                            mBase.config.posterRatingProvider = "none";
-                        }
-                        
-                        if (!includeAnime) {
-                            mBase.config.catalogs = mBase.config.catalogs.filter(x => x.type !== 'anime');
+                            mBase.config.apiKeys.topPoster = pKey;
+                            mBase.config.apiKeys.rpdb = "";
                         }
                     }
 
-                    if (mBase.metadata) {
-                        mBase.metadata.apiKeysExcluded = false;
-                    }
+                    // Reconstruct Catalogs from State
+                    let finalCatalogs = [];
+                    const includeAnime = document.getElementById('include-anime').checked;
+                    
+                    catalogState.forEach(group => {
+                        // Skip if anime toggle is off and this is anime
+                        if (group.type === 'anime' && !includeAnime) return;
 
+                        // Add items back
+                        group.items.forEach(item => {
+                            item.showInHome = group.showInHome;
+                            item.enabled = group.enabled; // Search/Discovery
+                            finalCatalogs.push(item);
+                        });
+                    });
+                    
+                    mBase.config.catalogs = finalCatalogs;
                     spawnDownloadBtn('💾 Download AIOMetadata JSON', mBase, 'aiometadata-config.json');
                     
-                    // Show Meta Instructions
-                    instrMeta.classList.remove('hidden');
-                    stepAddMeta.classList.remove('hidden');
-                    orderBox.innerHTML += '<div class="text-indigo-400">2. AIOMETA</div>';
-
-                } catch(e) { console.error("Error loading metadata template", e); }
+                    // Show Instructions
+                    document.getElementById('instr-meta').classList.remove('hidden');
+                    document.getElementById('step-add-meta').classList.remove('hidden');
+                    metaGenerated = true;
+                } catch(e) { console.error("Meta Build Error", e); }
             }
 
-            // GENERATE STREAMS SECOND
+            // --- BUILD STREAMS ---
             if (currentMode !== 'meta') {
-                streamGenerated = true;
-                // Determine if ANY debrid service is used to pick base template
-                const hasDebrid = document.querySelectorAll('.debrid-check:checked').length > 0;
-                
                 try {
-                    // Use embedded variable instead of fetch
-                    const base = hasDebrid 
-                        ? JSON.parse(JSON.stringify(MASTER_WITH_DEBRID)) 
-                        : JSON.parse(JSON.stringify(MASTER_WITHOUT_DEBRID));
+                    const hasDebrid = document.querySelectorAll('.debrid-check:checked').length > 0;
+                    const base = hasDebrid ? JSON.parse(JSON.stringify(MASTER_WITH_DEBRID)) : JSON.parse(JSON.stringify(MASTER_WITHOUT_DEBRID));
                     
+                    // Addon Branding
+                    base.addonName = "TVFlix";
+                    base.addonLogo = "https://tvflix.co.uk/wp-content/uploads/2025/04/Untitled-design_20250422_200739_0000.webp";
+
                     base.tmdbApiKey = t3;
                     base.tmdbAccessToken = t4;
-                    base.tvdbApiKey = tv;
-                    base.enableSeadex = includeAnime;
-
-                    if (!base.resultLimits) base.resultLimits = {};
-                    base.resultLimits.resolution = resLimit;
-                    base.preferredLanguages = [prefLang];
-
-                    if (includeCams) {
-                        const cams = ["CAM", "SCR", "TS", "TC"];
-                        if (base.excludedQualities) {
-                            base.excludedQualities = base.excludedQualities.filter(q => !cams.includes(q));
-                        }
-                    }
-
-                    // --- Dynamic Debrid Configuration ---
-                    const debridMap = {
-                        'use-rd': { id: 'realdebrid', keyId: 'key-realdebrid' },
-                        'use-tb': { id: 'torbox', keyId: 'key-torbox' },
-                        'use-ad': { id: 'alldebrid', keyId: 'key-alldebrid' },
-                        'use-pm': { id: 'premiumize', keyId: 'key-premiumize' },
-                        'use-dl': { id: 'debridlink', keyId: 'key-debridlink' },
-                        'use-oc': { id: 'offcloud', keyId: 'key-offcloud' },
-                        'use-put': { id: 'putio', keyId: 'key-putio' },
-                        'use-en': { id: 'easynews', keyId: 'key-easynews' },
-                        'use-ed': { id: 'easydebrid', keyId: 'key-easydebrid' }
-                    };
-
-                    for (const [chkId, config] of Object.entries(debridMap)) {
-                        const service = base.services.find(x => x.id === config.id);
-                        if (service) {
-                            if (document.getElementById(chkId).checked) {
-                                service.enabled = true;
-                                service.credentials.apiKey = document.getElementById(config.keyId).value.trim();
-                            } else {
-                                // Explicitly disable if not checked
-                                service.enabled = false;
-                            }
-                        }
-                    }
-                    // ------------------------------------
-
-                    if (doLimit) {
-                        if (speedVal === 'low') { base.size.global.movies[1] = 10 * GB_BYTES; base.size.global.series[1] = 3 * GB_BYTES; }
-                        else if (speedVal === 'mid') { base.size.global.movies[1] = 25 * GB_BYTES; base.size.global.series[1] = 8 * GB_BYTES; }
-                        else if (speedVal === 'high') { base.size.global.movies[1] = 50 * GB_BYTES; base.size.global.series[1] = 15 * GB_BYTES; }
-                    }
-
-                    // -- Updated Sorting Logic --
-                    // Find the existing 'size' criteria in the list
-                    const sizeSort = base.sortCriteria.global.find(x => x.key === 'size');
+                    base.tvdbApiKey = tv; // Optional usually, but we pass it
+                    base.resultLimits = { resolution: parseInt(resLimit) };
                     
-                    if (sizeSort) {
-                        if (sortPref === 'speed') {
-                            sizeSort.direction = "asc";
-                        } else {
-                            sizeSort.direction = "desc"; 
-                        }
-                        
-                        // Move to 4th position (index 3)
-                        // 1. Remove it from current position
-                        base.sortCriteria.global = base.sortCriteria.global.filter(x => x.key !== 'size');
-                        // 2. Insert at index 3
-                        base.sortCriteria.global.splice(3, 0, sizeSort);
+                    // AutoPlay Method (New Step)
+                    if(base.autoPlay) {
+                        base.autoPlay.method = autoPlayMethod;
                     }
 
-                    // Force lower timeouts to speed up loading
-                    if (base.presets) {
-                        base.presets.forEach(p => {
-                            if (p.options && p.options.timeout) {
-                                p.options.timeout = 4000;
+                    // 1. Size Limits Logic
+                    if (document.getElementById('do-limit').checked) {
+                        const speedVal = document.getElementById('speed-val').value;
+                        let maxBytes = 100000000000; // Default huge
+                        const GB = 1073741824;
+
+                        if (speedVal === 'low') maxBytes = 10 * GB;
+                        else if (speedVal === 'mid') maxBytes = 25 * GB;
+                        else if (speedVal === 'high') maxBytes = 50 * GB;
+                        
+                        // Apply to movies and series
+                        if (base.size && base.size.global) {
+                            base.size.global.movies[1] = maxBytes;
+                            base.size.global.series[1] = maxBytes;
+                        }
+                    }
+
+                    // 2. Sort Preference Logic
+                    const sortPref = document.getElementById('sort-pref').value;
+                    const sizeSortDir = sortPref === 'speed' ? 'asc' : 'desc'; // Speed=Smallest(asc), Quality=Largest(desc)
+                    
+                    if (base.sortCriteria && base.sortCriteria.global) {
+                        const sizeObj = base.sortCriteria.global.find(x => x.key === 'size');
+                        if (sizeObj) {
+                            sizeObj.direction = sizeSortDir;
+                        }
+                    }
+
+                    // Audio Languages (Multi Select)
+                    const selectedLangs = Array.from(document.querySelectorAll('.lang-check:checked')).map(c => c.value);
+                    if (selectedLangs.length > 0) {
+                        base.requiredLanguages = selectedLangs;
+                        
+                        // Sort Logic: If non-English selected, prioritize language sort
+                        if (selectedLangs.some(l => l !== 'English')) {
+                            // Insert at index 0
+                            base.sortCriteria.global.unshift({ "key": "language", "direction": "desc" });
+                            
+                            // Remove English from preferredLanguages if non-English is selected (User Request)
+                            if (base.preferredLanguages) {
+                                base.preferredLanguages = base.preferredLanguages.filter(l => l !== 'English');
                             }
-                        });
+                        }
+                    }
+
+                    // Group Logic Update
+                    if (hasDebrid) {
+                        // Debrid Logic: Check cached count vs limit
+                        const limitVal = parseInt(resLimit);
+                        const groupCondition = `(count(resolution(cached(totalStreams), '2160p')) < ${limitVal} and count(resolution(cached(totalStreams), '1080p')) < ${limitVal} and count(resolution(cached(totalStreams), '720p')) < ${limitVal}) or totalTimeTaken > 10000`;
+                        
+                        // Apply to ALL groups starting from index 1 (skipping the first group)
+                        if (base.groups && Array.isArray(base.groups.groupings)) {
+                            base.groups.groupings.forEach((group, index) => {
+                                if (index > 0) { // Skip Group 1 (index 0)
+                                    group.condition = groupCondition;
+                                }
+                            });
+                        }
+                    } else {
+                        // Non-Debrid Logic: Disable groupings (Default parallel fetch)
+                        if (base.groups) {
+                            base.groups.enabled = false;
+                            base.groups.groupings = [];
+                        }
+                    }
+
+                    // CAMs Logic: Clear Excluded Qualities if checked
+                    if (document.getElementById('include-cams').checked) {
+                        base.excludedQualities = [];
+                    }
+
+                    // Debrid Mapping
+                    const debridMap = { 'use-rd': 'realdebrid', 'use-tb': 'torbox', 'use-ad': 'alldebrid', 'use-pm': 'premiumize', 'use-dl': 'debridlink' };
+                    for (const [chk, id] of Object.entries(debridMap)) {
+                        const svc = base.services.find(s => s.id === id);
+                        if (svc && document.getElementById(chk)) {
+                            svc.enabled = document.getElementById(chk).checked;
+                            const keyInput = document.getElementById(chk.replace('use', 'key').replace('rd','realdebrid').replace('tb','torbox').replace('ad','alldebrid').replace('pm','premiumize').replace('dl','debridlink'));
+                            if (svc.enabled && keyInput) svc.credentials.apiKey = keyInput.value;
+                        }
                     }
 
                     spawnDownloadBtn('💾 Download AIOStreams JSON', base, 'aiostreams-config.json');
                     
-                    // Show Streams Instructions
-                    instrStreams.classList.remove('hidden');
-                    stepAddStream.classList.remove('hidden');
-                    
-                    // Calculate correct number for streams in the list
-                    const streamNum = metaGenerated ? 3 : 2;
-                    orderBox.innerHTML += `<div class="text-emerald-400">${streamNum}. AIOSTREAM</div>`;
-
-                } catch(e) { console.error("Error loading streams template", e); }
+                    // Show Instructions
+                    document.getElementById('instr-streams').classList.remove('hidden');
+                    document.getElementById('step-add-stream').classList.remove('hidden');
+                } catch(e) { console.error("Streams Build Error", e); }
+            }
+            
+            // Show Container
+            document.getElementById('instructions-area').classList.remove('hidden');
+            
+            // Toggle CineBye visibility
+            if (currentMode === 'streams') {
+                document.getElementById('cinebye-section').classList.add('hidden');
+            } else {
+                document.getElementById('cinebye-section').classList.remove('hidden');
             }
         }
 
         function spawnDownloadBtn(label, obj, filename) {
             const b = document.createElement('button');
-            b.className = 'bg-slate-700 p-5 rounded-xl font-bold border-2 border-indigo-600 hover:bg-indigo-600 transition-all text-white w-full';
+            b.className = 'bg-slate-700 p-5 rounded-xl font-bold border-2 border-indigo-600 hover:bg-indigo-600 transition-all text-white w-full shadow-lg';
             b.innerText = label;
             b.onclick = () => {
                 const blob = new Blob([JSON.stringify(obj, null, 2)], { type: 'application/json' });
@@ -1180,5 +1296,3 @@
     </script>
 </body>
 </html>
-
-
