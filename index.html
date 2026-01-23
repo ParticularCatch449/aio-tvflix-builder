@@ -32,8 +32,7 @@
         </a>
     </div>
 
-    <div class="max-w-4xl mx-auto bg-slate-800 p-4 md:p-10 rounded-2xl shadow-2xl border border-slate-700 mb-32">
-        
+<div class="max-w-4xl mx-auto bg-slate-800 p-4 md:p-10 rounded-2xl shadow-2xl border border-slate-700 mb-32">        
         <div id="page-hub" class="page active">
             <header class="mb-10 text-center">
                 <h1 class="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400 italic tracking-tighter mb-4">AIO.TVFLIX v2</h1>
@@ -1209,17 +1208,27 @@
                         }
                     }
 
-                    // Audio Languages (Multi Select)
+// Audio Languages (Multi Select)
                     const selectedLangs = Array.from(document.querySelectorAll('.lang-check:checked')).map(c => c.value);
+                    
                     if (selectedLangs.length > 0) {
-                        base.requiredLanguages = selectedLangs;
-                        
-                        // Sort Logic: If non-English selected, prioritize language sort
-                        if (selectedLangs.some(l => l !== 'English')) {
-                            // Insert at index 0
+                        // FIX: If ONLY English is selected, prefer it, don't require it.
+                        if (selectedLangs.length === 1 && selectedLangs[0] === 'English') {
+                            base.requiredLanguages = []; // Don't restrict results
+                            
+                            // Ensure English is in preferred list
+                            if (!base.preferredLanguages) base.preferredLanguages = [];
+                            if (!base.preferredLanguages.includes('English')) {
+                                base.preferredLanguages.unshift('English');
+                            }
+                        } else {
+                            // Foreign language logic: Restrict results to selected languages
+                            base.requiredLanguages = selectedLangs;
+                            
+                            // Sort Logic: Prioritize language sorting for foreign content
                             base.sortCriteria.global.unshift({ "key": "language", "direction": "desc" });
                             
-                            // Remove English from preferredLanguages if non-English is selected (User Request)
+                            // Remove English from preferredLanguages if a foreign language is strictly required
                             if (base.preferredLanguages) {
                                 base.preferredLanguages = base.preferredLanguages.filter(l => l !== 'English');
                             }
