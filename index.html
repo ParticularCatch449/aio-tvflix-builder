@@ -280,9 +280,6 @@
                             <p class="text-xs text-indigo-400 font-bold uppercase tracking-widest">TMDb Config <span class="text-red-500">*</span></p>
                             <input type="text" id="tmdb-key" placeholder="API Key (v3)" class="w-full bg-slate-800 border border-slate-700 p-2 rounded text-sm text-white outline-none">
                             <a href="https://www.themoviedb.org/settings/api" target="_blank" class="text-[10px] text-slate-500 hover:text-indigo-400 block underline">TMDb API Settings</a>
-                            <div id="streams-token-field">
-                                <textarea id="tmdb-token" rows="3" placeholder="Read Access Token (v4)" class="w-full bg-slate-800 border border-slate-700 p-2 rounded text-xs text-white outline-none mt-2"></textarea>
-                            </div>
                         </div>
                         <div class="space-y-4">
                             <p class="text-xs text-indigo-400 font-bold uppercase tracking-widest">Additional Providers</p>
@@ -973,7 +970,6 @@ const MASTER_WITHOUT_DEBRID = {
             const isMeta = currentMode === 'meta';
 
             // UI Conditional Visibility
-            document.getElementById('streams-token-field').style.display = isMeta ? 'none' : 'block';
             document.getElementById('section-languages').style.display = isMeta ? 'none' : 'block'; 
             document.getElementById('section-interface-lang').style.display = isStreams ? 'none' : 'block'; 
             document.getElementById('section-autoplay').style.display = isMeta ? 'none' : 'block'; 
@@ -1065,7 +1061,6 @@ const MASTER_WITHOUT_DEBRID = {
 
             // Inputs
             const t3 = document.getElementById('tmdb-key').value;
-            const t4 = document.getElementById('tmdb-token').value;
             const tv = document.getElementById('tvdb-key').value;
             const fa = document.getElementById('fanart-key').value;
             const geminiKey = document.getElementById('gemini-key').value;
@@ -1154,7 +1149,6 @@ const MASTER_WITHOUT_DEBRID = {
                     base.addonLogo = "https://tvflix.co.uk/wp-content/uploads/2025/04/Untitled-design_20250422_200739_0000.webp";
 
                     base.tmdbApiKey = t3;
-                    base.tmdbAccessToken = t4;
                     base.tvdbApiKey = tv; 
                     base.resultLimits = { resolution: parseInt(resLimit) };
 
