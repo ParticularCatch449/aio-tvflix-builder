@@ -625,7 +625,7 @@ const MASTER_WITHOUT_DEBRID = {
                 "groupings": [
                     { "addons": ["23a", "1c5", "bcd", "e7b"], "condition": "true" }
                 ],
-                "behaviour": "sequential"
+                "behaviour": "parallel"
             },
             "proxy": { "id": "builtin", "proxiedAddons": [], "proxiedServices": [] },
             "resultLimits": { "resolution": 5 },
@@ -741,7 +741,7 @@ const MASTER_WITHOUT_DEBRID = {
                     { "addons": ["23a", "b9f", "da0"], "condition": "(count(resolution(cached(totalStreams)) >= 3 and count(resolution(cached(totalStreams), '1080p')) >= 3 and count(resolution(cached(totalStreams), '720p')) >= 3) or totalTimeTaken > 10000" },
                     { "addons": ["92e", "705", "9a3", "f89"], "condition": "(count(resolution(cached(totalStreams)) >= 3 and count(resolution(cached(totalStreams)) >= 3 and count(resolution(cached(totalStreams), '1080p')) >= 3 and count(resolution(cached(totalStreams), '720p')) >= 3) or totalTimeTaken > 10000" }
                 ],
-                "behaviour": "sequential"
+                "behaviour": "parallel"
             },
             "proxy": { "id": "builtin", "proxiedAddons": [], "proxiedServices": [] },
             "resultLimits": { "resolution": 3 },

@@ -310,7 +310,7 @@
         "condition": "true"
       }
     ],
-    "behaviour": "sequential"
+    "behaviour": "parallel"
   },
   "proxy": {
     "enabled": false,

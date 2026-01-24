@@ -566,7 +566,7 @@
         "condition": "(count(cached(totalStreams)) == 0) or totalTimeTaken > 8000"
       }
     ],
-    "behaviour": "sequential"
+    "behaviour": "parallel"
   },
   "proxy": {
     "enabled": false,
