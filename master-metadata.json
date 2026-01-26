@@ -341,7 +341,7 @@
       "filename",
       "infoHash"
     ],
-    "cached": "per_addon",
+    "cached": "single_result",
     "uncached": "per_service",
     "p2p": "single_result"
   },
