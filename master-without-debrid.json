@@ -374,9 +374,9 @@
     "streamTypes": []
   },
   "autoRemoveDownloads": true,
-  "addonName": "Duck Streams (P2P Groups)",
-  "addonLogo": "https://gitlab.com/DuckKota/guides/-/raw/main/pages/static/images/duck.png?ref_type=heads",
-  "addonDescription": "Direct P2P Streaming. Sequential fetching logic.",
+  "addonName": "TVFlix",
+  "addonLogo": "https://tvflix.co.uk/wp-content/uploads/2025/04/Untitled-design_20250422_200739_0000.webp",
+  "addonDescription": "Your simple AIO set up",
   "preferredRegexPatterns": [],
   "preferredStreamExpressions": []
 }
