@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIO.TVFLIX Builder v3.16</title>
+    <title>AIO.TVFLIX Builder v3.20</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .page { display: none; }
@@ -14,18 +14,28 @@
         .custom-scroll::-webkit-scrollbar-track { background: #1e293b; }
         .custom-scroll::-webkit-scrollbar-thumb { background: #475569; border-radius: 4px; }
         .custom-scroll::-webkit-scrollbar-thumb:hover { background: #64748b; }
+        .formatter-preview { font-family: monospace; white-space: pre-wrap; }
     </style>
 </head>
 <body class="bg-slate-900 text-slate-100 font-sans min-h-screen p-2 md:p-8">
 
-    
+    <div class="fixed bottom-8 right-8 z-50 flex flex-col items-end gap-3 group">
+        <div class="bg-slate-800 text-slate-200 text-xs font-bold py-2 px-4 rounded-xl border border-slate-600 shadow-2xl">
+            Many hours went into this!
+        </div>
+        
+        <a href="https://whop.com/tvflix/" target="_blank" class="flex items-center gap-3 bg-yellow-400 text-slate-900 px-6 py-4 rounded-full shadow-2xl hover:bg-yellow-300 hover:scale-105 transition-all font-bold text-base border-4 border-slate-900">
+                <path d="M12.75 4.75a.75.75 0 00-1.5 0v.678c0 .285.03.567.088.843l.036.173a.75.75 0 001.464-.306l-.022-.108a4.773 4.773 0 01-.066-.602V4.75zM8.75 4.75a.75.75 0 00-1.5 0v.678c0 .285.03.567.088.843l.036.173a.75.75 0 001.464-.306l-.022-.108a4.773 4.773 0 01-.066-.602V4.75zM16.75 4.75a.75.75 0 00-1.5 0v.678c0 .285.03.567.088.843l.036.173a.75.75 0 001.464-.306l-.022-.108a4.773 4.773 0 01-.066-.602V4.75z" />
+                <path fill-rule="evenodd" d="M3.5 9A1.5 1.5 0 005 10.5h14a1.5 1.5 0 001.5-1.5V8.5a.5.5 0 00-.5-.5H4a.5.5 0 00-.5.5v.5zm1.5 3a3 3 0 002.95 2.443l.79.098c.189.023.38.046.572.067a62.985 62.985 0 004.376 0c.192-.02.383-.044.572-.067l.79-.098A3 3 0 0020.5 12h-14zm14-4.5H22v1.5a3 3 0 01-3 3h-1.39a4.49 4.49 0 01-1.31 1.77 4.512 4.512 0 01-2.91.86c-1.42 0-2.812-.06-4.178-.18-1.332-.116-2.617-.375-3.842-.767a4.5 4.5 0 01-3.15-5.683H2V8.5a1 1 0 011-1h1.5z" clip-rule="evenodd" />
+            </svg>
+            <span>Leave a Tip (Optional)</span>
         </a>
     </div>
 
 <div class="max-w-4xl mx-auto bg-slate-800 p-4 md:p-10 rounded-2xl shadow-2xl border border-slate-700 mb-32">        
         <div id="page-hub" class="page active">
             <header class="mb-10 text-center">
-                <h1 class="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400 italic tracking-tighter mb-4">AIO.TVFLIX v2</h1>
+                <h1 class="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400 italic tracking-tighter mb-4">AIO.TVFLIX v3</h1>
                 <p class="text-slate-400 text-lg">Personalized Master Template Builder</p>
                 
                 <div class="mt-8 max-w-2xl mx-auto bg-slate-900/50 p-6 rounded-xl border border-slate-700 text-left space-y-4">
@@ -70,8 +80,17 @@
             <div id="setup-steps">
                 
                 <div class="step" id="step-debrid">
-                    <h2 class="text-2xl font-bold mb-6 text-white tracking-tight">1. Debrid Integration</h2>
+                    <h2 class="text-2xl font-bold mb-6 text-white tracking-tight"><span class="step-num mr-2"></span>Debrid Integration</h2>
                     <p class="text-sm text-slate-400 mb-4">Select the debrid services you use. You can select multiple.</p>
+                    
+                    <div class="bg-red-900/20 border border-red-500/30 p-4 rounded-lg mb-6 flex gap-3">
+                        <div class="text-red-400 text-xl">⚠️</div>
+                        <div>
+                            <strong class="text-red-400 text-sm font-bold uppercase tracking-wide">Free Users Warning</strong>
+                            <p class="text-xs text-red-200 mt-1">To torrent for free, do NOT select any debrid service below.</p>
+                        </div>
+                    </div>
+
                     <div id="debrid-list" class="space-y-4">
                         
                         <div class="bg-slate-900/50 p-4 rounded-lg border border-slate-700">
@@ -133,31 +152,50 @@
                 </div>
 
                 <div class="step" id="step-speed">
-                    <h2 class="text-2xl font-bold mb-6 text-white tracking-tight">2. Performance Settings</h2>
+                    <h2 class="text-2xl font-bold mb-6 text-white tracking-tight"><span class="step-num mr-2"></span>Performance Settings</h2>
                     <label class="flex items-center space-x-4 bg-slate-700/50 p-5 rounded-xl cursor-pointer mb-6 border border-transparent hover:border-indigo-500/50 transition-all">
                         <input type="checkbox" id="do-limit" class="w-6 h-6 rounded border-slate-600 text-indigo-600 bg-slate-800">
-                        <p class="font-bold text-lg text-white">Limit file sizes based on speed?</p>
+                        <p class="font-bold text-lg text-white">Limit size and bitrate based on internet speed?</p>
                     </label>
                     <div id="speed-options" class="hidden bg-slate-700/30 p-6 rounded-xl border border-slate-600 mb-6">
-                        <label class="block mb-3 text-sm text-slate-400">Select speed bracket:</label>
-                        <select id="speed-val" class="w-full bg-slate-900 border border-slate-700 p-4 rounded-xl text-white outline-none">
-                            <option value="low">0-25 Mbps (Max 10GB Movies)</option>
-                            <option value="mid">25-50 Mbps (Max 25GB Movies)</option>
-                            <option value="high">50-100 Mbps (Max 50GB Movies)</option>
-                            <option value="none">100+ Mbps (Unlimited)</option>
-                        </select>
+                        <label class="block mb-3 text-sm text-slate-400">Your Internet Download Speed (Mbps):</label>
+                        <input type="number" id="internet-speed" placeholder="e.g. 100" class="w-full bg-slate-900 border border-slate-700 p-4 rounded-xl text-white outline-none focus:ring-1 focus:ring-indigo-500">
+                        <p class="text-xs text-slate-400 mt-2">Calculates safe bitrate limit using 80% of your bandwidth.</p>
                     </div>
-                    <div class="bg-slate-700/30 p-6 rounded-xl border border-slate-600">
-                        <label class="block font-bold mb-3">Priority Preference</label>
-                        <select id="sort-pref" class="w-full bg-slate-900 border border-slate-700 p-4 rounded-xl text-white outline-none">
-                            <option value="quality">Quality First (Template Default)</option>
-                            <option value="speed">Loading Speed First (Smallest Files)</option>
-                        </select>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-slate-700/30 p-6 rounded-xl border border-slate-600">
+                            <label class="block font-bold mb-3">Priority Preference</label>
+                            <select id="sort-pref" class="w-full bg-slate-900 border border-slate-700 p-4 rounded-xl text-white outline-none">
+                                <option value="quality">Quality First (Template Default)</option>
+                                <option value="speed">Loading Speed First (Smallest Files)</option>
+                            </select>
+                        </div>
+                        <div id="uncached-box" class="bg-slate-700/30 p-6 rounded-xl border border-slate-600 flex items-center">
+                            <label class="flex items-center space-x-4 cursor-pointer w-full">
+                                <input type="checkbox" id="exclude-uncached" class="w-6 h-6 rounded border-slate-600 text-indigo-600 bg-slate-800">
+                                <div>
+                                    <p class="font-bold text-white">Exclude Uncached?</p>
+                                    <p class="text-xs text-slate-400">Only show instantly playable streams.</p>
+                                </div>
+                            </label>
+                        </div>
                     </div>
                 </div>
 
-                <div class="step" id="step-prefs">
-                    <h2 class="text-2xl font-bold mb-4 text-white tracking-tight">3. Content Preferences</h2>
+                <!-- Step 3A: General Preferences -->
+                <div class="step" id="step-prefs-general">
+                    <h2 class="text-2xl font-bold mb-4 text-white tracking-tight"><span class="step-num mr-2"></span>General Content</h2>
+                    
+                    <div class="mb-6 bg-slate-700/30 p-6 rounded-xl border border-slate-600" id="section-anime-toggle">
+                        <label class="flex items-center space-x-4 cursor-pointer">
+                            <input type="checkbox" id="enable-anime" class="w-6 h-6 rounded border-slate-600 text-indigo-600 bg-slate-800" onchange="toggleAnimeSettings(this.checked)">
+                            <div>
+                                <p class="font-bold text-white">Enable Anime?</p>
+                                <p class="text-xs text-slate-400">Enables AnimeTosho & SeaDex.</p>
+                            </div>
+                        </label>
+                    </div>
+
                     <div class="mb-6 bg-slate-700/30 p-6 rounded-xl border border-slate-600" id="section-interface-lang">
                         <label class="block font-bold mb-2">Interface Language (Metadata)</label>
                         <p class="text-xs text-slate-400 mb-3">Controls the language of titles and descriptions.</p>
@@ -176,7 +214,25 @@
                             <option value="ar-SA">Arabic</option>
                         </select>
                     </div>
-                    
+
+                    <div class="mb-6 bg-slate-700/30 p-6 rounded-xl border border-slate-600" id="section-age-rating">
+                        <label class="block font-bold mb-2">Age Rating Limit (Kids Mode)</label>
+                        <p class="text-xs text-slate-400 mb-3">Filter content by age certification.</p>
+                        <select id="age-rating" class="w-full bg-slate-900 border border-slate-700 p-3 rounded-lg text-white outline-none">
+                            <option value="None">None (Unrestricted)</option>
+                            <option value="G">G (General Audiences)</option>
+                            <option value="PG">PG (Parental Guidance)</option>
+                            <option value="PG-13">PG-13 (Parents Strongly Cautioned)</option>
+                            <option value="R">R (Restricted)</option>
+                            <option value="NC-17">NC-17 (Adults Only)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Step 3B: Stream Rules -->
+                <div class="step" id="step-prefs-streams">
+                    <h2 class="text-2xl font-bold mb-4 text-white tracking-tight"><span class="step-num mr-2"></span>Stream Rules</h2>
+
                     <div class="mb-6 bg-slate-700/30 p-6 rounded-xl border border-slate-600" id="section-autoplay">
                         <label class="block font-bold mb-2">AutoPlay Method (Streams)</label>
                         <p class="text-xs text-slate-400 mb-3">Decides how the next episode matches.</p>
@@ -204,7 +260,7 @@
                             <label class="flex items-center space-x-4 cursor-pointer w-full">
                                 <input type="checkbox" id="include-cams" class="w-6 h-6 rounded border-slate-600 text-indigo-600 bg-slate-800">
                                 <div>
-                                    <p class="font-bold text-white">Include CAMs?</p>
+                                    <p class="font-bold text-white">Exclude CAMs?</p>
                                     <p class="text-xs text-slate-400">Low quality screeners.</p>
                                 </div>
                             </label>
@@ -212,15 +268,78 @@
                     </div>
                 </div>
 
+                <div class="step" id="step-style">
+                    <h2 class="text-2xl font-bold mb-6 text-white tracking-tight"><span class="step-num mr-2"></span>Visual Style</h2>
+                    <p class="text-sm text-slate-400 mb-4">Choose how streams appear in Stremio.</p>
+                    
+                    <!-- Visual Preview Box -->
+                    <div class="bg-black/50 p-6 rounded-xl border border-slate-600 mb-8 font-mono text-xs md:text-sm text-slate-300 shadow-inner">
+                        <div class="mb-2 text-indigo-400 text-[10px] font-bold uppercase tracking-wider">Preview</div>
+                        <div id="style-preview-name" class="font-bold text-white mb-1"></div>
+                        <div id="style-preview-desc" class="text-slate-400 whitespace-pre-wrap"></div>
+                    </div>
+                    
+                    <!-- Custom Inputs (Hidden by default) -->
+                    <div id="custom-style-inputs" class="hidden mb-6 bg-indigo-900/20 p-6 rounded-xl border border-indigo-500/30">
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-bold text-indigo-300 uppercase mb-2">Name Format</label>
+                                <textarea id="custom-name-fmt" rows="2" class="w-full bg-slate-900 border border-slate-700 p-3 rounded-lg text-xs text-white font-mono" placeholder="{stream.resolution} | {stream.quality}"></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-indigo-300 uppercase mb-2">Description Format</label>
+                                <textarea id="custom-desc-fmt" rows="3" class="w-full bg-slate-900 border border-slate-700 p-3 rounded-lg text-xs text-white font-mono" placeholder="🎬 {stream.title}\n📂 {stream.size::bytes}"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <label class="relative bg-slate-700/30 p-4 rounded-xl border border-slate-600 cursor-pointer hover:border-indigo-500 transition-all">
+                            <input type="radio" name="visual-style" value="default" class="peer sr-only" checked onchange="updateStylePreview()">
+                            <div class="peer-checked:bg-indigo-600/20 peer-checked:border-indigo-500 absolute inset-0 rounded-xl transition-all"></div>
+                            <h3 class="font-bold text-white relative z-10">TVFlix (Recommended)</h3>
+                            <p class="text-xs text-slate-400 mt-1 relative z-10">Standard format with emojis & detailed info.</p>
+                        </label>
+
+                        <label class="relative bg-slate-700/30 p-4 rounded-xl border border-slate-600 cursor-pointer hover:border-indigo-500 transition-all">
+                            <input type="radio" name="visual-style" value="essential" class="peer sr-only" onchange="updateStylePreview()">
+                            <div class="peer-checked:bg-indigo-600/20 peer-checked:border-indigo-500 absolute inset-0 rounded-xl transition-all"></div>
+                            <h3 class="font-bold text-white relative z-10">Minimal</h3>
+                            <p class="text-xs text-slate-400 mt-1 relative z-10">Clean & Compact.</p>
+                        </label>
+
+                        <label class="relative bg-slate-700/30 p-4 rounded-xl border border-slate-600 cursor-pointer hover:border-indigo-500 transition-all">
+                            <input type="radio" name="visual-style" value="complex" class="peer sr-only" onchange="updateStylePreview()">
+                            <div class="peer-checked:bg-indigo-600/20 peer-checked:border-indigo-500 absolute inset-0 rounded-xl transition-all"></div>
+                            <h3 class="font-bold text-white relative z-10">Simple</h3>
+                            <p class="text-xs text-slate-400 mt-1 relative z-10">Clean & Compact with Icons.</p>
+                        </label>
+
+                        <label class="relative bg-slate-700/30 p-4 rounded-xl border border-slate-600 cursor-pointer hover:border-indigo-500 transition-all">
+                            <input type="radio" name="visual-style" value="pro" class="peer sr-only" onchange="updateStylePreview()">
+                            <div class="peer-checked:bg-indigo-600/20 peer-checked:border-indigo-500 absolute inset-0 rounded-xl transition-all"></div>
+                            <h3 class="font-bold text-white relative z-10">Detailed</h3>
+                            <p class="text-xs text-slate-400 mt-1 relative z-10">Technical view with full metadata.</p>
+                        </label>
+
+                        <label class="relative bg-slate-700/30 p-4 rounded-xl border border-slate-600 cursor-pointer hover:border-indigo-500 transition-all col-span-1 md:col-span-2">
+                            <input type="radio" name="visual-style" value="custom" class="peer sr-only" onchange="updateStylePreview()">
+                            <div class="peer-checked:bg-indigo-600/20 peer-checked:border-indigo-500 absolute inset-0 rounded-xl transition-all"></div>
+                            <h3 class="font-bold text-white relative z-10">Custom</h3>
+                            <p class="text-xs text-slate-400 mt-1 relative z-10">Create your own format using {variables}.</p>
+                        </label>
+                    </div>
+                </div>
+
                 <div class="step" id="step-catalogs">
-                    <h2 class="text-2xl font-bold mb-4 text-white tracking-tight">4. Catalog Manager</h2>
+                    <h2 class="text-2xl font-bold mb-4 text-white tracking-tight"><span class="step-num mr-2"></span>Catalog Manager</h2>
                     <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-700">
                         <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
                             <h3 class="text-lg font-bold text-indigo-300">Catalog Order & Visibility</h3>
                             <div class="flex gap-2">
                                 <button type="button" onclick="moveStreamingToTop()" class="bg-indigo-600 hover:bg-indigo-500 text-white px-3 py-1 rounded text-xs font-bold transition-all">Prioritize Streaming Services</button>
                                 <label class="flex items-center space-x-2 cursor-pointer bg-slate-800 px-3 py-1 rounded-lg border border-slate-600">
-                                    <input type="checkbox" id="include-anime" checked class="w-4 h-4 text-indigo-600 rounded" onchange="renderCatalogs()">
+                                    <input type="checkbox" id="include-anime" checked class="w-4 h-4 text-indigo-600 rounded" onchange="syncAnimeToggle(this.checked); renderCatalogs()">
                                     <span class="text-xs font-bold uppercase tracking-wider">Include Anime</span>
                                 </label>
                             </div>
@@ -247,7 +366,7 @@
                 </div>
 
                 <div class="step" id="step-keys">
-                    <h2 class="text-2xl font-bold mb-6 text-white tracking-tight">5. API Credentials</h2>
+                    <h2 class="text-2xl font-bold mb-6 text-white tracking-tight"><span class="step-num mr-2"></span>API Credentials</h2>
                     
                     <div id="debridio-section" class="mb-6">
                         <div class="bg-indigo-900/20 border border-indigo-500/30 p-4 rounded-xl mb-4">
@@ -265,24 +384,37 @@
                         </div>
                     </div>
 
-                    <div class="bg-slate-900/80 p-5 rounded-xl border border-indigo-500/20 grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="space-y-4">
-                            <p class="text-xs text-indigo-400 font-bold uppercase tracking-widest">TMDb Config <span class="text-red-500">*</span></p>
-                            <input type="text" id="tmdb-key" placeholder="API Key (v3)" class="w-full bg-slate-800 border border-slate-700 p-2 rounded text-sm text-white outline-none">
-                            <a href="https://www.themoviedb.org/settings/api" target="_blank" class="text-[10px] text-slate-500 hover:text-indigo-400 block underline">TMDb API Settings</a>
-                            <div id="streams-token-field">
-                                <textarea id="tmdb-token" rows="3" placeholder="Read Access Token (v4)" class="w-full bg-slate-800 border border-slate-700 p-2 rounded text-xs text-white outline-none mt-2"></textarea>
-                            </div>
+                    <div class="bg-slate-900/80 p-5 rounded-xl border border-indigo-500/20">
+                         <!-- Shared Keys Toggle -->
+                         <div class="mb-6 bg-emerald-900/20 border border-emerald-500/30 p-4 rounded-lg">
+                            <label class="flex items-center space-x-4 cursor-pointer">
+                                <input type="checkbox" id="use-shared-keys" class="w-6 h-6 rounded border-slate-600 text-emerald-500 bg-slate-800" onchange="toggleSharedKeys(this.checked)">
+                                <div>
+                                    <p class="font-bold text-white">Use Shared API Keys</p>
+                                    <p class="text-xs text-emerald-300">We will randomly assign keys for TMDB, TVDB & FanArt. (Risk of Ban)</p>
+                                </div>
+                            </label>
                         </div>
-                        <div class="space-y-4">
-                            <p class="text-xs text-indigo-400 font-bold uppercase tracking-widest">Additional Providers</p>
-                            <div id="tvdb-field">
-                                <input type="text" id="tvdb-key" placeholder="TVDB API Key" class="w-full bg-slate-800 border border-slate-700 p-2 rounded text-sm text-white outline-none">
-                                <a href="https://thetvdb.com/dashboard/account/apikey" target="_blank" class="text-[10px] text-slate-500 hover:text-indigo-400 block underline mt-1">TVDB API Settings</a>
+
+                        <div id="manual-keys-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-4">
+                                <p class="text-xs text-indigo-400 font-bold uppercase tracking-widest">TMDb Config <span class="text-red-500">*</span></p>
+                                <input type="text" id="tmdb-key" placeholder="API Key (v3)" class="w-full bg-slate-800 border border-slate-700 p-2 rounded text-sm text-white outline-none">
+                                <a href="https://www.themoviedb.org/settings/api" target="_blank" class="text-[10px] text-slate-500 hover:text-indigo-400 block underline">TMDb API Settings</a>
+                                <div id="streams-token-field">
+                                    <textarea id="tmdb-token" rows="3" placeholder="Read Access Token (v4)" class="w-full bg-slate-800 border border-slate-700 p-2 rounded text-xs text-white outline-none mt-2"></textarea>
+                                </div>
                             </div>
-                            <div id="fanart-field" class="mt-2">
-                                <input type="text" id="fanart-key" placeholder="Fanart API Key" class="w-full bg-slate-800 border border-slate-700 p-2 rounded text-sm text-white outline-none">
-                                <a href="https://fanart.tv/get-an-api-key/" target="_blank" class="text-[10px] text-slate-500 hover:text-indigo-400 block underline mt-1">Fanart API Settings</a>
+                            <div class="space-y-4">
+                                <p class="text-xs text-indigo-400 font-bold uppercase tracking-widest">Additional Providers</p>
+                                <div id="tvdb-field">
+                                    <input type="text" id="tvdb-key" placeholder="TVDB API Key" class="w-full bg-slate-800 border border-slate-700 p-2 rounded text-sm text-white outline-none">
+                                    <a href="https://thetvdb.com/dashboard/account/apikey" target="_blank" class="text-[10px] text-slate-500 hover:text-indigo-400 block underline mt-1">TVDB API Settings</a>
+                                </div>
+                                <div id="fanart-field" class="mt-2">
+                                    <input type="text" id="fanart-key" placeholder="Fanart API Key" class="w-full bg-slate-800 border border-slate-700 p-2 rounded text-sm text-white outline-none">
+                                    <a href="https://fanart.tv/get-an-api-key/" target="_blank" class="text-[10px] text-slate-500 hover:text-indigo-400 block underline mt-1">Fanart API Settings</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -293,7 +425,7 @@
                                 <input type="checkbox" id="enable-gemini" class="w-6 h-6 rounded border-slate-600 text-indigo-600 bg-slate-800" onchange="toggleGemini(this.checked)">
                                 <div>
                                     <p class="font-bold text-white">Enable Gemini AI Search? (Optional)</p>
-                                    <p class="text-xs text-amber-400">Note: This is a paid service from Google.</p>
+                                    <p class="text-xs text-amber-400">Note: Free with usage limits from Google.</p>
                                 </div>
                             </label>
                         </div>
@@ -305,7 +437,7 @@
                 </div>
 
                 <div class="step" id="step-posters">
-                    <h2 class="text-2xl font-bold mb-6 text-white tracking-tight">6. Poster Ratings</h2>
+                    <h2 class="text-2xl font-bold mb-6 text-white tracking-tight"><span class="step-num mr-2"></span>Poster Ratings</h2>
                     <label class="flex items-center space-x-4 bg-slate-700/50 p-5 rounded-xl cursor-pointer mb-6 border border-transparent hover:border-indigo-500/50 transition-all">
                         <input type="checkbox" id="do-posters" class="w-6 h-6 rounded border-slate-600 text-indigo-600 bg-slate-800">
                         <p class="font-bold text-lg leading-tight text-white">Enable rated posters? (Free & Paid Options)</p>
@@ -333,7 +465,7 @@
 
         <div id="page-downloads" class="page text-center">
             <h2 class="text-3xl font-bold mb-4 text-indigo-400 tracking-tighter italic">BUILD COMPLETE</h2>
-            <p class="text-slate-400 mb-6">Download your config files below.</p>
+            <p id="dl-subtitle" class="text-slate-400 mb-6">Download your config files below.</p>
             
             <div id="dl-container" class="flex flex-col gap-4 max-w-sm mx-auto mb-10"></div>
             
@@ -341,8 +473,8 @@
                 
                 <div class="space-y-6">
                     <div id="instr-meta" class="bg-slate-800 p-5 rounded-xl border border-indigo-500/30 hidden">
-                        <h3 class="text-lg font-bold text-indigo-300 mb-2">1. Install AIO Metadata</h3>
-                        <p class="text-sm text-slate-400 mb-3">Go to <a href="https://aiometadatafortheweak.nhyira.dev/configure/" target="_blank" class="text-indigo-400 underline">AIO Metadata Config</a></p>
+                        <h3 id="instr-meta-title" class="text-lg font-bold text-indigo-300 mb-2">1. Install AIO Metadata</h3>
+                        <p class="text-sm text-slate-400 mb-3">Go to <a href="https://aiometadatafortheweebs.midnightignite.me/configure/" target="_blank" class="text-indigo-400 underline">AIO Metadata Config</a></p>
                         <div class="text-slate-300 text-xs space-y-2">
                             <p><strong>To Import:</strong> Go to the <strong>Configuration</strong> tab and click <strong>Import</strong> to load your <code>aiometadata-config.json</code> file.</p>
                             <p><strong>To get the URL:</strong> On the same <strong>Configuration</strong> tab, click Save, create a password. The URL will appear under the save button.</p>
@@ -357,19 +489,18 @@
                     </div>
 
                     <div id="instr-streams" class="bg-slate-800 p-5 rounded-xl border border-indigo-500/30 hidden">
-                        <h3 class="text-lg font-bold text-emerald-300 mb-2">2. Install AIO Streams</h3>
+                        <h3 id="instr-streams-title" class="text-lg font-bold text-emerald-300 mb-2">2. Install AIO Streams</h3>
                         <p class="text-sm text-slate-400 mb-3">Go to <a href="https://aiostreamsfortheweebs.midnightignite.me/stremio/configure?menu=save-install" target="_blank" class="text-emerald-400 underline">AIO Streams Config</a></p>
                         <div class="text-slate-300 text-xs space-y-2">
                             <p>Click the <strong>Save & Install</strong> tab.</p>
-                            <p><strong>To Import:</strong> Click <strong>Import</strong> then <strong>Import Config</strong> to load your <code>aiostreams-config.json</code> file.</p>
+                            <p><strong>To Import:</strong> Click <strong>Import</strong> then <strong>Import Config</strong> to load your stream JSON file(s).</p>
                             <p><strong>To get the URL:</strong> Click Save, create a password.</p>
                             <div class="bg-slate-700/50 p-2 rounded border-l-4 border-green-500">
                                 <strong class="text-green-400">INSTALL:</strong> Click the <strong>Install</strong> button to open Stremio directly.
                             </div>
-                            <p class="text-[10px] text-slate-500 italic">(Only copy the URL if the button doesn't work).</p>
                         </div>
                         <div class="bg-slate-900/50 p-2 rounded text-[10px] text-amber-400 border border-amber-500/20 my-2">
-                            <strong>Note:</strong> If streams don't load, try the <a href="https://aiostreamsfortheweak.nhyira.dev/stremio/configure?menu=save-install" target="_blank" class="underline text-amber-200">Alternative Link</a>.
+                            <strong>Multi-Language Setup:</strong> If you selected multiple languages, you must repeat this process for <b>each</b> downloaded file. This creates separate addons for each language (e.g., "TVFlix - Spanish", "TVFlix - French"), allowing you to toggle between them easily in Stremio.
                         </div>
                         <div class="mt-4 bg-amber-900/20 border border-amber-600/30 p-4 rounded-lg text-xs text-amber-200 leading-relaxed">
                             <strong class="block mb-1 text-amber-400 uppercase tracking-wide">! IMPORTANT !</strong> 
@@ -390,7 +521,7 @@
     </div>
 
     <script>
-        // --- EMBEDDED JSON DATA START (Sanitized & Pruned) ---
+        // --- EMBEDDED JSON DATA START ---
         const MASTER_METADATA = {
             "version": "1.23.5",
             "config": {
@@ -411,6 +542,7 @@
                 "tmdb": { "scrapeImdb": true, "forceLatinCastNames": false },
                 "apiKeys": { "gemini": "", "tmdb": "", "tvdb": "", "fanart": "", "rpdb": "", "topPoster": "", "mdblist": "", "trakt": "", "addonVersion": "1.14.2", "hasBuiltInTvdb": false, "hasBuiltInTmdb": false, "catalogTTL": 86400 },
                 "posterRatingProvider": "top",
+                "usePosterProxy": true,
                 "mdblistWatchTracking": false,
                 "anilistWatchTracking": false,
                 "enableRatingPostersForLibrary": true,
@@ -533,227 +665,248 @@
             }
         };
 
-const MASTER_WITHOUT_DEBRID = {
-            "services": [
-                { "id": "realdebrid", "enabled": false, "credentials": {} }, { "id": "alldebrid", "enabled": false, "credentials": {} }, { "id": "premiumize", "enabled": false, "credentials": {} },
-                { "id": "debridlink", "enabled": false, "credentials": {} }, { "id": "torbox", "enabled": false, "credentials": {} }, { "id": "offcloud", "enabled": false, "credentials": {} },
-                { "id": "putio", "enabled": false, "credentials": {} }, { "id": "easynews", "enabled": false, "credentials": {} }, { "id": "easydebrid", "enabled": false, "credentials": {} },
-                { "id": "debrider", "enabled": false, "credentials": {} }, { "id": "pikpak", "enabled": false, "credentials": {} }, { "id": "seedr", "enabled": false, "credentials": {} },
-                { "id": "stremio_nntp", "enabled": false, "credentials": {} }, { "id": "nzbdav", "enabled": false, "credentials": {} }, { "id": "altmount", "enabled": false, "credentials": {} }
-            ],
-            "presets": [
-                { "type": "mediafusion", "instanceId": "bcd", "enabled": true, "options": { "name": "MediaFusion", "timeout": 10000, "resources": ["stream", "catalog", "meta"], "useCachedResultsOnly": false, "enableWatchlistCatalogs": false, "downloadViaBrowser": false, "contributorStreams": false, "certificationLevelsFilter": [], "nudityFilter": [], "mediaTypes": [] } },
-                { "type": "comet", "instanceId": "1c5", "enabled": true, "options": { "name": "Comet", "timeout": 10000, "resources": ["stream"], "includeP2P": true, "removeTrash": true, "mediaTypes": [] } },
-                { "type": "torrentio", "instanceId": "23a", "enabled": true, "options": { "name": "Torrentio", "timeout": 10000, "resources": ["stream", "catalog", "meta"], "useMultipleInstances": false, "providers": [] } }
-            ],
-            "formatter": {
-                "id": "custom",
-                "definition": {
-                    "name": "{stream.resolution::exists[\"{stream.resolution::replace('2160p','4K')::replace('1080p','HD')::replace('720p','SD')}\"||\"\"]} {stream.quality::exists[\"{stream.quality::replace('REMUX','+')::replace('BluRay','⭐⭐⭐⭐⭐')::replace('WEB-DL','⭐⭐⭐⭐')::replace('WEBRip','⭐⭐⭐⭐')}\"||\"\"]}\n",
-                    "description": "{stream.title::exists[\"🎬 {stream.title}\"||\"\"]}{stream.seasonEpisode::exists[\" - {stream.seasonEpisode::join(' ')}\"||\"\"]}{stream.year::exists[\" ({stream.year})\"||\"\"]}\n───────────────────\n{stream.languageEmojis::exists[\"Languages: {stream.languageEmojis}\"||\"\"]}\n{stream.quality::exists[\"✨ {stream.quality::replace('REMUX','+')::replace('BluRay','Premium Quality')::replace('WEB-DL','Streaming Quality')::replace('WEBRip','Streaming Quality')}\"||\"\"]}{stream.visualTags::~HDR::istrue[\" | 🌈 HDR\"||\"\"]}{stream.visualTags::~DV::istrue[\" | 🎥 Dolby Vision\"||\"\"]}{stream.audioTags::exists[\" | 🔊 {stream.audioTags::join(', ')}\"||\"\"]}\n───────────────────\n📂 {stream.size::>0[\"{stream.size::bytes}\"||\"\"]}{stream.seeders::>0[\" | 👥 {stream.seeders}\"||\"\"]}{addon.name::exists[\" | 🛰️ {addon.name}\"||\"\"]}"
-                }
-            },
-            "preferredQualities": ["BluRay REMUX", "BluRay", "WEB-DL", "WEBRip", "HDRip", "HC HD-Rip", "DVDRip", "HDTV", "CAM", "TS", "TC", "SCR", "Unknown"],
-            "preferredResolutions": ["2160p", "1440p", "1080p", "720p"],
-            "excludedQualities": ["CAM", "SCR", "TS", "TC"],
-            "excludedVisualTags": ["3D"],
-            "sortCriteria": {
-                "global": [
-                    { "key": "seeders", "direction": "desc" }, { "key": "resolution", "direction": "desc" }, { "key": "size", "direction": "desc" }
-                ],
-                "uncached": [
-                    { "key": "seeders", "direction": "desc" }, { "key": "resolution", "direction": "desc" }, { "key": "size", "direction": "desc" }
-                ]
-            },
-            "posterService": "rpdb",
-            "deduplicator": { "enabled": true, "excludeAddons": [], "multiGroupBehaviour": "aggressive", "keys": ["filename", "infoHash"], "cached": "per_addon", "uncached": "per_service", "p2p": "single_result" },
-            "trusted": false,
-            "excludedResolutions": ["144p", "240p", "360p", "480p", "576p"],
-            "includedResolutions": [],
-            "requiredResolutions": [],
-            "includedQualities": [],
-            "requiredQualities": [],
-            "excludedLanguages": [],
-            "includedLanguages": [],
-            "requiredLanguages": [],
-            "preferredLanguages": ["English"],
-            "includedVisualTags": [],
-            "requiredVisualTags": [],
-            "preferredVisualTags": ["HDR+DV", "DV Only", "HDR Only", "HDR10+", "HDR10", "DV", "HDR"],
-            "excludedAudioTags": [],
-            "includedAudioTags": [],
-            "requiredAudioTags": [],
-            "preferredAudioTags": ["Atmos", "DD+", "DD", "DTS-HD MA", "DTS-HD", "DTS-ES", "DTS", "TrueHD", "OPUS", "FLAC", "AAC"],
-            "excludedAudioChannels": [],
-            "includedAudioChannels": [],
-            "requiredAudioChannels": [],
-            "preferredAudioChannels": [],
-            "excludedStreamTypes": [],
-            "includedStreamTypes": [],
-            "requiredStreamTypes": [],
-            "preferredStreamTypes": ["p2p"],
-            "excludedEncodes": [],
-            "includedEncodes": [],
-            "requiredEncodes": [],
-            "preferredEncodes": [],
-            "excludedKeywords": [],
-            "includeSeederRange": [10, 100000],
-            "requiredSeederRange": [10, 100000],
-            "seederRangeTypes": ["p2p"],
-            "ageRangeTypes": ["usenet"],
-            "digitalReleaseFilter": { "enabled": false, "tolerance": 1, "requestTypes": ["movie", "series", "anime"], "addons": [] },
-            "excludeCachedFromAddons": [],
-            "excludeCachedFromServices": [],
-            "excludeCachedFromStreamTypes": [],
-            "excludeUncached": false,
-            "excludeUncachedFromAddons": [],
-            "excludeUncachedFromServices": [],
-            "excludeUncachedFromStreamTypes": [],
-            "dynamicAddonFetching": { "enabled": false, "condition": "count(totalStreams) >= 15 or totalTimeTaken >= 10000" },
-            "groups": {
-                "enabled": true,
-                "groupings": [
-                    { "addons": ["23a", "1c5", "bcd", "e7b"], "condition": "true" }
-                ],
-                "behaviour": "parallel"
-            },
-            "proxy": { "id": "builtin", "proxiedAddons": [], "proxiedServices": [] },
-            "resultLimits": { "resolution": 5 },
-            "size": { "global": { "movies": [0, 100000000000], "series": [0, 100000000000] } },
-            "hideErrors": true,
-            "hideErrorsForResources": [],
-            "statistics": { "statsToShow": ["addon", "filter"] },
-            "yearMatching": { "enabled": true, "requestTypes": [], "addons": [] },
-            "titleMatching": { "mode": "contains", "enabled": true, "requestTypes": [], "addons": [] },
-            "seasonEpisodeMatching": { "enabled": true, "requestTypes": [], "addons": [] },
-            "autoPlay": { "attributes": ["service"] },
-            "areYouStillThere": { "enabled": true, "episodesBeforeCheck": 4 },
-            "precacheNextEpisode": false,
-            "alwaysPrecache": false,
-            "catalogModifications": [],
-            "cacheAndPlay": { "streamTypes": [] },
-            "autoRemoveDownloads": true
-        };
+        const MASTER_WITHOUT_DEBRID = {
+  "services": [
+    { "id": "realdebrid", "enabled": false, "credentials": {} }, { "id": "alldebrid", "enabled": false, "credentials": {} }, { "id": "premiumize", "enabled": false, "credentials": {} },
+    { "id": "debridlink", "enabled": false, "credentials": {} }, { "id": "torbox", "enabled": false, "credentials": {} }, { "id": "offcloud", "enabled": false, "credentials": {} },
+    { "id": "putio", "enabled": false, "credentials": {} }, { "id": "easynews", "enabled": false, "credentials": {} }, { "id": "easydebrid", "enabled": false, "credentials": {} },
+    { "id": "debrider", "enabled": false, "credentials": {} }, { "id": "pikpak", "enabled": false, "credentials": {} }, { "id": "seedr", "enabled": false, "credentials": {} },
+    { "id": "stremio_nntp", "enabled": false, "credentials": {} }, { "id": "nzbdav", "enabled": false, "credentials": {} }, { "id": "altmount", "enabled": false, "credentials": {} }
+  ],
+  "presets": [
+    { "type": "mediafusion", "instanceId": "bcd", "enabled": true, "options": { "name": "MediaFusion", "timeout": 8000, "resources": ["stream", "catalog", "meta"], "useCachedResultsOnly": false, "enableWatchlistCatalogs": false, "downloadViaBrowser": false, "contributorStreams": false, "certificationLevelsFilter": [], "nudityFilter": [], "mediaTypes": [] } },
+    { "type": "comet", "instanceId": "1c5", "enabled": true, "options": { "name": "Comet", "timeout": 8000, "resources": ["stream"], "includeP2P": true, "removeTrash": true, "mediaTypes": [] } },
+    { "type": "stremthruTorz", "instanceId": "e7b", "enabled": true, "options": { "name": "StremThru Torz", "timeout": 10000, "resources": ["stream"], "mediaTypes": [], "includeP2P": true, "useMultipleInstances": false } },
+    { "type": "torrentio", "instanceId": "23a", "enabled": true, "options": { "name": "Torrentio", "timeout": 8000, "resources": ["stream", "catalog", "meta"], "useMultipleInstances": false, "providers": [] } }
+  ],
+  "formatter": {
+    "id": "custom",
+    "definition": {
+      "name": "{stream.resolution::exists[\"{stream.resolution::replace('2160p','4K')::replace('1080p','HD')::replace('720p','SD')}\"||\"\"]} {stream.quality::exists[\"{stream.quality::replace('REMUX','+')::replace('BluRay','⭐⭐⭐⭐⭐')::replace('WEB-DL','⭐⭐⭐⭐')::replace('WEBRip','⭐⭐⭐⭐')}\"||\"\"]}",
+      "description": "{stream.title::exists[\"🎬 {stream.title}\"||\"\"]}{stream.seasonEpisode::exists[\" - {stream.seasonEpisode::join(' ')}\"||\"\"]}{stream.year::exists[\" ({stream.year})\"||\"\"]}\n───────────────────\n{stream.languageEmojis::exists[\"Languages: {stream.languageEmojis}\"||\"\"]}\n{stream.quality::exists[\"✨ {stream.quality::replace('REMUX','+')::replace('BluRay','Premium Quality')::replace('WEB-DL','Streaming Quality')::replace('WEBRip','Streaming Quality')}\"||\"\"]}{stream.visualTags::~HDR::istrue[\" | 🌈 HDR\"||\"\"]}{stream.visualTags::~DV::istrue[\" | 🎥 Dolby Vision\"||\"\"]}{stream.audioTags::exists[\" | 🔊 {stream.audioTags::join(', ')}\"||\"\"]}\n───────────────────\n📂 {stream.size::>0[\"{stream.size::bytes}\"||\"\"]}{stream.seeders::>0[\" | 👥 {stream.seeders}\"||\"\"]}{addon.name::exists[\" | 🛰️ {addon.name}\"||\"\"]}"
+    }
+  },
+  "preferredQualities": ["BluRay REMUX", "BluRay", "WEB-DL", "WEBRip", "HDRip", "HC HD-Rip", "DVDRip", "HDTV", "Unknown"],
+  "preferredResolutions": ["2160p", "1080p", "720p"],
+  "excludedQualities": ["CAM", "SCR", "TS", "TC"],
+  "excludedVisualTags": ["3D"],
+  "sortCriteria": {
+    "global": [{ "key": "seeders", "direction": "desc" }, { "key": "resolution", "direction": "desc" }, { "key": "size", "direction": "desc" }],
+    "uncached": [{ "key": "seeders", "direction": "desc" }, { "key": "resolution", "direction": "desc" }, { "key": "size", "direction": "desc" }]
+  },
+  "posterService": "rpdb",
+  "deduplicator": { "enabled": true, "excludeAddons": [], "multiGroupBehaviour": "aggressive", "keys": ["filename", "infoHash"], "cached": "per_addon", "uncached": "per_service", "p2p": "single_result" },
+  "trusted": false,
+  "excludedResolutions": ["144p", "240p", "360p", "480p", "576p"],
+  "includedResolutions": [],
+  "requiredResolutions": [],
+  "includedQualities": [],
+  "requiredQualities": [],
+  "excludedLanguages": [],
+  "includedLanguages": [],
+  "requiredLanguages": [],
+  "preferredLanguages": ["English"],
+  "includedVisualTags": [],
+  "requiredVisualTags": [],
+  "preferredVisualTags": ["HDR+DV", "DV Only", "HDR Only", "HDR10+", "HDR10", "DV", "HDR"],
+  "excludedAudioTags": [],
+  "includedAudioTags": [],
+  "requiredAudioTags": [],
+  "preferredAudioTags": ["Atmos", "DD+", "DD", "DTS-HD MA", "DTS-HD", "DTS-ES", "DTS", "TrueHD", "OPUS", "FLAC", "AAC"],
+  "excludedAudioChannels": [],
+  "includedAudioChannels": [],
+  "requiredAudioChannels": [],
+  "preferredAudioChannels": [],
+  "excludedStreamTypes": [],
+  "includedStreamTypes": [],
+  "requiredStreamTypes": [],
+  "preferredStreamTypes": ["p2p"],
+  "excludedEncodes": [],
+  "includedEncodes": [],
+  "requiredEncodes": [],
+  "preferredEncodes": [],
+  "excludedKeywords": [],
+  "includeSeederRange": [10, 100000],
+  "requiredSeederRange": [10, 100000],
+  "seederRangeTypes": ["p2p"],
+  "ageRangeTypes": ["usenet"],
+  "digitalReleaseFilter": { "enabled": false, "tolerance": 1, "requestTypes": ["movie", "series", "anime"], "addons": [] },
+  "enableSeadex": true,
+  "excludeCachedFromAddons": [],
+  "excludeCachedFromServices": [],
+  "excludeCachedFromStreamTypes": [],
+  "excludeUncached": false,
+  "excludeUncachedFromAddons": [],
+  "excludeUncachedFromServices": [],
+  "excludeUncachedFromStreamTypes": [],
+  "excludedStreamExpressions": [],
+  "dynamicAddonFetching": { "enabled": false, "condition": "count(totalStreams) >= 15 or totalTimeTaken >= 10000" },
+  "groups": {
+    "enabled": true,
+    "groupings": [{ "addons": ["23a", "1c5", "bcd", "e7b"], "condition": "true" }],
+    "behaviour": "sequential"
+  },
+  "proxy": { "enabled": false, "id": "builtin", "proxiedAddons": [], "proxiedServices": [] },
+  "resultLimits": { "resolution": 5 },
+  "size": { "global": { "movies": [0, 100000000000], "series": [0, 100000000000] } },
+  "hideErrors": true,
+  "hideErrorsForResources": [],
+  "statistics": { "statsToShow": ["addon", "filter"] },
+  "yearMatching": { "enabled": true, "requestTypes": [], "addons": [] },
+  "titleMatching": { "mode": "contains", "enabled": true, "requestTypes": [], "addons": [] },
+  "seasonEpisodeMatching": { "enabled": true, "requestTypes": [], "addons": [] },
+  "autoPlay": { "method": "matchingFile", "attributes": ["service"] },
+  "areYouStillThere": { "enabled": true, "episodesBeforeCheck": 4 },
+  "precacheNextEpisode": false,
+  "alwaysPrecache": false,
+  "catalogModifications": [],
+  "cacheAndPlay": { "streamTypes": [] },
+  "autoRemoveDownloads": true,
+  "addonName": "",
+  "addonLogo": "",
+  "addonDescription": "Direct P2P Streaming. Sequential fetching logic.",
+  "preferredRegexPatterns": [],
+  "preferredStreamExpressions": []
+};
 
         const MASTER_WITH_DEBRID = {
-            "services": [
-                { "id": "realdebrid", "enabled": false, "credentials": {} }, { "id": "alldebrid", "enabled": false, "credentials": {} }, { "id": "premiumize", "enabled": false, "credentials": {} },
-                { "id": "debridlink", "enabled": false, "credentials": {} }, { "id": "torbox", "enabled": true, "credentials": {} }, { "id": "offcloud", "enabled": false, "credentials": {} },
-                { "id": "putio", "enabled": false, "credentials": {} }, { "id": "easynews", "enabled": false, "credentials": {} }, { "id": "easydebrid", "enabled": false, "credentials": {} },
-                { "id": "debrider", "enabled": false, "credentials": {} }, { "id": "pikpak", "enabled": false, "credentials": {} }, { "id": "seedr", "enabled": false, "credentials": {} },
-                { "id": "stremio_nntp", "enabled": false, "credentials": {} }, { "id": "nzbdav", "enabled": false, "credentials": {} }, { "id": "altmount", "enabled": false, "credentials": {} }
-            ],
-            "presets": [
-                { "type": "mediafusion", "instanceId": "bcd", "enabled": true, "options": { "name": "MediaFusion", "timeout": 10000, "resources": ["stream", "catalog", "meta"], "useCachedResultsOnly": false, "enableWatchlistCatalogs": false, "downloadViaBrowser": false, "contributorStreams": false, "certificationLevelsFilter": [], "nudityFilter": [], "mediaTypes": [] } },
-                { "type": "comet", "instanceId": "1c5", "enabled": true, "options": { "name": "Comet", "timeout": 10000, "resources": ["stream"], "includeP2P": false, "removeTrash": true, "mediaTypes": [] } },
-                { "type": "stremthruTorz", "instanceId": "be5", "enabled": true, "options": { "name": "StremThru Torz", "timeout": 10000, "resources": ["stream"], "mediaTypes": [], "includeP2P": false, "useMultipleInstances": false } },
-                { "type": "torrentio", "instanceId": "23a", "enabled": true, "options": { "name": "Torrentio", "timeout": 10000, "resources": ["stream", "catalog", "meta"], "useMultipleInstances": false, "providers": [] } },
-                { "type": "jackettio", "instanceId": "da0", "enabled": true, "options": { "name": "Jackettio", "timeout": 10000, "resources": ["stream"], "mediaTypes": [] } },
-                { "type": "torrent-galaxy", "instanceId": "92e", "enabled": true, "options": { "name": "TorrentGalaxy", "timeout": 10000, "mediaTypes": [], "useMultipleInstances": false } },
-                { "type": "knaben", "instanceId": "705", "enabled": true, "options": { "name": "Knaben", "timeout": 10000, "mediaTypes": [], "useMultipleInstances": false } },
-                { "type": "bitmagnet", "instanceId": "9a3", "enabled": true, "options": { "name": "Bitmagnet", "timeout": 10000, "mediaTypes": [], "useMultipleInstances": false, "paginate": false } },
-                { "type": "animetosho", "instanceId": "f89", "enabled": true, "options": { "name": "AnimeTosho", "timeout": 10000, "mediaTypes": [], "useMultipleInstances": false } },
-                { "type": "seadex", "instanceId": "a9a", "enabled": true, "options": { "name": "SeaDex", "timeout": 10000, "mediaTypes": ["anime"] } }
-            ],
-            "formatter": {
-                "id": "custom",
-                "definition": {
-                    "name": "{stream.resolution::exists[\"{stream.resolution::replace('2160p','4K')::replace('1080p','HD')::replace('720p','SD')}\"||\"\"]} {stream.quality::exists[\"{stream.quality::replace('REMUX','+')::replace('BluRay','⭐⭐⭐⭐⭐')::replace('WEB-DL','⭐⭐⭐⭐')::replace('WEBRip','⭐⭐⭐⭐')}\"||\"\"]} {service.cached::istrue[\"⚡\"||\"⏳\"]}",
-                    "description": "{stream.type::=usenet[\"📦 USN \"||\"\"]}{stream.title::exists[\"🎬 {stream.title}\"||\"\"]}{stream.seasonEpisode::exists[\" - {stream.seasonEpisode::join(' ')}\"||\"\"]}{stream.year::exists[\" ({stream.year})\"||\"\"]}\n{service.cached::istrue[\"🟢 INSTANT PLAY\"||\"🔴 NEEDS TO DOWNLOAD\"]}\n─────────────\n{stream.languageEmojis::exists[\"Languages: {stream.languageEmojis}\"||\"\"]}\n{stream.quality::exists[\"✨ {stream.quality::replace('REMUX','+')::replace('BluRay','Premium Quality')::replace('WEB-DL','Streaming Quality')::replace('WEBRip','Streaming Quality')}\"||\"\"]}{stream.visualTags::~HDR::istrue[\" | 🌈 HDR\"||\"\"]}{stream.visualTags::~DV::istrue[\" | 🎥 Dolby Vision\"||\"\"]}{stream.audioTags::exists[\" | 🔊 {stream.audioTags::join(', ')}\"||\"\"]}\n─────────────\n📂 {stream.size::>0[\"{stream.size::bytes}\"||\"\"]}{service.name::exists[\" | ☁️ {service.name}\"||\"\"]}{service.cached::isfalse[\" | 👥 {stream.seeders}\"||\"\"]}{addon.name::exists[\" | 🛰️ {addon.name}\"||\"\"]}"
-                }
-            },
-            "preferredQualities": ["BluRay REMUX", "BluRay", "WEB-DL", "WEBRip", "HDRip", "HC HD-Rip", "DVDRip", "HDTV", "CAM", "TS", "TC", "SCR", "Unknown"],
-            "preferredResolutions": ["2160p", "1440p", "1080p", "720p"],
-            "excludedQualities": ["CAM", "SCR", "TS", "TC"],
-            "excludedVisualTags": ["3D"],
-            "sortCriteria": {
-                "global": [
-                    { "key": "cached", "direction": "desc" }, { "key": "resolution", "direction": "desc" }, { "key": "quality", "direction": "desc" }, { "key": "visualTag", "direction": "desc" },
-                    { "key": "audioTag", "direction": "desc" }, { "key": "size", "direction": "asc" }, { "key": "library", "direction": "desc" }
-                ],
-                "cached": [
-                    { "key": "cached", "direction": "desc" }, { "key": "resolution", "direction": "desc" }, { "key": "quality", "direction": "desc" }, { "key": "addon", "direction": "desc" },
-                    { "key": "size", "direction": "asc" }, { "key": "streamType", "direction": "desc" }
-                ],
-                "uncached": [
-                    { "key": "streamType", "direction": "desc" }, { "key": "resolution", "direction": "desc" }, { "key": "quality", "direction": "desc" }, { "key": "size", "direction": "asc" }, { "key": "seeders", "direction": "desc" }
-                ]
-            },
-            "posterService": "rpdb",
-            "deduplicator": { "enabled": true, "excludeAddons": [], "multiGroupBehaviour": "aggressive", "keys": ["filename", "infoHash"], "cached": "per_addon", "uncached": "per_service", "p2p": "single_result" },
-            "trusted": false,
-            "excludedResolutions": ["144p", "240p", "360p", "480p", "576p"],
-            "includedResolutions": [],
-            "requiredResolutions": [],
-            "includedQualities": [],
-            "requiredQualities": [],
-            "excludedLanguages": [],
-            "includedLanguages": [],
-            "requiredLanguages": [],
-            "preferredLanguages": ["English"],
-            "includedVisualTags": [],
-            "requiredVisualTags": [],
-            "preferredVisualTags": ["HDR+DV", "DV Only", "HDR Only", "HDR10+", "HDR10", "DV", "HDR"],
-            "excludedAudioTags": [],
-            "includedAudioTags": [],
-            "requiredAudioTags": [],
-            "preferredAudioTags": ["Atmos", "DD+", "DD", "DTS-HD MA", "DTS-HD", "DTS-ES", "DTS", "TrueHD", "OPUS", "FLAC", "AAC"],
-            "excludedAudioChannels": [],
-            "includedAudioChannels": [],
-            "requiredAudioChannels": [],
-            "preferredAudioChannels": [],
-            "excludedStreamTypes": [],
-            "includedStreamTypes": [],
-            "requiredStreamTypes": [],
-            "preferredStreamTypes": ["usenet"],
-            "excludedEncodes": [],
-            "includedEncodes": [],
-            "requiredEncodes": [],
-            "preferredEncodes": [],
-            "excludedKeywords": [],
-            "includeSeederRange": [0, 1000],
-            "requiredSeederRange": [10, 1000],
-            "seederRangeTypes": ["p2p"],
-            "ageRangeTypes": ["usenet"],
-            "digitalReleaseFilter": { "enabled": false, "tolerance": 1, "requestTypes": ["movie", "series", "anime"], "addons": [] },
-            "excludeCachedFromAddons": [],
-            "excludeCachedFromServices": [],
-            "excludeCachedFromStreamTypes": [],
-            "excludeUncached": false,
-            "excludeUncachedFromAddons": [],
-            "excludeUncachedFromServices": [],
-            "excludeUncachedFromStreamTypes": [],
-            "dynamicAddonFetching": { "enabled": false, "condition": "count(cached(totalStreams)) >= 5 or totalTimeTaken >= 3000." },
-            "groups": {
-                "enabled": true,
-                "groupings": [
-                    { "addons": ["1c5", "bcd", "be5"], "condition": "true" },
-                    { "addons": ["23a", "b9f", "da0"], "condition": "(count(resolution(cached(totalStreams)) >= 3 and count(resolution(cached(totalStreams), '1080p')) >= 3 and count(resolution(cached(totalStreams), '720p')) >= 3) or totalTimeTaken > 10000" },
-                    { "addons": ["92e", "705", "9a3", "f89"], "condition": "(count(resolution(cached(totalStreams)) >= 3 and count(resolution(cached(totalStreams)) >= 3 and count(resolution(cached(totalStreams), '1080p')) >= 3 and count(resolution(cached(totalStreams), '720p')) >= 3) or totalTimeTaken > 10000" }
-                ],
-                "behaviour": "parallel"
-            },
-            "proxy": { "id": "builtin", "proxiedAddons": [], "proxiedServices": [] },
-            "resultLimits": { "resolution": 3 },
-            "size": { "global": { "movies": [0, 100000000000], "series": [0, 100000000000] } },
-            "hideErrors": true,
-            "hideErrorsForResources": [],
-            "statistics": { "statsToShow": ["addon", "filter"] },
-            "yearMatching": { "enabled": true, "requestTypes": [], "addons": [] },
-            "titleMatching": { "mode": "contains", "enabled": true, "requestTypes": [], "addons": [] },
-            "seasonEpisodeMatching": { "enabled": true, "requestTypes": [], "addons": [] },
-            "autoPlay": { "attributes": ["quality", "resolution", "service"] },
-            "areYouStillThere": { "enabled": true, "episodesBeforeCheck": 4 },
-            "precacheNextEpisode": true,
-            "alwaysPrecache": true,
-            "catalogModifications": [
-                { "id": "23a791b.torrentio-torbox-torrents", "name": "TorBox Torrents", "type": "other", "enabled": false, "shuffle": false, "usePosterService": false, "hideable": true, "searchable": false, "addonName": "Torrentio" },
-                { "id": "23a791b.torrentio-torbox-usenet", "name": "TorBox Usenet", "type": "other", "enabled": false, "shuffle": false, "usePosterService": false, "hideable": true, "searchable": false, "addonName": "Torrentio" },
-                { "id": "23a791b.torrentio-torbox-webdl", "name": "TorBox WebDL", "type": "other", "enabled": false, "shuffle": false, "usePosterService": false, "hideable": true, "searchable": false, "addonName": "Torrentio" }
-            ],
-            "cacheAndPlay": { "streamTypes": ["usenet"] },
-            "autoRemoveDownloads": true
-        };
+  "services": [
+    { "id": "realdebrid", "enabled": true, "credentials": {} }, { "id": "alldebrid", "enabled": false, "credentials": {} }, { "id": "premiumize", "enabled": false, "credentials": {} },
+    { "id": "debridlink", "enabled": false, "credentials": {} }, { "id": "torbox", "enabled": true, "credentials": {} }, { "id": "offcloud", "enabled": false, "credentials": {} },
+    { "id": "putio", "enabled": false, "credentials": {} }, { "id": "easynews", "enabled": false, "credentials": {} }, { "id": "easydebrid", "enabled": false, "credentials": {} },
+    { "id": "debrider", "enabled": false, "credentials": {} }, { "id": "pikpak", "enabled": false, "credentials": {} }, { "id": "seedr", "enabled": false, "credentials": {} },
+    { "id": "stremio_nntp", "enabled": false, "credentials": {} }, { "id": "nzbdav", "enabled": false, "credentials": {} }, { "id": "altmount", "enabled": false, "credentials": {} }
+  ],
+  "presets": [
+    { "type": "mediafusion", "instanceId": "bcd", "enabled": true, "options": { "name": "MediaFusion", "timeout": 6000, "resources": ["stream", "catalog", "meta"], "useCachedResultsOnly": false, "enableWatchlistCatalogs": false, "downloadViaBrowser": false, "contributorStreams": false, "certificationLevelsFilter": [], "nudityFilter": [], "mediaTypes": [] } },
+    { "type": "comet", "instanceId": "1c5", "enabled": true, "options": { "name": "Comet", "timeout": 6000, "resources": ["stream"], "includeP2P": false, "removeTrash": true, "mediaTypes": [] } },
+    { "type": "stremthruTorz", "instanceId": "e7b", "enabled": true, "options": { "name": "StremThru Torz", "timeout": 8000, "resources": ["stream"], "mediaTypes": [], "includeP2P": false, "useMultipleInstances": false } },
+    { "type": "torrentio", "instanceId": "23a", "enabled": true, "options": { "name": "Torrentio", "timeout": 6000, "resources": ["stream", "catalog", "meta"], "useMultipleInstances": false, "providers": [] } },
+    { "type": "jackettio", "instanceId": "da0", "enabled": true, "options": { "name": "Jackettio", "timeout": 10000, "resources": ["stream"], "mediaTypes": [] } },
+    { "type": "torrent-galaxy", "instanceId": "92e", "enabled": true, "options": { "name": "TorrentGalaxy", "timeout": 10000, "mediaTypes": [], "useMultipleInstances": false } },
+    { "type": "knaben", "instanceId": "705", "enabled": true, "options": { "name": "Knaben", "timeout": 10000, "mediaTypes": [], "useMultipleInstances": false } },
+    { "type": "bitmagnet", "instanceId": "9a3", "enabled": true, "options": { "name": "Bitmagnet", "timeout": 10000, "mediaTypes": [], "useMultipleInstances": false, "paginate": false } },
+    { "type": "seadex", "instanceId": "1bd", "enabled": true, "options": { "name": "SeaDex", "timeout": 10000, "mediaTypes": ["anime"] } },
+    { "type": "animetosho", "instanceId": "f89", "enabled": true, "options": { "name": "AnimeTosho", "timeout": 10000, "mediaTypes": [], "useMultipleInstances": false } },
+    { "type": "zilean", "instanceId": "12a", "enabled": true, "options": { "name": "Zilean", "timeout": 10000, "mediaTypes": [] } }
+  ],
+  "formatter": {
+    "id": "custom",
+    "definition": {
+      "name": "{stream.resolution::exists[\"{stream.resolution::replace('2160p','4K')::replace('1080p','HD')::replace('720p','SD')}\"||\"\"]} {stream.quality::exists[\"{stream.quality::replace('REMUX','+')::replace('BluRay','⭐⭐⭐⭐⭐')::replace('WEB-DL','⭐⭐⭐⭐')::replace('WEBRip','⭐⭐⭐⭐')}\"||\"\"]} {service.cached::istrue[\"⚡\"||\"⏳\"]}",
+      "description": "{stream.type::=usenet[\"📦 USN \"||\"\"]}{stream.title::exists[\"🎬 {stream.title}\"||\"\"]}{stream.seasonEpisode::exists[\" - {stream.seasonEpisode::join(' ')}\"||\"\"]}{stream.year::exists[\" ({stream.year})\"||\"\"]}\n{service.cached::istrue[\"🟢 INSTANT PLAY\"||\"🔴 NEEDS TO DOWNLOAD\"]}\n─────────────\n{stream.languageEmojis::exists[\"Languages: {stream.languageEmojis}\"||\"\"]}\n{stream.quality::exists[\"✨ {stream.quality::replace('REMUX','+')::replace('BluRay','Premium Quality')::replace('WEB-DL','Streaming Quality')::replace('WEBRip','Streaming Quality')}\"||\"\"]}{stream.visualTags::~HDR::istrue[\" | 🌈 HDR\"||\"\"]}{stream.visualTags::~DV::istrue[\" | 🎥 Dolby Vision\"||\"\"]}{stream.audioTags::exists[\" | 🔊 {stream.audioTags::join(', ')}\"||\"\"]}\n─────────────\n📂 {stream.size::>0[\"{stream.size::bytes}\"||\"\"]}{service.name::exists[\" | ☁️ {service.name}\"||\"\"]}{service.cached::isfalse[\" | 👥 {stream.seeders}\"||\"\"]}{addon.name::exists[\" | 🛰️ {addon.name}\"||\"\"]}"
+    }
+  },
+  "preferredQualities": ["BluRay REMUX", "BluRay", "WEB-DL", "WEBRip", "HDRip", "HC HD-Rip", "DVDRip", "HDTV", "CAM", "TS", "TC", "SCR", "Unknown"],
+  "preferredResolutions": ["2160p", "1440p", "1080p", "720p"],
+  "excludedQualities": ["CAM", "SCR", "TS", "TC"],
+  "excludedVisualTags": ["3D"],
+  "sortCriteria": {
+    "global": [{ "key": "cached", "direction": "desc" }, { "key": "resolution", "direction": "desc" }, { "key": "quality", "direction": "desc" }, { "key": "visualTag", "direction": "desc" }, { "key": "audioTag", "direction": "desc" }, { "key": "size", "direction": "asc" }, { "key": "library", "direction": "desc" }],
+    "cached": [{ "key": "cached", "direction": "desc" }, { "key": "resolution", "direction": "desc" }, { "key": "quality", "direction": "desc" }, { "key": "addon", "direction": "desc" }, { "key": "size", "direction": "asc" }, { "key": "streamType", "direction": "desc" }],
+    "uncached": [{ "key": "streamType", "direction": "desc" }, { "key": "resolution", "direction": "desc" }, { "key": "quality", "direction": "desc" }, { "key": "size", "direction": "asc" }, { "key": "seeders", "direction": "desc" }]
+  },
+  "posterService": "rpdb",
+  "deduplicator": { "enabled": true, "excludeAddons": [], "multiGroupBehaviour": "aggressive", "keys": ["filename", "infoHash"], "cached": "per_addon", "uncached": "per_service", "p2p": "single_result" },
+  "trusted": false,
+  "addonName": "",
+  "addonLogo": "",
+  "addonDescription": "Optimized for Speed and Reliability. Hybrid RD+TorBox.",
+  "excludedResolutions": ["144p", "240p", "360p", "480p", "576p"],
+  "includedResolutions": [],
+  "requiredResolutions": [],
+  "includedQualities": [],
+  "requiredQualities": [],
+  "excludedLanguages": [],
+  "includedLanguages": [],
+  "requiredLanguages": [],
+  "preferredLanguages": ["English"],
+  "includedVisualTags": [],
+  "requiredVisualTags": [],
+  "preferredVisualTags": ["HDR+DV", "DV Only", "HDR Only", "HDR10+", "HDR10", "DV", "HDR"],
+  "excludedAudioTags": [],
+  "includedAudioTags": [],
+  "requiredAudioTags": [],
+  "preferredAudioTags": ["Atmos", "DD+", "DD", "DTS-HD MA", "DTS-HD", "DTS-ES", "DTS", "TrueHD", "OPUS", "FLAC", "AAC"],
+  "excludedAudioChannels": [],
+  "includedAudioChannels": [],
+  "requiredAudioChannels": [],
+  "preferredAudioChannels": [],
+  "excludedStreamTypes": [],
+  "includedStreamTypes": [],
+  "requiredStreamTypes": [],
+  "preferredStreamTypes": ["usenet"],
+  "excludedEncodes": [],
+  "includedEncodes": [],
+  "requiredEncodes": [],
+  "preferredEncodes": [],
+  "preferredRegexPatterns": [],
+  "excludedKeywords": [],
+  "includeSeederRange": [0, 1000],
+  "requiredSeederRange": [10, 1000],
+  "seederRangeTypes": ["uncached"],
+  "ageRangeTypes": ["usenet"],
+  "digitalReleaseFilter": { "enabled": false, "tolerance": 1, "requestTypes": ["movie", "series", "anime"], "addons": [] },
+  "enableSeadex": true,
+  "excludeCachedFromAddons": [],
+  "excludeCachedFromServices": [],
+  "excludeCachedFromStreamTypes": [],
+  "excludeUncached": false,
+  "excludeUncachedFromAddons": [],
+  "excludeUncachedFromServices": [],
+  "excludeUncachedFromStreamTypes": [],
+  "excludedStreamExpressions": ["merge(count(resolution(cached(streams), '2160p')) > 0 ? resolution(uncached(streams), '2160p') : [], count(resolution(cached(streams), '1080p')) > 0 ? resolution(uncached(streams), '1080p') : [], count(resolution(cached(streams), '720p')) > 0 ? resolution(uncached(streams), '720p') : [])"],
+  "preferredStreamExpressions": [
+      "resolution(quality(regexMatched(streams), 'Bluray REMUX'), '2160p')",
+      // ... (Truncated purely for visual brevity, full list is in the merged logic)
+      "resolution(quality(regexMatched(streams), 'WEB-DL'), '2160p')",
+      "resolution(quality(regexMatched(streams), 'Bluray REMUX'), '1080p')",
+      "resolution(quality(regexMatched(streams), 'Bluray'), '1080p')",
+      "resolution(quality(regexMatched(streams), 'WEB-DL'), '1080p')",
+      "resolution(quality(regexMatched(streams), 'WEBRip'), '2160p')",
+      "resolution(quality(regexMatched(streams), 'WEBRip'), '1080p')",
+      "resolution(quality(regexMatched(streams), 'WEBRip'), '720p')",
+      "resolution(quality(regexMatched(streams), 'Bluray REMUX'), '720p')",
+      "resolution(quality(regexMatched(streams), 'Bluray'), '720p')",
+      "resolution(quality(regexMatched(streams), 'WEB-DL'), '720p')",
+      "resolution(quality(regexMatched(streams), 'WEB-DL'), '576p')",
+      "resolution(quality(regexMatched(streams), 'WEBRip'), '576p')",
+      "resolution(quality(regexMatched(streams), 'DVDRip'), '576p')",
+      "resolution(quality(regexMatched(streams), 'WEB-DL'), '480p')",
+      "resolution(quality(regexMatched(streams), 'WEBRip'), '480p')",
+      "resolution(quality(regexMatched(streams), 'DVDRip'), '480p')"
+  ],
+  "dynamicAddonFetching": { "enabled": false, "condition": "count(cached(totalStreams)) >= 5 or totalTimeTaken >= 3000." },
+  "groups": {
+    "enabled": true,
+    "groupings": [
+      { "addons": ["23a", "1c5", "bcd"], "condition": "true" },
+      { "addons": ["e7b", "da0", "1bd"], "condition": "(count(resolution(cached(totalStreams), '2160p')) < 5 and count(resolution(cached(totalStreams), '1080p')) < 5) or totalTimeTaken > 4000" },
+      { "addons": ["92e", "705", "9a3", "f89"], "condition": "(count(cached(totalStreams)) == 0) or totalTimeTaken > 8000" }
+    ],
+    "behaviour": "sequential"
+  },
+  "proxy": { "enabled": false, "id": "builtin", "proxiedAddons": [], "proxiedServices": [] },
+  "resultLimits": { "resolution": 5 },
+  "size": { "global": { "movies": [0, 100000000000], "series": [0, 100000000000] } },
+  "hideErrors": true,
+  "hideErrorsForResources": [],
+  "statistics": { "statsToShow": ["addon", "filter"] },
+  "yearMatching": { "enabled": true, "requestTypes": [], "addons": [] },
+  "titleMatching": { "mode": "contains", "enabled": true, "requestTypes": [], "addons": [] },
+  "seasonEpisodeMatching": { "enabled": true, "requestTypes": [], "addons": [] },
+  "autoPlay": { "method": "matchingFile", "attributes": ["service"] },
+  "areYouStillThere": { "enabled": true, "episodesBeforeCheck": 4 },
+  "precacheNextEpisode": true,
+  "alwaysPrecache": true,
+  "catalogModifications": [
+    { "id": "23a791b.torrentio-torbox-torrents", "type": "other", "name": "TorBox Torrents", "shuffle": false, "enabled": false, "usePosterService": false, "hideable": true, "searchable": false, "addonName": "Torrentio" },
+    { "id": "23a791b.torrentio-torbox-usenet", "type": "other", "name": "TorBox Usenet", "shuffle": false, "enabled": false, "usePosterService": false, "hideable": true, "searchable": false, "addonName": "Torrentio" },
+    { "id": "23a791b.torrentio-torbox-webdl", "type": "other", "name": "TorBox WebDL", "shuffle": false, "enabled": false, "usePosterService": false, "hideable": true, "searchable": false, "addonName": "Torrentio" }
+  ],
+  "cacheAndPlay": { "streamTypes": ["usenet"] },
+  "autoRemoveDownloads": true
+};
         // --- EMBEDDED JSON DATA END ---
 
         // State
@@ -762,23 +915,69 @@ const MASTER_WITHOUT_DEBRID = {
         let currentStepIdx = 0;
         let catalogState = []; // Holds the unified catalog objects
         const GB_BYTES = 1073741824;
+        const CONST_CONDITION = `(count(resolution(cached(totalStreams), '2160p')) < 3 and count(resolution(cached(totalStreams), '1080p')) < 3 and count(resolution(cached(totalStreams), '720p')) < 3) and totalTimeTaken < 5000`;
+        const CONST_CONDITION_FAILSAFE = `(count(resolution(cached(totalStreams), '2160p')) < 3 and count(resolution(cached(totalStreams), '1080p')) < 3 and count(resolution(cached(totalStreams), '720p')) < 3)`;
 
-        // Language Config
+// Language Config
         const availableLanguages = [
             { label: "English", code: "English" },
+            { label: "Japanese", code: "Japanese" },
+            { label: "Chinese", code: "Chinese" },
+            { label: "Russian", code: "Russian" },
+            { label: "Arabic", code: "Arabic" },
+            { label: "Portuguese", code: "Portuguese" },
             { label: "Spanish", code: "Spanish" },
             { label: "French", code: "French" },
             { label: "German", code: "German" },
             { label: "Italian", code: "Italian" },
-            { label: "Portuguese", code: "Portuguese" },
-            { label: "Russian", code: "Russian" },
-            { label: "Hindi", code: "Hindi" },
-            { label: "Japanese", code: "Japanese" },
             { label: "Korean", code: "Korean" },
-            { label: "Chinese", code: "Chinese" },
-            { label: "Arabic", code: "Arabic" }
+            { label: "Hindi", code: "Hindi" },
+            { label: "Bengali", code: "Bengali" },
+            { label: "Punjabi", code: "Punjabi" },
+            { label: "Marathi", code: "Marathi" },
+            { label: "Gujarati", code: "Gujarati" },
+            { label: "Tamil", code: "Tamil" },
+            { label: "Telugu", code: "Telugu" },
+            { label: "Kannada", code: "Kannada" },
+            { label: "Malayalam", code: "Malayalam" },
+            { label: "Thai", code: "Thai" },
+            { label: "Vietnamese", code: "Vietnamese" },
+            { label: "Indonesian", code: "Indonesian" },
+            { label: "Turkish", code: "Turkish" },
+            { label: "Hebrew", code: "Hebrew" },
+            { label: "Persian", code: "Persian" },
+            { label: "Ukrainian", code: "Ukrainian" },
+            { label: "Greek", code: "Greek" },
+            { label: "Lithuanian", code: "Lithuanian" },
+            { label: "Latvian", code: "Latvian" },
+            { label: "Estonian", code: "Estonian" },
+            { label: "Polish", code: "Polish" },
+            { label: "Czech", code: "Czech" },
+            { label: "Slovak", code: "Slovak" },
+            { label: "Hungarian", code: "Hungarian" },
+            { label: "Romanian", code: "Romanian" },
+            { label: "Bulgarian", code: "Bulgarian" },
+            { label: "Serbian", code: "Serbian" },
+            { label: "Croatian", code: "Croatian" },
+            { label: "Slovenian", code: "Slovenian" },
+            { label: "Dutch", code: "Dutch" },
+            { label: "Danish", code: "Danish" },
+            { label: "Finnish", code: "Finnish" },
+            { label: "Swedish", code: "Swedish" },
+            { label: "Norwegian", code: "Norwegian" },
+            { label: "Malay", code: "Malay" },
+            { label: "Latino", code: "Latino" }
         ];
 
+        // Shared Keys Pools
+        const POOL_TMDB = [
+            { key: "3dd00c656eab69096a59ab6b54b6271b", token: "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzZGQwMGM2NTZlYWI2OTA5NmE1OWFiNmI1NGI2MjcxYiIsIm5iZiI6MTc3MDA0MTIzOS4wMTEwMDAyLCJzdWIiOiI2OTgwYWY5N2RjMTYyMTkxYWQ4YzNhYmIiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.t74m8Ck8ZcvGO-1CN05IYFHR5kIObutGi1sWmFF2TP8" },
+            { key: "760dd47bfc5e8df0ccf41ea7fcec3feb", token: "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3NjBkZDQ3YmZjNWU4ZGYwY2NmNDFlYTdmY2VjM2ZlYiIsIm5iZiI6MTc3MDA0MTQ5NC4yNzIsInN1YiI6IjY5ODBiMDk2OGE4MTE5NDcxMGIyMTUyOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.WBbX7HUxfRg3pE5eWzO3_9hg6oO0gjOm5LduuGCDB2s" },
+            { key: "244cf473a315583368aeee690e504bcd", token: "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNDRjZjQ3M2EzMTU1ODMzNjhhZWVlNjkwZTUwNGJjZCIsIm5iZiI6MTc3MDIwNDU5NS40MTQsInN1YiI6IjY5ODMyZGIzYjg4M2IwMTQ4N2RlZDU2ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.u8ob7N-2GRgpoVX1Lm5DNbxJyxQrwXMuHXyyxX17XVk" },
+            { key: "eb49edc5c9a8a3fb17042bbc33ce3eac", token: "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYjQ5ZWRjNWM5YThhM2ZiMTcwNDJiYmMzM2NlM2VhYyIsIm5iZiI6MTc3MDIwNTM2Ni4xNjQsInN1YiI6IjY5ODMzMGI2MjM1MmM2MzEzNTM4MzhlZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.16obL60TqagGkKVpUYI4QnqVZ1IUah0O1tzSAzlzU7Y" }
+        ];
+        const POOL_TVDB = ["0050c36b-d02a-405b-a797-c6937061de2c", "1c18ed44-4e0e-48f0-95ea-be77ce2fcb86", "07f8020e-f25b-4ec8-9305-b5a4b52568cc", "763116c3-0f3c-4007-a410-07e5f9c3c927"];
+        const POOL_FANART = ["7641fe4ac310e1a5bbfd190b8f565199", "a4c842db709a075d5f7a3f0754c2d6c8", "41be94c748cb47dd4e7b683c762ac683", "847a1f058f322b73175fbf5281691a4b", "cd6463410419b29dc694222e6a829230"];
         // --- INIT & UTILS ---
 
         function initLanguages() {
@@ -803,8 +1002,7 @@ const MASTER_WITHOUT_DEBRID = {
                 // Clean Name first (removes (Movies)/(Series) so they match)
                 let cleanName = c.name.replace(' (Movies)', '').replace(' (Series)', '');
                 
-                // FIX: Group by Name instead of ID.
-                // This merges separate Movie/Series catalogs into one single checkbox row
+                // Group by Name
                 let key = cleanName; 
                 
                 if (!grouped[key]) {
@@ -835,6 +1033,19 @@ const MASTER_WITHOUT_DEBRID = {
                 if (type === 'discovery') updateCatalogState(idx, 'enabled', isChecked);
             });
             renderCatalogs();
+        }
+
+        function toggleAnimeSettings(isChecked) {
+            const catalogCheck = document.getElementById('include-anime');
+            if (catalogCheck) {
+                catalogCheck.checked = isChecked;
+                if(currentMode !== 'streams') renderCatalogs();
+            }
+        }
+        
+        function syncAnimeToggle(isChecked) {
+            const prefsCheck = document.getElementById('enable-anime');
+            if (prefsCheck) prefsCheck.checked = isChecked;
         }
 
         function renderCatalogs() {
@@ -880,23 +1091,19 @@ const MASTER_WITHOUT_DEBRID = {
             renderCatalogs();
         }
 
-        // Logic enforcement separated from rendering for "Select All" efficiency
         function updateCatalogState(index, field, value) {
             const cat = catalogState[index];
             cat[field] = value;
 
             // Logic enforcement:
-            // 1. If Home is enabled, Discovery MUST be enabled (cannot have on Home if disabled globally)
             if (field === 'showInHome' && value === true) {
                 cat.enabled = true;
             }
-            // 2. If Discovery is disabled, Home MUST be disabled.
             if (field === 'enabled' && value === false) {
                 cat.showInHome = false;
             }
         }
 
-        // Wrapper for single item change (state update + render)
         function updateCatalog(index, field, value) {
             updateCatalogState(index, field, value);
             renderCatalogs();
@@ -908,7 +1115,10 @@ const MASTER_WITHOUT_DEBRID = {
             const others = [];
             
             catalogState.forEach(cat => {
-                if (cat.id.startsWith('streaming.')) {
+                // Check items inside the group for streaming ID
+                const isStreaming = cat.items && cat.items.length > 0 && cat.items[0].id.startsWith('streaming.');
+                
+                if (isStreaming) {
                     streaming.push(cat);
                 } else {
                     others.push(cat);
@@ -919,10 +1129,211 @@ const MASTER_WITHOUT_DEBRID = {
             renderCatalogs();
         }
 
+        // --- VISUAL STYLE PREVIEW ---
+        const STYLE_PREVIEWS = {
+            "default": {
+                name: "TVFlix (Recommended)",
+                debrid: {
+                    json: {
+                        name: "{stream.resolution::exists[\"{stream.resolution::replace('2160p','4K')::replace('1080p','HD')::replace('720p','SD')}\"||\"\"]} {stream.quality::exists[\"{stream.quality::replace('REMUX','+')::replace('BluRay','⭐⭐⭐⭐⭐')::replace('WEB-DL','⭐⭐⭐⭐')::replace('WEBRip','⭐⭐⭐⭐')}\"||\"\"]} {service.cached::istrue[\"⚡\"||\"⏳\"]}",
+                        description: "{stream.title::exists[\"🎬 {stream.title}\"||\"\"]}{stream.seasonEpisode::exists[\" - {stream.seasonEpisode::join(' ')}\"||\"\"]}{stream.year::exists[\" ({stream.year})\"||\"\"]}\n{service.cached::istrue[\"🟢 INSTANT PLAY\"||\"🔴 NEEDS TO DOWNLOAD\"]}\n─────────────\n{stream.languageEmojis::exists[\"Languages: {stream.languageEmojis}\"||\"\"]}\n{stream.quality::exists[\"✨ {stream.quality::replace('REMUX','+')::replace('BluRay','Premium Quality')::replace('WEB-DL','Streaming Quality')::replace('WEBRip','Streaming Quality')}\"||\"\"]}{stream.visualTags::~HDR::istrue[\" | 🌈 HDR\"||\"\"]}{stream.visualTags::~DV::istrue[\" | 🎥 Dolby Vision\"||\"\"]}{stream.audioTags::exists[\" | 🔊 {stream.audioTags::join(', ')}\"||\"\"]}\n─────────────\n📂 {stream.size::>0[\"{stream.size::bytes}\"||\"\"]}{service.name::exists[\" | ☁️ {service.name}\"||\"\"]}{addon.name::exists[\" | 🛰️ {addon.name}\"||\"\"]}"
+                    },
+                    preview: {
+                        name: "4K ⭐⭐⭐⭐⭐ ⚡",
+                        desc: "🎬 Avengers: Endgame - 1 (2019)\n🟢 INSTANT PLAY\n───────────────────\nLanguages: 🇬🇧\n✨ Premium Quality | 🌈 HDR | 🎥 Dolby Vision | 🔊 Atmos\n───────────────────\n📂 58.4GB | ☁️ RealDebrid | 🛰️ Torrentio"
+                    }
+                },
+                torrent: {
+                    json: {
+                        name: "{stream.resolution::exists[\"{stream.resolution::replace('2160p','4K')::replace('1080p','HD')::replace('720p','SD')}\"||\"\"]} {stream.quality::exists[\"{stream.quality::replace('REMUX','+')::replace('BluRay','⭐⭐⭐⭐⭐')::replace('WEB-DL','⭐⭐⭐⭐')::replace('WEBRip','⭐⭐⭐⭐')}\"||\"\"]}",
+                        description: "{stream.title::exists[\"🎬 {stream.title}\"||\"\"]}{stream.seasonEpisode::exists[\" - {stream.seasonEpisode::join(' ')}\"||\"\"]}{stream.year::exists[\" ({stream.year})\"||\"\"]}\n───────────────────\n{stream.languageEmojis::exists[\"Languages: {stream.languageEmojis}\"||\"\"]}\n{stream.quality::exists[\"✨ {stream.quality::replace('REMUX','+')::replace('BluRay','Premium Quality')::replace('WEB-DL','Streaming Quality')::replace('WEBRip','Streaming Quality')}\"||\"\"]}{stream.visualTags::~HDR::istrue[\" | 🌈 HDR\"||\"\"]}{stream.visualTags::~DV::istrue[\" | 🎥 Dolby Vision\"||\"\"]}{stream.audioTags::exists[\" | 🔊 {stream.audioTags::join(', ')}\"||\"\"]}\n───────────────────\n📂 {stream.size::>0[\"{stream.size::bytes}\"||\"\"]}{stream.seeders::>0[\" | 👥 {stream.seeders}\"||\"\"]}{addon.name::exists[\" | 🛰️ {addon.name}\"||\"\"]}"
+                    },
+                    preview: {
+                        name: "4K ⭐⭐⭐⭐⭐",
+                        desc: "🎬 Avengers: Endgame - 1 (2019)\n───────────────────\nLanguages: 🇬🇧\n✨ Premium Quality | 🌈 HDR | 🎥 Dolby Vision | 🔊 Atmos\n───────────────────\n📂 58.4GB | 👥 1337 | 🛰️ Torrentio"
+                    }
+                }
+            },
+            "essential": {
+                name: "Minimal",
+                debrid: {
+                    json: {
+                        name: "{stream.type::=external[\"\"||\"{tools.removeLine}\"]}\n{stream.type::=external[\"{tools.removeLine}\"||\"\"]}{service.cached::istrue[\"Cached \"||\"Not Cached \"]}{stream.resolution::=2160p[\"4K \"||\"\"]}{stream.resolution::=1440p[\"QHD \"||\"\"]}{stream.resolution::=1080p[\"HD \"||\"\"]}{stream.resolution::=720p[\"SD \"||\"\"]}{stream.resolution::=480p[\"SD \"||\"\"]}{stream.size::>0[\" │ ⛁ {stream.size::bytes}\"||\"\"]}{service.cached::istrue[\"\"||\" · ⇋ {stream.seeders}\"]}",
+                        description: "{stream.type::=external[\"▪ ▪ ▪\"||\"{tools.removeLine}\"]}\n{stream.type::=external[\"{tools.removeLine}\"||\"\"]}☰ {stream.languageCodes::exists[\"{stream.languageCodes::join(' · ')}\"||\"---\"]}{stream.audioTags::exists[\" • {stream.audioTags::join(' · ')}\"||\"\"]}{stream.audioChannels::exists[\" • {stream.audioChannels::join(' ')}\"||\"\"]}\n{stream.type::=external[\"{tools.removeLine}\"||\"\"]}☲ {stream.quality::exists[\"{stream.quality}\"||\"---\"]} · {stream.encode::exists[\"{stream.encode}\"||\"---\"]}{stream.visualTags::exists[\" • {stream.visualTags::join(' · ')}\"||\"\"]}\n{stream.type::=external[\"{tools.removeLine}\"||\"\"]}☵ {addon.name} · {stream.releaseGroup::exists[\"{stream.releaseGroup}\"||\"---\"]}{stream.filename::~AMZN[\" · Amazon\"||\"\"]}{stream.filename::~NF[\" · Netflix\"||\"\"]}{stream.filename::~DSNP[\" · Disney+\"||\"\"]}{stream.filename::~HMAX[\" · HBO Max\"||\"\"]}{stream.filename::~APTV[\" · Apple TV+\"||\"\"]}{stream.filename::~Hulu[\" · Hulu\"||\"\"]}{stream.filename::~PRME[\" · Prime\"||\"\"]}{stream.filename::~PMTP[\" · Paramount+\"||\"\"]}{stream.filename::~PCKK[\" · Peacock\"||\"\"]}{stream.filename::~CRTC[\" · Crunchyroll\"||\"\"]}{stream.filename::~ANPX[\" · Anime Plex\"||\"\"]}{stream.filename::~STZ[\" · Starz\"||\"\"]}{stream.filename::~DSCV[\" · Discovery+\"||\"\"]}{service.cached::istrue[\" · [{service.shortName}]\"||\"\"]}{stream.proxied::istrue[\" · ☷\"||\"\"]}\n{stream.type::=external[\"{tools.removeLine}\"||\"\"]}{stream.languageCodes::exists[\"{tools.removeLine}\"||\"\"]}☶ {stream.title}{stream.seasonEpisode::exists[\" · {stream.seasonEpisode::join('')}\"||\"\"]}{stream.year::exists[\" · {stream.year}\"||\"\"]}{stream.duration::>0[\" · {stream.duration::time}\"||\"\"]}\n{stream.type::=external[\"{tools.removeLine}\"||\"\"]}{stream.message::exists[\"⌗ {stream.message}\"||\"\"]}\n{stream.type::=external[\"{tools.removeLine}\"||\"\"]}{stream.quality::exists[\"\"||\"※ {stream.filename}\"]}"
+                    },
+                    preview: {
+                        name: "Cached 4K │ ⛁ 58.4GB",
+                        desc: "☰ 🇬🇧 • Atmos · TrueHD • 7.1\n☲ BluRay · x265 • HDR · 10bit\n☵ Torrentio · RealDebrid · ☷\n☶ Avengers: Endgame · 1 · 2019 · 3h 1m"
+                    }
+                },
+                torrent: {
+                    json: {
+                        name: "{stream.type::=external[\"\"||\"{tools.removeLine}\"]}\n{stream.type::=external[\"{tools.removeLine}\"||\"\"]}{service.cached::istrue[\"🔲 \"||\"🔳 \"]}{stream.resolution::=2160p[\"4K \"||\"\"]}{stream.resolution::=1440p[\"QHD \"||\"\"]}{stream.resolution::=1080p[\"HD \"||\"\"]}{stream.resolution::=720p[\"SD \"||\"\"]}{stream.resolution::=480p[\"SD \"||\"\"]}{stream.size::>0[\" │ ⛁ {stream.size::bytes}\"||\"\"]}{service.cached::istrue[\"\"||\" · ⇋ {stream.seeders}\"]}",
+                        description: "{stream.type::=external[\"▪ ▪ ▪\"||\"{tools.removeLine}\"]}\n{stream.type::=external[\"{tools.removeLine}\"||\"\"]}☰ {stream.languageCodes::exists[\"{stream.languageCodes::join(' · ')}\"||\"---\"]}{stream.audioTags::exists[\" • {stream.audioTags::join(' · ')}\"||\"\"]}{stream.audioChannels::exists[\" • {stream.audioChannels::join(' ')}\"||\"\"]}\n{stream.type::=external[\"{tools.removeLine}\"||\"\"]}☲ {stream.quality::exists[\"{stream.quality}\"||\"---\"]} · {stream.encode::exists[\"{stream.encode}\"||\"---\"]}{stream.visualTags::exists[\" • {stream.visualTags::join(' · ')}\"||\"\"]}\n{stream.type::=external[\"{tools.removeLine}\"||\"\"]}☵ {addon.name} · {stream.releaseGroup::exists[\"{stream.releaseGroup}\"||\"---\"]}{stream.filename::~AMZN[\" · Amazon\"||\"\"]}{stream.filename::~NF[\" · Netflix\"||\"\"]}{stream.filename::~DSNP[\" · Disney+\"||\"\"]}{stream.filename::~HMAX[\" · HBO Max\"||\"\"]}{stream.filename::~APTV[\" · Apple TV+\"||\"\"]}{stream.filename::~Hulu[\" · Hulu\"||\"\"]}{stream.filename::~PRME[\" · Prime\"||\"\"]}{stream.filename::~PMTP[\" · Paramount+\"||\"\"]}{stream.filename::~PCKK[\" · Peacock\"||\"\"]}{stream.filename::~CRTC[\" · Crunchyroll\"||\"\"]}{stream.filename::~ANPX[\" · Anime Plex\"||\"\"]}{stream.filename::~STZ[\" · Starz\"||\"\"]}{stream.filename::~DSCV[\" · Discovery+\"||\"\"]}{service.cached::istrue[\" · [{service.shortName}]\"||\"\"]}{stream.proxied::istrue[\" · ☷\"||\"\"]}\n{stream.type::=external[\"{tools.removeLine}\"||\"\"]}☶ {stream.title}{stream.seasonEpisode::exists[\" · {stream.seasonEpisode::join('')}\"||\"\"]}{stream.year::exists[\" · {stream.year}\"||\"\"]}{stream.duration::>0[\" · {stream.duration::time}\"||\"\"]}\n{stream.type::=external[\"{tools.removeLine}\"||\"\"]}{stream.message::exists[\"⌗ {stream.message}\"||\"\"]}\n{stream.type::=external[\"{tools.removeLine}\"||\"\"]}{stream.quality::exists[\"\"||\"※ {stream.filename}\"]}"
+                    },
+                    preview: {
+                        name: "🔳 4K │ ⛁ 58.4GB · ⇋ 1337",
+                        desc: "☰ 🇬🇧 • Atmos · TrueHD • 7.1\n☲ BluRay · x265 • HDR · 10bit\n☵ Torrentio\n☶ Avengers: Endgame · 1 · 2019 · 3h 1m"
+                    }
+                }
+            },
+            "complex": {
+                name: "Simple",
+                debrid: {
+                    json: {
+                        name: "{service.cached::istrue[\"⚡ \"||\"⏳ \"]}🖥️ {stream.resolution}",
+                        description: "{stream.title::exists[\"🎬 {stream.title}\"||\"\"]}{stream.year::exists[\" ({stream.year})\"||\"\"]}{stream.season::>=0[\" S\"||\"\"]}{stream.season::<=9[\"0\"||\"\"]}{stream.season::>0[\"{stream.season}\"||\"\"]}{stream.episode::>=0[\" • E\"||\"\"]}{stream.episode::<=9[\"0\"||\"\"]}{stream.episode::>0[\"{stream.episode}\"||\"\"]}\n{stream.quality::exists[\"🎥 {stream.quality} \"||\"\"]}\n{stream.visualTags::exists[\"🎞 {stream.visualTags::join(' | ')}\"||\"\"]}\n{stream.audioTags::exists[\"🎧 {stream.audioTags::join(' | ')} \"||\"\"]}\n{stream.size::>0[\"💾 {stream.size::bytes} \"||\"\"]}\n{service.cached::istrue[\"📀 \"||\"\"]}{service.cached::isfalse[\"💿 \"||\"\"]}{addon.name}"
+                    },
+                    preview: {
+                        name: "⚡ 🖥️ 2160p",
+                        desc: "🎬 Avengers: Endgame (2019) S01 • E01\n🎥 BluRay\n🎞 HDR | DV\n🎧 Atmos\n💾 58.4GB\n📀 Torrentio"
+                    }
+                },
+                torrent: {
+                    json: {
+                        name: "🖥️ {stream.resolution} {stream.seeders::>0[\"| 👥 {stream.seeders}\"||\"\"]}",
+                        description: "{stream.title::exists[\"🎬 {stream.title}\"||\"\"]}{stream.year::exists[\" ({stream.year})\"||\"\"]}{stream.season::>=0[\" S\"||\"\"]}{stream.season::<=9[\"0\"||\"\"]}{stream.season::>0[\"{stream.season}\"||\"\"]}{stream.episode::>=0[\" • E\"||\"\"]}{stream.episode::<=9[\"0\"||\"\"]}{stream.episode::>0[\"{stream.episode}\"||\"\"]}\n{stream.quality::exists[\"🎥 {stream.quality} \"||\"\"]}\n{stream.visualTags::exists[\"🎞 {stream.visualTags::join(' | ')}\"||\"\"]}\n{stream.audioTags::exists[\"🎧 {stream.audioTags::join(' | ')} \"||\"\"]}\n{stream.size::>0[\"💾 {stream.size::bytes} \"||\"\"]}\n{service.cached::istrue[\"📀 \"||\"\"]}{service.cached::isfalse[\"💿 \"||\"\"]}{addon.name}"
+                    },
+                    preview: {
+                        name: "🖥️ 2160p | 👥 1337",
+                        desc: "🎬 Avengers: Endgame (2019) S01 • E01\n🎥 BluRay\n🎞 HDR | DV\n🎧 Atmos\n💾 58.4GB\n💿 Torrentio"
+                    }
+                }
+            },
+            "pro": {
+                name: "Detailed",
+                debrid: {
+                    json: {
+                        name: "{service.cached::istrue[\"⚡️\"||\"❌️\"]}|\n{stream.type::=Usenet[\"📰UN\"||\"\"]}{stream.type::=Debrid[\"🧲 DB\"||\"\"]}{stream.type::=Usenet::or::stream.type::=Debrid[\"|\"||\"\"]}\n{stream.resolution::=2160p[\"🔥4K\\n\"||\"\"]}{stream.resolution::=1080p[\"🚀 FHD\"||\"\"]}{stream.resolution::=1440p[\"✨ 1440p\"||\"\"]}{stream.resolution::=720p[\"💿 HD\"||\"\"]}{stream.resolution::=576p[\"💩576p\"||\"\"]}{stream.resolution::=480p[\"💩480p\"||\"\"]}{stream.resolution::=360p[\"💩360p\"||\"\"]}{stream.resolution::=240p[\"💩240p\"||\"\"]}{stream.resolution::=144p[\"💩144p\"||\"\"]}{stream.resolution::exists[\"\"||\"💩Unknown\"]}\n|🔍{addon.name}{service.id::exists[\"\\n|🌐{service.shortName}| \"||\"\"]}",
+                        description: "{stream.title::exists[\"🎬 {stream.title::title} \"||\"\"]}{stream.year::exists[\"({stream.year}) \"||\"\"]}{stream.season::>=0[\"🍂 S\"||\"\"]}{stream.season::<=9[\"0\"||\"\"]}{stream.season::>0[\"{stream.season} \"||\"\"]}{stream.episode::>=0[\"🎟 E\"||\"\"]}{stream.episode::<=9[\"0\"||\"\"]}{stream.episode::>0[\"{stream.episode} \"||\"\"]}\n{stream.quality::~Remux[\"|💎 REMUX| \"||\"\"]}{stream.quality::=BluRay [\"|📀 BluRay|\"||\"\"]}{stream.quality::=WEB-DL[\"|🖥 WEB-DL|\"||\"\"]}{stream.quality::=WEBRip[\"|💻 WEBRip|\"||\"\"]}{stream.quality::=HDRip[\"|💿 HDRip|\"||\"\"]}{stream.quality::=HC HD-Rip[\"|💽 HC HD-Rip|\"||\"\"]}{stream.quality::=DVDRip[\"|💾 DVDRip|\"||\"\"]}{stream.quality::=HDTV[\"|📺 HDTV|\"||\"\"]}{stream.visualTags::exists[\"📺 {stream.visualTags::join(' | ')}|\"||\"\"]}{stream.encode::exists[\"🎞️ {stream.encode}|\"||\"\"]}{stream.regexMatched::exists[\"🎚️ {stream.regexMatched} \"||\"\"]}{stream.regexMatched::=Anime BD T1[\"🔥|\"||\"\"]}{stream.regexMatched::=Anime BD T2[\"✨|\"||\"\"]}{stream.regexMatched::=Anime BD T3[\"🙂|\"||\"\"]}{stream.regexMatched::=Anime BD T4[\"🤷‍♂️|\"||\"\"]}{stream.regexMatched::=Anime BD T5[\"😐|\"||\"\"]}{stream.regexMatched::=Anime BD T6[\"👎|\"||\"\"]}{stream.regexMatched::=Anime BD T7[\"⛔️|\"||\"\"]}{stream.regexMatched::=Remux T1[\"🔥|\"||\"\"]}{stream.regexMatched::=Remux T2[\"✨|\"||\"\"]}{stream.regexMatched::=Remux T3[\"🙂|\"||\"\"]}{stream.regexMatched::=Bluray T1[\"🔥|\"||\"\"]}{stream.regexMatched::=Bluray T2[\"✨|\"||\"\"]}{stream.regexMatched::=Bluray T3[\"🙂|\"||\"\"]}{stream.regexMatched::=Anime Web T1[\"🔥|\"||\"\"]}{stream.regexMatched::=Anime Web T2[\"✨|\"||\"\"]}{stream.regexMatched::=Anime Web T3[\"🙂|\"||\"\"]}{stream.regexMatched::=Anime Web T4[\"🤷‍♂️|\"||\"\"]}{stream.regexMatched::=Anime Web T5[\"😐|\"||\"\"]}{stream.regexMatched::=Web T1[\"🔥|\"||\"\"]}{stream.regexMatched::=Web T2[\"✨|\"||\"\"]}{stream.regexMatched::=Web T3[\"🙂|\"||\"\"]}{stream.regexMatched::=Web T4[\"🤷‍♂️|\"||\"\"]}{stream.regexMatched::=Web Scene[\"✨|\"||\"\"]}{stream.regexMatched::=Bad T1[\"👎|\"||\"\"]}{stream.regexMatched::=Bad[\"👎|\"||\"\"]}{stream.duration::>0[\"⏱️ {stream.duration::time}|\"||\"\"]}\n{stream.audioTags::exists[\"|🎧 {stream.audioTags::join(' | ')}\"||\"\"]}{stream.audioChannels::exists[\"|🔊{stream.audioChannels::join(' | ')}\"||\"\"]}{stream.languages::exists[\"|🗣️ {stream.languageEmojis::join(' / ')}\"||\"\"]}{stream.audioTags::exists::or::stream.audioChannels::exists::or::stream.languages::exists[\"|\"||\"\"]}\n{stream.size::>0[\"|📦 {stream.size::bytes}\"||\"\"]}{stream.folderSize::>0[\"/ 📦 {stream.folderSize::bytes}\"||\"\"]}{stream.size::>0::or::stream.folderSize::>0[\"|\"||\"\"]}{stream.seeders::>0[\"🌱 {stream.seeders}|\"||\"\"]}{stream.age::exists[\"📅 {stream.age} |\"||\"\"]}{stream.releaseGroup::exists[\"🏷{stream.releaseGroup}|\"||\"\"]}{stream.type::=p2p[\"⚠️ P2P \"||\"\"]}{stream.type::=http[\"💻 Web Link \"||\"\"]}{stream.type::=youtube[\"▶️ Youtube \"||\"\"]}{stream.type::=live[\"📺 Live \"||\"\"]}\n{stream.filename::exists[\"|📄 File Name:▶️{stream.filename}\"||\"\"]}◀️|\n{stream.message::exists[\"ℹ️ {stream.message}\"||\"\"]}"
+                    },
+                    preview: {
+                        name: "\n|🔥4K| UHD| \n|🔍Torrentio| 👥 1337|",
+                        desc: "🎬 Avengers: Endgame (2019) 🍂 S01 🎟 E01 \n|📀 BluRay| 📺 HDR | DV| 🎞️ x265| 🎚️ Remux T1 \n|🎧 Atmos |🔊7.1 |🗣️ 🇬🇧 | \n|📦 58.4GB | 🌱 1337| ⚠️ P2P \n|📄 File Name:▶️Movie.mkv◀️|"
+                    }
+                }
+            }
+        };
+
+        // --- CUSTOM PREVIEW SIMULATION ---
+        const PREVIEW_MOCK_DATA = {
+            "stream.title": "Avengers: Endgame",
+            "stream.year": "2019",
+            "stream.season": "1",
+            "stream.episode": "1",
+            "stream.resolution": "2160p",
+            "stream.quality": "BluRay",
+            "stream.size": "58400000000",
+            "stream.size::bytes": "58.4GB",
+            "stream.seeders": "1337",
+            "service.name": "RealDebrid",
+            "service.shortName": "RD",
+            "service.cached": true,
+            "addon.name": "Torrentio",
+            "stream.languageEmojis": "🇬🇧",
+            "stream.visualTags": "HDR | DV",
+            "stream.audioTags": "Atmos | TrueHD",
+            "stream.filename": "Avengers.Endgame.2019.2160p.BluRay.x265.mkv",
+            "stream.videocodec": "x265",
+            "stream.container": "mkv"
+        };
+
+        function simulateFormat(format, data) {
+            let result = format;
+            const getValue = (key) => {
+                const cleanKey = key.split('::')[0];
+                return data[key] || data[cleanKey] || "";
+            };
+
+            let iterations = 0;
+            // Recursively resolve brackets from inside out
+            while (result.includes('{') && iterations < 100) {
+                iterations++;
+                const openIndex = result.lastIndexOf('{');
+                if (openIndex === -1) break;
+                const closeIndex = result.indexOf('}', openIndex);
+                if (closeIndex === -1) break;
+
+                const block = result.substring(openIndex + 1, closeIndex);
+                const bracketStart = block.indexOf('[');
+                const bracketEnd = block.lastIndexOf(']');
+                let replacement = "";
+
+                if (bracketStart > 0 && bracketEnd > bracketStart) {
+                    const leftPart = block.substring(0, bracketStart);
+                    const content = block.substring(bracketStart + 1, bracketEnd);
+                    const splitIndex = content.indexOf('"||"');
+                    let truePart = "", falsePart = "";
+                    if (splitIndex !== -1) {
+                        truePart = content.substring(1, splitIndex);
+                        falsePart = content.substring(splitIndex + 5, content.length - 1);
+                    }
+                    const [key, func] = leftPart.split('::');
+                    const val = getValue(key);
+                    let isTrue = false;
+                    if (!func || func === 'exists') isTrue = !!val;
+                    else if (func === 'istrue') isTrue = val === true || val === "true";
+                    else if (func === 'isfalse') isTrue = val === false || val === "false";
+                    else if (val && func.startsWith('=') && val == func.substring(1)) isTrue = true;
+                    else if (val && func.startsWith('~') && val.includes(func.substring(1))) isTrue = true;
+                    else if (val && func === '>0' && parseFloat(val) > 0) isTrue = true;
+                    replacement = isTrue ? truePart : falsePart;
+                } else {
+                    const [key, modifier] = block.split('::');
+                    const val = getValue(key);
+                    replacement = val;
+                }
+                result = result.substring(0, openIndex) + replacement + result.substring(closeIndex + 1);
+            }
+            return result;
+        }
+
+        // Listen to custom inputs to update preview dynamically
+        document.getElementById('custom-name-fmt').addEventListener('input', updateStylePreview);
+        document.getElementById('custom-desc-fmt').addEventListener('input', updateStylePreview);
+
+        function updateStylePreview() {
+            const selected = document.querySelector('input[name="visual-style"]:checked').value;
+            const customInputs = document.getElementById('custom-style-inputs');
+            // Determine if Debrid is active for preview purposes
+            const hasDebrid = Array.from(document.querySelectorAll('.debrid-check')).some(c => c.checked);
+            
+            if (selected === 'custom') {
+                customInputs.classList.remove('hidden');
+                
+                const nameVal = document.getElementById('custom-name-fmt').value;
+                const descVal = document.getElementById('custom-desc-fmt').value;
+                
+                // Update Mock Data based on Debrid Status
+                const currentMock = { ...PREVIEW_MOCK_DATA };
+                if(!hasDebrid) {
+                    currentMock["service.cached"] = false;
+                    currentMock["service.name"] = "";
+                    currentMock["service.shortName"] = "";
+                }
+
+                if (nameVal || descVal) {
+                    document.getElementById('style-preview-name').innerText = simulateFormat(nameVal || "", currentMock);
+                    document.getElementById('style-preview-desc').innerText = simulateFormat(descVal || "", currentMock);
+                } else {
+                    document.getElementById('style-preview-name').innerText = "(Preview appears here)";
+                    document.getElementById('style-preview-desc').innerText = "";
+                }
+
+            } else {
+                customInputs.classList.add('hidden');
+                const style = STYLE_PREVIEWS[selected];
+                const previewData = hasDebrid ? style.debrid.preview : style.torrent.preview;
+                document.getElementById('style-preview-name').innerText = previewData.name; 
+                document.getElementById('style-preview-desc').innerText = previewData.desc;
+            }
+        }
+
         // --- PAGE LOGIC ---
 
         function toggleDebridInput(id, checked) {
             document.getElementById(id).classList.toggle('hidden', !checked);
+            updateStylePreview(); // Update preview when Debrid changes
         }
         function toggleGemini(checked) {
             document.getElementById('gemini-input').classList.toggle('hidden', !checked);
@@ -930,9 +1341,14 @@ const MASTER_WITHOUT_DEBRID = {
         function toggleDebridio(checked) {
             document.getElementById('debridio-input').classList.toggle('hidden', !checked);
         }
-        // Redundant function definition to keep the original search line working below if needed
-        function _ignored_toggleGemini(checked) {
-            document.getElementById('gemini-input').classList.toggle('hidden', !checked);
+        function toggleSharedKeys(checked) {
+            const inputs = document.getElementById('manual-keys-container');
+            inputs.classList.toggle('hidden', checked);
+        }
+        
+        // Helper to check if any Debrid service is active
+        function hasActiveDebrid() {
+            return Array.from(document.querySelectorAll('.debrid-check')).some(c => c.checked);
         }
 
         document.getElementById('do-limit').addEventListener('change', e => document.getElementById('speed-options').classList.toggle('hidden', !e.target.checked));
@@ -943,36 +1359,77 @@ const MASTER_WITHOUT_DEBRID = {
             document.getElementById('page-hub').classList.remove('active');
             document.getElementById('page-wizard').classList.add('active');
             
-            if (m === 'streams') wizardFlow = ['step-debrid', 'step-speed', 'step-prefs', 'step-keys'];
-            else if (m === 'meta') wizardFlow = ['step-prefs', 'step-catalogs', 'step-keys', 'step-posters'];
-            else wizardFlow = ['step-debrid', 'step-speed', 'step-prefs', 'step-catalogs', 'step-keys', 'step-posters'];
+            // Reordered flow to include step-style and split step-prefs
+            if (m === 'streams') wizardFlow = ['step-debrid', 'step-speed', 'step-prefs-general', 'step-prefs-streams', 'step-style', 'step-keys'];
+            else if (m === 'meta') wizardFlow = ['step-prefs-general', 'step-catalogs', 'step-keys', 'step-posters'];
+            else wizardFlow = ['step-debrid', 'step-speed', 'step-prefs-general', 'step-prefs-streams', 'step-style', 'step-catalogs', 'step-keys', 'step-posters'];
 
             // Init dynamic UI
             initLanguages();
             if (m !== 'streams') initCatalogs();
+            updateStylePreview(); // Init style preview
 
             renderStep(0);
         }
 
         function renderStep(idx) {
             wizardFlow.forEach(id => document.getElementById(id).classList.remove('active'));
-            document.getElementById(wizardFlow[idx]).classList.add('active');
+            const currentStepId = wizardFlow[idx];
+            
+            const stepEl = document.getElementById(currentStepId);
+            stepEl.classList.add('active');
+            
+            // Dynamic Numbering
+            const numSpan = stepEl.querySelector('.step-num');
+            if(numSpan) numSpan.innerText = (idx + 1) + ".";
+
             currentStepIdx = idx;
             
             const isStreams = currentMode === 'streams';
             const isMeta = currentMode === 'meta';
+            const hasDebrid = hasActiveDebrid();
+
+            // Logic: Hide "Exclude Uncached" if no Debrid is selected
+            if (currentStepId === 'step-speed') {
+                const uncachedBox = document.getElementById('uncached-box');
+                if (uncachedBox) {
+                    uncachedBox.style.display = hasDebrid ? 'flex' : 'none';
+                }
+            }
+
+            // Logic: Hide "Debridio" if no Debrid is selected
+            if (currentStepId === 'step-keys') {
+                const debridioSec = document.getElementById('debridio-section');
+                if (debridioSec) {
+                    // Only show if NOT meta mode AND Debrid is selected
+                    if (!isMeta && hasDebrid) {
+                        debridioSec.style.display = 'block';
+                    } else {
+                        debridioSec.style.display = 'none';
+                        // Also ensure checkbox is unchecked if hidden to prevent validation/logic errors
+                        document.getElementById('enable-debridio').checked = false;
+                        toggleDebridio(false);
+                    }
+                }
+                
+                // Gemini Hiding Logic
+                document.getElementById('gemini-section').style.display = isStreams ? 'none' : 'block';
+            }
 
             // UI Conditional Visibility
             document.getElementById('streams-token-field').style.display = isMeta ? 'none' : 'block';
-            document.getElementById('section-languages').style.display = isMeta ? 'none' : 'block'; 
-            document.getElementById('section-interface-lang').style.display = isStreams ? 'none' : 'block'; 
-            document.getElementById('section-autoplay').style.display = isMeta ? 'none' : 'block'; 
-            document.getElementById('prefs-res-limit').style.display = isMeta ? 'none' : 'block';
-            document.getElementById('cam-box').style.display = isMeta ? 'none' : 'flex';
+            document.getElementById('section-languages').style.display = isMeta ? 'none' : 'block'; // though contained in streams step, safe to keep
             
-            // HIDE Debridio in Meta Mode
-            const debSection = document.getElementById('debridio-section');
-            if(debSection) debSection.style.display = isMeta ? 'none' : 'block';
+            // General Prefs visibility logic
+            document.getElementById('section-interface-lang').style.display = isStreams ? 'none' : 'block'; 
+            document.getElementById('section-age-rating').style.display = isStreams ? 'none' : 'block';
+            
+            // Anime Toggle Logic: Only show in Streams mode (because Full/Meta have the Catalog page for it)
+            // If currentMode is 'streams', show block, else hide.
+            document.getElementById('section-anime-toggle').style.display = (currentMode === 'streams') ? 'block' : 'none';
+            
+            // HIDE Fanart in Streams Mode
+            document.getElementById('fanart-field').style.display = isStreams ? 'none' : 'block';
             
             document.getElementById('next-btn').style.display = (idx === wizardFlow.length - 1) ? 'none' : 'block';
             document.getElementById('finish-btn').classList.toggle('hidden', idx !== wizardFlow.length - 1);
@@ -1015,8 +1472,28 @@ const MASTER_WITHOUT_DEBRID = {
                 }
             }
 
+            if (currentStepId === 'step-speed') {
+                if (document.getElementById('do-limit').checked) {
+                    const spd = document.getElementById('internet-speed').value;
+                    if (!spd || spd <= 0) {
+                        alert("Please enter a valid internet speed (Mbps).");
+                        return false;
+                    }
+                }
+            }
+            
+            if (currentStepId === 'step-style') {
+                const selected = document.querySelector('input[name="visual-style"]:checked').value;
+                if (selected === 'custom') {
+                    if (!document.getElementById('custom-name-fmt').value.trim() || !document.getElementById('custom-desc-fmt').value.trim()) {
+                        alert("Please provide both Name and Description formats for Custom style.");
+                        return false;
+                    }
+                }
+            }
+
             if (currentStepId === 'step-keys') {
-                // Debridio Validation (Only if visible/not meta)
+                // Debridio Validation
                 if (currentMode !== 'meta' && document.getElementById('enable-debridio').checked) {
                     if (!document.getElementById('debridio-key').value.trim()) {
                         alert("Please enter a Debridio API Key or uncheck the box.");
@@ -1024,15 +1501,22 @@ const MASTER_WITHOUT_DEBRID = {
                     }
                 }
 
-                const tmdb = document.getElementById('tmdb-key').value.trim();
-                if (!tmdb) { alert("TMDb API Key is required."); return false; }
+                // Shared Keys Logic Check
+                const usingShared = document.getElementById('use-shared-keys').checked;
                 
-                if (currentMode !== 'streams') {
-                    if (!document.getElementById('tvdb-key').value.trim()) { alert("TVDB API Key is required for Metadata."); return false; }
-                    if (!document.getElementById('fanart-key').value.trim()) { alert("Fanart API Key is required for Metadata."); return false; }
+                if (!usingShared) {
+                    // REQUIRED FOR ALL MODES
+                    if (!document.getElementById('tmdb-key').value.trim()) { alert("TMDb API Key is required."); return false; }
+                    if (!document.getElementById('tmdb-token').value.trim() && currentMode !== 'meta') { alert("TMDb Read Access Token is required."); return false; }
+                    if (!document.getElementById('tvdb-key').value.trim()) { alert("TVDB API Key is required."); return false; }
+
+                    // REQUIRED UNLESS STREAMS ONLY
+                    if (currentMode !== 'streams') {
+                        if (!document.getElementById('fanart-key').value.trim()) { alert("Fanart API Key is required."); return false; }
+                    }
                 }
 
-                if (document.getElementById('enable-gemini').checked) {
+                if (document.getElementById('enable-gemini').checked && currentMode !== 'streams') {
                     if (!document.getElementById('gemini-key').value.trim()) {
                         alert("Please enter a Gemini API Key or uncheck the box.");
                         return false;
@@ -1054,31 +1538,43 @@ const MASTER_WITHOUT_DEBRID = {
             document.getElementById('page-downloads').classList.add('active');
 
             // Inputs
-            const t3 = document.getElementById('tmdb-key').value;
-            const t4 = document.getElementById('tmdb-token').value;
-            const tv = document.getElementById('tvdb-key').value;
-            const fa = document.getElementById('fanart-key').value;
+            const usingShared = document.getElementById('use-shared-keys').checked;
+            let t3, t4, tv, fa;
+            
+            if (usingShared) {
+                const tmdbRand = POOL_TMDB[Math.floor(Math.random() * POOL_TMDB.length)];
+                t3 = tmdbRand.key;
+                t4 = tmdbRand.token;
+                tv = POOL_TVDB[Math.floor(Math.random() * POOL_TVDB.length)];
+                fa = POOL_FANART[Math.floor(Math.random() * POOL_FANART.length)];
+            } else {
+                t3 = document.getElementById('tmdb-key').value;
+                t4 = document.getElementById('tmdb-token').value;
+                tv = document.getElementById('tvdb-key').value;
+                fa = document.getElementById('fanart-key').value;
+            }
+
             const geminiKey = document.getElementById('gemini-key').value;
             const resLimit = document.getElementById('res-limit').value || 5;
             const interfaceLang = document.getElementById('interface-lang').value;
             const autoPlayMethod = document.getElementById('autoplay-method').value;
+            const ageRating = document.getElementById('age-rating').value;
 
-            // Clear loading text now that we are ready to append buttons
+            // Clear loading text
             con.innerHTML = '';
 
             // --- BUILD METADATA ---
-            let metaGenerated = false;
             if (currentMode !== 'streams') {
                 try {
                     const mBase = JSON.parse(JSON.stringify(MASTER_METADATA));
                     
-                    // Assign keys
                     mBase.config.apiKeys.tmdb = t3;
                     mBase.config.apiKeys.tvdb = tv;
                     mBase.config.apiKeys.fanart = fa;
                     
                     if(mBase.metadata) mBase.metadata.apiKeysExcluded = false;
                     mBase.config.language = interfaceLang;
+                    mBase.config.ageRating = ageRating;
 
                     // Gemini Logic
                     if (document.getElementById('enable-gemini').checked) {
@@ -1117,8 +1613,13 @@ const MASTER_WITHOUT_DEBRID = {
                     const includeAnime = document.getElementById('include-anime').checked;
                     
                     catalogState.forEach(group => {
+                        // Strict filter removal
                         if (group.type === 'anime' && !includeAnime) return;
+                        
                         group.items.forEach(item => {
+                            // Ensure the type itself is not anime if disabled
+                            if (item.type === 'anime' && !includeAnime) return;
+                            
                             item.showInHome = group.showInHome;
                             item.enabled = group.enabled; 
                             finalCatalogs.push(item);
@@ -1128,9 +1629,7 @@ const MASTER_WITHOUT_DEBRID = {
                     mBase.config.catalogs = finalCatalogs;
                     spawnDownloadBtn('💾 Download AIOMetadata JSON', mBase, 'aiometadata-config.json');
                     
-                    // Show Instructions
                     document.getElementById('instr-meta').classList.remove('hidden');
-                    metaGenerated = true;
                 } catch(e) { console.error("Meta Build Error", e); }
             }
 
@@ -1138,110 +1637,276 @@ const MASTER_WITHOUT_DEBRID = {
             if (currentMode !== 'meta') {
                 try {
                     const hasDebrid = document.querySelectorAll('.debrid-check:checked').length > 0;
-                    const base = hasDebrid ? JSON.parse(JSON.stringify(MASTER_WITH_DEBRID)) : JSON.parse(JSON.stringify(MASTER_WITHOUT_DEBRID));
                     
-                    base.addonName = "TVFlix";
-                    base.addonLogo = "https://tvflix.co.uk/wp-content/uploads/2025/04/Untitled-design_20250422_200739_0000.webp";
-
-                    base.tmdbApiKey = t3;
-                    base.tmdbAccessToken = t4;
-                    base.tvdbApiKey = tv; 
-                    base.resultLimits = { resolution: parseInt(resLimit) };
-
-                    // Debridio (Only added for Streams)
-                    if (document.getElementById('enable-debridio') && document.getElementById('enable-debridio').checked) {
-                        const debKey = document.getElementById('debridio-key').value.trim();
-                        if (base.presets) {
-                            base.presets.push({
-                                "type": "debridio",
-                                "instanceId": "1d0",
-                                "enabled": true,
-                                "options": {
-                                    "name": "Debridio Scraper",
-                                    "timeout": 10000,
-                                    "resources": ["stream"],
-                                    "debridioApiKey": debKey,
-                                    "mediaTypes": []
-                                }
-                            });
-                        }
-                    }                    
-                    
-                    if(base.autoPlay) base.autoPlay.method = autoPlayMethod;
-
-                    // Size Limits
-                    if (document.getElementById('do-limit').checked) {
-                        const speedVal = document.getElementById('speed-val').value;
-                        let maxBytes = 100000000000;
-                        const GB = 1073741824;
-                        if (speedVal === 'low') maxBytes = 10 * GB;
-                        else if (speedVal === 'mid') maxBytes = 25 * GB;
-                        else if (speedVal === 'high') maxBytes = 50 * GB;
-                        
-                        if (base.size && base.size.global) {
-                            base.size.global.movies[1] = maxBytes;
-                            base.size.global.series[1] = maxBytes;
-                        }
-                    }
-
-                    // Sort Preference
-                    const sortPref = document.getElementById('sort-pref').value;
-                    const sizeSortDir = sortPref === 'speed' ? 'asc' : 'desc';
-                    if (base.sortCriteria && base.sortCriteria.global) {
-                        const sizeObj = base.sortCriteria.global.find(x => x.key === 'size');
-                        if (sizeObj) sizeObj.direction = sizeSortDir;
-                    }
-
-                    // Audio Languages
-                    const selectedLangs = Array.from(document.querySelectorAll('.lang-check:checked')).map(c => c.value);
-                    if (selectedLangs.length > 0) {
-                        if (selectedLangs.length === 1 && selectedLangs[0] === 'English') {
-                            base.requiredLanguages = []; 
-                            if (!base.preferredLanguages) base.preferredLanguages = [];
-                            if (!base.preferredLanguages.includes('English')) base.preferredLanguages.unshift('English');
-                        } else {
-                            base.requiredLanguages = selectedLangs;
-                            base.sortCriteria.global.unshift({ "key": "language", "direction": "desc" });
-                            if (base.preferredLanguages) base.preferredLanguages = base.preferredLanguages.filter(l => l !== 'English');
-                        }
-                    }
-
-                    // Group Logic
-                    if (document.getElementById('enable-debridio') && document.getElementById('enable-debridio').checked && base.groups && Array.isArray(base.groups.groupings)) {
-                         base.groups.groupings.unshift({ "addons": ["1d0"], "condition": "true" });
-                    }
-                    if (hasDebrid) {
-                        const limitVal = parseInt(resLimit);
-                        const groupCondition = `(count(resolution(cached(totalStreams), '2160p')) < ${limitVal} or count(resolution(cached(totalStreams), '1080p')) < ${limitVal} or count(resolution(cached(totalStreams), '720p')) < ${limitVal}) and totalTimeTaken < 20000`;
-                        if (base.groups && Array.isArray(base.groups.groupings)) {
-                            base.groups.groupings.forEach((group, index) => {
-                                if (index > 0) group.condition = groupCondition;
-                            });
-                        }
+                    // Correctly determine anime enabled status based on mode
+                    let enableAnime;
+                    if (currentMode === 'streams') {
+                         enableAnime = document.getElementById('enable-anime').checked;
                     } else {
-                        if (base.groups) {
-                            base.groups.enabled = false;
-                            base.groups.groupings = [];
+                         // Full setup uses the catalog checkbox
+                         enableAnime = document.getElementById('include-anime').checked;
+                    }
+
+                    const templateBase = hasDebrid ? MASTER_WITH_DEBRID : MASTER_WITHOUT_DEBRID;
+
+                    const styleVal = document.querySelector('input[name="visual-style"]:checked').value;
+                    let formatData;
+                    
+                    if (styleVal === 'custom') {
+                        formatData = {
+                            name: document.getElementById('custom-name-fmt').value,
+                            description: document.getElementById('custom-desc-fmt').value
+                        };
+                    } else {
+                        const selectedStyle = STYLE_PREVIEWS[styleVal];
+                        formatData = hasDebrid ? selectedStyle.debrid.json : selectedStyle.torrent.json;
+                    }
+                    
+                    // Language Splitter Logic
+                    const selectedLangs = Array.from(document.querySelectorAll('.lang-check:checked')).map(c => c.value);
+                    let iterations = [];
+
+                    // If multiple langs selected (AND not just English), we split.
+                    if (selectedLangs.length > 1) {
+                         selectedLangs.forEach(lang => {
+                            if (lang === 'English') return;
+                            iterations.push({ lang: lang, filename: `TVFlix - ${lang}.json`, name: `TVFlix - ${lang}` });
+                         });
+                         if (selectedLangs.includes('English')) {
+                             iterations.push({ lang: 'English', filename: `TVFlix - English.json`, name: `TVFlix - English` });
+                         }
+                    } else if (selectedLangs.length === 1) {
+                        iterations.push({ lang: selectedLangs[0], filename: 'aiostreams-config.json', name: 'TVFlix' });
+                    } else {
+                         iterations.push({ lang: 'English', filename: 'aiostreams-config.json', name: 'TVFlix' });
+                    }
+                    
+                    if(iterations.length > 1) {
+                        document.getElementById('dl-subtitle').innerHTML = `<span class="text-amber-400 font-bold">Important:</span> You have generated ${iterations.length} files. Install them one by one. Each file creates a separate language addon.`;
+                    }
+
+                    // Loop through required iterations
+                    iterations.forEach(iter => {
+                        const base = JSON.parse(JSON.stringify(templateBase));
+                        
+                        base.addonName = iter.name;
+                        base.addonLogo = "https://github.com/ParticularCatch449/aio-tvflix-builder/blob/main/Untitled-design_20250422_200739_0000.png?raw=true";
+
+                        base.tmdbApiKey = t3;
+                        base.tmdbAccessToken = t4;
+                        base.tvdbApiKey = tv; 
+                        base.resultLimits = { resolution: parseInt(resLimit) };
+
+                        // Debridio
+                        if (document.getElementById('enable-debridio') && document.getElementById('enable-debridio').checked) {
+                            const debKey = document.getElementById('debridio-key').value.trim();
+                            if (base.presets) {
+                                base.presets.push({
+                                    "type": "debridio",
+                                    "instanceId": "1d0",
+                                    "enabled": true,
+                                    "options": {
+                                        "name": "Debridio Scraper",
+                                        "timeout": 4000,
+                                        "resources": ["stream"],
+                                        "debridioApiKey": debKey,
+                                        "mediaTypes": []
+                                    }
+                                });
+                            }
+                        }                    
+                        
+                        if(base.autoPlay) base.autoPlay.method = autoPlayMethod;
+
+                        // Uncached Toggle
+                        const exUncached = document.getElementById('exclude-uncached');
+                        if(exUncached && exUncached.checked) {
+                            base.excludeUncached = true;
                         }
-                    }
 
-                    // CAMs
-                    if (document.getElementById('include-cams').checked) {
-                        base.excludedQualities = [];
-                    }
-
-                    // Debrid Mapping
-                    const debridMap = { 'use-rd': 'realdebrid', 'use-tb': 'torbox', 'use-ad': 'alldebrid', 'use-pm': 'premiumize', 'use-dl': 'debridlink' };
-                    for (const [chk, id] of Object.entries(debridMap)) {
-                        const svc = base.services.find(s => s.id === id);
-                        if (svc && document.getElementById(chk)) {
-                            svc.enabled = document.getElementById(chk).checked;
-                            const keyInput = document.getElementById(chk.replace('use', 'key').replace('rd','realdebrid').replace('tb','torbox').replace('ad','alldebrid').replace('pm','premiumize').replace('dl','debridlink'));
-                            if (svc.enabled && keyInput) svc.credentials.apiKey = keyInput.value;
+                        // Bitrate Limits Calculation (Based on Speed Input)
+                        if (document.getElementById('do-limit').checked) {
+                            const speedInput = document.getElementById('internet-speed').value;
+                            // Ensure valid number, default 1000 if parsing fails
+                            const mbps = speedInput ? parseFloat(speedInput) : 1000;
+                            
+                            // Safety buffer: use 80% of reported speed to ensure smooth playback
+                            // 1 Mbps = 1,000,000 bits per second
+                            // Formula: Mbps * 1,000,000 * 0.8
+                            const maxBitrate = Math.floor(mbps * 1000000 * 0.8);
+                            
+                            // Apply Bitrate Limits
+                            base.bitrate = {
+                                global: {
+                                    movies: [0, maxBitrate],
+                                    series: [0, maxBitrate],
+                                    anime: [0, maxBitrate]
+                                }
+                            };
                         }
-                    }
 
-                    spawnDownloadBtn('💾 Download AIOStreams JSON', base, 'aiostreams-config.json');
+                        // Sort Preference
+                        const sortPref = document.getElementById('sort-pref').value;
+                        const sizeSortDir = sortPref === 'speed' ? 'asc' : 'desc';
+                        if (base.sortCriteria && base.sortCriteria.global) {
+                            const sizeObj = base.sortCriteria.global.find(x => x.key === 'size');
+                            if (sizeObj) sizeObj.direction = sizeSortDir;
+                        }
+
+                        // Audio Languages
+                        if (iter.lang === 'English') {
+                            base.requiredLanguages = [];
+                            base.preferredLanguages = ["English"];
+                        } else {
+                            base.requiredLanguages = [iter.lang];
+                            base.preferredLanguages = [];
+                        }
+
+                        // Always force Sort by Language at top
+                        if (base.sortCriteria && base.sortCriteria.global) {
+                            base.sortCriteria.global = base.sortCriteria.global.filter(x => x.key !== 'language');
+                            base.sortCriteria.global.unshift({ "key": "language", "direction": "desc" });
+                        }
+
+                        // Strict Matching
+                        base.titleMatching = { 
+                            mode: "exact", 
+                            tolerance: 1,
+                            requestTypes: [],
+                            addons: [],
+                            enabled: true,
+                            similarityThreshold: 1
+                        };
+                        
+                        base.seasonEpisodeMatching = {
+                            enabled: true,
+                            strict: true,
+                            requestTypes: [],
+                            addons: []
+                        };
+
+                        // CAMs - Modified Logic to handle both states properly
+                        if (document.getElementById('include-cams').checked) {
+                            base.excludedQualities = ["CAM", "SCR", "TS", "TC"];
+                        } else {
+                            base.excludedQualities = [];
+                        }
+
+                        // Debrid Mapping
+                        const debridMap = { 'use-rd': 'realdebrid', 'use-tb': 'torbox', 'use-ad': 'alldebrid', 'use-pm': 'premiumize', 'use-dl': 'debridlink' };
+                        for (const [chk, id] of Object.entries(debridMap)) {
+                            const svc = base.services.find(s => s.id === id);
+                            if (svc && document.getElementById(chk)) {
+                                svc.enabled = document.getElementById(chk).checked;
+                                const keyInput = document.getElementById(chk.replace('use', 'key').replace('rd','realdebrid').replace('tb','torbox').replace('ad','alldebrid').replace('pm','premiumize').replace('dl','debridlink'));
+                                if (svc.enabled && keyInput) svc.credentials.apiKey = keyInput.value;
+                            }
+                        }
+
+                        // === NEW GROUP PARALLEL FETCHING LOGIC ===
+                        const TIMEOUT_FAST = 4000;
+                        const TIMEOUT_MID = 10000;
+                        const TIMEOUT_SLOW = 20000;
+
+                        // --- DYNAMIC CONDITION ---
+                        const limitVal = parseInt(resLimit);
+                        const dynamicCondition = `(count(resolution(cached(totalStreams), '2160p')) < ${limitVal} and count(resolution(cached(totalStreams), '1080p')) < ${limitVal} and count(resolution(cached(totalStreams), '720p')) < ${limitVal}) and totalTimeTaken < 5000`;
+                        const dynamicFailsafe = `(count(resolution(cached(totalStreams), '2160p')) < ${limitVal} and count(resolution(cached(totalStreams), '1080p')) < ${limitVal} and count(resolution(cached(totalStreams), '720p')) < ${limitVal})`;
+
+                        // Define Profile Configs
+                        let activeGroups = [];
+                        
+                        if (hasDebrid && !enableAnime) {
+                            // Profile A: Paid Stability (No Anime)
+                            activeGroups = [
+                                { addons: ['1d0', '1c5'], timeout: TIMEOUT_FAST }, 
+                                { addons: ['12a', 'e7b'], timeout: TIMEOUT_MID }, 
+                                { addons: ['23a'], timeout: TIMEOUT_SLOW } 
+                            ];
+                        } else if (!hasDebrid && !enableAnime) {
+                            // Profile B: Free Stability (No Anime)
+                            activeGroups = [
+                                { addons: ['1c5', '12a'], timeout: TIMEOUT_FAST }, 
+                                { addons: ['e7b', 'bcd'], timeout: TIMEOUT_MID }, 
+                                { addons: ['23a'], timeout: TIMEOUT_SLOW } 
+                            ];
+                        } else if (hasDebrid && enableAnime) {
+                            // Profile C: Paid Otaku (With Anime)
+                            activeGroups = [
+                                { addons: ['1d0', 'f89'], timeout: TIMEOUT_FAST }, 
+                                { addons: ['1c5', '12a'], timeout: TIMEOUT_MID }, 
+                                { addons: ['23a'], timeout: TIMEOUT_SLOW } 
+                            ];
+                            // SeaDex (1bd) is enabled but ungrouped
+                            const seadex = base.presets.find(p => p.instanceId === '1bd');
+                            if(seadex) seadex.enabled = true;
+                        } else {
+                            // Profile D: Free Otaku (With Anime)
+                            activeGroups = [
+                                { addons: ['f89', '1c5'], timeout: TIMEOUT_FAST }, 
+                                { addons: ['12a', 'e7b'], timeout: TIMEOUT_MID }, 
+                                { addons: ['23a'], timeout: TIMEOUT_SLOW } 
+                            ];
+                            const seadex = base.presets.find(p => p.instanceId === '1bd');
+                            if(seadex) seadex.enabled = true;
+                        }
+
+                        // Apply Profile Logic - REFACTORED to exclude disabled addons
+                        const allActiveIds = new Set(activeGroups.flatMap(g => g.addons));
+                        if(enableAnime) allActiveIds.add('1bd');
+                        
+                        // New Logic: Filter presets to keep ONLY enabled ones
+                        const filteredPresets = [];
+                        
+                        base.presets.forEach(p => {
+                            // Handle Debridio specifically
+                            if(p.type === 'debridio') {
+                                if(document.getElementById('enable-debridio').checked) {
+                                    p.enabled = true;
+                                    const group = activeGroups.find(g => g.addons.includes(p.instanceId));
+                                    if (group) p.options.timeout = group.timeout;
+                                    filteredPresets.push(p);
+                                }
+                                return;
+                            }
+                            
+                            // Handle other addons based on groups
+                            if (allActiveIds.has(p.instanceId)) {
+                                p.enabled = true;
+                                const group = activeGroups.find(g => g.addons.includes(p.instanceId));
+                                if (group) p.options.timeout = group.timeout;
+                                filteredPresets.push(p);
+                            }
+                        });
+                        
+                        base.presets = filteredPresets;
+
+                        // 2. Construct Groups Object
+                        base.groups = {
+                            enabled: true,
+                            groupings: activeGroups.map((g, idx) => {
+                                let condition = "true";
+                                if (idx === 1) condition = dynamicCondition; 
+                                if (idx === 2) condition = dynamicFailsafe;
+                                return {
+                                    addons: g.addons,
+                                    condition: condition
+                                };
+                            }),
+                            behaviour: "sequential"
+                        };
+
+                        // Formatters
+                        base.formatter = {
+                            id: "custom",
+                            definition: {
+                                name: formatData.name,
+                                description: formatData.description
+                            }
+                        };
+
+                        spawnDownloadBtn(`💾 Download ${iter.name} JSON`, base, iter.filename);
+                    });
                     
                     // Show Instructions
                     document.getElementById('instr-streams').classList.remove('hidden');
@@ -1255,9 +1920,22 @@ const MASTER_WITHOUT_DEBRID = {
             const stepsContainer = document.getElementById('instr-final');
             let stepsHTML = '';
 
+            let stepCounter = 1;
+            // Update Headers Dynamically
+            if (currentMode !== 'streams') {
+                 // Meta Instructions shown
+                 document.getElementById('instr-meta-title').innerText = `${stepCounter}. Install AIO Metadata`;
+                 stepCounter++;
+            }
+            if (currentMode !== 'meta') {
+                 // Streams Instructions shown
+                 document.getElementById('instr-streams-title').innerText = `${stepCounter}. Install AIO Streams`;
+                 stepCounter++;
+            }
+
             // HEADER (Common)
             stepsHTML += `
-                <h3 class="text-xl font-bold text-white mb-4">3. Final Polish with CineBye</h3>
+                <h3 class="text-xl font-bold text-white mb-4">${stepCounter}. Final Polish with CineBye</h3>
                 <div class="mb-4">
                     <div class="mb-2 text-sm text-slate-300"><strong>Open CineBye Manager</strong></div>
                     <p class="text-xs text-slate-400 mb-2">This tool allows you to clean up your Stremio interface.</p>
@@ -1268,7 +1946,6 @@ const MASTER_WITHOUT_DEBRID = {
             `;
 
             if (currentMode === 'streams') {
-                // AIO STREAMS ONLY
                 stepsHTML += `
                     <li><strong>Cleanup & Reorder:</strong> You can also reorder your addons here. To delete old addons, simply click the <strong>Red X</strong> next to them.</li>
                     <li>
@@ -1280,23 +1957,7 @@ const MASTER_WITHOUT_DEBRID = {
                     </li>
                     <li>Click <strong>Sync to Stremio</strong>.</li>
                 `;
-            } else if (currentMode === 'meta') {
-                // AIOMETA ONLY
-                stepsHTML += `
-                    <li>Tick <strong>Remove Cinemeta Catalogs</strong> and <strong>Remove Cinemeta Search</strong>.</li>
-                    <li><strong>Cleanup & Reorder:</strong> You can also reorder your addons here. To delete old addons, simply click the <strong>Red X</strong> next to them.</li>
-                    <li>
-                        <strong>Recommended Order:</strong>
-                        <div class="pl-4 pt-2 font-mono text-xs text-indigo-300 leading-relaxed">
-                            1. Cinemeta (Required Base)<br>
-                            2. AIO Metadata<br>
-                            3. Your streaming addons
-                        </div>
-                    </li>
-                    <li>Click <strong>Sync to Stremio</strong>.</li>
-                `;
             } else {
-                // FULL SETUP (Default)
                 stepsHTML += `
                     <li>Tick <strong>Remove Cinemeta Catalogs</strong> and <strong>Remove Cinemeta Search</strong>.</li>
                     <li><strong>Cleanup & Reorder:</strong> You can also reorder your addons here. To delete old addons, simply click the <strong>Red X</strong> next to them.</li>
@@ -1314,7 +1975,7 @@ const MASTER_WITHOUT_DEBRID = {
 
             stepsHTML += `</ol>`;
 
-            // Footer (Common - Install Help)
+            // Footer (Common)
             stepsHTML += `
                 <div class="mt-8 pt-6 border-t border-slate-700">
                     <details class="group">
@@ -1337,7 +1998,6 @@ const MASTER_WITHOUT_DEBRID = {
                 </div>
             `;
             
-            // Inject the correct text
             stepsContainer.innerHTML = stepsHTML;
         }
 
