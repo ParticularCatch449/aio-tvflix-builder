@@ -25,6 +25,7 @@
         </div>
         
         <a href="https://buymeacoffee.com/particular_catch_449" target="_blank" class="flex items-center gap-3 bg-yellow-400 text-slate-900 px-6 py-4 rounded-full shadow-2xl hover:bg-yellow-300 hover:scale-105 transition-all font-bold text-base border-4 border-slate-900">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12.75 4.75a.75.75 0 00-1.5 0v.678c0 .285.03.567.088.843l.036.173a.75.75 0 001.464-.306l-.022-.108a4.773 4.773 0 01-.066-.602V4.75zM8.75 4.75a.75.75 0 00-1.5 0v.678c0 .285.03.567.088.843l.036.173a.75.75 0 001.464-.306l-.022-.108a4.773 4.773 0 01-.066-.602V4.75zM16.75 4.75a.75.75 0 00-1.5 0v.678c0 .285.03.567.088.843l.036.173a.75.75 0 001.464-.306l-.022-.108a4.773 4.773 0 01-.066-.602V4.75z" />
                 <path fill-rule="evenodd" d="M3.5 9A1.5 1.5 0 005 10.5h14a1.5 1.5 0 001.5-1.5V8.5a.5.5 0 00-.5-.5H4a.5.5 0 00-.5.5v.5zm1.5 3a3 3 0 002.95 2.443l.79.098c.189.023.38.046.572.067a62.985 62.985 0 004.376 0c.192-.02.383-.044.572-.067l.79-.098A3 3 0 0020.5 12h-14zm14-4.5H22v1.5a3 3 0 01-3 3h-1.39a4.49 4.49 0 01-1.31 1.77 4.512 4.512 0 01-2.91.86c-1.42 0-2.812-.06-4.178-.18-1.332-.116-2.617-.375-3.842-.767a4.5 4.5 0 01-3.15-5.683H2V8.5a1 1 0 011-1h1.5z" clip-rule="evenodd" />
             </svg>
@@ -275,7 +276,7 @@
                     <!-- Visual Preview Box -->
                     <div class="bg-black/50 p-6 rounded-xl border border-slate-600 mb-8 font-mono text-xs md:text-sm text-slate-300 shadow-inner">
                         <div class="mb-2 text-indigo-400 text-[10px] font-bold uppercase tracking-wider">Preview</div>
-                        <div id="style-preview-name" class="font-bold text-white mb-1"></div>
+                        <div id="style-preview-name" class="font-bold text-white mb-1 whitespace-pre-wrap"></div>
                         <div id="style-preview-desc" class="text-slate-400 whitespace-pre-wrap"></div>
                     </div>
                     
@@ -683,7 +684,7 @@
     "id": "custom",
     "definition": {
       "name": "{stream.resolution::exists[\"{stream.resolution::replace('2160p','4K')::replace('1080p','HD')::replace('720p','SD')}\"||\"\"]} {stream.quality::exists[\"{stream.quality::replace('REMUX','+')::replace('BluRay','⭐⭐⭐⭐⭐')::replace('WEB-DL','⭐⭐⭐⭐')::replace('WEBRip','⭐⭐⭐⭐')}\"||\"\"]}",
-      "description": "{stream.title::exists[\"🎬 {stream.title}\"||\"\"]}{stream.seasonEpisode::exists[\" - {stream.seasonEpisode::join(' ')}\"||\"\"]}{stream.year::exists[\" ({stream.year})\"||\"\"]}\n───────────────────\n{stream.languageEmojis::exists[\"Languages: {stream.languageEmojis}\"||\"\"]}\n{stream.quality::exists[\"✨ {stream.quality::replace('REMUX','+')::replace('BluRay','Premium Quality')::replace('WEB-DL','Streaming Quality')::replace('WEBRip','Streaming Quality')}\"||\"\"]}{stream.visualTags::~HDR::istrue[\" | 🌈 HDR\"||\"\"]}{stream.visualTags::~DV::istrue[\" | 🎥 Dolby Vision\"||\"\"]}{stream.audioTags::exists[\" | 🔊 {stream.audioTags::join(', ')}\"||\"\"]}\n───────────────────\n📂 {stream.size::>0[\"{stream.size::bytes}\"||\"\"]}{stream.seeders::>0[\" | 👥 {stream.seeders}\"||\"\"]}{addon.name::exists[\" | 🛰️ {addon.name}\"||\"\"]}"
+      "description": "{stream.title::exists[\"🎬 {stream.title}\"||\"\"]}{stream.seasonEpisode::exists[\" - {stream.seasonEpisode::join(' ')}\"||\"\"]}{stream.year::exists[\" ({stream.year})\"||\"\"]}\n───────────────────\n{stream.languageEmojis::exists[\"Languages: {stream.languageEmojis}\"||\"\"]}\n{stream.quality::exists[\"✨ {stream.quality::replace('REMUX','+')::replace('BluRay','Premium Quality')::replace('WEB-DL','Streaming Quality')::replace('WEBRip','Streaming Quality')}\"||\"\"]}{stream.visualTags::~HDR::istrue[\" | 🌈 HDR\"||\"\"]}{stream.visualTags::~HDR10+::istrue[\"10+\"||\"\"]}{stream.visualTags::~HDR10P::istrue[\"10+\"||\"\"]}{stream.visualTags::~HDR10PLUS::istrue[\"10+\"||\"\"]}{stream.visualTags::~DV::istrue[\" | 🎥 Dolby Vision\"||\"\"]}{stream.audioTags::exists[\" | 🔊 {stream.audioTags::join(', ')}\"||\"\"]}\n───────────────────\n📂 {stream.size::>0[\"{stream.size::bytes}\"||\"\"]}{stream.seeders::>0[\" | 👥 {stream.seeders}\"||\"\"]}{addon.name::exists[\" | 🛰️ {addon.name}\"||\"\"]}"
     }
   },
   "preferredQualities": ["BluRay REMUX", "BluRay", "WEB-DL", "WEBRip", "HDRip", "HC HD-Rip", "DVDRip", "HDTV", "Unknown"],
@@ -794,7 +795,7 @@
     "id": "custom",
     "definition": {
       "name": "{stream.resolution::exists[\"{stream.resolution::replace('2160p','4K')::replace('1080p','HD')::replace('720p','SD')}\"||\"\"]} {stream.quality::exists[\"{stream.quality::replace('REMUX','+')::replace('BluRay','⭐⭐⭐⭐⭐')::replace('WEB-DL','⭐⭐⭐⭐')::replace('WEBRip','⭐⭐⭐⭐')}\"||\"\"]} {service.cached::istrue[\"⚡\"||\"⏳\"]}",
-      "description": "{stream.type::=usenet[\"📦 USN \"||\"\"]}{stream.title::exists[\"🎬 {stream.title}\"||\"\"]}{stream.seasonEpisode::exists[\" - {stream.seasonEpisode::join(' ')}\"||\"\"]}{stream.year::exists[\" ({stream.year})\"||\"\"]}\n{service.cached::istrue[\"🟢 INSTANT PLAY\"||\"🔴 NEEDS TO DOWNLOAD\"]}\n─────────────\n{stream.languageEmojis::exists[\"Languages: {stream.languageEmojis}\"||\"\"]}\n{stream.quality::exists[\"✨ {stream.quality::replace('REMUX','+')::replace('BluRay','Premium Quality')::replace('WEB-DL','Streaming Quality')::replace('WEBRip','Streaming Quality')}\"||\"\"]}{stream.visualTags::~HDR::istrue[\" | 🌈 HDR\"||\"\"]}{stream.visualTags::~DV::istrue[\" | 🎥 Dolby Vision\"||\"\"]}{stream.audioTags::exists[\" | 🔊 {stream.audioTags::join(', ')}\"||\"\"]}\n─────────────\n📂 {stream.size::>0[\"{stream.size::bytes}\"||\"\"]}{service.name::exists[\" | ☁️ {service.name}\"||\"\"]}{service.cached::isfalse[\" | 👥 {stream.seeders}\"||\"\"]}{addon.name::exists[\" | 🛰️ {addon.name}\"||\"\"]}"
+      "description": "{stream.type::=usenet[\"📦 USN \"||\"\"]}{stream.title::exists[\"🎬 {stream.title}\"||\"\"]}{stream.seasonEpisode::exists[\" - {stream.seasonEpisode::join(' ')}\"||\"\"]}{stream.year::exists[\" ({stream.year})\"||\"\"]}\n{service.cached::istrue[\"🟢 INSTANT PLAY\"||\"🔴 NEEDS TO DOWNLOAD\"]}\n─────────────\n{stream.languageEmojis::exists[\"Languages: {stream.languageEmojis}\"||\"\"]}\n{stream.quality::exists[\"✨ {stream.quality::replace('REMUX','+')::replace('BluRay','Premium Quality')::replace('WEB-DL','Streaming Quality')::replace('WEBRip','Streaming Quality')}\"||\"\"]}{stream.visualTags::~HDR::istrue[\" | 🌈 HDR\"||\"\"]}{stream.visualTags::~HDR10+::istrue[\"10+\"||\"\"]}{stream.visualTags::~HDR10P::istrue[\"10+\"||\"\"]}{stream.visualTags::~HDR10PLUS::istrue[\"10+\"||\"\"]}{stream.visualTags::~DV::istrue[\" | 🎥 Dolby Vision\"||\"\"]}{stream.audioTags::exists[\" | 🔊 {stream.audioTags::join(', ')}\"||\"\"]}\n─────────────\n📂 {stream.size::>0[\"{stream.size::bytes}\"||\"\"]}{service.name::exists[\" | ☁️ {service.name}\"||\"\"]}{service.cached::isfalse[\" | 👥 {stream.seeders}\"||\"\"]}{addon.name::exists[\" | 🛰️ {addon.name}\"||\"\"]}"
     }
   },
   "preferredQualities": ["BluRay REMUX", "BluRay", "WEB-DL", "WEBRip", "HDRip", "HC HD-Rip", "DVDRip", "HDTV", "CAM", "TS", "TC", "SCR", "Unknown"],
@@ -858,7 +859,6 @@
   "excludedStreamExpressions": ["merge(count(resolution(cached(streams), '2160p')) > 0 ? resolution(uncached(streams), '2160p') : [], count(resolution(cached(streams), '1080p')) > 0 ? resolution(uncached(streams), '1080p') : [], count(resolution(cached(streams), '720p')) > 0 ? resolution(uncached(streams), '720p') : [])"],
   "preferredStreamExpressions": [
       "resolution(quality(regexMatched(streams), 'Bluray REMUX'), '2160p')",
-      // ... (Truncated purely for visual brevity, full list is in the merged logic)
       "resolution(quality(regexMatched(streams), 'WEB-DL'), '2160p')",
       "resolution(quality(regexMatched(streams), 'Bluray REMUX'), '1080p')",
       "resolution(quality(regexMatched(streams), 'Bluray'), '1080p')",
@@ -1136,7 +1136,7 @@
                 debrid: {
                     json: {
                         name: "{stream.resolution::exists[\"{stream.resolution::replace('2160p','4K')::replace('1080p','HD')::replace('720p','SD')}\"||\"\"]} {stream.quality::exists[\"{stream.quality::replace('REMUX','+')::replace('BluRay','⭐⭐⭐⭐⭐')::replace('WEB-DL','⭐⭐⭐⭐')::replace('WEBRip','⭐⭐⭐⭐')}\"||\"\"]} {service.cached::istrue[\"⚡\"||\"⏳\"]}",
-                        description: "{stream.title::exists[\"🎬 {stream.title}\"||\"\"]}{stream.seasonEpisode::exists[\" - {stream.seasonEpisode::join(' ')}\"||\"\"]}{stream.year::exists[\" ({stream.year})\"||\"\"]}\n{service.cached::istrue[\"🟢 INSTANT PLAY\"||\"🔴 NEEDS TO DOWNLOAD\"]}\n─────────────\n{stream.languageEmojis::exists[\"Languages: {stream.languageEmojis}\"||\"\"]}\n{stream.quality::exists[\"✨ {stream.quality::replace('REMUX','+')::replace('BluRay','Premium Quality')::replace('WEB-DL','Streaming Quality')::replace('WEBRip','Streaming Quality')}\"||\"\"]}{stream.visualTags::~HDR::istrue[\" | 🌈 HDR\"||\"\"]}{stream.visualTags::~DV::istrue[\" | 🎥 Dolby Vision\"||\"\"]}{stream.audioTags::exists[\" | 🔊 {stream.audioTags::join(', ')}\"||\"\"]}\n─────────────\n📂 {stream.size::>0[\"{stream.size::bytes}\"||\"\"]}{service.name::exists[\" | ☁️ {service.name}\"||\"\"]}{addon.name::exists[\" | 🛰️ {addon.name}\"||\"\"]}"
+                        description: "{stream.title::exists[\"🎬 {stream.title}\"||\"\"]}{stream.seasonEpisode::exists[\" - {stream.seasonEpisode::join(' ')}\"||\"\"]}{stream.year::exists[\" ({stream.year})\"||\"\"]}\n{service.cached::istrue[\"🟢 INSTANT PLAY\"||\"🔴 NEEDS TO DOWNLOAD\"]}\n─────────────\n{stream.languageEmojis::exists[\"Languages: {stream.languageEmojis}\"||\"\"]}\n{stream.quality::exists[\"✨ {stream.quality::replace('REMUX','+')::replace('BluRay','Premium Quality')::replace('WEB-DL','Streaming Quality')::replace('WEBRip','Streaming Quality')}\"||\"\"]}{stream.visualTags::~HDR::istrue[\" | 🌈 HDR\"||\"\"]}{stream.visualTags::~HDR10+::istrue[\"10+\"||\"\"]}{stream.visualTags::~HDR10P::istrue[\"10+\"||\"\"]}{stream.visualTags::~HDR10PLUS::istrue[\"10+\"||\"\"]}{stream.visualTags::~DV::istrue[\" | 🎥 Dolby Vision\"||\"\"]}{stream.audioTags::exists[\" | 🔊 {stream.audioTags::join(', ')}\"||\"\"]}\n─────────────\n📂 {stream.size::>0[\"{stream.size::bytes}\"||\"\"]}{service.name::exists[\" | ☁️ {service.name}\"||\"\"]}{addon.name::exists[\" | 🛰️ {addon.name}\"||\"\"]}"
                     },
                     preview: {
                         name: "4K ⭐⭐⭐⭐⭐ ⚡",
@@ -1146,7 +1146,7 @@
                 torrent: {
                     json: {
                         name: "{stream.resolution::exists[\"{stream.resolution::replace('2160p','4K')::replace('1080p','HD')::replace('720p','SD')}\"||\"\"]} {stream.quality::exists[\"{stream.quality::replace('REMUX','+')::replace('BluRay','⭐⭐⭐⭐⭐')::replace('WEB-DL','⭐⭐⭐⭐')::replace('WEBRip','⭐⭐⭐⭐')}\"||\"\"]}",
-                        description: "{stream.title::exists[\"🎬 {stream.title}\"||\"\"]}{stream.seasonEpisode::exists[\" - {stream.seasonEpisode::join(' ')}\"||\"\"]}{stream.year::exists[\" ({stream.year})\"||\"\"]}\n───────────────────\n{stream.languageEmojis::exists[\"Languages: {stream.languageEmojis}\"||\"\"]}\n{stream.quality::exists[\"✨ {stream.quality::replace('REMUX','+')::replace('BluRay','Premium Quality')::replace('WEB-DL','Streaming Quality')::replace('WEBRip','Streaming Quality')}\"||\"\"]}{stream.visualTags::~HDR::istrue[\" | 🌈 HDR\"||\"\"]}{stream.visualTags::~DV::istrue[\" | 🎥 Dolby Vision\"||\"\"]}{stream.audioTags::exists[\" | 🔊 {stream.audioTags::join(', ')}\"||\"\"]}\n───────────────────\n📂 {stream.size::>0[\"{stream.size::bytes}\"||\"\"]}{stream.seeders::>0[\" | 👥 {stream.seeders}\"||\"\"]}{addon.name::exists[\" | 🛰️ {addon.name}\"||\"\"]}"
+                        description: "{stream.title::exists[\"🎬 {stream.title}\"||\"\"]}{stream.seasonEpisode::exists[\" - {stream.seasonEpisode::join(' ')}\"||\"\"]}{stream.year::exists[\" ({stream.year})\"||\"\"]}\n───────────────────\n{stream.languageEmojis::exists[\"Languages: {stream.languageEmojis}\"||\"\"]}\n{stream.quality::exists[\"✨ {stream.quality::replace('REMUX','+')::replace('BluRay','Premium Quality')::replace('WEB-DL','Streaming Quality')::replace('WEBRip','Streaming Quality')}\"||\"\"]}{stream.visualTags::~HDR::istrue[\" | 🌈 HDR\"||\"\"]}{stream.visualTags::~HDR10+::istrue[\"10+\"||\"\"]}{stream.visualTags::~HDR10P::istrue[\"10+\"||\"\"]}{stream.visualTags::~HDR10PLUS::istrue[\"10+\"||\"\"]}{stream.visualTags::~DV::istrue[\" | 🎥 Dolby Vision\"||\"\"]}{stream.audioTags::exists[\" | 🔊 {stream.audioTags::join(', ')}\"||\"\"]}\n───────────────────\n📂 {stream.size::>0[\"{stream.size::bytes}\"||\"\"]}{stream.seeders::>0[\" | 👥 {stream.seeders}\"||\"\"]}{addon.name::exists[\" | 🛰️ {addon.name}\"||\"\"]}"
                     },
                     preview: {
                         name: "4K ⭐⭐⭐⭐⭐",
@@ -1169,7 +1169,7 @@
                 torrent: {
                     json: {
                         name: "{stream.type::=external[\"\"||\"{tools.removeLine}\"]}\n{stream.type::=external[\"{tools.removeLine}\"||\"\"]}{service.cached::istrue[\"🔲 \"||\"🔳 \"]}{stream.resolution::=2160p[\"4K \"||\"\"]}{stream.resolution::=1440p[\"QHD \"||\"\"]}{stream.resolution::=1080p[\"HD \"||\"\"]}{stream.resolution::=720p[\"SD \"||\"\"]}{stream.resolution::=480p[\"SD \"||\"\"]}{stream.size::>0[\" │ ⛁ {stream.size::bytes}\"||\"\"]}{service.cached::istrue[\"\"||\" · ⇋ {stream.seeders}\"]}",
-                        description: "{stream.type::=external[\"▪ ▪ ▪\"||\"{tools.removeLine}\"]}\n{stream.type::=external[\"{tools.removeLine}\"||\"\"]}☰ {stream.languageCodes::exists[\"{stream.languageCodes::join(' · ')}\"||\"---\"]}{stream.audioTags::exists[\" • {stream.audioTags::join(' · ')}\"||\"\"]}{stream.audioChannels::exists[\" • {stream.audioChannels::join(' ')}\"||\"\"]}\n{stream.type::=external[\"{tools.removeLine}\"||\"\"]}☲ {stream.quality::exists[\"{stream.quality}\"||\"---\"]} · {stream.encode::exists[\"{stream.encode}\"||\"---\"]}{stream.visualTags::exists[\" • {stream.visualTags::join(' · ')}\"||\"\"]}\n{stream.type::=external[\"{tools.removeLine}\"||\"\"]}☵ {addon.name} · {stream.releaseGroup::exists[\"{stream.releaseGroup}\"||\"---\"]}{stream.filename::~AMZN[\" · Amazon\"||\"\"]}{stream.filename::~NF[\" · Netflix\"||\"\"]}{stream.filename::~DSNP[\" · Disney+\"||\"\"]}{stream.filename::~HMAX[\" · HBO Max\"||\"\"]}{stream.filename::~APTV[\" · Apple TV+\"||\"\"]}{stream.filename::~Hulu[\" · Hulu\"||\"\"]}{stream.filename::~PRME[\" · Prime\"||\"\"]}{stream.filename::~PMTP[\" · Paramount+\"||\"\"]}{stream.filename::~PCKK[\" · Peacock\"||\"\"]}{stream.filename::~CRTC[\" · Crunchyroll\"||\"\"]}{stream.filename::~ANPX[\" · Anime Plex\"||\"\"]}{stream.filename::~STZ[\" · Starz\"||\"\"]}{stream.filename::~DSCV[\" · Discovery+\"||\"\"]}{service.cached::istrue[\" · [{service.shortName}]\"||\"\"]}{stream.proxied::istrue[\" · ☷\"||\"\"]}\n{stream.type::=external[\"{tools.removeLine}\"||\"\"]}☶ {stream.title}{stream.seasonEpisode::exists[\" · {stream.seasonEpisode::join('')}\"||\"\"]}{stream.year::exists[\" · {stream.year}\"||\"\"]}{stream.duration::>0[\" · {stream.duration::time}\"||\"\"]}\n{stream.type::=external[\"{tools.removeLine}\"||\"\"]}{stream.message::exists[\"⌗ {stream.message}\"||\"\"]}\n{stream.type::=external[\"{tools.removeLine}\"||\"\"]}{stream.quality::exists[\"\"||\"※ {stream.filename}\"]}"
+                        description: "{stream.type::=external[\"▪ ▪ ▪\"||\"{tools.removeLine}\"]}\n{stream.type::=external[\"{tools.removeLine}\"||\"\"]}☰ {stream.languageCodes::exists[\"{stream.languageCodes::join(' · ')}\"||\"---\"]}{stream.audioTags::exists[\" • {stream.audioTags::join(' · ')}\"||\"\"]}{stream.audioChannels::exists[\" • {stream.audioChannels::join(' ')}\"||\"\"]}\n{stream.type::=external[\"{tools.removeLine}\"||\"\"]}☲ {stream.quality::exists[\"{stream.quality}\"||\"---\"]} · {stream.encode::exists[\"{stream.encode}\"||\"---\"]}{stream.visualTags::exists[\" • {stream.visualTags::join(' · ')}\"||\"\"]}\n{stream.type::=external[\"{tools.removeLine}\"||\"\"]}☵ {addon.name} · {stream.releaseGroup::exists[\"{stream.releaseGroup}\"||\"---\"]}{stream.filename::~AMZN[\" · Amazon\"||\"\"]}{stream.filename::~NF[\" · Netflix\"||\"\"]}{stream.filename::~DSNP[\" · Disney+\"||\"\"]}{stream.filename::~HMAX[\" · HBO Max\"||\"\"]}{stream.filename::~APTV[\" · Apple TV+\"||\"\"]}{stream.filename::~Hulu[\" · Hulu\"||\"\"]}{stream.filename::~PRME[\" · Prime\"||\"\"]}{stream.filename::~PMTP[\" · Paramount+\"||\"\"]}{stream.filename::~PCKK[\" · Peacock\"||\"\"]}{stream.filename::~CRTC[\" · Crunchyroll\"||\"\"]}{stream.filename::~ANPX[\" · Anime Plex\"||\"\"]}{stream.filename::~STZ[\" · Starz\"||\"\"]}{stream.filename::~DSCV[\" · Discovery+\"||\"\"]}{service.cached::istrue[\" · [{service.shortName}]\"||\"\"]}{stream.proxied::istrue[\" · ☷\"||\"\"]}\n{stream.type::=external[\"{tools.removeLine}\"||\"\"]}☶ {stream.title}{stream.seasonEpisode::exists[\" · {stream.seasonEpisode::join('')}\"||\"\"]}{stream.year::exists[\" · {stream.year}\"||\"\"]}{stream.duration::>0[\" · {stream.duration::time}\"||\"\"]}\n{stream.type::=external[\"{tools.removeLine}\"||\"\"]}☗ {stream.message::exists[\"⌗ {stream.message}\"||\"\"]}\n{stream.type::=external[\"{tools.removeLine}\"||\"\"]}☗ {stream.quality::exists[\"\"||\"※ {stream.filename}\"]}"
                     },
                     preview: {
                         name: "🔳 4K │ ⛁ 58.4GB · ⇋ 1337",
@@ -1208,8 +1208,18 @@
                         description: "{stream.title::exists[\"🎬 {stream.title::title} \"||\"\"]}{stream.year::exists[\"({stream.year}) \"||\"\"]}{stream.season::>=0[\"🍂 S\"||\"\"]}{stream.season::<=9[\"0\"||\"\"]}{stream.season::>0[\"{stream.season} \"||\"\"]}{stream.episode::>=0[\"🎟 E\"||\"\"]}{stream.episode::<=9[\"0\"||\"\"]}{stream.episode::>0[\"{stream.episode} \"||\"\"]}\n{stream.quality::~Remux[\"|💎 REMUX| \"||\"\"]}{stream.quality::=BluRay [\"|📀 BluRay|\"||\"\"]}{stream.quality::=WEB-DL[\"|🖥 WEB-DL|\"||\"\"]}{stream.quality::=WEBRip[\"|💻 WEBRip|\"||\"\"]}{stream.quality::=HDRip[\"|💿 HDRip|\"||\"\"]}{stream.quality::=HC HD-Rip[\"|💽 HC HD-Rip|\"||\"\"]}{stream.quality::=DVDRip[\"|💾 DVDRip|\"||\"\"]}{stream.quality::=HDTV[\"|📺 HDTV|\"||\"\"]}{stream.visualTags::exists[\"📺 {stream.visualTags::join(' | ')}|\"||\"\"]}{stream.encode::exists[\"🎞️ {stream.encode}|\"||\"\"]}{stream.regexMatched::exists[\"🎚️ {stream.regexMatched} \"||\"\"]}{stream.regexMatched::=Anime BD T1[\"🔥|\"||\"\"]}{stream.regexMatched::=Anime BD T2[\"✨|\"||\"\"]}{stream.regexMatched::=Anime BD T3[\"🙂|\"||\"\"]}{stream.regexMatched::=Anime BD T4[\"🤷‍♂️|\"||\"\"]}{stream.regexMatched::=Anime BD T5[\"😐|\"||\"\"]}{stream.regexMatched::=Anime BD T6[\"👎|\"||\"\"]}{stream.regexMatched::=Anime BD T7[\"⛔️|\"||\"\"]}{stream.regexMatched::=Remux T1[\"🔥|\"||\"\"]}{stream.regexMatched::=Remux T2[\"✨|\"||\"\"]}{stream.regexMatched::=Remux T3[\"🙂|\"||\"\"]}{stream.regexMatched::=Bluray T1[\"🔥|\"||\"\"]}{stream.regexMatched::=Bluray T2[\"✨|\"||\"\"]}{stream.regexMatched::=Bluray T3[\"🙂|\"||\"\"]}{stream.regexMatched::=Anime Web T1[\"🔥|\"||\"\"]}{stream.regexMatched::=Anime Web T2[\"✨|\"||\"\"]}{stream.regexMatched::=Anime Web T3[\"🙂|\"||\"\"]}{stream.regexMatched::=Anime Web T4[\"🤷‍♂️|\"||\"\"]}{stream.regexMatched::=Anime Web T5[\"😐|\"||\"\"]}{stream.regexMatched::=Web T1[\"🔥|\"||\"\"]}{stream.regexMatched::=Web T2[\"✨|\"||\"\"]}{stream.regexMatched::=Web T3[\"🙂|\"||\"\"]}{stream.regexMatched::=Web T4[\"🤷‍♂️|\"||\"\"]}{stream.regexMatched::=Web Scene[\"✨|\"||\"\"]}{stream.regexMatched::=Bad T1[\"👎|\"||\"\"]}{stream.regexMatched::=Bad[\"👎|\"||\"\"]}{stream.duration::>0[\"⏱️ {stream.duration::time}|\"||\"\"]}\n{stream.audioTags::exists[\"|🎧 {stream.audioTags::join(' | ')}\"||\"\"]}{stream.audioChannels::exists[\"|🔊{stream.audioChannels::join(' | ')}\"||\"\"]}{stream.languages::exists[\"|🗣️ {stream.languageEmojis::join(' / ')}\"||\"\"]}{stream.audioTags::exists::or::stream.audioChannels::exists::or::stream.languages::exists[\"|\"||\"\"]}\n{stream.size::>0[\"|📦 {stream.size::bytes}\"||\"\"]}{stream.folderSize::>0[\"/ 📦 {stream.folderSize::bytes}\"||\"\"]}{stream.size::>0::or::stream.folderSize::>0[\"|\"||\"\"]}{stream.seeders::>0[\"🌱 {stream.seeders}|\"||\"\"]}{stream.age::exists[\"📅 {stream.age} |\"||\"\"]}{stream.releaseGroup::exists[\"🏷{stream.releaseGroup}|\"||\"\"]}{stream.type::=p2p[\"⚠️ P2P \"||\"\"]}{stream.type::=http[\"💻 Web Link \"||\"\"]}{stream.type::=youtube[\"▶️ Youtube \"||\"\"]}{stream.type::=live[\"📺 Live \"||\"\"]}\n{stream.filename::exists[\"|📄 File Name:▶️{stream.filename}\"||\"\"]}◀️|\n{stream.message::exists[\"ℹ️ {stream.message}\"||\"\"]}"
                     },
                     preview: {
-                        name: "\n|🔥4K| UHD| \n|🔍Torrentio| 👥 1337|",
-                        desc: "🎬 Avengers: Endgame (2019) 🍂 S01 🎟 E01 \n|📀 BluRay| 📺 HDR | DV| 🎞️ x265| 🎚️ Remux T1 \n|🎧 Atmos |🔊7.1 |🗣️ 🇬🇧 | \n|📦 58.4GB | 🌱 1337| ⚠️ P2P \n|📄 File Name:▶️Movie.mkv◀️|"
+                        name: "⚡️ | 🧲 DB | 🔥4K\n|🔍Torrentio\n|🌐RD| ",
+                        desc: "🎬 Avengers: Endgame (2019) 🍂 S01 🎟 E01 \n|💎 REMUX| 📺 HDR | DV| 🎞️ x265| 🎚️ Remux T1 \n|🎧 Atmos |🔊7.1 |🗣️ 🇬🇧 | \n|📦 58.4GB | 🌱 1337| ⚠️ P2P \n|📄 File Name:▶️Movie.mkv◀️|"
+                    }
+                },
+                torrent: {
+                    json: {
+                        name: "{stream.type::=Usenet[\"📰UN\"||\"\"]}{stream.type::=Debrid[\"🧲 DB\"||\"\"]}{stream.type::=Usenet::or::stream.type::=Debrid[\"|\"||\"\"]}\n{stream.resolution::=2160p[\"🔥4K\\n\"||\"\"]}{stream.resolution::=1080p[\"🚀 FHD\"||\"\"]}{stream.resolution::=1440p[\"✨ 1440p\"||\"\"]}{stream.resolution::=720p[\"💿 HD\"||\"\"]}{stream.resolution::=576p[\"💩576p\"||\"\"]}{stream.resolution::=480p[\"💩480p\"||\"\"]}{stream.resolution::=360p[\"💩360p\"||\"\"]}{stream.resolution::=240p[\"💩240p\"||\"\"]}{stream.resolution::=144p[\"💩144p\"||\"\"]}{stream.resolution::exists[\"\"||\"💩Unknown\"]}\n|🔍{addon.name}",
+                        description: "{stream.title::exists[\"🎬 {stream.title::title} \"||\"\"]}{stream.year::exists[\"({stream.year}) \"||\"\"]}{stream.season::>=0[\"🍂 S\"||\"\"]}{stream.season::<=9[\"0\"||\"\"]}{stream.season::>0[\"{stream.season} \"||\"\"]}{stream.episode::>=0[\"🎟 E\"||\"\"]}{stream.episode::<=9[\"0\"||\"\"]}{stream.episode::>0[\"{stream.episode} \"||\"\"]}\n{stream.quality::~Remux[\"|💎 REMUX| \"||\"\"]}{stream.quality::=BluRay [\"|📀 BluRay|\"||\"\"]}{stream.quality::=WEB-DL[\"|🖥 WEB-DL|\"||\"\"]}{stream.quality::=WEBRip[\"|💻 WEBRip|\"||\"\"]}{stream.quality::=HDRip[\"|💿 HDRip|\"||\"\"]}{stream.quality::=HC HD-Rip[\"|💽 HC HD-Rip|\"||\"\"]}{stream.quality::=DVDRip[\"|💾 DVDRip|\"||\"\"]}{stream.quality::=HDTV[\"|📺 HDTV|\"||\"\"]}{stream.visualTags::exists[\"📺 {stream.visualTags::join(' | ')}|\"||\"\"]}{stream.encode::exists[\"🎞️ {stream.encode}|\"||\"\"]}{stream.regexMatched::exists[\"🎚️ {stream.regexMatched} \"||\"\"]}{stream.duration::>0[\"⏱️ {stream.duration::time}|\"||\"\"]}\n{stream.audioTags::exists[\"|🎧 {stream.audioTags::join(' | ')}\"||\"\"]}{stream.audioChannels::exists[\"|🔊{stream.audioChannels::join(' | ')}\"||\"\"]}{stream.languages::exists[\"|🗣️ {stream.languageEmojis::join(' / ')}\"||\"\"]}{stream.audioTags::exists::or::stream.audioChannels::exists::or::stream.languages::exists[\"|\"||\"\"]}\n{stream.size::>0[\"|📦 {stream.size::bytes}\"||\"\"]}{stream.folderSize::>0[\"/ 📦 {stream.folderSize::bytes}\"||\"\"]}{stream.size::>0::or::stream.folderSize::>0[\"|\"||\"\"]}{stream.seeders::>0[\"🌱 {stream.seeders}|\"||\"\"]}{stream.age::exists[\"📅 {stream.age} |\"||\"\"]}{stream.releaseGroup::exists[\"🏷{stream.releaseGroup}|\"||\"\"]}{stream.type::=p2p[\"⚠️ P2P \"||\"\"]}{stream.type::=http[\"💻 Web Link \"||\"\"]}{stream.type::=youtube[\"▶️ Youtube \"||\"\"]}{stream.type::=live[\"📺 Live \"||\"\"]}\n{stream.filename::exists[\"|📄 File Name:▶️{stream.filename}\"||\"\"]}◀️|\n{stream.message::exists[\"ℹ️ {stream.message}\"||\"\"]}"
+                    },
+                    preview: {
+                        name: "🔳 | 🖥️ 4K | 👥 1337\n|🔍Torrentio",
+                        desc: "🎬 Avengers: Endgame (2019) 🍂 S01 🎟 E01 \n|💎 REMUX| 📺 HDR | DV| 🎞️ x265| 🎚️ Remux T1 \n|🎧 Atmos |🔊7.1 |🗣️ 🇬🇧 | \n|📦 58.4GB | 🌱 1337| ⚠️ P2P \n|📄 File Name:▶️Movie.mkv◀️|"
                     }
                 }
             }
@@ -1241,13 +1251,14 @@
         function simulateFormat(format, data) {
             let result = format;
             const getValue = (key) => {
+                if (key === 'tools.removeLine') return "";
                 const cleanKey = key.split('::')[0];
                 return data[key] || data[cleanKey] || "";
             };
 
             let iterations = 0;
             // Recursively resolve brackets from inside out
-            while (result.includes('{') && iterations < 100) {
+            while (result.includes('{') && iterations < 150) {
                 iterations++;
                 const openIndex = result.lastIndexOf('{');
                 if (openIndex === -1) break;
@@ -1274,18 +1285,17 @@
                     if (!func || func === 'exists') isTrue = !!val;
                     else if (func === 'istrue') isTrue = val === true || val === "true";
                     else if (func === 'isfalse') isTrue = val === false || val === "false";
-                    else if (val && func.startsWith('=') && val == func.substring(1)) isTrue = true;
-                    else if (val && func.startsWith('~') && val.includes(func.substring(1))) isTrue = true;
+                    else if (val && func.startsWith('=') && val.toString() == func.substring(1)) isTrue = true;
+                    else if (val && func.startsWith('~') && val.toString().includes(func.substring(1))) isTrue = true;
                     else if (val && func === '>0' && parseFloat(val) > 0) isTrue = true;
                     replacement = isTrue ? truePart : falsePart;
                 } else {
-                    const [key, modifier] = block.split('::');
-                    const val = getValue(key);
-                    replacement = val;
+                    const [key] = block.split('::');
+                    replacement = getValue(key);
                 }
                 result = result.substring(0, openIndex) + replacement + result.substring(closeIndex + 1);
             }
-            return result;
+            return result.replace(/\\n/g, '\n').replace(/\\"/g, '"');
         }
 
         // Listen to custom inputs to update preview dynamically
@@ -1762,11 +1772,16 @@
                             base.preferredLanguages = [];
                         }
 
-                        // Always force Sort by Language at top
-                        if (base.sortCriteria && base.sortCriteria.global) {
-                            base.sortCriteria.global = base.sortCriteria.global.filter(x => x.key !== 'language');
-                            base.sortCriteria.global.unshift({ "key": "language", "direction": "desc" });
-                        }
+                        // Sort Logic: Language is prioritized, then Resolution is forced to the absolute top
+if (base.sortCriteria && base.sortCriteria.global) {
+    // First, handle language (moves to top)
+    base.sortCriteria.global = base.sortCriteria.global.filter(x => x.key !== 'language');
+    base.sortCriteria.global.unshift({ "key": "language", "direction": "desc" });
+
+    // Finally, force Resolution to the absolute #1 spot (index 0)
+    base.sortCriteria.global = base.sortCriteria.global.filter(x => x.key !== 'resolution');
+    base.sortCriteria.global.unshift({ "key": "resolution", "direction": "desc" });
+}
 
                         // Strict Matching
                         base.titleMatching = { 
